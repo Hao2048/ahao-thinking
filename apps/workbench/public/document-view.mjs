@@ -1,0 +1,26 @@
+import {legacyDiagram} from './legacy-diagram.mjs';
+import {legacyBar,legacyMatrix} from './chart-model.mjs';
+export const escapeHtml=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function inline(text){
+ const media=[];let s=String(text).replace(/!\[([^\]]*)\]\(([^\s)]+)\)/g,(_,label,url)=>{const safe=/^data:image\/(png|jpeg|gif|webp);base64,[A-Za-z0-9+/=]+$/.test(url);media.push(safe?`<img alt="${escapeHtml(label)}" src="${escapeHtml(url)}">`:`<span>${escapeHtml(label)}（图片来源：${escapeHtml(url)}）</span>`);return `\u0000${media.length-1}\u0000`;});
+ s=escapeHtml(s).replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,'<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>').replace(/`([^`\n]+)`/g,'<code>$1</code>').replace(/\*\*([^*\n]+)\*\*/g,'<strong>$1</strong>');return s.replace(/\u0000(\d+)\u0000/g,(_,i)=>media[Number(i)]);
+}
+export function renderMarkdown(value){
+ const lines=String(value||'').split(/\r?\n/),out=[];let i=0;
+ const cells=s=>s.trim().replace(/^\|/,'').replace(/\|$/,'').split(/(?<!\\)\|/).map(c=>c.trim().replace(/\\\|/g,'|'));
+ while(i<lines.length){const line=lines[i];if(!line.trim()){i++;continue;}
+  if(/^```/.test(line)){const language=line.slice(3).trim().toLowerCase();const code=[];i++;while(i<lines.length&&!/^```/.test(lines[i]))code.push(lines[i++]);i++;const source=code.join('\n'),title=diagramTitle(lines,i-code.length-2),legacy=language!=='chart'&&language!=='mermaid'?(legacyBar(source,title||undefined)||matrixFollowing(lines,i,cells,source,title)):null;if(language==='chart'||language==='mermaid'||legacy){out.push(visualMarkup(language==='mermaid'?'mermaid':'chart',legacy?JSON.stringify(legacy):source));}else if((!language||['text','txt','plaintext','ascii'].includes(language))&&(title||/[█▓▒░│└─]{2,}|[→←]/.test(source))){out.push(visualMarkup('legacy-svg',JSON.stringify(legacyDiagram(source,title||undefined))));}else out.push(`<pre><code>${escapeHtml(source)}</code></pre>`);continue;}
+  const h=line.match(/^(#{1,6})\s+(.+)$/);if(h){out.push(`<h${h[1].length}>${inline(h[2])}</h${h[1].length}>`);i++;continue;}
+  if(line.includes('|')&&/^\s*\|?\s*:?-{3,}/.test(lines[i+1]||'')){const title=diagramTitle(lines,i),heads=cells(line);i+=2;const rows=[];while(i<lines.length&&lines[i].includes('|')&&lines[i].trim())rows.push(cells(lines[i++]));if(title)out.push(visualMarkup('legacy-svg',JSON.stringify({kind:'table',title,headers:heads,rows,note:'按原文逐格绘制，保留缺失值与证据状态；未推测数值。'})));out.push(`${title?'<details><summary>查看原始表格</summary>':''}<div class="table-wrap"><table><thead><tr>${heads.map(c=>`<th>${inline(c)}</th>`).join('')}</tr></thead><tbody>${rows.map(row=>`<tr>${heads.map((_,j)=>`<td>${inline(row[j]||'')}</td>`).join('')}</tr>`).join('')}</tbody></table></div>${title?'</details>':''}`);continue;}
+  if(/^\s*([-*]|\d+\.)\s+/.test(line)){const ordered=/^\s*\d+\./.test(line),items=[];while(i<lines.length&&/^\s*([-*]|\d+\.)\s+/.test(lines[i]))items.push(lines[i++].replace(/^\s*([-*]|\d+\.)\s+/,''));out.push(`<${ordered?'ol':'ul'}>${items.map(c=>`<li>${inline(c)}</li>`).join('')}</${ordered?'ol':'ul'}>`);continue;}
+  out.push(`<p>${inline(line)}</p>`);i++;
+ }return out.join('');
+}
+export function frameMarkup(html){const source=`<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'"><meta charset="UTF-8">${html}`;return `<iframe class="preview-frame" title="HTML 展示" sandbox="allow-scripts" srcdoc="${escapeHtml(source)}"></iframe>`;}
+export function documentMarkup(doc){return doc.format==='html'?frameMarkup(doc.content):doc.format==='json'?`<pre class="structured">${escapeHtml(doc.content)}</pre>`:`<div class="rendered-document">${renderMarkdown(doc.content)}</div>`;}
+
+export function visualMarkup(kind,source){return `<figure class="document-visual" data-visual="${kind}"><template class="visual-source">${escapeHtml(source)}</template><div class="visual-head"><strong class="visual-title">${kind==='mermaid'?'流程与关系图':'数据图表'}</strong><span class="visual-status" role="status">正在绘图…</span></div><div class="visual-canvas" role="img" aria-label="文档图表"></div><div class="visual-actions"><button data-visual-action="zoom">放大查看</button><button data-visual-action="svg">导出 SVG</button><button data-visual-action="png">导出 PNG</button></div><div class="visual-note"></div><details><summary>${kind==='mermaid'?'查看 Mermaid 源码':'查看数据与来源'}</summary><div class="visual-data"><pre>${escapeHtml(source)}</pre></div></details></figure>`;}
+
+function matrixFollowing(lines,index,cells,source,title){if(!source.includes('严重')||!source.includes('频率'))return null;for(let j=index;j<Math.min(lines.length,index+10);j++){if(lines[j].includes('|')&&/^\s*\|?\s*:?-{3,}/.test(lines[j+1]||'')){const rows=[];let k=j+2;while(k<lines.length&&lines[k].includes('|'))rows.push(cells(lines[k++]));return legacyMatrix(cells(lines[j]),rows,title||undefined);}}return null;}
+
+function diagramTitle(lines,index){for(let j=index-1;j>=Math.max(0,index-8);j--){const s=lines[j].trim();if(!s)continue;if(/图表|图\s*\d+|Figure\s*\d+/i.test(s)&&/^(?:#{1,6}\s|\*\*)/.test(s))return s.replace(/^#{1,6}\s*|\*\*/g,'').trim();if(/^```|^#{1,6}\s/.test(s))break;}return null;}

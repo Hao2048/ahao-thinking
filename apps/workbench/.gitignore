@@ -1,0 +1,4 @@
+data/
+.desktop-build/
+.desktop-tools/
+node_modules/

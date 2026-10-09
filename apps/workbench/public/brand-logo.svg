@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="好浩的产品工作台标志">
+ <defs>
+  <linearGradient id="jade" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#285344"/><stop offset="1" stop-color="#102e26"/></linearGradient>
+  <linearGradient id="ivory" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fffdf6"/><stop offset="1" stop-color="#dfebe3"/></linearGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ead4a1"/><stop offset="1" stop-color="#b9945d"/></linearGradient>
+ </defs>
+ <rect x="76" y="76" width="872" height="872" rx="206" fill="url(#jade)"/>
+ <rect x="92" y="92" width="840" height="840" rx="191" fill="none" stroke="#72937e" stroke-opacity=".3" stroke-width="2"/>
+ <path d="M288 288 Q288 264 312 264 H380 Q404 264 404 288 V440 H620 V288 Q620 264 644 264 H712 Q736 264 736 288 V736 Q736 760 712 760 H644 Q620 760 620 736 V556 H404 V736 Q404 760 380 760 H312 Q288 760 288 736Z" fill="url(#ivory)"/>
+ <path d="M404 440 H620 V556 H404Z" fill="url(#gold)"/>
+ <path d="M432 480 H592" stroke="#fff4d7" stroke-opacity=".6" stroke-width="3" stroke-linecap="round"/>
+ <path d="M320 302 V692" stroke="#fff" stroke-opacity=".25" stroke-width="3" stroke-linecap="round"/>
+</svg>

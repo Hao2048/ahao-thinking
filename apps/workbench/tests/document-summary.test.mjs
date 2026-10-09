@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {documentSummary} from '../public/document-summary.mjs';
+test('summary follows only the selected document and splits paragraphs into points',()=>{const a={content:'# 立项报告\n## 核心结论\n建议先验证需求。暂无付费证据。'},b={content:'# 联网来源\n## 证据局限\n页面无法访问。'};assert.match(documentSummary(a),/- 建议先验证需求。\n- 暂无付费证据。/);assert.doesNotMatch(documentSummary(a),/页面无法访问/);assert.match(documentSummary(b),/页面无法访问/);assert.doesNotMatch(documentSummary(b),/验证需求/);});
+test('stored individual summaries keep headings and readable bullets',()=>{assert.equal(documentSummary({summary:'## 核心结论\n先验证。后决策。'}),'## 核心结论\n- 先验证。\n- 后决策。');});

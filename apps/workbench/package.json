@@ -1,0 +1,52 @@
+{
+  "name": "aipm-workbench",
+  "version": "1.4.7",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node src/server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "node tests/browser-smoke.mjs",
+    "test:harness": "node --test tests/harness.integration.mjs",
+    "test:desktop": "node tests/desktop-smoke.mjs",
+    "test:workflow": "node --test tests/workflow.integration.mjs",
+    "test:ocr-browser": "node tests/ocr-browser.mjs",
+    "test:enhanced": "node tests/enhanced-browser.mjs",
+    "test:release-ui": "node tests/release-features-browser.mjs",
+    "test:dynamic": "node tests/dynamic-electron.mjs",
+    "desktop:release": "node scripts/package-mac.mjs --release",
+    "desktop:prepare": "node scripts/package-mac.mjs --runtime-only",
+    "desktop:dev": "node scripts/start-desktop.mjs",
+    "desktop:package": "node scripts/package-mac.mjs",
+    "desktop:install": "node scripts/package-mac.mjs --install",
+    "test:providers": "node tests/provider-browser.mjs",
+    "test:chat": "node tests/chat-browser.mjs",
+    "test:workspace": "node tests/workspace-browser.mjs",
+    "test:workflow-ui": "node tests/workflow-browser.mjs",
+    "build:visuals": "node scripts/build-visuals.mjs"
+  },
+  "main": "desktop/main.mjs",
+  "productName": "好浩的产品工作台",
+  "dependencies": {
+    "cheerio": "1.2.0",
+    "exceljs": "4.4.0",
+    "jstat": "1.9.6",
+    "mammoth": "1.13.0",
+    "pdf-parse": "2.4.5",
+    "undici": "8.11.2",
+    "yauzl": "3.4.0"
+  },
+  "overrides": {
+    "uuid": "11.1.1",
+    "argparse": "2.0.1"
+  },
+  "devDependencies": {
+    "@electron/osx-sign": "2.7.1",
+    "echarts": "^6.1.0",
+    "esbuild": "^0.28.2",
+    "mermaid": "^12.1.0"
+  }
+}

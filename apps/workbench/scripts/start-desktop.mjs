@@ -1,0 +1,11 @@
+import { spawn } from 'node:child_process';
+import { createRequire } from 'node:module';
+import { dirname, resolve, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+const appRoot=resolve(dirname(fileURLToPath(import.meta.url)),'..');
+const require=createRequire(join(appRoot,'../../deepseek-harness/apps/desktop/package.json'));
+const executable=require('electron');
+const environment={...process.env};delete environment.ELECTRON_RUN_AS_NODE;
+const child=spawn(executable,[appRoot],{env:environment,stdio:'inherit'});
+child.once('error',error=>{console.error(error.message);process.exitCode=1;});
+child.once('exit',code=>process.exitCode=code||0);
