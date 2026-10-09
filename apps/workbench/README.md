@@ -28,7 +28,7 @@ cd /Users/penghao/Documents/AIProduct/AIProductControl/apps/workbench
 npm start
 ```
 
-打开 http://127.0.0.1:4318 。也可以双击项目根目录的 `启动产品经理工作台.command`。
+运行 `npm start` 后打开 http://127.0.0.1:4318 。桌面开发版使用 `npm run desktop:dev`。
 
 1. 新建项目。
 2. 模型设置选择 DeepSeek、OpenAI、Anthropic / Claude、阿里云百炼（北京）或 Kimi（中国），只填 API Key 后保存；自动提供模型与地址并设为当前使用连接。其他模型、地域或内部服务展开高级设置填写，环境变量同样保留。编辑时 Key 不回显，更换地址或协议必须重新提供对应 Key。

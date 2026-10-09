@@ -435,29 +435,20 @@ def doctor(root):
                 # 这个端口不会自愈（它固定不变），所以不能说「启动时会自动换端口」。
                 print(f"  ⚠️  {label} {port}：被别的程序占用（{reason}）")
                 print("      影响：点导出不会自动起服务。停掉占用方后重跑 "
-                      "bash scripts/install_launcher.sh；期间双击启动入口照常可用。")
+                      "bash scripts/install_launcher.sh；期间可在终端运行 scripts/start_service.py --serve。")
             else:
                 print(f"  ⚠️  {label} {port}：被占用（{reason}）；启动时会自动换端口")
 
-    entries = [("启动原型导出服务.command", os.name != "nt"),
-               ("启动原型导出服务.bat", os.name == "nt")]
     print()
-    for name, relevant in entries:
-        path = root / name
-        if not path.exists():
-            print(f"  {'❌' if relevant else '  '} 启动入口 {name}：不存在")
-        elif os.name != "nt" and name.endswith(".command"):
-            executable = os.access(path, os.X_OK)
-            print(f"  {_mark(executable)} 启动入口 {name}：" +
-                  ("可执行" if executable else "缺少可执行权限，请运行 chmod +x"))
-        else:
-            print(f"  ✅ 启动入口 {name}：存在")
+    entry = root / "scripts/start_service.py"
+    print(f"  {_mark(entry.exists())} 原型导出命令行入口 scripts/start_service.py：" +
+          ("存在" if entry.exists() else "不存在"))
 
     if sys.platform == "darwin":
         import pm_launchagent
         registered, agent_port, matched, pid = pm_launchagent.status(config)
         if not registered:
-            print("  ⚠️  按需启动器：未注册——点导出不会自动起服务，需要先双击启动入口。")
+            print("  ⚠️  按需启动器：未注册——点导出不会自动起服务，可先运行 python3 scripts/start_service.py --serve。")
             print("      注册：bash scripts/install_launcher.sh")
         elif not matched:
             # plist 里的端口是写死的，端口自愈过就会错位。
