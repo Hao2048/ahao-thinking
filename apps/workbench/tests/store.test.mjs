@@ -9,11 +9,11 @@ test('restart preserves projects and marks interrupted tasks failed',async()=>{
   const directory=await mkdtemp(join(tmpdir(),'aipm-restart-'));
   try{
     const first=new Store(directory);await first.open();
-    await first.update(state=>{state.projects.push({id:'p',name:'保留项目',inputs:[{content:'原材料'}],messages:[],runs:[{id:'r',status:'running'}]});});
+    await first.update(state=>{state.projects.push({id:'p',name:'保留项目',inputs:[{content:'原材料'}],messages:[],runs:[],workflows:[{id:'f',runs:[{id:'r',status:'running',nodes:{}}]}]});});
     const second=new Store(directory);await second.open();
-    assert.equal(second.read().projects[0].inputs[0].content,'原材料');
-    assert.equal(second.read().projects[0].runs[0].status,'failed');
-    assert.match(second.read().projects[0].runs[0].error,/中断/);
+    assert.equal(second.read().projects[0].inputs,undefined);
+    assert.equal(second.read().projects[0].workflows[0].runs[0].status,'failed');
+    assert.match(second.read().projects[0].workflows[0].runs[0].error,/中断/);
     assert.equal((await stat(join(directory,'state.json'))).mode & 0o777,0o600);
   }finally{await rm(directory,{recursive:true,force:true});}
 });

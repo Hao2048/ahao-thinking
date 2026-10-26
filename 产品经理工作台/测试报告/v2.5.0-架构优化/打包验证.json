@@ -1,0 +1,54 @@
+{
+  "version": "2.5.0",
+  "sourceMatchesBundle": [
+    {
+      "file": "src/store.mjs",
+      "matches": true
+    },
+    {
+      "file": "src/node-data.mjs",
+      "matches": true
+    },
+    {
+      "file": "src/computed-facts.mjs",
+      "matches": true
+    },
+    {
+      "file": "src/structured-generation.mjs",
+      "matches": true
+    },
+    {
+      "file": "src/node-executors.mjs",
+      "matches": true
+    },
+    {
+      "file": "src/flow-service.mjs",
+      "matches": true
+    },
+    {
+      "file": "src/research.mjs",
+      "matches": true
+    },
+    {
+      "file": "public/node-app.mjs",
+      "matches": true
+    },
+    {
+      "file": "desktop/node-installation.mjs",
+      "matches": true
+    },
+    {
+      "file": "desktop/storage.mjs",
+      "matches": true
+    },
+    {
+      "file": "desktop/main.mjs",
+      "matches": true
+    },
+    {
+      "file": "package.json",
+      "matches": true
+    }
+  ],
+  "codesignExitCode": 0
+}

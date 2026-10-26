@@ -1,0 +1,46 @@
+[
+  {
+    "id": "silver",
+    "letter": "A",
+    "name": "银白精密",
+    "subtitle": "清晰、轻盈，适合全天工作的专业编辑器",
+    "colors": [
+      "#f9fafc",
+      "#edf0f5",
+      "#ffffff",
+      "#285bd7",
+      "#202b40"
+    ],
+    "file": "A-银白精密.html"
+  },
+  {
+    "id": "editorial",
+    "letter": "B",
+    "name": "暖灰编辑",
+    "subtitle": "像一张研究桌，让材料、思考与文档有自己的秩序",
+    "colors": [
+      "#faf9f5",
+      "#eae8e1",
+      "#fffefa",
+      "#282824",
+      "#946b43"
+    ],
+    "file": "B-暖灰编辑.html"
+  },
+  {
+    "id": "night",
+    "letter": "C",
+    "name": "深色专业",
+    "subtitle": "深色与银白双主题，项目和工作流直接可见",
+    "colors": [
+      "#171c26",
+      "#11161e",
+      "#252e3c",
+      "#a4c8f3",
+      "#e8eef7"
+    ],
+    "file": "C-深色专业.html",
+    "lightFile": "C-银白主题.html",
+    "comparisonFile": "C-双主题对比.html"
+  }
+]

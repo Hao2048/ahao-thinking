@@ -1,0 +1,99 @@
+{
+  "id": "market-initiation",
+  "name": "市场研究与立项",
+  "graph": {
+    "nodes": [
+      {
+        "id": "idea",
+        "type": "input.text",
+        "name": "文字输入",
+        "x": 100,
+        "y": 160,
+        "config": {
+          "researchMode": "materials",
+          "content": "",
+          "evidence": "user_statement"
+        }
+      },
+      {
+        "id": "web",
+        "type": "input.web",
+        "name": "联网取材",
+        "x": 380,
+        "y": 100,
+        "config": {
+          "queries": "",
+          "urls": "",
+          "dynamic": false
+        }
+      },
+      {
+        "id": "market",
+        "type": "analysis.market",
+        "name": "市场分析",
+        "x": 670,
+        "y": 170,
+        "config": {
+          "task": "",
+          "modelId": "",
+          "outline": "# 市场分析\n## 执行摘要\n## 市场定义与边界\n## 市场现状、规模与趋势\n## 需求驱动因素与关键变化\n## 竞品与替代方案矩阵\n## 重点竞品分析\n## 定价与商业模式\n## 用户反馈中的共性信号\n## 中国市场与海外参照\n## 对产品决策的意义\n## 证据局限与冲突信息"
+        }
+      },
+      {
+        "id": "argument",
+        "type": "analysis.initiation",
+        "name": "立项论证分析",
+        "x": 970,
+        "y": 170,
+        "config": {
+          "task": "",
+          "modelId": "",
+          "outline": "# 立项论证分析\n## 核心结论\n## 证据与分析\n## 方案与规则\n## 待确认与下一步"
+        }
+      },
+      {
+        "id": "initiation",
+        "type": "report.initiation",
+        "name": "立项报告",
+        "x": 1270,
+        "y": 170,
+        "config": {
+          "task": "",
+          "modelId": "",
+          "outline": "# 立项报告\n## 项目背景与目标\n## 市场与竞品分析\n## 目标用户与核心场景\n## 需求优先级与MVP简介\n## 验证计划\n## 资源与里程碑\n## 风险与对策\n## 立项评审要点"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "idea-market",
+        "from": "idea",
+        "to": "market",
+        "output": "data",
+        "input": "materials"
+      },
+      {
+        "id": "web-market",
+        "from": "web",
+        "to": "market",
+        "output": "data",
+        "input": "materials"
+      },
+      {
+        "id": "market-argument",
+        "from": "market",
+        "to": "argument",
+        "output": "data",
+        "input": "materials"
+      },
+      {
+        "id": "argument-initiation",
+        "from": "argument",
+        "to": "initiation",
+        "output": "data",
+        "input": "materials"
+      }
+    ],
+    "groups": []
+  }
+}

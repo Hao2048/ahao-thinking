@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "analysis.retention",
+  "name": "使用与留存分析",
+  "version": "1.1.0",
+  "category": "analysis",
+  "description": "计算指定日留存，区分缺失与未成熟。 CSV：user_id,date,event；口径需 observationEnd、days。",
+  "icon": "clock",
+  "enabled": true,
+  "executor": "statistics",
+  "inputs": [
+    {
+      "id": "materials",
+      "name": "输入材料",
+      "types": [
+        "materials",
+        "sources",
+        "analysis",
+        "dataset",
+        "documents"
+      ],
+      "multiple": true
+    }
+  ],
+  "outputs": [
+    {
+      "id": "data",
+      "name": "使用与留存分析结果",
+      "types": [
+        "analysis"
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "key": "task",
+      "label": "本次目标与补充要求",
+      "type": "textarea",
+      "default": ""
+    },
+    {
+      "key": "modelId",
+      "label": "执行模型",
+      "type": "model",
+      "default": ""
+    },
+    {
+      "key": "outline",
+      "label": "输出大纲",
+      "type": "textarea",
+      "default": "# 使用与留存分析\n## 核心结论\n## 分析依据与数据\n## 限制与风险\n## 下一步建议"
+    },
+    {
+      "key": "options",
+      "label": "计算口径（JSON）",
+      "type": "json",
+      "default": {
+        "days": [
+          1,
+          7,
+          30
+        ],
+        "observationEnd": ""
+      }
+    }
+  ],
+  "instructions": "instructions.md",
+  "requirements": [
+    "至少一份相关输入"
+  ],
+  "implementation": "code-statistics",
+  "statistic": "retention",
+  "origin": {
+    "skill": "产品经理工作流 / 现有本地工具",
+    "adaptedAt": "2026-10-18",
+    "scope": "计算指定日留存，区分缺失与未成熟。"
+  },
+  "workflow": [
+    {
+      "id": "validate",
+      "title": "检查数据与计算口径",
+      "prompt": "校验表头、样本、窗口与分母，错误不可忽略。"
+    },
+    {
+      "id": "calculate",
+      "title": "代码计算",
+      "prompt": "由统计执行器计算，禁止模型改写结果。"
+    },
+    {
+      "id": "interpret",
+      "title": "专业解读",
+      "prompt": "目标对比、证据局限、可能原因与下一步；不把相关性写成因果。"
+    }
+  ],
+  "capabilities": {
+    "search": false,
+    "calculate": true
+  }
+}

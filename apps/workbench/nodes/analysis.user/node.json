@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "id": "analysis.user",
+  "name": "用户分析",
+  "version": "1.1.0",
+  "category": "analysis",
+  "description": "识别群体、场景、任务、痛点与证据缺口。",
+  "icon": "user",
+  "enabled": true,
+  "executor": "ai",
+  "inputs": [
+    {
+      "id": "materials",
+      "name": "输入材料",
+      "types": [
+        "materials",
+        "sources",
+        "analysis",
+        "dataset",
+        "documents"
+      ],
+      "multiple": true
+    }
+  ],
+  "outputs": [
+    {
+      "id": "data",
+      "name": "用户分析结果",
+      "types": [
+        "analysis"
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "key": "task",
+      "label": "本次目标与补充要求",
+      "type": "textarea",
+      "default": ""
+    },
+    {
+      "key": "modelId",
+      "label": "执行模型",
+      "type": "model",
+      "default": ""
+    },
+    {
+      "key": "outline",
+      "label": "输出大纲",
+      "type": "textarea",
+      "default": "# 用户分析报告\n## 核心用户与用户分布\n## 用户任务与使用场景\n## 用户痛点\n## 当前替代方案与切换成本\n## 用户付费意愿\n## 用户使用频率、留存与流失\n## 获客渠道与购买决策\n## 用户群体优先级与建议\n## 证据缺口与验证建议"
+    }
+  ],
+  "instructions": "instructions.md",
+  "requirements": [
+    "目标群体、研究问题与用户证据。"
+  ],
+  "implementation": "ai",
+  "origin": {
+    "skill": "AI 产品经理研究助手",
+    "adaptedAt": "2026-10-18",
+    "scope": "识别群体、场景、任务、痛点与证据缺口。"
+  },
+  "capabilities": {
+    "search": false,
+    "generateDecisions": true
+  },
+  "workflow": [
+    {
+      "id": "inventory",
+      "title": "盘点材料与范围",
+      "prompt": "检查最低输入要求、来源性质与缺口。"
+    },
+    {
+      "id": "analysis",
+      "title": "执行专业分析",
+      "prompt": "提取原话和行为证据，识别2–4个有依据的群体；分析任务场景、痛点、替代方案、付费、使用留存、渠道与优先级。区分B2B使用者/推动者/决策者/付费者。每个主要结论就地配图/明细和置信度；无数据用缺口表。估算给区间与推导，不伪造分布。"
+    },
+    {
+      "id": "verify",
+      "title": "检查证据与结论",
+      "prompt": "核对来源、事实/推断/假设、数字和图表口径，标记未确认事项。"
+    },
+    {
+      "id": "output",
+      "title": "交接分析成果",
+      "prompt": "输出供下游使用的结论、方案、规则、证据与待确认项。"
+    }
+  ]
+}

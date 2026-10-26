@@ -1,29 +1,4 @@
-import { readFile, mkdir, cp, access, writeFile, rename } from 'node:fs/promises';
-import { dirname, join } from 'node:path';
 import { randomUUID } from 'node:crypto';
-
-/** Import a legacy local project store once; never overwrite an existing desktop store. */
-export async function importLegacyData(source, destination) {
-  try { await access(join(destination, 'state.json')); return { imported: false, reason: 'already-exists' }; }
-  catch (error) { if (error.code !== 'ENOENT') throw error; }
-  let contents;
-  try { contents = await readFile(join(source, 'state.json'), 'utf8'); }
-  catch (error) { if (error.code === 'ENOENT') return { imported: false, reason: 'no-legacy-data' }; throw error; }
-  const state = JSON.parse(contents);
-  if (state.schemaVersion !== 1 || !Array.isArray(state.projects) || !Array.isArray(state.models)) throw new Error('旧版本数据格式不支持，原数据未修改');
-  await mkdir(destination, { recursive: true, mode: 0o700 });
-  // Runtime profiles are recreated from bundled packages; copy only user workspaces and session logs.
-  for (const path of ['projects', 'harness-home/sessions']) {
-    try { await access(join(source, path)); }
-    catch (error) { if (error.code === 'ENOENT') continue; throw error; }
-    await cp(join(source, path), join(destination, path), { recursive: true, dereference: false, errorOnExist: true, force: false });
-  }
-  const temporary = join(destination, `.import-${randomUUID()}.tmp`);
-  await writeFile(temporary, contents, { mode: 0o600, flag: 'wx' });
-  await rename(temporary, join(destination, 'state.json'));
-  await writeFile(join(destination, 'migration.json'), JSON.stringify({ version: 1, importedAt: new Date().toISOString(), source, projects: state.projects.length, models: state.models.length }), { mode: 0o600 });
-  return { imported: true, projects: state.projects.length, models: state.models.length };
-}
 
 /** Codec backed by the parent Electron process; the renderer never sees these messages. */
 export function createDesktopCodec(channel = process) {
@@ -72,11 +47,15 @@ export function createDynamicResearchBridge(channel=process) {
     if(message.error)call.reject(new Error(message.error));else call.resolve(message.result);
   });
   channel.once('disconnect',()=>{for(const call of pending.values()){clearTimeout(call.timer);call.reject(new Error('桌面取材连接已关闭'));}pending.clear();});
-  return url=>new Promise((resolve,reject)=>{
+  return (url,{signal}={})=>new Promise((resolve,reject)=>{
+    signal?.throwIfAborted();
     const id=randomUUID();
-    const timer=setTimeout(()=>{pending.delete(id);reject(new Error('桌面动态取材响应超时'));},50000);
-    pending.set(id,{resolve,reject,timer});
-    channel.send({type:'research-request',id,url},error=>{if(error){clearTimeout(timer);pending.delete(id);reject(error);}});
+    const finish=(error,value)=>{pending.delete(id);clearTimeout(timer);signal?.removeEventListener('abort',abort);error?reject(error):resolve(value);};
+    const abort=()=>{channel.send({type:'research-cancel',id});finish(new Error('动态取材已停止'));};
+    const timer=setTimeout(()=>{channel.send({type:'research-cancel',id});finish(new Error('桌面动态取材响应超时'));},50000);
+    pending.set(id,{resolve:value=>finish(null,value),reject:error=>finish(error),timer});
+    signal?.addEventListener('abort',abort,{once:true});
+    channel.send({type:'research-request',id,url},error=>{if(error)finish(error);});
   });
 }
 

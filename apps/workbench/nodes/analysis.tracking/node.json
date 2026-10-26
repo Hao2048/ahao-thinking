@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "id": "analysis.tracking",
+  "name": "埋点设计分析",
+  "version": "1.1.0",
+  "category": "analysis",
+  "description": "先盘点字典、沿用字段与枚举。建立页面/状态—事件覆盖，事件名snake_case；表列事件名、触发时机、参数名、类型、说明、统计口径。定义去",
+  "icon": "grid",
+  "enabled": true,
+  "executor": "ai",
+  "inputs": [
+    {
+      "id": "materials",
+      "name": "输入材料",
+      "types": [
+        "materials",
+        "sources",
+        "analysis",
+        "dataset",
+        "documents"
+      ],
+      "multiple": true
+    }
+  ],
+  "outputs": [
+    {
+      "id": "data",
+      "name": "埋点设计分析结果",
+      "types": [
+        "analysis"
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "key": "task",
+      "label": "本次目标与补充要求",
+      "type": "textarea",
+      "default": ""
+    },
+    {
+      "key": "modelId",
+      "label": "执行模型",
+      "type": "model",
+      "default": ""
+    },
+    {
+      "key": "outline",
+      "label": "输出大纲",
+      "type": "textarea",
+      "default": "# 埋点设计分析\n## 核心结论\n## 证据与分析\n## 方案与规则\n## 待确认与下一步"
+    }
+  ],
+  "instructions": "instructions.md",
+  "requirements": [
+    "业务流程、指标目标与既有事件字典。"
+  ],
+  "implementation": "ai",
+  "origin": {
+    "skill": "三个产品技能的对应专业SOP",
+    "adaptedAt": "2026-10-24",
+    "scope": "先盘点字典、沿用字段与枚举。建立页面/状态—事件覆盖，事件名snake_case；表列事件名、触发时机、参数名、类型、说明、统计口径。定义去重、分母、窗口与数据验证，无字典标建议待确认，不杜撰已上线事件。"
+  },
+  "capabilities": {
+    "search": false,
+    "generateDecisions": true
+  },
+  "workflow": [
+    {
+      "id": "inventory",
+      "title": "盘点材料与范围",
+      "prompt": "检查最低输入要求、来源性质与缺口。"
+    },
+    {
+      "id": "analysis",
+      "title": "执行专业分析",
+      "prompt": "先盘点字典、沿用字段与枚举。建立页面/状态—事件覆盖，事件名snake_case；表列事件名、触发时机、参数名、类型、说明、统计口径。定义去重、分母、窗口与数据验证，无字典标建议待确认，不杜撰已上线事件。"
+    },
+    {
+      "id": "verify",
+      "title": "检查证据与结论",
+      "prompt": "核对来源、事实/推断/假设、数字和图表口径，标记未确认事项。"
+    },
+    {
+      "id": "output",
+      "title": "交接分析成果",
+      "prompt": "输出供下游使用的结论、方案、规则、证据与待确认项。"
+    }
+  ]
+}

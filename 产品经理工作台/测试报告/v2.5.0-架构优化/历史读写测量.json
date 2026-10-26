@@ -1,0 +1,18 @@
+{
+  "fixture": "40 runs × 150000 ASCII document characters; base64 test codec, not macOS latency benchmark",
+  "full": {
+    "bytes": 6012114,
+    "milliseconds": 29.46
+  },
+  "status": {
+    "bytes": 103,
+    "milliseconds": 3.19
+  },
+  "metadataUpdate": {
+    "encodedWrites": 1,
+    "encodedBytes": [
+      4267
+    ],
+    "milliseconds": 12.81
+  }
+}

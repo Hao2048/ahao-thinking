@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "id": "analysis.prd",
+  "name": "PRD方案分析",
+  "version": "1.1.0",
+  "category": "analysis",
+  "description": "盘点问题、目标、用户场景、现有方案、业务规则、埋点字典/品牌/已有原型。列出已确认/待确认项与章节取舍，不把假设写成确认。背景按场景问题—影",
+  "icon": "grid",
+  "enabled": true,
+  "executor": "ai",
+  "inputs": [
+    {
+      "id": "materials",
+      "name": "输入材料",
+      "types": [
+        "materials",
+        "sources",
+        "analysis",
+        "dataset",
+        "documents"
+      ],
+      "multiple": true
+    }
+  ],
+  "outputs": [
+    {
+      "id": "data",
+      "name": "PRD方案分析结果",
+      "types": [
+        "analysis"
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "key": "task",
+      "label": "本次目标与补充要求",
+      "type": "textarea",
+      "default": ""
+    },
+    {
+      "key": "modelId",
+      "label": "执行模型",
+      "type": "model",
+      "default": ""
+    },
+    {
+      "key": "outline",
+      "label": "输出大纲",
+      "type": "textarea",
+      "default": "# PRD方案分析\n## 核心结论\n## 证据与分析\n## 方案与规则\n## 待确认与下一步"
+    }
+  ],
+  "instructions": "instructions.md",
+  "requirements": [
+    "已确认需求/范围、业务规则、现有方案、材料字典和参考。"
+  ],
+  "implementation": "ai",
+  "origin": {
+    "skill": "三个产品技能的对应专业SOP",
+    "adaptedAt": "2026-10-24",
+    "scope": "盘点问题、目标、用户场景、现有方案、业务规则、埋点字典/品牌/已有原型。列出已确认/待确认项与章节取舍，不把假设写成确认。背景按场景问题—影响—证据；目标有口径与基线。每个详细方案行对应一屏/状态，含页面元素、交互说明、所属边界；跨页规则集中，描述不写技术接口。项目与版本记录分开，业务与交互流程分开，时序为研发可复制源码。生成方案供报告整理，不宣称未经实际校验的PRD已验收。"
+  },
+  "capabilities": {
+    "search": false,
+    "generateDecisions": true
+  },
+  "workflow": [
+    {
+      "id": "inventory",
+      "title": "盘点材料与范围",
+      "prompt": "检查最低输入要求、来源性质与缺口。"
+    },
+    {
+      "id": "analysis",
+      "title": "执行专业分析",
+      "prompt": "盘点问题、目标、用户场景、现有方案、业务规则、埋点字典/品牌/已有原型。列出已确认/待确认项与章节取舍，不把假设写成确认。背景按场景问题—影响—证据；目标有口径与基线。每个详细方案行对应一屏/状态，含页面元素、交互说明、所属边界；跨页规则集中，描述不写技术接口。项目与版本记录分开，业务与交互流程分开，时序为研发可复制源码。生成方案供报告整理，不宣称未经实际校验的PRD已验收。"
+    },
+    {
+      "id": "verify",
+      "title": "检查证据与结论",
+      "prompt": "核对来源、事实/推断/假设、数字和图表口径，标记未确认事项。"
+    },
+    {
+      "id": "output",
+      "title": "交接分析成果",
+      "prompt": "输出供下游使用的结论、方案、规则、证据与待确认项。"
+    }
+  ]
+}

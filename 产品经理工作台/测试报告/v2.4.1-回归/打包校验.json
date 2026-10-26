@@ -1,0 +1,47 @@
+{
+  "version": "2.4.1",
+  "checks": [
+    {
+      "path": "src/node-executors.mjs",
+      "matches": true
+    },
+    {
+      "path": "src/flow-service.mjs",
+      "matches": true
+    },
+    {
+      "path": "src/model-errors.mjs",
+      "matches": true
+    },
+    {
+      "path": "src/research.mjs",
+      "matches": true
+    },
+    {
+      "path": "src/structured-generation.mjs",
+      "matches": true
+    },
+    {
+      "path": "public/node-app.mjs",
+      "matches": true
+    },
+    {
+      "path": "public/diagram-source.mjs",
+      "matches": true
+    },
+    {
+      "path": "public/document-summary.mjs",
+      "matches": true
+    },
+    {
+      "path": "public/document-charts.mjs",
+      "matches": true
+    }
+  ],
+  "signatureVerification": "codesign --verify --deep --strict passed",
+  "finalDesktopStartup": {
+    "mainWindowObserved": true,
+    "existingProjectReadable": true,
+    "model": "deepseek-flash"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "funnel-review",
+  "name": "漏斗分析与数据报告",
+  "graph": {
+    "nodes": [
+      {
+        "id": "files",
+        "type": "input.file",
+        "name": "文档输入",
+        "x": 100,
+        "y": 150,
+        "config": {}
+      },
+      {
+        "id": "funnel",
+        "type": "analysis.funnel",
+        "name": "转化漏斗分析",
+        "x": 420,
+        "y": 150,
+        "config": {
+          "task": "",
+          "modelId": "",
+          "outline": "# 转化漏斗分析\n## 核心结论\n## 分析依据与数据\n## 限制与风险\n## 下一步建议",
+          "options": {
+            "steps": [],
+            "windowHours": 24
+          }
+        }
+      },
+      {
+        "id": "report",
+        "type": "report.data",
+        "name": "数据分析报告",
+        "x": 740,
+        "y": 150,
+        "config": {
+          "task": "",
+          "modelId": "",
+          "outline": "# 数据分析报告\n## 核心结论\n## 分析依据与数据\n## 限制与风险\n## 下一步建议"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "files-funnel",
+        "from": "files",
+        "to": "funnel",
+        "output": "data",
+        "input": "materials"
+      },
+      {
+        "id": "funnel-report",
+        "from": "funnel",
+        "to": "report",
+        "output": "data",
+        "input": "materials"
+      }
+    ],
+    "groups": []
+  }
+}

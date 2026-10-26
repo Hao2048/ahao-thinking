@@ -27,22 +27,3 @@ test('native OCR recognizes Chinese, English, numbers, scanned PDF and rejects o
   await assert.rejects(parseFile('过长.pdf',await readFile(new URL('./fixtures/ocr-too-long.pdf',import.meta.url)),{ocr:true}),/最多 30 页/);
   await assert.rejects(parseFile('损坏.pdf',Buffer.from('%PDF-1.4 invalid'),{ocr:true}),/有效 PDF/);
 });
-test('OCR upload stays a draft until confirmation and records editing and method', {timeout:60000}, async t => {
-  if (!await ocrAvailable()) { t.skip('本机 OCR helper 未构建'); return; }
-  const dir=await mkdtemp(join(tmpdir(),'aipm-ocr-api-'));
-  const app=await startServer({port:0,dataDir:dir,bridge:{async close(){}}});
-  const call=async(path,body)=>{
-    const response=await fetch(app.url+path,{method:body?'POST':'GET',headers:{'X-AIPM-Token':app.token,'Content-Type':'application/json'},...(body?{body:JSON.stringify(body)}:{})});
-    assert.ok(response.ok);return response.json();
-  };
-  try {
-    assert.equal((await call('/api/state')).capabilities.ocr,true);
-    const project=await call('/api/projects',{name:'OCR 验收'});
-    const params=new URLSearchParams({filename:'访谈.png',projectId:project.id,moduleId:'user'});
-    const response=await fetch(`${app.url}/api/files/parse?${params}`,{method:'POST',headers:{'X-AIPM-Token':app.token},body:await readFile(new URL('./fixtures/ocr-sample.png',import.meta.url))});
-    assert.equal(response.status,200);const draft=await response.json();
-    assert.equal((await call('/api/state')).projects[0].inputs.length,0);
-    const input=await call(`/api/projects/${project.id}/inputs`,{moduleId:'user',kind:'file',fileDraftId:draft.id,title:'访谈',content:draft.content+'\n已核对',evidence:'test_data'});
-    assert.equal(input.fileSource.method,'apple-vision-ocr');assert.equal(input.fileSource.edited,true);assert.equal(input.evidence,'test_data');
-  } finally {await app.close();await rm(dir,{recursive:true,force:true});}
-});

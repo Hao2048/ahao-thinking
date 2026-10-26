@@ -16,13 +16,13 @@ export function searchLinks(engine,html,searchURL){
  });
  return [...new Map(results.map(item=>[item.url,item])).values()].slice(0,5);
 }
-export async function builtinSearch(query,fetcher){
+export async function builtinSearch(query,fetcher,{signal}={}){
  const failures=[];
- for(const engine of builtinEngines){const url=new URL(engine.url);url.searchParams.set('q',query);if(engine.id==='bing-web'){url.searchParams.set('setlang','zh-hans');url.searchParams.set('cc','cn');}
-  try{const response=await fetcher(url.href,{limit:2*1024*1024,signal:AbortSignal.timeout(15000)});
+ for(const engine of builtinEngines){signal?.throwIfAborted();const url=new URL(engine.url);url.searchParams.set('q',query);if(engine.id==='bing-web'){url.searchParams.set('setlang','zh-hans');url.searchParams.set('cc','cn');}
+  try{const response=await fetcher(url.href,{limit:2*1024*1024,signal:signal?AbortSignal.any([signal,AbortSignal.timeout(15000)]):AbortSignal.timeout(15000)});
    if(response.status!==200)throw new Error(`HTTP ${response.status}`);
    const items=searchLinks(engine.id,response.bytes.toString('utf8'),url.href);if(!items.length)throw new Error('未返回可用结果，可能遇到验证、访问限制或无结果');return items;
-  }catch(error){failures.push(`${engine.id}：${error.message}`);}
+  }catch(error){signal?.throwIfAborted();failures.push(`${engine.id}：${error.message}`);}
  }
  throw new Error('默认联网检索暂不可用，请检查网络，稍后重试或在设置中选择专业检索服务。'+failures.join('；'));
 }

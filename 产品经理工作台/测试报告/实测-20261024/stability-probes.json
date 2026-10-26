@@ -1,0 +1,131 @@
+[
+  {
+    "test": "生成中并发读取12次",
+    "statuses": [
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200
+    ],
+    "medianMs": 25.586957999999996,
+    "p95Ms": 35.803791
+  },
+  {
+    "test": "同一工作流重复运行",
+    "http": 400,
+    "ms": 13.633375000000001,
+    "value": {
+      "error": "已有运行，请先完成或停止"
+    }
+  },
+  {
+    "test": "运行中编辑保护",
+    "http": 400,
+    "ms": 14.384582999999992,
+    "value": {
+      "error": "工作流正在运行或等待补充，请先停止后编辑"
+    }
+  },
+  {
+    "test": "未授权API请求",
+    "http": 403
+  },
+  {
+    "test": "错误来源请求",
+    "http": 403
+  },
+  {
+    "test": "非法连接保存",
+    "http": 400,
+    "ms": 11.863333000000011,
+    "value": {
+      "error": "连线编号、方向或端点无效"
+    }
+  },
+  {
+    "test": "过期版本保存",
+    "http": 400,
+    "ms": 12.070250000000016,
+    "value": {
+      "error": "工作流已在其他页面更新，请刷新后重试"
+    }
+  },
+  {
+    "test": "重复执行8次及缓存",
+    "flowId": "f7eea793-c0a7-4878-b7c4-f9a4632502a9",
+    "runs": [
+      {
+        "index": 1,
+        "status": "succeeded",
+        "version": 1,
+        "cached": false,
+        "elapsedMs": 65
+      },
+      {
+        "index": 2,
+        "status": "succeeded",
+        "version": 2,
+        "cached": true,
+        "elapsedMs": 63
+      },
+      {
+        "index": 3,
+        "status": "succeeded",
+        "version": 3,
+        "cached": true,
+        "elapsedMs": 67
+      },
+      {
+        "index": 4,
+        "status": "succeeded",
+        "version": 4,
+        "cached": true,
+        "elapsedMs": 64
+      },
+      {
+        "index": 5,
+        "status": "succeeded",
+        "version": 5,
+        "cached": true,
+        "elapsedMs": 67
+      },
+      {
+        "index": 6,
+        "status": "succeeded",
+        "version": 6,
+        "cached": true,
+        "elapsedMs": 65
+      },
+      {
+        "index": 7,
+        "status": "succeeded",
+        "version": 7,
+        "cached": true,
+        "elapsedMs": 66
+      },
+      {
+        "index": 8,
+        "status": "succeeded",
+        "version": 8,
+        "cached": true,
+        "elapsedMs": 70
+      }
+    ]
+  },
+  {
+    "test": "生成中停止与迟到写入保护",
+    "flowId": "c455c0fb-c1d3-48dd-84fd-5e4bd30e9d95",
+    "http": 200,
+    "status": "cancelled",
+    "nodeStatus": "cancelled",
+    "hasLateOutput": false
+  }
+]

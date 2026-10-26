@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "report.demand",
+  "name": "需求文档",
+  "version": "1.1.0",
+  "category": "report",
+  "description": "仅根据传入的相关成果，按大纲整理需求文档；不搜索、不另作产品决策。",
+  "icon": "file",
+  "enabled": true,
+  "executor": "ai",
+  "inputs": [
+    {
+      "id": "materials",
+      "name": "输入材料",
+      "types": [
+        "materials",
+        "sources",
+        "analysis",
+        "dataset",
+        "documents"
+      ],
+      "multiple": true
+    }
+  ],
+  "outputs": [
+    {
+      "id": "data",
+      "name": "需求文档结果",
+      "types": [
+        "documents"
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "key": "task",
+      "label": "本次目标与补充要求",
+      "type": "textarea",
+      "default": ""
+    },
+    {
+      "key": "modelId",
+      "label": "执行模型",
+      "type": "model",
+      "default": ""
+    },
+    {
+      "key": "outline",
+      "label": "输出大纲",
+      "type": "textarea",
+      "default": "# 需求文档\n## 背景与目标\n## 目标用户与场景\n## 需求清单\n## 优先级与范围\n## 待确认事项"
+    }
+  ],
+  "instructions": "instructions.md",
+  "requirements": [
+    "业务目标与用户问题"
+  ],
+  "implementation": "ai",
+  "origin": {
+    "skill": "产品经理工作流 / 现有本地工具",
+    "adaptedAt": "2026-10-18",
+    "scope": "明确为什么做、用户需要什么以及需求范围。"
+  },
+  "capabilities": {
+    "search": false,
+    "calculate": false,
+    "generateDecisions": false
+  },
+  "workflow": [
+    {
+      "id": "relevance",
+      "title": "检查材料相关性",
+      "prompt": "完全不相关或没有可用内容时停止，不输出文档。"
+    },
+    {
+      "id": "coverage",
+      "title": "对照大纲检查覆盖",
+      "prompt": "逐章识别输入支持的内容和缺口；相关但不足可整理，必须显著提示。"
+    },
+    {
+      "id": "compose",
+      "title": "按大纲整理报告",
+      "prompt": "仅归类、去重、编排和总结材料，不搜索、不新建事实、统计或产品决策。"
+    },
+    {
+      "id": "verify",
+      "title": "核对来源与文档",
+      "prompt": "数字和结论须由输入支持，缺失章节写材料不足，保留上游假设/局限。"
+    }
+  ]
+}

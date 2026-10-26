@@ -1,0 +1,1720 @@
+{
+  "name": "E-不完整材料的立项报告",
+  "flowId": "6ecba803-34e2-4b60-a578-368d732d4afe",
+  "graph": {
+    "nodes": [
+      {
+        "id": "text",
+        "type": "input.text",
+        "name": "文字输入",
+        "x": 80,
+        "y": 160,
+        "config": {
+          "researchMode": "materials",
+          "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n待研究想法是AI宠物陪伴上班族。没有用户访谈、市场数据、竞品分析、付费证据、资源或成本信息，也没有完整立项论证。请只整理已有想法，不新增立项判断。",
+          "evidence": "test_data"
+        }
+      },
+      {
+        "id": "report",
+        "type": "report.initiation",
+        "name": "立项报告",
+        "x": 440,
+        "y": 160,
+        "config": {
+          "task": "",
+          "modelId": "",
+          "outline": "# 立项报告\n## 项目背景与目标\n## 市场与竞品分析\n## 目标用户与核心场景\n## 需求优先级与MVP简介\n## 验证计划\n## 资源与里程碑\n## 风险与对策\n## 立项评审要点"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "text-report",
+        "from": "text",
+        "to": "report",
+        "output": "data",
+        "input": "materials"
+      }
+    ],
+    "groups": [],
+    "view": {
+      "x": 60,
+      "y": 100,
+      "k": 1
+    }
+  },
+  "runs": [
+    {
+      "id": "9bd07f46-a54f-4936-a62c-5072d0128e85",
+      "version": 1,
+      "status": "failed",
+      "createdAt": "2026-10-24T13:13:42.621Z",
+      "graph": {
+        "nodes": [
+          {
+            "id": "text",
+            "type": "input.text",
+            "name": "文字输入",
+            "x": 80,
+            "y": 160,
+            "config": {
+              "researchMode": "materials",
+              "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n待研究想法是AI宠物陪伴上班族。没有用户访谈、市场数据、竞品分析、付费证据、资源或成本信息，也没有完整立项论证。请只整理已有想法，不新增立项判断。",
+              "evidence": "test_data"
+            }
+          },
+          {
+            "id": "report",
+            "type": "report.initiation",
+            "name": "立项报告",
+            "x": 440,
+            "y": 160,
+            "config": {
+              "task": "",
+              "modelId": "",
+              "outline": "# 立项报告\n## 项目背景与目标\n## 市场与竞品分析\n## 目标用户与核心场景\n## 需求优先级与MVP简介\n## 验证计划\n## 资源与里程碑\n## 风险与对策\n## 立项评审要点"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "text-report",
+            "from": "text",
+            "to": "report",
+            "output": "data",
+            "input": "materials"
+          }
+        ],
+        "groups": [],
+        "view": {
+          "x": 60,
+          "y": 100,
+          "k": 1
+        }
+      },
+      "graphHash": "3d70cff0400ef05c4080bb5099261f6957144fed26652692adce5a8932b2ca1d",
+      "order": [
+        "text",
+        "report"
+      ],
+      "force": false,
+      "nodes": {
+        "text": {
+          "status": "succeeded",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "input.text",
+            "name": "文字输入",
+            "version": "1.1.0",
+            "category": "input",
+            "description": "输入想法、产品、用户需求或 CSV/JSON 数据。",
+            "icon": "input",
+            "enabled": true,
+            "executor": "text",
+            "inputs": [],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "文字输入结果",
+                "types": [
+                  "materials"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "researchMode",
+                "label": "输入方式",
+                "type": "select",
+                "options": [
+                  {
+                    "value": "materials",
+                    "label": "文档 / 数据材料"
+                  },
+                  {
+                    "value": "idea",
+                    "label": "产品想法"
+                  },
+                  {
+                    "value": "product",
+                    "label": "指定产品 / 竞品"
+                  },
+                  {
+                    "value": "user_need",
+                    "label": "用户需求"
+                  }
+                ],
+                "default": "materials"
+              },
+              {
+                "key": "content",
+                "label": "材料正文 / CSV / JSON",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "evidence",
+                "label": "材料性质",
+                "type": "select",
+                "options": [
+                  {
+                    "value": "user_statement",
+                    "label": "用户陈述"
+                  },
+                  {
+                    "value": "material",
+                    "label": "已有材料"
+                  },
+                  {
+                    "value": "test_data",
+                    "label": "测试数据"
+                  },
+                  {
+                    "value": "ai_hypothesis",
+                    "label": "AI假设（待验证）"
+                  }
+                ],
+                "default": "user_statement"
+              }
+            ],
+            "instructions": null,
+            "requirements": [
+              "至少一份相关输入"
+            ],
+            "implementation": "text",
+            "origin": {
+              "skill": "产品经理工作流 / 现有本地工具",
+              "adaptedAt": "2026-10-18",
+              "scope": "输入想法、产品、用户需求或 CSV/JSON 数据。"
+            },
+            "workflow": [
+              {
+                "id": "collect",
+                "title": "采集或引用材料",
+                "prompt": "输入想法、产品、用户需求或 CSV/JSON 数据。"
+              },
+              {
+                "id": "confirm",
+                "title": "保留内容与来源",
+                "prompt": "原样交接材料、来源和证据性质，不承担下游分析或报告整理。"
+              }
+            ],
+            "capabilities": {
+              "search": false,
+              "generateDecisions": false
+            },
+            "hash": "ab910179df883d66c348de313ff1bdd39728bba0013a9fba13dc49793ddb7678",
+            "instruction": "",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/input.text"
+          },
+          "supplements": [],
+          "draft": false,
+          "startedAt": "2026-10-24T13:13:42.643Z",
+          "fingerprint": "d199449c19031cefd6eb6def754edc93ae9c5c731fc32045b1be90eba69b7203",
+          "model": {
+            "id": "294a5b94-cf4f-4936-84b0-0ea6f6d9900d",
+            "api": "deepseek-messages",
+            "baseURL": "https://api.deepseek.com/anthropic",
+            "model": "deepseek-flash"
+          },
+          "output": {
+            "kind": "materials",
+            "materials": [
+              {
+                "id": "03da988e-dd2b-4806-9506-9e6f192ebfb4",
+                "title": "文字输入",
+                "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n待研究想法是AI宠物陪伴上班族。没有用户访谈、市场数据、竞品分析、付费证据、资源或成本信息，也没有完整立项论证。请只整理已有想法，不新增立项判断。",
+                "evidence": "test_data",
+                "researchMode": "materials"
+              }
+            ],
+            "documents": [],
+            "sources": [],
+            "assumptions": [],
+            "summary": "已提供文字材料",
+            "warnings": [],
+            "fileReferences": []
+          },
+          "completedAt": "2026-10-24T13:13:42.654Z"
+        },
+        "report": {
+          "status": "failed",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "report.initiation",
+            "name": "立项报告",
+            "version": "1.1.0",
+            "category": "report",
+            "description": "仅根据传入的相关成果，按大纲整理立项报告；不搜索、不另作产品决策。",
+            "icon": "file",
+            "enabled": true,
+            "executor": "ai",
+            "inputs": [
+              {
+                "id": "materials",
+                "name": "输入材料",
+                "types": [
+                  "materials",
+                  "sources",
+                  "analysis",
+                  "dataset",
+                  "documents"
+                ],
+                "multiple": true
+              }
+            ],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "立项报告结果",
+                "types": [
+                  "documents"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "task",
+                "label": "本次目标与补充要求",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "modelId",
+                "label": "执行模型",
+                "type": "model",
+                "default": ""
+              },
+              {
+                "key": "outline",
+                "label": "输出大纲",
+                "type": "textarea",
+                "default": "# 立项报告\n## 项目背景与目标\n## 市场与竞品分析\n## 目标用户与核心场景\n## 需求优先级与MVP简介\n## 验证计划\n## 资源与里程碑\n## 风险与对策\n## 立项评审要点"
+              }
+            ],
+            "instructions": "instructions.md",
+            "requirements": [
+              "产品目标",
+              "市场用户证据及其缺口",
+              "资源与约束"
+            ],
+            "implementation": "ai",
+            "origin": {
+              "skill": "产品立项报告",
+              "adaptedAt": "2026-10-18",
+              "scope": "制作完整立项报告，MVP仅作为简介。"
+            },
+            "capabilities": {
+              "search": false,
+              "calculate": false,
+              "generateDecisions": false
+            },
+            "workflow": [
+              {
+                "id": "relevance",
+                "title": "检查材料相关性",
+                "prompt": "完全不相关或没有可用内容时停止，不输出文档。"
+              },
+              {
+                "id": "coverage",
+                "title": "对照大纲检查覆盖",
+                "prompt": "逐章识别输入支持的内容和缺口；相关但不足可整理，必须显著提示。"
+              },
+              {
+                "id": "compose",
+                "title": "按大纲整理报告",
+                "prompt": "仅归类、去重、编排和总结材料，不搜索、不新建事实、统计或产品决策。"
+              },
+              {
+                "id": "verify",
+                "title": "核对来源与文档",
+                "prompt": "数字和结论须由输入支持，缺失章节写材料不足，保留上游假设/局限。"
+              }
+            ],
+            "hash": "17664b448fc9407ab64e05e8d61b714fad77f56f2afdb76a6963f6f18312401e",
+            "instruction": "# 立项报告\n\n本节点只编排输入，不进行联网检索、独立分析、产品决策或统计计算。相关材料不充分时仍整理已有部分，在文档顶部及缺失章节标明资料不足；完全不相关时拒绝生成。保留来源、假设、证据局限，不用常识补齐缺少的事实。\n按八节整理。Kano、四象限、反方质疑等仅整理上游已有分析；没有则标缺口，不能自己推演。MVP仅简介，不生成完整方案。\n\n# 文档图表输出与渲染规范\n\n## 技术选择\n\n- 数据比较、趋势、占比、漏斗、留存热力图、痛点与优先级矩阵：ECharts。文档小型图默认 SVG；数据密集图可用 Canvas。按使用的图种加载依赖，桌面/离线交付使用本地资源。\n- 业务流程、关系、状态、用户决策链路：Mermaid，保留可复制源码，使用 theme: base 与宿主品牌色。已有研发向源码专用章节和真实界面拼接流程图保留原来的用途与交互，不强制改成另一种图。\n- 对比、需求、画像明细：语义化 HTML table＋CSS；Markdown 交付保留数据表，宿主负责表格样式。\n- 统计图交付由程序渲染矢量图或清晰 PNG；AI 插画、照片和真实原型截图保留原始资产，不用统计图引擎代替。\n\n## AI 与宿主的职责\n\nAI 提供结论、原始数据、来源和声明式图表规范；宿主把规范映射为 ECharts option 或 Mermaid SVG。图表不要求额外生成整篇 HTML；全文 HTML 仍按原流程或用户请求生成。宿主输出协议优先，已有 chart 字段时按其协议；无协议的 Markdown 使用紧邻正文的 chart JSON 围栏与 mermaid 围栏。\n\n下面的 pm-chart-v1 是本 Skill 的交接规范，宿主接入后才能自动绘图；它不是 ECharts option，也不是已经实现的工作台接口。宿主只接收白名单图种、字段和数据，不执行 AI 提供的 JS、formatter 函数或任意 HTML。\n\n## 图表数据协议\n\nchart JSON 每张图独立，字段：schema、id、type、title、evidenceStatus、sources、data、encoding；subtitle、note 可选。\n\n- schema 固定 pm-chart-v1；id 在文档内唯一，用于引用和导出。\n- type：bar / line / pie / funnel / heatmap / matrix / scatter。柱线图的数据记录提供分类或时间、数值与可选分组；encoding 指出字段名。漏斗记录给出步骤顺序和原始人数，率由代码计算。矩阵可用类别坐标；heatmap 明确行列及指标。\n- encoding.x / y 指出 field、scale（category / ordinal / quantitative / time）、label、unit；类别轴给出有序 categories。series / label / value 指明相关字段（按图种提供）。\n- evidenceStatus：已验证事实 / 用户观点 / 估算 / 分析推断 / 待验证 / 测试数据。sources 为来源 id、标题、url 或材料定位、日期；每行数据使用 sourceIds 引用来源。不同证据性质混用时逐行标注 evidenceStatus。\n- 缺数值用 null，不能用 0 替代；缺失数据不绘制为已观测值。百分比保留分母、统计口径和周期说明；估算附依据及置信度。等级是类别，不转换为未经解释的精确分数。\n\n### 定性痛点矩阵示例（演示数据）\n\n```chart\n{\n  \"schema\": \"pm-chart-v1\",\n  \"id\": \"pain-matrix\",\n  \"type\": \"matrix\",\n  \"title\": \"痛点矩阵\",\n  \"subtitle\": \"分析假设 · 待验证\",\n  \"evidenceStatus\": \"测试数据\",\n  \"sources\": [{\"id\":\"demo\",\"title\":\"规范演示数据，不能进入项目结论\"}],\n  \"data\": [\n    {\"id\":\"P1\",\"pain\":\"缺少持续陪伴\",\"frequency\":\"高\",\"severity\":\"高\",\"sourceIds\":[\"demo\"]},\n    {\"id\":\"P2\",\"pain\":\"使用负担\",\"frequency\":\"低\",\"severity\":\"中\",\"sourceIds\":[\"demo\"]}\n  ],\n  \"encoding\": {\n    \"x\":{\"field\":\"frequency\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"高\"],\"label\":\"发生频率\",\"unit\":\"等级\"},\n    \"y\":{\"field\":\"severity\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"中高\",\"高\"],\"label\":\"严重程度\",\"unit\":\"等级\"},\n    \"label\":\"id\"\n  },\n  \"note\":\"点位表示定性等级，不能读成统计频率；悬停显示痛点、来源与证据状态。\"\n}\n```\n\n保留同一组数据的 Markdown 表格和 1–3 句读图结论。例子只解释格式，实际图表必须使用当前项目数据。先确定数据与 encoding，再由渲染器映射为图形；不让模型手写字符轴线或字符条形图。\n\n## 视觉与交互\n\n复用宿主品牌字体、主色和明暗模式。同一报告的图表配色和同类对象颜色保持一致；无品牌规范时采用白底、深色文字、低饱和主色与浅网格，风险色只用于风险。HTML 表格设置合理列宽、长文换行、数字对齐、表头和分组；宽表在局部滚动，交互文档可固定表头。\n\n每图有标题、轴名、单位、图例（有多系列时）、来源、证据状态及读图结论。定性矩阵使用分类坐标和浅色分区；同一格多点错开并保持等级归属，提供完整名称和明细表，避免 P1–P9 堆叠遮挡。标签不足时增大容器或提供缩放，不缩小到难以阅读。\n\n交互文档提供悬停详情、适配宽度、放大查看和导出 SVG/PNG；静态导出把悬停信息的重要部分写入图注或数据表。按实际工具能力实现，不能声称未实现的交互可用。\n\n## 交付检查与降级\n\n核对图、表、正文的分类、单位、值、分母、来源和证据性质一致；检查默认尺寸与放大后文字无重叠、裁切，主题和打印/导出背景清晰。完成实际渲染才称“图表已渲染”。\n\n环境缺渲染器时保留 chart 数据或 Mermaid 源码＋数据表＋结论，并明确“待宿主渲染”；Markdown 阅读器不支持时可附已生成 SVG/PNG。渲染失败显示明细表与原因，不丢弃正文，也不回退为 ASCII 字符矩阵。没有可用分析数据的章节用“缺失证据表”说明待补内容，不生成虚构分布、比例、留存曲线或点位。\n",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/report.initiation"
+          },
+          "supplements": [],
+          "draft": false,
+          "startedAt": "2026-10-24T13:13:42.684Z",
+          "fingerprint": "a6157d0da684c141f19abb5e808fddc7a6c46db04c2727ddc613581524e00ab9",
+          "model": {
+            "id": "294a5b94-cf4f-4936-84b0-0ea6f6d9900d",
+            "api": "deepseek-messages",
+            "baseURL": "https://api.deepseek.com/anthropic",
+            "model": "deepseek-flash"
+          },
+          "error": "模型没有返回有效 JSON，请调整材料后重试；旧版本已保留",
+          "suggestions": []
+        }
+      },
+      "progress": "模型没有返回有效 JSON，请调整材料后重试；旧版本已保留",
+      "currentNodeId": "report",
+      "completedAt": "2026-10-24T13:13:43.778Z"
+    },
+    {
+      "id": "811e22c4-04fc-4a93-9630-bf70852f561e",
+      "version": 2,
+      "status": "succeeded",
+      "createdAt": "2026-10-24T13:20:45.684Z",
+      "graph": {
+        "nodes": [
+          {
+            "id": "text",
+            "type": "input.text",
+            "name": "文字输入",
+            "x": 80,
+            "y": 160,
+            "config": {
+              "researchMode": "materials",
+              "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n待研究想法是AI宠物陪伴上班族。没有用户访谈、市场数据、竞品分析、付费证据、资源或成本信息，也没有完整立项论证。请只整理已有想法，不新增立项判断。",
+              "evidence": "test_data"
+            }
+          },
+          {
+            "id": "report",
+            "type": "report.initiation",
+            "name": "立项报告",
+            "x": 440,
+            "y": 160,
+            "config": {
+              "task": "",
+              "modelId": "",
+              "outline": "# 立项报告\n## 项目背景与目标\n## 市场与竞品分析\n## 目标用户与核心场景\n## 需求优先级与MVP简介\n## 验证计划\n## 资源与里程碑\n## 风险与对策\n## 立项评审要点"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "text-report",
+            "from": "text",
+            "to": "report",
+            "output": "data",
+            "input": "materials"
+          }
+        ],
+        "groups": [],
+        "view": {
+          "x": 60,
+          "y": 100,
+          "k": 1
+        }
+      },
+      "graphHash": "3d70cff0400ef05c4080bb5099261f6957144fed26652692adce5a8932b2ca1d",
+      "order": [
+        "text",
+        "report"
+      ],
+      "force": false,
+      "nodes": {
+        "text": {
+          "status": "succeeded",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "input.text",
+            "name": "文字输入",
+            "version": "1.1.0",
+            "category": "input",
+            "description": "输入想法、产品、用户需求或 CSV/JSON 数据。",
+            "icon": "input",
+            "enabled": true,
+            "executor": "text",
+            "inputs": [],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "文字输入结果",
+                "types": [
+                  "materials"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "researchMode",
+                "label": "输入方式",
+                "type": "select",
+                "options": [
+                  {
+                    "value": "materials",
+                    "label": "文档 / 数据材料"
+                  },
+                  {
+                    "value": "idea",
+                    "label": "产品想法"
+                  },
+                  {
+                    "value": "product",
+                    "label": "指定产品 / 竞品"
+                  },
+                  {
+                    "value": "user_need",
+                    "label": "用户需求"
+                  }
+                ],
+                "default": "materials"
+              },
+              {
+                "key": "content",
+                "label": "材料正文 / CSV / JSON",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "evidence",
+                "label": "材料性质",
+                "type": "select",
+                "options": [
+                  {
+                    "value": "user_statement",
+                    "label": "用户陈述"
+                  },
+                  {
+                    "value": "material",
+                    "label": "已有材料"
+                  },
+                  {
+                    "value": "test_data",
+                    "label": "测试数据"
+                  },
+                  {
+                    "value": "ai_hypothesis",
+                    "label": "AI假设（待验证）"
+                  }
+                ],
+                "default": "user_statement"
+              }
+            ],
+            "instructions": null,
+            "requirements": [
+              "至少一份相关输入"
+            ],
+            "implementation": "text",
+            "origin": {
+              "skill": "产品经理工作流 / 现有本地工具",
+              "adaptedAt": "2026-10-18",
+              "scope": "输入想法、产品、用户需求或 CSV/JSON 数据。"
+            },
+            "workflow": [
+              {
+                "id": "collect",
+                "title": "采集或引用材料",
+                "prompt": "输入想法、产品、用户需求或 CSV/JSON 数据。"
+              },
+              {
+                "id": "confirm",
+                "title": "保留内容与来源",
+                "prompt": "原样交接材料、来源和证据性质，不承担下游分析或报告整理。"
+              }
+            ],
+            "capabilities": {
+              "search": false,
+              "generateDecisions": false
+            },
+            "hash": "ab910179df883d66c348de313ff1bdd39728bba0013a9fba13dc49793ddb7678",
+            "instruction": "",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/input.text"
+          },
+          "supplements": [],
+          "draft": false,
+          "startedAt": "2026-10-24T13:20:45.705Z",
+          "fingerprint": "2419c6b731f9d2cdf2dc566842e21845aeb19d7f758a095cb3836f638882f1cc",
+          "model": {
+            "id": "3b9de208-5b65-4b40-acbc-a7c3d618e5e4",
+            "api": "deepseek-messages",
+            "baseURL": "https://api.deepseek.com/anthropic",
+            "model": "deepseek-flash"
+          },
+          "output": {
+            "kind": "materials",
+            "materials": [
+              {
+                "id": "fff910fe-cbb3-47b5-9cf1-0e843fc8a8e6",
+                "title": "文字输入",
+                "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n待研究想法是AI宠物陪伴上班族。没有用户访谈、市场数据、竞品分析、付费证据、资源或成本信息，也没有完整立项论证。请只整理已有想法，不新增立项判断。",
+                "evidence": "test_data",
+                "researchMode": "materials"
+              }
+            ],
+            "documents": [],
+            "sources": [],
+            "assumptions": [],
+            "summary": "已提供文字材料",
+            "warnings": [],
+            "fileReferences": []
+          },
+          "completedAt": "2026-10-24T13:20:45.717Z"
+        },
+        "report": {
+          "status": "succeeded",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "report.initiation",
+            "name": "立项报告",
+            "version": "1.1.0",
+            "category": "report",
+            "description": "仅根据传入的相关成果，按大纲整理立项报告；不搜索、不另作产品决策。",
+            "icon": "file",
+            "enabled": true,
+            "executor": "ai",
+            "inputs": [
+              {
+                "id": "materials",
+                "name": "输入材料",
+                "types": [
+                  "materials",
+                  "sources",
+                  "analysis",
+                  "dataset",
+                  "documents"
+                ],
+                "multiple": true
+              }
+            ],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "立项报告结果",
+                "types": [
+                  "documents"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "task",
+                "label": "本次目标与补充要求",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "modelId",
+                "label": "执行模型",
+                "type": "model",
+                "default": ""
+              },
+              {
+                "key": "outline",
+                "label": "输出大纲",
+                "type": "textarea",
+                "default": "# 立项报告\n## 项目背景与目标\n## 市场与竞品分析\n## 目标用户与核心场景\n## 需求优先级与MVP简介\n## 验证计划\n## 资源与里程碑\n## 风险与对策\n## 立项评审要点"
+              }
+            ],
+            "instructions": "instructions.md",
+            "requirements": [
+              "产品目标",
+              "市场用户证据及其缺口",
+              "资源与约束"
+            ],
+            "implementation": "ai",
+            "origin": {
+              "skill": "产品立项报告",
+              "adaptedAt": "2026-10-18",
+              "scope": "制作完整立项报告，MVP仅作为简介。"
+            },
+            "capabilities": {
+              "search": false,
+              "calculate": false,
+              "generateDecisions": false
+            },
+            "workflow": [
+              {
+                "id": "relevance",
+                "title": "检查材料相关性",
+                "prompt": "完全不相关或没有可用内容时停止，不输出文档。"
+              },
+              {
+                "id": "coverage",
+                "title": "对照大纲检查覆盖",
+                "prompt": "逐章识别输入支持的内容和缺口；相关但不足可整理，必须显著提示。"
+              },
+              {
+                "id": "compose",
+                "title": "按大纲整理报告",
+                "prompt": "仅归类、去重、编排和总结材料，不搜索、不新建事实、统计或产品决策。"
+              },
+              {
+                "id": "verify",
+                "title": "核对来源与文档",
+                "prompt": "数字和结论须由输入支持，缺失章节写材料不足，保留上游假设/局限。"
+              }
+            ],
+            "hash": "17664b448fc9407ab64e05e8d61b714fad77f56f2afdb76a6963f6f18312401e",
+            "instruction": "# 立项报告\n\n本节点只编排输入，不进行联网检索、独立分析、产品决策或统计计算。相关材料不充分时仍整理已有部分，在文档顶部及缺失章节标明资料不足；完全不相关时拒绝生成。保留来源、假设、证据局限，不用常识补齐缺少的事实。\n按八节整理。Kano、四象限、反方质疑等仅整理上游已有分析；没有则标缺口，不能自己推演。MVP仅简介，不生成完整方案。\n\n# 文档图表输出与渲染规范\n\n## 技术选择\n\n- 数据比较、趋势、占比、漏斗、留存热力图、痛点与优先级矩阵：ECharts。文档小型图默认 SVG；数据密集图可用 Canvas。按使用的图种加载依赖，桌面/离线交付使用本地资源。\n- 业务流程、关系、状态、用户决策链路：Mermaid，保留可复制源码，使用 theme: base 与宿主品牌色。已有研发向源码专用章节和真实界面拼接流程图保留原来的用途与交互，不强制改成另一种图。\n- 对比、需求、画像明细：语义化 HTML table＋CSS；Markdown 交付保留数据表，宿主负责表格样式。\n- 统计图交付由程序渲染矢量图或清晰 PNG；AI 插画、照片和真实原型截图保留原始资产，不用统计图引擎代替。\n\n## AI 与宿主的职责\n\nAI 提供结论、原始数据、来源和声明式图表规范；宿主把规范映射为 ECharts option 或 Mermaid SVG。图表不要求额外生成整篇 HTML；全文 HTML 仍按原流程或用户请求生成。宿主输出协议优先，已有 chart 字段时按其协议；无协议的 Markdown 使用紧邻正文的 chart JSON 围栏与 mermaid 围栏。\n\n下面的 pm-chart-v1 是本 Skill 的交接规范，宿主接入后才能自动绘图；它不是 ECharts option，也不是已经实现的工作台接口。宿主只接收白名单图种、字段和数据，不执行 AI 提供的 JS、formatter 函数或任意 HTML。\n\n## 图表数据协议\n\nchart JSON 每张图独立，字段：schema、id、type、title、evidenceStatus、sources、data、encoding；subtitle、note 可选。\n\n- schema 固定 pm-chart-v1；id 在文档内唯一，用于引用和导出。\n- type：bar / line / pie / funnel / heatmap / matrix / scatter。柱线图的数据记录提供分类或时间、数值与可选分组；encoding 指出字段名。漏斗记录给出步骤顺序和原始人数，率由代码计算。矩阵可用类别坐标；heatmap 明确行列及指标。\n- encoding.x / y 指出 field、scale（category / ordinal / quantitative / time）、label、unit；类别轴给出有序 categories。series / label / value 指明相关字段（按图种提供）。\n- evidenceStatus：已验证事实 / 用户观点 / 估算 / 分析推断 / 待验证 / 测试数据。sources 为来源 id、标题、url 或材料定位、日期；每行数据使用 sourceIds 引用来源。不同证据性质混用时逐行标注 evidenceStatus。\n- 缺数值用 null，不能用 0 替代；缺失数据不绘制为已观测值。百分比保留分母、统计口径和周期说明；估算附依据及置信度。等级是类别，不转换为未经解释的精确分数。\n\n### 定性痛点矩阵示例（演示数据）\n\n```chart\n{\n  \"schema\": \"pm-chart-v1\",\n  \"id\": \"pain-matrix\",\n  \"type\": \"matrix\",\n  \"title\": \"痛点矩阵\",\n  \"subtitle\": \"分析假设 · 待验证\",\n  \"evidenceStatus\": \"测试数据\",\n  \"sources\": [{\"id\":\"demo\",\"title\":\"规范演示数据，不能进入项目结论\"}],\n  \"data\": [\n    {\"id\":\"P1\",\"pain\":\"缺少持续陪伴\",\"frequency\":\"高\",\"severity\":\"高\",\"sourceIds\":[\"demo\"]},\n    {\"id\":\"P2\",\"pain\":\"使用负担\",\"frequency\":\"低\",\"severity\":\"中\",\"sourceIds\":[\"demo\"]}\n  ],\n  \"encoding\": {\n    \"x\":{\"field\":\"frequency\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"高\"],\"label\":\"发生频率\",\"unit\":\"等级\"},\n    \"y\":{\"field\":\"severity\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"中高\",\"高\"],\"label\":\"严重程度\",\"unit\":\"等级\"},\n    \"label\":\"id\"\n  },\n  \"note\":\"点位表示定性等级，不能读成统计频率；悬停显示痛点、来源与证据状态。\"\n}\n```\n\n保留同一组数据的 Markdown 表格和 1–3 句读图结论。例子只解释格式，实际图表必须使用当前项目数据。先确定数据与 encoding，再由渲染器映射为图形；不让模型手写字符轴线或字符条形图。\n\n## 视觉与交互\n\n复用宿主品牌字体、主色和明暗模式。同一报告的图表配色和同类对象颜色保持一致；无品牌规范时采用白底、深色文字、低饱和主色与浅网格，风险色只用于风险。HTML 表格设置合理列宽、长文换行、数字对齐、表头和分组；宽表在局部滚动，交互文档可固定表头。\n\n每图有标题、轴名、单位、图例（有多系列时）、来源、证据状态及读图结论。定性矩阵使用分类坐标和浅色分区；同一格多点错开并保持等级归属，提供完整名称和明细表，避免 P1–P9 堆叠遮挡。标签不足时增大容器或提供缩放，不缩小到难以阅读。\n\n交互文档提供悬停详情、适配宽度、放大查看和导出 SVG/PNG；静态导出把悬停信息的重要部分写入图注或数据表。按实际工具能力实现，不能声称未实现的交互可用。\n\n## 交付检查与降级\n\n核对图、表、正文的分类、单位、值、分母、来源和证据性质一致；检查默认尺寸与放大后文字无重叠、裁切，主题和打印/导出背景清晰。完成实际渲染才称“图表已渲染”。\n\n环境缺渲染器时保留 chart 数据或 Mermaid 源码＋数据表＋结论，并明确“待宿主渲染”；Markdown 阅读器不支持时可附已生成 SVG/PNG。渲染失败显示明细表与原因，不丢弃正文，也不回退为 ASCII 字符矩阵。没有可用分析数据的章节用“缺失证据表”说明待补内容，不生成虚构分布、比例、留存曲线或点位。\n",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/report.initiation"
+          },
+          "supplements": [],
+          "draft": false,
+          "startedAt": "2026-10-24T13:20:45.754Z",
+          "fingerprint": "c8dcdce47e1929811520bcf388a4de0f3cae3f6d1fbb2d2db794e5e82d2e3568",
+          "model": {
+            "id": "3b9de208-5b65-4b40-acbc-a7c3d618e5e4",
+            "api": "deepseek-messages",
+            "baseURL": "https://api.deepseek.com/anthropic",
+            "model": "deepseek-flash"
+          },
+          "output": {
+            "kind": "documents",
+            "materials": [],
+            "documents": [
+              {
+                "id": "35d27eaa-31ff-4174-b7a4-7f7569270645",
+                "title": "立项报告",
+                "format": "markdown",
+                "content": "> **资料完整性提示：信息不充分**\n> - 项目背景与目标：仅有“AI宠物陪伴上班族”一个想法方向，无立项背景、问题定义、业务目标与可衡量成功指标\n> - 市场与竞品分析：无市场规模、趋势、竞品清单或对比材料\n> - 目标用户与核心场景：无用户访谈、画像、场景描述或需求证据\n> - 需求优先级与MVP简介：无Kano、四象限、痛点矩阵等上游分析，无需求清单与MVP范围界定\n> - 验证计划：无验证假设、方法、样本、指标或时间安排\n> - 资源与里程碑：无人力、预算、成本、周期与节点信息\n> - 风险与对策：无风险识别与应对材料\n> - 立项评审要点：无评审结论、决策项或待决问题\n> - 付费意愿与商业可行性证据：无付费证据、价格或收入模型材料\n> - 全部材料标注为“软件QA人造测试材料”，不能作为真实市场或用户证据，需替换为真实来源\n\n# 立项报告\n\n> **资料状态：不充分。** 本次输入仅 1 份材料（S1《文字输入》），证据类型标注为 `test_data`，材料自述为“软件QA人造测试材料，不能当作真实市场证据或用户访谈”。材料只给出一个待研究想法方向“AI 宠物陪伴上班族”，并明确说明没有用户访谈、市场数据、竞品分析、付费证据、资源或成本信息，也没有完整立项论证。\n>\n> 本报告只做归类、去重、编排与总结，不新增事实、统计、产品取舍或立项结论。八节中仅“项目背景与目标”存在一个想法方向可整理，其余章节保留标题并标注“材料不足”及所需输入。全文不含图表：无可用分析数据，按规范不生成虚构分布、比例或点位。\n\n**来源登记**\n\n| 来源 ID | 材料 | 标注证据类型 | 本报告使用范围 | 局限 |\n| --- | --- | --- | --- | --- |\n| S1 | 《文字输入》（id `fff910fe-cbb3-47b5-9cf1-0e843fc8a8e6`） | test_data（软件QA人造测试材料） | 仅提取“AI 宠物陪伴上班族”想法方向及材料自述的缺失项 | 不可作为真实市场或用户证据进入决策 |\n\n## 项目背景与目标\n\n**已有材料可整理的内容（S1，测试数据）**\n\n- 待研究想法：AI 宠物陪伴，目标人群指向上班族。\n- 材料性质：待研究想法，非立项论证；材料自述“没有完整立项论证”。\n- 材料自述的缺失项：用户访谈、市场数据、竞品分析、付费证据、资源或成本信息。\n\n**材料不足**：无立项背景（机会来源、触发事件）、无问题定义、无业务目标、无可衡量成功指标，也无项目范围与非目标。材料中不存在可直接引用的目标数值，本报告不代为设定。\n\n| 待补内容 | 章节用途 | 所需输入类型（材料未提供） |\n| --- | --- | --- |\n| 立项背景与机会来源 | 说明为什么现在做 | 内部立项说明、机会来源记录 |\n| 问题定义 | 明确要解决的具体问题 | 用户问题陈述、访谈或调研证据 |\n| 业务目标与成功指标 | 判断项目成败 | 目标口径、指标定义、统计周期 |\n| 范围与非目标 | 划定项目边界 | 范围声明 |\n\n## 市场与竞品分析\n\n**材料不足**：无市场规模、增长趋势、细分结构、竞品清单、对比维度或差异化证据。\n\n本节点不进行联网检索，也不做独立分析，不推演市场规模或竞争格局，不以常识补齐竞品信息。\n\n| 待补内容 | 所需输入类型（材料未提供） |\n| --- | --- |\n| 市场规模与趋势 | 带口径、周期与来源的行业数据 |\n| 竞品清单与对比 | 竞品名称、功能对比、定价与定位 |\n| 差异化判断 | 竞品对比证据支持的分析结论 |\n\n## 目标用户与核心场景\n\n**材料不足**：材料仅出现“上班族”这一宽泛人群标签，无画像、访谈、使用场景、使用频次、现有替代方案或痛点强度证据。\n\n“上班族 + 宠物陪伴”不能推演为具体场景描述；本报告不生成画像与场景假设。\n\n| 待补内容 | 所需输入类型（材料未提供） |\n| --- | --- |\n| 目标用户画像 | 访谈记录、问卷或行为数据 |\n| 核心场景与频次 | 场景描述、发生频率与情境证据 |\n| 现有替代方案与痛点强度 | 用户原话、替代方案使用情况 |\n\n## 需求优先级与MVP简介\n\n**材料不足**：无需求清单、无 Kano 分类、无四象限分析、无痛点矩阵、无用户故事或场景—需求映射。上游分析缺失，本节点不推演优先级，也不界定 MVP 范围。\n\n可整理的唯一信息：想法方向涉及“AI 宠物陪伴”与“上班族”两个要素（S1）；此信息不构成 MVP 定义或需求优先级。\n\n| 待补内容 | 所需输入类型（材料未提供） |\n| --- | --- |\n| 需求清单 | 需求条目及其来源标注 |\n| Kano 分类 / 四象限 / 痛点矩阵 | 上游分析节点已完成的结论 |\n| MVP 范围 | 基于优先级分析的取舍结论 |\n\n## 验证计划\n\n**材料不足**：无待验证假设、验证方法、样本与招募方式、指标与判定阈值、验证周期与责任人。\n\n材料自述“没有用户访谈”，仅能作为验证起点的缺口记录，不构成验证方案。\n\n| 待补内容 | 所需输入类型（材料未提供） |\n| --- | --- |\n| 待验证假设 | 假设清单（问题、人群、预期） |\n| 验证方法与样本 | 调研/测试方法与样本量口径 |\n| 判定阈值与周期 | 指标口径、阈值、时间安排 |\n\n## 资源与里程碑\n\n**材料不足**：无人力配置、预算与成本、外部依赖、周期估算、阶段划分与节点时间。\n\n本节点不做工作量或成本估算，不生成里程碑时间表。\n\n| 待补内容 | 所需输入类型（材料未提供） |\n| --- | --- |\n| 人力与角色 | 团队配置说明 |\n| 预算与成本 | 成本项与口径 |\n| 阶段与节点 | 阶段划分、依赖关系、时间点 |\n\n## 风险与对策\n\n**材料不足**：上游未提供风险识别与应对材料，本报告不生成产品、市场、技术或合规风险清单与对策。\n\n仅可记录材料自述的证据层面已知限制，其性质是文档证据局限，不是产品风险判断：\n\n| 已知限制（来源 S1） | 影响 | 状态 |\n| --- | --- | --- |\n| 材料为软件QA人造测试材料 | 不能作为真实市场或用户证据进入决策 | 待替换为真实来源 |\n| 无付费证据 | 商业可行性无法评估 | 待补 |\n| 无资源与成本信息 | 可行性无法评估 | 待补 |\n| 无竞品分析 | 差异化与替代风险未知 | 待补 |\n\n## 立项评审要点\n\n**材料不足**：本报告不给出立项建议或结论。当前可提交评审的仅为“材料状态”与“待补事项清单”。\n\n**待决与待补清单**\n\n| 序号 | 事项 | 对应章节 | 当前状态 |\n| --- | --- | --- | --- |\n| 1 | 将测试材料替换为真实来源 | 全文 | 待补 |\n| 2 | 问题定义、目标与成功指标 | 项目背景与目标 | 待补 |\n| 3 | 市场规模、趋势与竞品对比 | 市场与竞品分析 | 待补 |\n| 4 | 用户画像、核心场景与痛点证据 | 目标用户与核心场景 | 待补 |\n| 5 | 需求清单与上游优先级分析（Kano/四象限/痛点矩阵） | 需求优先级与MVP简介 | 待补 |\n| 6 | 验证假设、方法与判定指标 | 验证计划 | 待补 |\n| 7 | 资源、成本与里程碑 | 资源与里程碑 | 待补 |\n| 8 | 风险清单与应对措施 | 风险与对策 | 待补 |\n\n按材料自述的证据边界，上述输入补齐前，无法形成实质性立项评审结论；本报告不对是否立项表达倾向。",
+                "outline": "# 立项报告\n## 项目背景与目标\n## 市场与竞品分析\n## 目标用户与核心场景\n## 需求优先级与MVP简介\n## 验证计划\n## 资源与里程碑\n## 风险与对策\n## 立项评审要点",
+                "summary": "## 资料完整性\n- 信息不充分：项目背景与目标：仅有“AI宠物陪伴上班族”一个想法方向，无立项背景、问题定义、业务目标与可衡量成功指标；市场与竞品分析：无市场规模、趋势、竞品清单或对比材料；目标用户与核心场景：无用户访谈、画像、场景描述或需求证据；需求优先级与MVP简介：无Kano、四象限、痛点矩阵等上游分析，无需求清单与MVP范围界定；验证计划：无验证假设、方法、样本、指标或时间安排；资源与里程碑：无人力、预算、成本、周期与节点信息；风险与对策：无风险识别与应对材料；立项评审要点：无评审结论、决策项或待决问题；付费意愿与商业可行性证据：无付费证据、价格或收入模型材料；全部材料标注为“软件QA人造测试材料”，不能作为真实市场或用户证据，需替换为真实来源\n\n**核心结论**\n- 本次输入仅 1 份材料（S1），标注为 test_data（软件QA人造测试材料），内容只有“AI 宠物陪伴上班族”这一个待研究想法方向。\n- 材料与立项报告主题相关，因此按要求整理；但只有“项目背景与目标”可整理出一个想法方向，其余七节均标为“材料不足”，并写明所需输入。\n- 未生成立项判断、MVP 范围、优先级、统计或资源估算；全文无图表，因为缺少可用的分析数据。\n\n**证据局限**\n- 该材料自述不能作为真实市场或用户证据，需替换为真实来源。\n- 没有用户访谈、市场规模、竞品清单、付费证据、资源成本信息，也没有完整立项论证。\n- 没有上游 Kano、四象限、痛点矩阵等分析，本节点不作推演补齐。\n\n**下一步**\n- 补齐问题定义、目标与可衡量指标、市场与竞品材料。\n- 补用户访谈与画像、需求清单及上游优先级分析。\n- 补验证方案、资源里程碑、风险清单后，再进入实质性评审。",
+                "quality": {
+                  "level": "partial",
+                  "missing": [
+                    "项目背景与目标：仅有“AI宠物陪伴上班族”一个想法方向，无立项背景、问题定义、业务目标与可衡量成功指标",
+                    "市场与竞品分析：无市场规模、趋势、竞品清单或对比材料",
+                    "目标用户与核心场景：无用户访谈、画像、场景描述或需求证据",
+                    "需求优先级与MVP简介：无Kano、四象限、痛点矩阵等上游分析，无需求清单与MVP范围界定",
+                    "验证计划：无验证假设、方法、样本、指标或时间安排",
+                    "资源与里程碑：无人力、预算、成本、周期与节点信息",
+                    "风险与对策：无风险识别与应对材料",
+                    "立项评审要点：无评审结论、决策项或待决问题",
+                    "付费意愿与商业可行性证据：无付费证据、价格或收入模型材料",
+                    "全部材料标注为“软件QA人造测试材料”，不能作为真实市场或用户证据，需替换为真实来源"
+                  ],
+                  "note": "材料仅给出“AI宠物陪伴上班族”这一待研究想法，与立项报告主题相关，故判定为相关；但材料自述缺少用户访谈、市场数据、竞品分析、付费证据、资源与成本信息及完整立项论证，八节大纲中除背景有一个想法方向外均无可支撑事实，故判定为不充分。按要求只能整理现有想法，并在文档顶部与各缺失章节显著标注资料不足，不得补齐事实或生成立项判断。"
+                }
+              }
+            ],
+            "sources": [],
+            "assumptions": [],
+            "summary": "**核心结论**\n- 本次输入仅 1 份材料（S1），标注为 test_data（软件QA人造测试材料），内容只有“AI 宠物陪伴上班族”这一个待研究想法方向。\n- 材料与立项报告主题相关，因此按要求整理；但只有“项目背景与目标”可整理出一个想法方向，其余七节均标为“材料不足”，并写明所需输入。\n- 未生成立项判断、MVP 范围、优先级、统计或资源估算；全文无图表，因为缺少可用的分析数据。\n\n**证据局限**\n- 该材料自述不能作为真实市场或用户证据，需替换为真实来源。\n- 没有用户访谈、市场规模、竞品清单、付费证据、资源成本信息，也没有完整立项论证。\n- 没有上游 Kano、四象限、痛点矩阵等分析，本节点不作推演补齐。\n\n**下一步**\n- 补齐问题定义、目标与可衡量指标、市场与竞品材料。\n- 补用户访谈与画像、需求清单及上游优先级分析。\n- 补验证方案、资源里程碑、风险清单后，再进入实质性评审。",
+            "warnings": [
+              "信息不充分：项目背景与目标：仅有“AI宠物陪伴上班族”一个想法方向，无立项背景、问题定义、业务目标与可衡量成功指标；市场与竞品分析：无市场规模、趋势、竞品清单或对比材料；目标用户与核心场景：无用户访谈、画像、场景描述或需求证据；需求优先级与MVP简介：无Kano、四象限、痛点矩阵等上游分析，无需求清单与MVP范围界定；验证计划：无验证假设、方法、样本、指标或时间安排；资源与里程碑：无人力、预算、成本、周期与节点信息；风险与对策：无风险识别与应对材料；立项评审要点：无评审结论、决策项或待决问题；付费意愿与商业可行性证据：无付费证据、价格或收入模型材料；全部材料标注为“软件QA人造测试材料”，不能作为真实市场或用户证据，需替换为真实来源",
+              "“AI 宠物陪伴上班族”这一想法的问题定义、目标人群细分与业务目标分别是什么？现有材料未提供。",
+              "是否有可替换测试材料的真实来源，包括用户访谈、市场数据、竞品分析与付费证据？",
+              "上游是否已有需求优先级分析（Kano、四象限、痛点矩阵）可供本报告引用？",
+              "项目的资源投入、成本口径与期望里程碑时间点由谁提供？",
+              "立项评审的决策项与评审标准是什么？材料中未出现相关定义。"
+            ],
+            "fileReferences": [],
+            "inputSnapshot": [
+              {
+                "id": "fff910fe-cbb3-47b5-9cf1-0e843fc8a8e6",
+                "title": "文字输入",
+                "evidence": "test_data"
+              }
+            ],
+            "quality": {
+              "level": "partial",
+              "missing": [
+                "项目背景与目标：仅有“AI宠物陪伴上班族”一个想法方向，无立项背景、问题定义、业务目标与可衡量成功指标",
+                "市场与竞品分析：无市场规模、趋势、竞品清单或对比材料",
+                "目标用户与核心场景：无用户访谈、画像、场景描述或需求证据",
+                "需求优先级与MVP简介：无Kano、四象限、痛点矩阵等上游分析，无需求清单与MVP范围界定",
+                "验证计划：无验证假设、方法、样本、指标或时间安排",
+                "资源与里程碑：无人力、预算、成本、周期与节点信息",
+                "风险与对策：无风险识别与应对材料",
+                "立项评审要点：无评审结论、决策项或待决问题",
+                "付费意愿与商业可行性证据：无付费证据、价格或收入模型材料",
+                "全部材料标注为“软件QA人造测试材料”，不能作为真实市场或用户证据，需替换为真实来源"
+              ],
+              "note": "材料仅给出“AI宠物陪伴上班族”这一待研究想法，与立项报告主题相关，故判定为相关；但材料自述缺少用户访谈、市场数据、竞品分析、付费证据、资源与成本信息及完整立项论证，八节大纲中除背景有一个想法方向外均无可支撑事实，故判定为不充分。按要求只能整理现有想法，并在文档顶部与各缺失章节显著标注资料不足，不得补齐事实或生成立项判断。"
+            },
+            "analysis": {
+              "node": "report.initiation",
+              "evidenceLevel": "partial（材料相关但不充分）",
+              "sourceRegistry": [
+                {
+                  "id": "S1",
+                  "title": "文字输入（fff910fe-cbb3-47b5-9cf1-0e843fc8a8e6）",
+                  "evidenceType": "test_data",
+                  "usableScope": "仅用于提取“AI宠物陪伴上班族”想法方向及材料自述的缺失项",
+                  "limitation": "材料自述为软件QA人造测试材料，不能作为真实市场或用户证据"
+                }
+              ],
+              "sectionCoverage": [
+                {
+                  "section": "项目背景与目标",
+                  "status": "仅想法方向",
+                  "missing": [
+                    "立项背景与机会来源",
+                    "问题定义",
+                    "业务目标",
+                    "可衡量成功指标",
+                    "范围与非目标"
+                  ]
+                },
+                {
+                  "section": "市场与竞品分析",
+                  "status": "材料不足",
+                  "missing": [
+                    "市场规模与趋势",
+                    "细分结构",
+                    "竞品清单与对比维度",
+                    "差异化证据"
+                  ]
+                },
+                {
+                  "section": "目标用户与核心场景",
+                  "status": "材料不足",
+                  "missing": [
+                    "用户画像",
+                    "访谈/调研证据",
+                    "核心场景与频次",
+                    "替代方案与痛点强度"
+                  ]
+                },
+                {
+                  "section": "需求优先级与MVP简介",
+                  "status": "材料不足",
+                  "missing": [
+                    "需求清单",
+                    "Kano 分类",
+                    "四象限分析",
+                    "痛点矩阵",
+                    "MVP 范围界定"
+                  ]
+                },
+                {
+                  "section": "验证计划",
+                  "status": "材料不足",
+                  "missing": [
+                    "待验证假设",
+                    "验证方法与样本",
+                    "指标与判定阈值",
+                    "周期与责任人"
+                  ]
+                },
+                {
+                  "section": "资源与里程碑",
+                  "status": "材料不足",
+                  "missing": [
+                    "人力配置",
+                    "预算与成本",
+                    "外部依赖",
+                    "阶段划分与节点时间"
+                  ]
+                },
+                {
+                  "section": "风险与对策",
+                  "status": "材料不足（仅有证据层面已知限制）",
+                  "missing": [
+                    "产品/市场/技术/合规风险清单",
+                    "风险等级与应对措施"
+                  ]
+                },
+                {
+                  "section": "立项评审要点",
+                  "status": "材料不足",
+                  "missing": [
+                    "评审决策项",
+                    "评审前置条件确认",
+                    "评审结论"
+                  ]
+                }
+              ],
+              "charts": [],
+              "chartStatus": "未生成图表：无可用分析数据，按规范不生成虚构分布、比例或矩阵点位",
+              "decisionStatus": "未生成立项结论、MVP 范围、需求优先级或资源估算"
+            },
+            "openQuestions": [
+              "“AI 宠物陪伴上班族”这一想法的问题定义、目标人群细分与业务目标分别是什么？现有材料未提供。",
+              "是否有可替换测试材料的真实来源，包括用户访谈、市场数据、竞品分析与付费证据？",
+              "上游是否已有需求优先级分析（Kano、四象限、痛点矩阵）可供本报告引用？",
+              "项目的资源投入、成本口径与期望里程碑时间点由谁提供？",
+              "立项评审的决策项与评审标准是什么？材料中未出现相关定义。"
+            ],
+            "computed": null
+          },
+          "completedAt": "2026-10-24T13:21:19.730Z"
+        }
+      },
+      "progress": "工作流已完成 · 信息不充分",
+      "currentNodeId": "report",
+      "completedAt": "2026-10-24T13:21:19.737Z"
+    },
+    {
+      "id": "fea65400-6257-41bc-b298-c5be755f53c4",
+      "version": 3,
+      "status": "succeeded",
+      "createdAt": "2026-10-24T13:23:33.531Z",
+      "graph": {
+        "nodes": [
+          {
+            "id": "text",
+            "type": "input.text",
+            "name": "文字输入",
+            "x": 80,
+            "y": 160,
+            "config": {
+              "researchMode": "materials",
+              "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n待研究想法是AI宠物陪伴上班族。没有用户访谈、市场数据、竞品分析、付费证据、资源或成本信息，也没有完整立项论证。请只整理已有想法，不新增立项判断。",
+              "evidence": "test_data"
+            }
+          },
+          {
+            "id": "report",
+            "type": "report.initiation",
+            "name": "立项报告",
+            "x": 440,
+            "y": 160,
+            "config": {
+              "task": "",
+              "modelId": "",
+              "outline": "# 立项报告\n## 项目背景与目标\n## 市场与竞品分析\n## 目标用户与核心场景\n## 需求优先级与MVP简介\n## 验证计划\n## 资源与里程碑\n## 风险与对策\n## 立项评审要点"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "text-report",
+            "from": "text",
+            "to": "report",
+            "output": "data",
+            "input": "materials"
+          }
+        ],
+        "groups": [],
+        "view": {
+          "x": 60,
+          "y": 100,
+          "k": 1
+        }
+      },
+      "graphHash": "3d70cff0400ef05c4080bb5099261f6957144fed26652692adce5a8932b2ca1d",
+      "order": [
+        "text",
+        "report"
+      ],
+      "force": false,
+      "nodes": {
+        "text": {
+          "status": "succeeded",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "input.text",
+            "name": "文字输入",
+            "version": "1.1.0",
+            "category": "input",
+            "description": "输入想法、产品、用户需求或 CSV/JSON 数据。",
+            "icon": "input",
+            "enabled": true,
+            "executor": "text",
+            "inputs": [],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "文字输入结果",
+                "types": [
+                  "materials"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "researchMode",
+                "label": "输入方式",
+                "type": "select",
+                "options": [
+                  {
+                    "value": "materials",
+                    "label": "文档 / 数据材料"
+                  },
+                  {
+                    "value": "idea",
+                    "label": "产品想法"
+                  },
+                  {
+                    "value": "product",
+                    "label": "指定产品 / 竞品"
+                  },
+                  {
+                    "value": "user_need",
+                    "label": "用户需求"
+                  }
+                ],
+                "default": "materials"
+              },
+              {
+                "key": "content",
+                "label": "材料正文 / CSV / JSON",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "evidence",
+                "label": "材料性质",
+                "type": "select",
+                "options": [
+                  {
+                    "value": "user_statement",
+                    "label": "用户陈述"
+                  },
+                  {
+                    "value": "material",
+                    "label": "已有材料"
+                  },
+                  {
+                    "value": "test_data",
+                    "label": "测试数据"
+                  },
+                  {
+                    "value": "ai_hypothesis",
+                    "label": "AI假设（待验证）"
+                  }
+                ],
+                "default": "user_statement"
+              }
+            ],
+            "instructions": null,
+            "requirements": [
+              "至少一份相关输入"
+            ],
+            "implementation": "text",
+            "origin": {
+              "skill": "产品经理工作流 / 现有本地工具",
+              "adaptedAt": "2026-10-18",
+              "scope": "输入想法、产品、用户需求或 CSV/JSON 数据。"
+            },
+            "workflow": [
+              {
+                "id": "collect",
+                "title": "采集或引用材料",
+                "prompt": "输入想法、产品、用户需求或 CSV/JSON 数据。"
+              },
+              {
+                "id": "confirm",
+                "title": "保留内容与来源",
+                "prompt": "原样交接材料、来源和证据性质，不承担下游分析或报告整理。"
+              }
+            ],
+            "capabilities": {
+              "search": false,
+              "generateDecisions": false
+            },
+            "hash": "ab910179df883d66c348de313ff1bdd39728bba0013a9fba13dc49793ddb7678",
+            "instruction": "",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/input.text"
+          },
+          "supplements": [],
+          "draft": false,
+          "output": {
+            "kind": "materials",
+            "materials": [
+              {
+                "id": "fff910fe-cbb3-47b5-9cf1-0e843fc8a8e6",
+                "title": "文字输入",
+                "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n待研究想法是AI宠物陪伴上班族。没有用户访谈、市场数据、竞品分析、付费证据、资源或成本信息，也没有完整立项论证。请只整理已有想法，不新增立项判断。",
+                "evidence": "test_data",
+                "researchMode": "materials"
+              }
+            ],
+            "documents": [],
+            "sources": [],
+            "assumptions": [],
+            "summary": "已提供文字材料",
+            "warnings": [],
+            "fileReferences": []
+          },
+          "fingerprint": "2419c6b731f9d2cdf2dc566842e21845aeb19d7f758a095cb3836f638882f1cc",
+          "cached": true,
+          "completedAt": "2026-10-24T13:23:33.598Z",
+          "model": {
+            "id": "3b9de208-5b65-4b40-acbc-a7c3d618e5e4",
+            "api": "deepseek-messages",
+            "baseURL": "https://api.deepseek.com/anthropic",
+            "model": "deepseek-flash"
+          }
+        },
+        "report": {
+          "status": "succeeded",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "report.initiation",
+            "name": "立项报告",
+            "version": "1.1.0",
+            "category": "report",
+            "description": "仅根据传入的相关成果，按大纲整理立项报告；不搜索、不另作产品决策。",
+            "icon": "file",
+            "enabled": true,
+            "executor": "ai",
+            "inputs": [
+              {
+                "id": "materials",
+                "name": "输入材料",
+                "types": [
+                  "materials",
+                  "sources",
+                  "analysis",
+                  "dataset",
+                  "documents"
+                ],
+                "multiple": true
+              }
+            ],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "立项报告结果",
+                "types": [
+                  "documents"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "task",
+                "label": "本次目标与补充要求",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "modelId",
+                "label": "执行模型",
+                "type": "model",
+                "default": ""
+              },
+              {
+                "key": "outline",
+                "label": "输出大纲",
+                "type": "textarea",
+                "default": "# 立项报告\n## 项目背景与目标\n## 市场与竞品分析\n## 目标用户与核心场景\n## 需求优先级与MVP简介\n## 验证计划\n## 资源与里程碑\n## 风险与对策\n## 立项评审要点"
+              }
+            ],
+            "instructions": "instructions.md",
+            "requirements": [
+              "产品目标",
+              "市场用户证据及其缺口",
+              "资源与约束"
+            ],
+            "implementation": "ai",
+            "origin": {
+              "skill": "产品立项报告",
+              "adaptedAt": "2026-10-18",
+              "scope": "制作完整立项报告，MVP仅作为简介。"
+            },
+            "capabilities": {
+              "search": false,
+              "calculate": false,
+              "generateDecisions": false
+            },
+            "workflow": [
+              {
+                "id": "relevance",
+                "title": "检查材料相关性",
+                "prompt": "完全不相关或没有可用内容时停止，不输出文档。"
+              },
+              {
+                "id": "coverage",
+                "title": "对照大纲检查覆盖",
+                "prompt": "逐章识别输入支持的内容和缺口；相关但不足可整理，必须显著提示。"
+              },
+              {
+                "id": "compose",
+                "title": "按大纲整理报告",
+                "prompt": "仅归类、去重、编排和总结材料，不搜索、不新建事实、统计或产品决策。"
+              },
+              {
+                "id": "verify",
+                "title": "核对来源与文档",
+                "prompt": "数字和结论须由输入支持，缺失章节写材料不足，保留上游假设/局限。"
+              }
+            ],
+            "hash": "17664b448fc9407ab64e05e8d61b714fad77f56f2afdb76a6963f6f18312401e",
+            "instruction": "# 立项报告\n\n本节点只编排输入，不进行联网检索、独立分析、产品决策或统计计算。相关材料不充分时仍整理已有部分，在文档顶部及缺失章节标明资料不足；完全不相关时拒绝生成。保留来源、假设、证据局限，不用常识补齐缺少的事实。\n按八节整理。Kano、四象限、反方质疑等仅整理上游已有分析；没有则标缺口，不能自己推演。MVP仅简介，不生成完整方案。\n\n# 文档图表输出与渲染规范\n\n## 技术选择\n\n- 数据比较、趋势、占比、漏斗、留存热力图、痛点与优先级矩阵：ECharts。文档小型图默认 SVG；数据密集图可用 Canvas。按使用的图种加载依赖，桌面/离线交付使用本地资源。\n- 业务流程、关系、状态、用户决策链路：Mermaid，保留可复制源码，使用 theme: base 与宿主品牌色。已有研发向源码专用章节和真实界面拼接流程图保留原来的用途与交互，不强制改成另一种图。\n- 对比、需求、画像明细：语义化 HTML table＋CSS；Markdown 交付保留数据表，宿主负责表格样式。\n- 统计图交付由程序渲染矢量图或清晰 PNG；AI 插画、照片和真实原型截图保留原始资产，不用统计图引擎代替。\n\n## AI 与宿主的职责\n\nAI 提供结论、原始数据、来源和声明式图表规范；宿主把规范映射为 ECharts option 或 Mermaid SVG。图表不要求额外生成整篇 HTML；全文 HTML 仍按原流程或用户请求生成。宿主输出协议优先，已有 chart 字段时按其协议；无协议的 Markdown 使用紧邻正文的 chart JSON 围栏与 mermaid 围栏。\n\n下面的 pm-chart-v1 是本 Skill 的交接规范，宿主接入后才能自动绘图；它不是 ECharts option，也不是已经实现的工作台接口。宿主只接收白名单图种、字段和数据，不执行 AI 提供的 JS、formatter 函数或任意 HTML。\n\n## 图表数据协议\n\nchart JSON 每张图独立，字段：schema、id、type、title、evidenceStatus、sources、data、encoding；subtitle、note 可选。\n\n- schema 固定 pm-chart-v1；id 在文档内唯一，用于引用和导出。\n- type：bar / line / pie / funnel / heatmap / matrix / scatter。柱线图的数据记录提供分类或时间、数值与可选分组；encoding 指出字段名。漏斗记录给出步骤顺序和原始人数，率由代码计算。矩阵可用类别坐标；heatmap 明确行列及指标。\n- encoding.x / y 指出 field、scale（category / ordinal / quantitative / time）、label、unit；类别轴给出有序 categories。series / label / value 指明相关字段（按图种提供）。\n- evidenceStatus：已验证事实 / 用户观点 / 估算 / 分析推断 / 待验证 / 测试数据。sources 为来源 id、标题、url 或材料定位、日期；每行数据使用 sourceIds 引用来源。不同证据性质混用时逐行标注 evidenceStatus。\n- 缺数值用 null，不能用 0 替代；缺失数据不绘制为已观测值。百分比保留分母、统计口径和周期说明；估算附依据及置信度。等级是类别，不转换为未经解释的精确分数。\n\n### 定性痛点矩阵示例（演示数据）\n\n```chart\n{\n  \"schema\": \"pm-chart-v1\",\n  \"id\": \"pain-matrix\",\n  \"type\": \"matrix\",\n  \"title\": \"痛点矩阵\",\n  \"subtitle\": \"分析假设 · 待验证\",\n  \"evidenceStatus\": \"测试数据\",\n  \"sources\": [{\"id\":\"demo\",\"title\":\"规范演示数据，不能进入项目结论\"}],\n  \"data\": [\n    {\"id\":\"P1\",\"pain\":\"缺少持续陪伴\",\"frequency\":\"高\",\"severity\":\"高\",\"sourceIds\":[\"demo\"]},\n    {\"id\":\"P2\",\"pain\":\"使用负担\",\"frequency\":\"低\",\"severity\":\"中\",\"sourceIds\":[\"demo\"]}\n  ],\n  \"encoding\": {\n    \"x\":{\"field\":\"frequency\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"高\"],\"label\":\"发生频率\",\"unit\":\"等级\"},\n    \"y\":{\"field\":\"severity\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"中高\",\"高\"],\"label\":\"严重程度\",\"unit\":\"等级\"},\n    \"label\":\"id\"\n  },\n  \"note\":\"点位表示定性等级，不能读成统计频率；悬停显示痛点、来源与证据状态。\"\n}\n```\n\n保留同一组数据的 Markdown 表格和 1–3 句读图结论。例子只解释格式，实际图表必须使用当前项目数据。先确定数据与 encoding，再由渲染器映射为图形；不让模型手写字符轴线或字符条形图。\n\n## 视觉与交互\n\n复用宿主品牌字体、主色和明暗模式。同一报告的图表配色和同类对象颜色保持一致；无品牌规范时采用白底、深色文字、低饱和主色与浅网格，风险色只用于风险。HTML 表格设置合理列宽、长文换行、数字对齐、表头和分组；宽表在局部滚动，交互文档可固定表头。\n\n每图有标题、轴名、单位、图例（有多系列时）、来源、证据状态及读图结论。定性矩阵使用分类坐标和浅色分区；同一格多点错开并保持等级归属，提供完整名称和明细表，避免 P1–P9 堆叠遮挡。标签不足时增大容器或提供缩放，不缩小到难以阅读。\n\n交互文档提供悬停详情、适配宽度、放大查看和导出 SVG/PNG；静态导出把悬停信息的重要部分写入图注或数据表。按实际工具能力实现，不能声称未实现的交互可用。\n\n## 交付检查与降级\n\n核对图、表、正文的分类、单位、值、分母、来源和证据性质一致；检查默认尺寸与放大后文字无重叠、裁切，主题和打印/导出背景清晰。完成实际渲染才称“图表已渲染”。\n\n环境缺渲染器时保留 chart 数据或 Mermaid 源码＋数据表＋结论，并明确“待宿主渲染”；Markdown 阅读器不支持时可附已生成 SVG/PNG。渲染失败显示明细表与原因，不丢弃正文，也不回退为 ASCII 字符矩阵。没有可用分析数据的章节用“缺失证据表”说明待补内容，不生成虚构分布、比例、留存曲线或点位。\n",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/report.initiation"
+          },
+          "supplements": [],
+          "draft": false,
+          "output": {
+            "kind": "documents",
+            "materials": [],
+            "documents": [
+              {
+                "id": "35d27eaa-31ff-4174-b7a4-7f7569270645",
+                "title": "立项报告",
+                "format": "markdown",
+                "content": "> **资料完整性提示：信息不充分**\n> - 项目背景与目标：仅有“AI宠物陪伴上班族”一个想法方向，无立项背景、问题定义、业务目标与可衡量成功指标\n> - 市场与竞品分析：无市场规模、趋势、竞品清单或对比材料\n> - 目标用户与核心场景：无用户访谈、画像、场景描述或需求证据\n> - 需求优先级与MVP简介：无Kano、四象限、痛点矩阵等上游分析，无需求清单与MVP范围界定\n> - 验证计划：无验证假设、方法、样本、指标或时间安排\n> - 资源与里程碑：无人力、预算、成本、周期与节点信息\n> - 风险与对策：无风险识别与应对材料\n> - 立项评审要点：无评审结论、决策项或待决问题\n> - 付费意愿与商业可行性证据：无付费证据、价格或收入模型材料\n> - 全部材料标注为“软件QA人造测试材料”，不能作为真实市场或用户证据，需替换为真实来源\n\n# 立项报告\n\n> **资料状态：不充分。** 本次输入仅 1 份材料（S1《文字输入》），证据类型标注为 `test_data`，材料自述为“软件QA人造测试材料，不能当作真实市场证据或用户访谈”。材料只给出一个待研究想法方向“AI 宠物陪伴上班族”，并明确说明没有用户访谈、市场数据、竞品分析、付费证据、资源或成本信息，也没有完整立项论证。\n>\n> 本报告只做归类、去重、编排与总结，不新增事实、统计、产品取舍或立项结论。八节中仅“项目背景与目标”存在一个想法方向可整理，其余章节保留标题并标注“材料不足”及所需输入。全文不含图表：无可用分析数据，按规范不生成虚构分布、比例或点位。\n\n**来源登记**\n\n| 来源 ID | 材料 | 标注证据类型 | 本报告使用范围 | 局限 |\n| --- | --- | --- | --- | --- |\n| S1 | 《文字输入》（id `fff910fe-cbb3-47b5-9cf1-0e843fc8a8e6`） | test_data（软件QA人造测试材料） | 仅提取“AI 宠物陪伴上班族”想法方向及材料自述的缺失项 | 不可作为真实市场或用户证据进入决策 |\n\n## 项目背景与目标\n\n**已有材料可整理的内容（S1，测试数据）**\n\n- 待研究想法：AI 宠物陪伴，目标人群指向上班族。\n- 材料性质：待研究想法，非立项论证；材料自述“没有完整立项论证”。\n- 材料自述的缺失项：用户访谈、市场数据、竞品分析、付费证据、资源或成本信息。\n\n**材料不足**：无立项背景（机会来源、触发事件）、无问题定义、无业务目标、无可衡量成功指标，也无项目范围与非目标。材料中不存在可直接引用的目标数值，本报告不代为设定。\n\n| 待补内容 | 章节用途 | 所需输入类型（材料未提供） |\n| --- | --- | --- |\n| 立项背景与机会来源 | 说明为什么现在做 | 内部立项说明、机会来源记录 |\n| 问题定义 | 明确要解决的具体问题 | 用户问题陈述、访谈或调研证据 |\n| 业务目标与成功指标 | 判断项目成败 | 目标口径、指标定义、统计周期 |\n| 范围与非目标 | 划定项目边界 | 范围声明 |\n\n## 市场与竞品分析\n\n**材料不足**：无市场规模、增长趋势、细分结构、竞品清单、对比维度或差异化证据。\n\n本节点不进行联网检索，也不做独立分析，不推演市场规模或竞争格局，不以常识补齐竞品信息。\n\n| 待补内容 | 所需输入类型（材料未提供） |\n| --- | --- |\n| 市场规模与趋势 | 带口径、周期与来源的行业数据 |\n| 竞品清单与对比 | 竞品名称、功能对比、定价与定位 |\n| 差异化判断 | 竞品对比证据支持的分析结论 |\n\n## 目标用户与核心场景\n\n**材料不足**：材料仅出现“上班族”这一宽泛人群标签，无画像、访谈、使用场景、使用频次、现有替代方案或痛点强度证据。\n\n“上班族 + 宠物陪伴”不能推演为具体场景描述；本报告不生成画像与场景假设。\n\n| 待补内容 | 所需输入类型（材料未提供） |\n| --- | --- |\n| 目标用户画像 | 访谈记录、问卷或行为数据 |\n| 核心场景与频次 | 场景描述、发生频率与情境证据 |\n| 现有替代方案与痛点强度 | 用户原话、替代方案使用情况 |\n\n## 需求优先级与MVP简介\n\n**材料不足**：无需求清单、无 Kano 分类、无四象限分析、无痛点矩阵、无用户故事或场景—需求映射。上游分析缺失，本节点不推演优先级，也不界定 MVP 范围。\n\n可整理的唯一信息：想法方向涉及“AI 宠物陪伴”与“上班族”两个要素（S1）；此信息不构成 MVP 定义或需求优先级。\n\n| 待补内容 | 所需输入类型（材料未提供） |\n| --- | --- |\n| 需求清单 | 需求条目及其来源标注 |\n| Kano 分类 / 四象限 / 痛点矩阵 | 上游分析节点已完成的结论 |\n| MVP 范围 | 基于优先级分析的取舍结论 |\n\n## 验证计划\n\n**材料不足**：无待验证假设、验证方法、样本与招募方式、指标与判定阈值、验证周期与责任人。\n\n材料自述“没有用户访谈”，仅能作为验证起点的缺口记录，不构成验证方案。\n\n| 待补内容 | 所需输入类型（材料未提供） |\n| --- | --- |\n| 待验证假设 | 假设清单（问题、人群、预期） |\n| 验证方法与样本 | 调研/测试方法与样本量口径 |\n| 判定阈值与周期 | 指标口径、阈值、时间安排 |\n\n## 资源与里程碑\n\n**材料不足**：无人力配置、预算与成本、外部依赖、周期估算、阶段划分与节点时间。\n\n本节点不做工作量或成本估算，不生成里程碑时间表。\n\n| 待补内容 | 所需输入类型（材料未提供） |\n| --- | --- |\n| 人力与角色 | 团队配置说明 |\n| 预算与成本 | 成本项与口径 |\n| 阶段与节点 | 阶段划分、依赖关系、时间点 |\n\n## 风险与对策\n\n**材料不足**：上游未提供风险识别与应对材料，本报告不生成产品、市场、技术或合规风险清单与对策。\n\n仅可记录材料自述的证据层面已知限制，其性质是文档证据局限，不是产品风险判断：\n\n| 已知限制（来源 S1） | 影响 | 状态 |\n| --- | --- | --- |\n| 材料为软件QA人造测试材料 | 不能作为真实市场或用户证据进入决策 | 待替换为真实来源 |\n| 无付费证据 | 商业可行性无法评估 | 待补 |\n| 无资源与成本信息 | 可行性无法评估 | 待补 |\n| 无竞品分析 | 差异化与替代风险未知 | 待补 |\n\n## 立项评审要点\n\n**材料不足**：本报告不给出立项建议或结论。当前可提交评审的仅为“材料状态”与“待补事项清单”。\n\n**待决与待补清单**\n\n| 序号 | 事项 | 对应章节 | 当前状态 |\n| --- | --- | --- | --- |\n| 1 | 将测试材料替换为真实来源 | 全文 | 待补 |\n| 2 | 问题定义、目标与成功指标 | 项目背景与目标 | 待补 |\n| 3 | 市场规模、趋势与竞品对比 | 市场与竞品分析 | 待补 |\n| 4 | 用户画像、核心场景与痛点证据 | 目标用户与核心场景 | 待补 |\n| 5 | 需求清单与上游优先级分析（Kano/四象限/痛点矩阵） | 需求优先级与MVP简介 | 待补 |\n| 6 | 验证假设、方法与判定指标 | 验证计划 | 待补 |\n| 7 | 资源、成本与里程碑 | 资源与里程碑 | 待补 |\n| 8 | 风险清单与应对措施 | 风险与对策 | 待补 |\n\n按材料自述的证据边界，上述输入补齐前，无法形成实质性立项评审结论；本报告不对是否立项表达倾向。",
+                "outline": "# 立项报告\n## 项目背景与目标\n## 市场与竞品分析\n## 目标用户与核心场景\n## 需求优先级与MVP简介\n## 验证计划\n## 资源与里程碑\n## 风险与对策\n## 立项评审要点",
+                "summary": "## 资料完整性\n- 信息不充分：项目背景与目标：仅有“AI宠物陪伴上班族”一个想法方向，无立项背景、问题定义、业务目标与可衡量成功指标；市场与竞品分析：无市场规模、趋势、竞品清单或对比材料；目标用户与核心场景：无用户访谈、画像、场景描述或需求证据；需求优先级与MVP简介：无Kano、四象限、痛点矩阵等上游分析，无需求清单与MVP范围界定；验证计划：无验证假设、方法、样本、指标或时间安排；资源与里程碑：无人力、预算、成本、周期与节点信息；风险与对策：无风险识别与应对材料；立项评审要点：无评审结论、决策项或待决问题；付费意愿与商业可行性证据：无付费证据、价格或收入模型材料；全部材料标注为“软件QA人造测试材料”，不能作为真实市场或用户证据，需替换为真实来源\n\n**核心结论**\n- 本次输入仅 1 份材料（S1），标注为 test_data（软件QA人造测试材料），内容只有“AI 宠物陪伴上班族”这一个待研究想法方向。\n- 材料与立项报告主题相关，因此按要求整理；但只有“项目背景与目标”可整理出一个想法方向，其余七节均标为“材料不足”，并写明所需输入。\n- 未生成立项判断、MVP 范围、优先级、统计或资源估算；全文无图表，因为缺少可用的分析数据。\n\n**证据局限**\n- 该材料自述不能作为真实市场或用户证据，需替换为真实来源。\n- 没有用户访谈、市场规模、竞品清单、付费证据、资源成本信息，也没有完整立项论证。\n- 没有上游 Kano、四象限、痛点矩阵等分析，本节点不作推演补齐。\n\n**下一步**\n- 补齐问题定义、目标与可衡量指标、市场与竞品材料。\n- 补用户访谈与画像、需求清单及上游优先级分析。\n- 补验证方案、资源里程碑、风险清单后，再进入实质性评审。",
+                "quality": {
+                  "level": "partial",
+                  "missing": [
+                    "项目背景与目标：仅有“AI宠物陪伴上班族”一个想法方向，无立项背景、问题定义、业务目标与可衡量成功指标",
+                    "市场与竞品分析：无市场规模、趋势、竞品清单或对比材料",
+                    "目标用户与核心场景：无用户访谈、画像、场景描述或需求证据",
+                    "需求优先级与MVP简介：无Kano、四象限、痛点矩阵等上游分析，无需求清单与MVP范围界定",
+                    "验证计划：无验证假设、方法、样本、指标或时间安排",
+                    "资源与里程碑：无人力、预算、成本、周期与节点信息",
+                    "风险与对策：无风险识别与应对材料",
+                    "立项评审要点：无评审结论、决策项或待决问题",
+                    "付费意愿与商业可行性证据：无付费证据、价格或收入模型材料",
+                    "全部材料标注为“软件QA人造测试材料”，不能作为真实市场或用户证据，需替换为真实来源"
+                  ],
+                  "note": "材料仅给出“AI宠物陪伴上班族”这一待研究想法，与立项报告主题相关，故判定为相关；但材料自述缺少用户访谈、市场数据、竞品分析、付费证据、资源与成本信息及完整立项论证，八节大纲中除背景有一个想法方向外均无可支撑事实，故判定为不充分。按要求只能整理现有想法，并在文档顶部与各缺失章节显著标注资料不足，不得补齐事实或生成立项判断。"
+                }
+              }
+            ],
+            "sources": [],
+            "assumptions": [],
+            "summary": "**核心结论**\n- 本次输入仅 1 份材料（S1），标注为 test_data（软件QA人造测试材料），内容只有“AI 宠物陪伴上班族”这一个待研究想法方向。\n- 材料与立项报告主题相关，因此按要求整理；但只有“项目背景与目标”可整理出一个想法方向，其余七节均标为“材料不足”，并写明所需输入。\n- 未生成立项判断、MVP 范围、优先级、统计或资源估算；全文无图表，因为缺少可用的分析数据。\n\n**证据局限**\n- 该材料自述不能作为真实市场或用户证据，需替换为真实来源。\n- 没有用户访谈、市场规模、竞品清单、付费证据、资源成本信息，也没有完整立项论证。\n- 没有上游 Kano、四象限、痛点矩阵等分析，本节点不作推演补齐。\n\n**下一步**\n- 补齐问题定义、目标与可衡量指标、市场与竞品材料。\n- 补用户访谈与画像、需求清单及上游优先级分析。\n- 补验证方案、资源里程碑、风险清单后，再进入实质性评审。",
+            "warnings": [
+              "信息不充分：项目背景与目标：仅有“AI宠物陪伴上班族”一个想法方向，无立项背景、问题定义、业务目标与可衡量成功指标；市场与竞品分析：无市场规模、趋势、竞品清单或对比材料；目标用户与核心场景：无用户访谈、画像、场景描述或需求证据；需求优先级与MVP简介：无Kano、四象限、痛点矩阵等上游分析，无需求清单与MVP范围界定；验证计划：无验证假设、方法、样本、指标或时间安排；资源与里程碑：无人力、预算、成本、周期与节点信息；风险与对策：无风险识别与应对材料；立项评审要点：无评审结论、决策项或待决问题；付费意愿与商业可行性证据：无付费证据、价格或收入模型材料；全部材料标注为“软件QA人造测试材料”，不能作为真实市场或用户证据，需替换为真实来源",
+              "“AI 宠物陪伴上班族”这一想法的问题定义、目标人群细分与业务目标分别是什么？现有材料未提供。",
+              "是否有可替换测试材料的真实来源，包括用户访谈、市场数据、竞品分析与付费证据？",
+              "上游是否已有需求优先级分析（Kano、四象限、痛点矩阵）可供本报告引用？",
+              "项目的资源投入、成本口径与期望里程碑时间点由谁提供？",
+              "立项评审的决策项与评审标准是什么？材料中未出现相关定义。"
+            ],
+            "fileReferences": [],
+            "inputSnapshot": [
+              {
+                "id": "fff910fe-cbb3-47b5-9cf1-0e843fc8a8e6",
+                "title": "文字输入",
+                "evidence": "test_data"
+              }
+            ],
+            "quality": {
+              "level": "partial",
+              "missing": [
+                "项目背景与目标：仅有“AI宠物陪伴上班族”一个想法方向，无立项背景、问题定义、业务目标与可衡量成功指标",
+                "市场与竞品分析：无市场规模、趋势、竞品清单或对比材料",
+                "目标用户与核心场景：无用户访谈、画像、场景描述或需求证据",
+                "需求优先级与MVP简介：无Kano、四象限、痛点矩阵等上游分析，无需求清单与MVP范围界定",
+                "验证计划：无验证假设、方法、样本、指标或时间安排",
+                "资源与里程碑：无人力、预算、成本、周期与节点信息",
+                "风险与对策：无风险识别与应对材料",
+                "立项评审要点：无评审结论、决策项或待决问题",
+                "付费意愿与商业可行性证据：无付费证据、价格或收入模型材料",
+                "全部材料标注为“软件QA人造测试材料”，不能作为真实市场或用户证据，需替换为真实来源"
+              ],
+              "note": "材料仅给出“AI宠物陪伴上班族”这一待研究想法，与立项报告主题相关，故判定为相关；但材料自述缺少用户访谈、市场数据、竞品分析、付费证据、资源与成本信息及完整立项论证，八节大纲中除背景有一个想法方向外均无可支撑事实，故判定为不充分。按要求只能整理现有想法，并在文档顶部与各缺失章节显著标注资料不足，不得补齐事实或生成立项判断。"
+            },
+            "analysis": {
+              "node": "report.initiation",
+              "evidenceLevel": "partial（材料相关但不充分）",
+              "sourceRegistry": [
+                {
+                  "id": "S1",
+                  "title": "文字输入（fff910fe-cbb3-47b5-9cf1-0e843fc8a8e6）",
+                  "evidenceType": "test_data",
+                  "usableScope": "仅用于提取“AI宠物陪伴上班族”想法方向及材料自述的缺失项",
+                  "limitation": "材料自述为软件QA人造测试材料，不能作为真实市场或用户证据"
+                }
+              ],
+              "sectionCoverage": [
+                {
+                  "section": "项目背景与目标",
+                  "status": "仅想法方向",
+                  "missing": [
+                    "立项背景与机会来源",
+                    "问题定义",
+                    "业务目标",
+                    "可衡量成功指标",
+                    "范围与非目标"
+                  ]
+                },
+                {
+                  "section": "市场与竞品分析",
+                  "status": "材料不足",
+                  "missing": [
+                    "市场规模与趋势",
+                    "细分结构",
+                    "竞品清单与对比维度",
+                    "差异化证据"
+                  ]
+                },
+                {
+                  "section": "目标用户与核心场景",
+                  "status": "材料不足",
+                  "missing": [
+                    "用户画像",
+                    "访谈/调研证据",
+                    "核心场景与频次",
+                    "替代方案与痛点强度"
+                  ]
+                },
+                {
+                  "section": "需求优先级与MVP简介",
+                  "status": "材料不足",
+                  "missing": [
+                    "需求清单",
+                    "Kano 分类",
+                    "四象限分析",
+                    "痛点矩阵",
+                    "MVP 范围界定"
+                  ]
+                },
+                {
+                  "section": "验证计划",
+                  "status": "材料不足",
+                  "missing": [
+                    "待验证假设",
+                    "验证方法与样本",
+                    "指标与判定阈值",
+                    "周期与责任人"
+                  ]
+                },
+                {
+                  "section": "资源与里程碑",
+                  "status": "材料不足",
+                  "missing": [
+                    "人力配置",
+                    "预算与成本",
+                    "外部依赖",
+                    "阶段划分与节点时间"
+                  ]
+                },
+                {
+                  "section": "风险与对策",
+                  "status": "材料不足（仅有证据层面已知限制）",
+                  "missing": [
+                    "产品/市场/技术/合规风险清单",
+                    "风险等级与应对措施"
+                  ]
+                },
+                {
+                  "section": "立项评审要点",
+                  "status": "材料不足",
+                  "missing": [
+                    "评审决策项",
+                    "评审前置条件确认",
+                    "评审结论"
+                  ]
+                }
+              ],
+              "charts": [],
+              "chartStatus": "未生成图表：无可用分析数据，按规范不生成虚构分布、比例或矩阵点位",
+              "decisionStatus": "未生成立项结论、MVP 范围、需求优先级或资源估算"
+            },
+            "openQuestions": [
+              "“AI 宠物陪伴上班族”这一想法的问题定义、目标人群细分与业务目标分别是什么？现有材料未提供。",
+              "是否有可替换测试材料的真实来源，包括用户访谈、市场数据、竞品分析与付费证据？",
+              "上游是否已有需求优先级分析（Kano、四象限、痛点矩阵）可供本报告引用？",
+              "项目的资源投入、成本口径与期望里程碑时间点由谁提供？",
+              "立项评审的决策项与评审标准是什么？材料中未出现相关定义。"
+            ],
+            "computed": null
+          },
+          "fingerprint": "c8dcdce47e1929811520bcf388a4de0f3cae3f6d1fbb2d2db794e5e82d2e3568",
+          "cached": true,
+          "completedAt": "2026-10-24T13:23:33.697Z",
+          "model": {
+            "id": "3b9de208-5b65-4b40-acbc-a7c3d618e5e4",
+            "api": "deepseek-messages",
+            "baseURL": "https://api.deepseek.com/anthropic",
+            "model": "deepseek-flash"
+          }
+        }
+      },
+      "progress": "工作流已完成 · 信息不充分",
+      "completedAt": "2026-10-24T13:23:33.710Z"
+    },
+    {
+      "id": "8a4f2958-51ea-4acc-9d2d-bcc9c221258c",
+      "version": 4,
+      "status": "succeeded",
+      "createdAt": "2026-10-24T13:30:34.927Z",
+      "graph": {
+        "nodes": [
+          {
+            "id": "text",
+            "type": "input.text",
+            "name": "文字输入",
+            "x": 80,
+            "y": 160,
+            "config": {
+              "researchMode": "materials",
+              "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n待研究想法是AI宠物陪伴上班族。没有用户访谈、市场数据、竞品分析、付费证据、资源或成本信息，也没有完整立项论证。请只整理已有想法，不新增立项判断。",
+              "evidence": "test_data"
+            }
+          },
+          {
+            "id": "report",
+            "type": "report.initiation",
+            "name": "立项报告",
+            "x": 440,
+            "y": 160,
+            "config": {
+              "task": "",
+              "modelId": "",
+              "outline": "# 立项报告\n## 项目背景与目标\n## 市场与竞品分析\n## 目标用户与核心场景\n## 需求优先级与MVP简介\n## 验证计划\n## 资源与里程碑\n## 风险与对策\n## 立项评审要点"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "text-report",
+            "from": "text",
+            "to": "report",
+            "output": "data",
+            "input": "materials"
+          }
+        ],
+        "groups": [],
+        "view": {
+          "x": 60,
+          "y": 100,
+          "k": 1
+        }
+      },
+      "graphHash": "3d70cff0400ef05c4080bb5099261f6957144fed26652692adce5a8932b2ca1d",
+      "order": [
+        "text",
+        "report"
+      ],
+      "force": true,
+      "nodes": {
+        "text": {
+          "status": "succeeded",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "input.text",
+            "name": "文字输入",
+            "version": "1.1.0",
+            "category": "input",
+            "description": "输入想法、产品、用户需求或 CSV/JSON 数据。",
+            "icon": "input",
+            "enabled": true,
+            "executor": "text",
+            "inputs": [],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "文字输入结果",
+                "types": [
+                  "materials"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "researchMode",
+                "label": "输入方式",
+                "type": "select",
+                "options": [
+                  {
+                    "value": "materials",
+                    "label": "文档 / 数据材料"
+                  },
+                  {
+                    "value": "idea",
+                    "label": "产品想法"
+                  },
+                  {
+                    "value": "product",
+                    "label": "指定产品 / 竞品"
+                  },
+                  {
+                    "value": "user_need",
+                    "label": "用户需求"
+                  }
+                ],
+                "default": "materials"
+              },
+              {
+                "key": "content",
+                "label": "材料正文 / CSV / JSON",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "evidence",
+                "label": "材料性质",
+                "type": "select",
+                "options": [
+                  {
+                    "value": "user_statement",
+                    "label": "用户陈述"
+                  },
+                  {
+                    "value": "material",
+                    "label": "已有材料"
+                  },
+                  {
+                    "value": "test_data",
+                    "label": "测试数据"
+                  },
+                  {
+                    "value": "ai_hypothesis",
+                    "label": "AI假设（待验证）"
+                  }
+                ],
+                "default": "user_statement"
+              }
+            ],
+            "instructions": null,
+            "requirements": [
+              "至少一份相关输入"
+            ],
+            "implementation": "text",
+            "origin": {
+              "skill": "产品经理工作流 / 现有本地工具",
+              "adaptedAt": "2026-10-18",
+              "scope": "输入想法、产品、用户需求或 CSV/JSON 数据。"
+            },
+            "workflow": [
+              {
+                "id": "collect",
+                "title": "采集或引用材料",
+                "prompt": "输入想法、产品、用户需求或 CSV/JSON 数据。"
+              },
+              {
+                "id": "confirm",
+                "title": "保留内容与来源",
+                "prompt": "原样交接材料、来源和证据性质，不承担下游分析或报告整理。"
+              }
+            ],
+            "capabilities": {
+              "search": false,
+              "generateDecisions": false
+            },
+            "hash": "ab910179df883d66c348de313ff1bdd39728bba0013a9fba13dc49793ddb7678",
+            "instruction": "",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/input.text"
+          },
+          "supplements": [],
+          "draft": false,
+          "startedAt": "2026-10-24T13:30:34.962Z",
+          "fingerprint": "2419c6b731f9d2cdf2dc566842e21845aeb19d7f758a095cb3836f638882f1cc",
+          "model": {
+            "id": "3b9de208-5b65-4b40-acbc-a7c3d618e5e4",
+            "api": "deepseek-messages",
+            "baseURL": "https://api.deepseek.com/anthropic",
+            "model": "deepseek-flash"
+          },
+          "output": {
+            "kind": "materials",
+            "materials": [
+              {
+                "id": "cded7154-5b76-4621-92fa-ca624b9f5c7b",
+                "title": "文字输入",
+                "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n待研究想法是AI宠物陪伴上班族。没有用户访谈、市场数据、竞品分析、付费证据、资源或成本信息，也没有完整立项论证。请只整理已有想法，不新增立项判断。",
+                "evidence": "test_data",
+                "researchMode": "materials"
+              }
+            ],
+            "documents": [],
+            "sources": [],
+            "assumptions": [],
+            "summary": "已提供文字材料",
+            "warnings": [],
+            "fileReferences": []
+          },
+          "completedAt": "2026-10-24T13:30:34.975Z"
+        },
+        "report": {
+          "status": "succeeded",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "report.initiation",
+            "name": "立项报告",
+            "version": "1.1.0",
+            "category": "report",
+            "description": "仅根据传入的相关成果，按大纲整理立项报告；不搜索、不另作产品决策。",
+            "icon": "file",
+            "enabled": true,
+            "executor": "ai",
+            "inputs": [
+              {
+                "id": "materials",
+                "name": "输入材料",
+                "types": [
+                  "materials",
+                  "sources",
+                  "analysis",
+                  "dataset",
+                  "documents"
+                ],
+                "multiple": true
+              }
+            ],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "立项报告结果",
+                "types": [
+                  "documents"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "task",
+                "label": "本次目标与补充要求",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "modelId",
+                "label": "执行模型",
+                "type": "model",
+                "default": ""
+              },
+              {
+                "key": "outline",
+                "label": "输出大纲",
+                "type": "textarea",
+                "default": "# 立项报告\n## 项目背景与目标\n## 市场与竞品分析\n## 目标用户与核心场景\n## 需求优先级与MVP简介\n## 验证计划\n## 资源与里程碑\n## 风险与对策\n## 立项评审要点"
+              }
+            ],
+            "instructions": "instructions.md",
+            "requirements": [
+              "产品目标",
+              "市场用户证据及其缺口",
+              "资源与约束"
+            ],
+            "implementation": "ai",
+            "origin": {
+              "skill": "产品立项报告",
+              "adaptedAt": "2026-10-18",
+              "scope": "制作完整立项报告，MVP仅作为简介。"
+            },
+            "capabilities": {
+              "search": false,
+              "calculate": false,
+              "generateDecisions": false
+            },
+            "workflow": [
+              {
+                "id": "relevance",
+                "title": "检查材料相关性",
+                "prompt": "完全不相关或没有可用内容时停止，不输出文档。"
+              },
+              {
+                "id": "coverage",
+                "title": "对照大纲检查覆盖",
+                "prompt": "逐章识别输入支持的内容和缺口；相关但不足可整理，必须显著提示。"
+              },
+              {
+                "id": "compose",
+                "title": "按大纲整理报告",
+                "prompt": "仅归类、去重、编排和总结材料，不搜索、不新建事实、统计或产品决策。"
+              },
+              {
+                "id": "verify",
+                "title": "核对来源与文档",
+                "prompt": "数字和结论须由输入支持，缺失章节写材料不足，保留上游假设/局限。"
+              }
+            ],
+            "hash": "17664b448fc9407ab64e05e8d61b714fad77f56f2afdb76a6963f6f18312401e",
+            "instruction": "# 立项报告\n\n本节点只编排输入，不进行联网检索、独立分析、产品决策或统计计算。相关材料不充分时仍整理已有部分，在文档顶部及缺失章节标明资料不足；完全不相关时拒绝生成。保留来源、假设、证据局限，不用常识补齐缺少的事实。\n按八节整理。Kano、四象限、反方质疑等仅整理上游已有分析；没有则标缺口，不能自己推演。MVP仅简介，不生成完整方案。\n\n# 文档图表输出与渲染规范\n\n## 技术选择\n\n- 数据比较、趋势、占比、漏斗、留存热力图、痛点与优先级矩阵：ECharts。文档小型图默认 SVG；数据密集图可用 Canvas。按使用的图种加载依赖，桌面/离线交付使用本地资源。\n- 业务流程、关系、状态、用户决策链路：Mermaid，保留可复制源码，使用 theme: base 与宿主品牌色。已有研发向源码专用章节和真实界面拼接流程图保留原来的用途与交互，不强制改成另一种图。\n- 对比、需求、画像明细：语义化 HTML table＋CSS；Markdown 交付保留数据表，宿主负责表格样式。\n- 统计图交付由程序渲染矢量图或清晰 PNG；AI 插画、照片和真实原型截图保留原始资产，不用统计图引擎代替。\n\n## AI 与宿主的职责\n\nAI 提供结论、原始数据、来源和声明式图表规范；宿主把规范映射为 ECharts option 或 Mermaid SVG。图表不要求额外生成整篇 HTML；全文 HTML 仍按原流程或用户请求生成。宿主输出协议优先，已有 chart 字段时按其协议；无协议的 Markdown 使用紧邻正文的 chart JSON 围栏与 mermaid 围栏。\n\n下面的 pm-chart-v1 是本 Skill 的交接规范，宿主接入后才能自动绘图；它不是 ECharts option，也不是已经实现的工作台接口。宿主只接收白名单图种、字段和数据，不执行 AI 提供的 JS、formatter 函数或任意 HTML。\n\n## 图表数据协议\n\nchart JSON 每张图独立，字段：schema、id、type、title、evidenceStatus、sources、data、encoding；subtitle、note 可选。\n\n- schema 固定 pm-chart-v1；id 在文档内唯一，用于引用和导出。\n- type：bar / line / pie / funnel / heatmap / matrix / scatter。柱线图的数据记录提供分类或时间、数值与可选分组；encoding 指出字段名。漏斗记录给出步骤顺序和原始人数，率由代码计算。矩阵可用类别坐标；heatmap 明确行列及指标。\n- encoding.x / y 指出 field、scale（category / ordinal / quantitative / time）、label、unit；类别轴给出有序 categories。series / label / value 指明相关字段（按图种提供）。\n- evidenceStatus：已验证事实 / 用户观点 / 估算 / 分析推断 / 待验证 / 测试数据。sources 为来源 id、标题、url 或材料定位、日期；每行数据使用 sourceIds 引用来源。不同证据性质混用时逐行标注 evidenceStatus。\n- 缺数值用 null，不能用 0 替代；缺失数据不绘制为已观测值。百分比保留分母、统计口径和周期说明；估算附依据及置信度。等级是类别，不转换为未经解释的精确分数。\n\n### 定性痛点矩阵示例（演示数据）\n\n```chart\n{\n  \"schema\": \"pm-chart-v1\",\n  \"id\": \"pain-matrix\",\n  \"type\": \"matrix\",\n  \"title\": \"痛点矩阵\",\n  \"subtitle\": \"分析假设 · 待验证\",\n  \"evidenceStatus\": \"测试数据\",\n  \"sources\": [{\"id\":\"demo\",\"title\":\"规范演示数据，不能进入项目结论\"}],\n  \"data\": [\n    {\"id\":\"P1\",\"pain\":\"缺少持续陪伴\",\"frequency\":\"高\",\"severity\":\"高\",\"sourceIds\":[\"demo\"]},\n    {\"id\":\"P2\",\"pain\":\"使用负担\",\"frequency\":\"低\",\"severity\":\"中\",\"sourceIds\":[\"demo\"]}\n  ],\n  \"encoding\": {\n    \"x\":{\"field\":\"frequency\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"高\"],\"label\":\"发生频率\",\"unit\":\"等级\"},\n    \"y\":{\"field\":\"severity\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"中高\",\"高\"],\"label\":\"严重程度\",\"unit\":\"等级\"},\n    \"label\":\"id\"\n  },\n  \"note\":\"点位表示定性等级，不能读成统计频率；悬停显示痛点、来源与证据状态。\"\n}\n```\n\n保留同一组数据的 Markdown 表格和 1–3 句读图结论。例子只解释格式，实际图表必须使用当前项目数据。先确定数据与 encoding，再由渲染器映射为图形；不让模型手写字符轴线或字符条形图。\n\n## 视觉与交互\n\n复用宿主品牌字体、主色和明暗模式。同一报告的图表配色和同类对象颜色保持一致；无品牌规范时采用白底、深色文字、低饱和主色与浅网格，风险色只用于风险。HTML 表格设置合理列宽、长文换行、数字对齐、表头和分组；宽表在局部滚动，交互文档可固定表头。\n\n每图有标题、轴名、单位、图例（有多系列时）、来源、证据状态及读图结论。定性矩阵使用分类坐标和浅色分区；同一格多点错开并保持等级归属，提供完整名称和明细表，避免 P1–P9 堆叠遮挡。标签不足时增大容器或提供缩放，不缩小到难以阅读。\n\n交互文档提供悬停详情、适配宽度、放大查看和导出 SVG/PNG；静态导出把悬停信息的重要部分写入图注或数据表。按实际工具能力实现，不能声称未实现的交互可用。\n\n## 交付检查与降级\n\n核对图、表、正文的分类、单位、值、分母、来源和证据性质一致；检查默认尺寸与放大后文字无重叠、裁切，主题和打印/导出背景清晰。完成实际渲染才称“图表已渲染”。\n\n环境缺渲染器时保留 chart 数据或 Mermaid 源码＋数据表＋结论，并明确“待宿主渲染”；Markdown 阅读器不支持时可附已生成 SVG/PNG。渲染失败显示明细表与原因，不丢弃正文，也不回退为 ASCII 字符矩阵。没有可用分析数据的章节用“缺失证据表”说明待补内容，不生成虚构分布、比例、留存曲线或点位。\n",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/report.initiation"
+          },
+          "supplements": [],
+          "draft": false,
+          "startedAt": "2026-10-24T13:30:35.003Z",
+          "fingerprint": "a4444869a7d3800358e0b8b1d7000b275e26e8e0da9e0a31a33a77f987f12f83",
+          "model": {
+            "id": "3b9de208-5b65-4b40-acbc-a7c3d618e5e4",
+            "api": "deepseek-messages",
+            "baseURL": "https://api.deepseek.com/anthropic",
+            "model": "deepseek-flash"
+          },
+          "output": {
+            "kind": "documents",
+            "materials": [],
+            "documents": [
+              {
+                "id": "ba3e608a-efb1-4217-ab71-679be4853c52",
+                "title": "立项报告",
+                "format": "markdown",
+                "content": "> **资料完整性提示：信息不充分**\n> - 项目背景与目标：仅有“AI 宠物陪伴上班族”一句话想法，缺少要解决的问题定义、目标用户痛点证据、项目目标与成功指标\n> - 市场与竞品分析：完全没有市场规模、趋势、竞品或替代方案材料\n> - 目标用户与核心场景：仅有“上班族”笼统提法，缺用户画像、细分人群、核心使用场景与场景描述\n> - 需求优先级与MVP简介：缺需求清单，缺Kano、四象限、优先级矩阵等上游分析，缺MVP范围与不做什么的边界\n> - 验证计划：缺用户访谈、问卷、可用性测试、付费意愿验证等验证方式、样本与判定标准\n> - 资源与里程碑：缺人力投入、预算成本、时间计划与关键节点\n> - 风险与对策：缺风险识别（合规、隐私、内容安全、留存等）与对策材料\n> - 立项评审要点：缺可供评审的结论依据、决策选项与所需决策事项\n> - 证据与来源：全部输入标注为软件QA人造测试材料，无任何真实来源、访谈记录、数据口径与日期，不能作为市场或用户证据\n> - 上游分析缺口：材料中不存在任何分析节点产出（市场分析、用户研究、优先级分析、反方质疑等），相关章节只能标为缺口\n\n# 立项报告\n\n> **资料状态提示（全文适用）**\n> 1. 本报告唯一输入为一条产品想法表述“AI 宠物陪伴上班族”，来源材料自述为**软件QA人造测试材料**，证据性质为**测试数据**，不能作为真实市场证据或用户访谈使用。\n> 2. 输入不含用户访谈、市场数据、竞品分析、付费证据、资源与成本信息，也不含完整立项论证。\n> 3. 本节点只做归类、去重、编排与总结：不检索、不计算、不新增事实，不生成产品决策。除“项目背景与目标”可记录既有想法表述外，其余章节均为**材料不足**，仅列出所需输入。\n> 4. 材料中不存在任何上游分析产出（市场分析、用户研究、Kano、四象限、优先级矩阵、反方质疑等），相关章节只标缺口，不自行推演。\n\n## 项目背景与目标\n\n### 已有材料（原样记录）\n\n| 项 | 内容 | 来源 | 证据性质 |\n| --- | --- | --- | --- |\n| 待研究想法 | “AI 宠物陪伴上班族” | 材料 cded7154-5b76-4621-92fa-ca624b9f5c7b（文字输入） | 测试数据 |\n| 材料自述边界 | 没有用户访谈、市场数据、竞品分析、付费证据、资源或成本信息，也没有完整立项论证；要求只整理已有想法，不新增立项判断 | 同上 | 测试数据（材料自述） |\n\n以上为输入中关于项目背景的全部可用内容。想法本身仅为一句话概念，未说明要解决的具体问题、产生背景或触发原因。\n\n### 缺失证据表\n\n| 本章应有内容 | 当前状态 | 所需输入 |\n| --- | --- | --- |\n| 问题定义（要解决什么问题、为何现在做） | 材料不足 | 问题陈述、触发背景、机会来源说明 |\n| 目标用户痛点证据 | 材料不足 | 访谈记录、问卷或行为数据及其口径与日期 |\n| 项目目标与成功指标 | 材料不足 | 目标表述、指标定义、统计口径与周期 |\n| 项目范围与边界假设 | 材料不足 | 明确的做什么/不做什么说明 |\n\n### 本章结论\n\n材料仅支持记录“存在一个待研究想法：AI 宠物陪伴上班族”。项目背景与目标尚不成立，不能据本报告判断项目是否值得立项。\n\n## 市场与竞品分析\n\n**材料不足。** 输入中没有任何市场规模、增长趋势、竞品清单、替代方案、定价或付费证据相关内容。\n\n### 缺失证据表\n\n| 本章应有内容 | 当前状态 | 所需输入 |\n| --- | --- | --- |\n| 市场规模与趋势 | 材料不足 | 引用来源、统计口径、时间范围、地域范围 |\n| 竞品与替代方案清单 | 材料不足 | 竞品名称、功能对照、定价与用户量来源 |\n| 差异化空间 | 材料不足 | 竞品对比结论或上游市场分析产出 |\n| 付费与商业化证据 | 材料不足 | 付费意愿数据或交易记录，含样本与口径 |\n\n### 本章结论\n\n本章无法形成任何市场判断或竞争结论。若需推进，应先由具备检索权限的环节补齐上述输入，再进入本报告编排。\n\n## 目标用户与核心场景\n\n**材料不足。** 输入仅出现“上班族”这一笼统提法，未给出用户画像、细分人群、使用场景描述、场景频次或痛点强度。\n\n### 缺失证据表\n\n| 本章应有内容 | 当前状态 | 所需输入 |\n| --- | --- | --- |\n| 用户画像与细分人群 | 材料不足 | 人群定义、特征描述及其来源 |\n| 核心使用场景 | 材料不足 | 场景描述、触发时机、使用频次 |\n| 场景内痛点与现有替代做法 | 材料不足 | 访谈或观察记录，标注样本量与时间 |\n| 用户需求陈述 | 材料不足 | 原始用户表述或上游用户研究产出 |\n\n### 本章结论\n\n“上班族”为输入中唯一的人群线索，不足以界定目标用户，也不足以推导核心场景。本报告不对人群做进一步拆分或推断。\n\n## 需求优先级与MVP简介\n\n**材料不足。** 输入中没有需求清单，也没有任何上游分析产出（Kano 模型、四象限、优先级矩阵、反方质疑等）。按本节点约束，此类分析不得在本报告内自行推演或生成。\n\n### 缺失证据表\n\n| 本章应有内容 | 当前状态 | 所需输入 |\n| --- | --- | --- |\n| 需求清单 | 材料不足 | 需求条目及其来源标注 |\n| Kano 分类 | 材料不足 | 上游 Kano 分析产出；本报告不自行归类 |\n| 四象限/优先级矩阵 | 材料不足 | 上游优先级分析产出及其判定依据 |\n| 反方质疑与回应 | 材料不足 | 上游质疑清单与回应记录 |\n| MVP 范围与不做什么 | 材料不足 | 基于上述分析的取舍结论 |\n\n### 本章结论（MVP 仅作说明，不生成方案）\n\n由于缺少需求清单与优先级分析，MVP 范围无法界定。本报告不提供 MVP 功能清单、范围建议或取舍方案，仅记录该缺口。\n\n## 验证计划\n\n**材料不足。** 输入中没有任何已验证或已计划的验证活动，也没有样本、判定标准或时间安排。\n\n### 缺失证据表\n\n| 本章应有内容 | 当前状态 | 所需输入 |\n| --- | --- | --- |\n| 待验证的关键假设清单 | 材料不足 | 上游假设梳理产出 |\n| 验证方式与样本 | 材料不足 | 方法说明、样本量与招募方式 |\n| 判定标准 | 材料不足 | 通过/不通过阈值及其设定依据 |\n| 时间与责任人 | 材料不足 | 排期与分工信息 |\n\n### 本章结论\n\n当前不存在可编排的验证计划。本报告不设计验证方法，也不设定判定标准。\n\n## 资源与里程碑\n\n**材料不足。** 输入明确不含资源或成本信息，也未提供时间计划与关键节点。\n\n### 待填骨架（所有值均为待补，不含估算）\n\n| 项 | 内容 |\n| --- | --- |\n| 人力投入 | 材料不足 |\n| 预算与成本 | 材料不足 |\n| 周期与关键节点 | 材料不足 |\n| 依赖与外部协作 | 材料不足 |\n\n### 本章结论\n\n无法形成任何资源或排期判断；本报告不做工作量或成本估算。\n\n## 风险与对策\n\n**材料不足。** 输入未识别任何风险，也未提供应对措施。本报告不自行推演风险清单、概率或影响程度。\n\n### 缺失证据表\n\n| 本章应有内容 | 当前状态 | 所需输入 |\n| --- | --- | --- |\n| 风险识别清单 | 材料不足 | 上游风险梳理产出（可涵盖合规与隐私、内容安全、用户留存等方向，具体项以真实输入为准） |\n| 风险等级与影响评估 | 材料不足 | 评估方法与依据 |\n| 对策与责任归属 | 材料不足 | 应对措施与责任人 |\n\n### 本章结论\n\n本章为空缺状态，不能作为评审依据。\n\n## 立项评审要点\n\n**材料不足。** 输入不含可供评审的结论依据、决策选项或所需决策事项，因此本报告不给出立项建议（包括“建议立项”“不建议立项”或任何倾向性判断）。\n\n### 评审所需材料清单（汇总自上述各章缺口）\n\n| 序号 | 待补材料 | 对应章节 | 状态 |\n| --- | --- | --- | --- |\n| 1 | 问题定义、项目目标与成功指标 | 项目背景与目标 | 待补 |\n| 2 | 市场与竞品材料（含来源、口径、日期） | 市场与竞品分析 | 待补 |\n| 3 | 用户画像、核心场景与痛点证据 | 目标用户与核心场景 | 待补 |\n| 4 | 需求清单与上游优先级分析（Kano、四象限、矩阵、反方质疑） | 需求优先级与MVP简介 | 待补 |\n| 5 | 验证计划（假设、方法、样本、判定标准） | 验证计划 | 待补 |\n| 6 | 资源、成本与里程碑 | 资源与里程碑 | 待补 |\n| 7 | 风险识别与对策 | 风险与对策 | 待补 |\n\n### 证据与来源\n\n- 来源 1：材料 cded7154-5b76-4621-92fa-ca624b9f5c7b《文字输入》，证据性质：测试数据（软件QA人造测试材料），无真实来源、访谈记录、数据口径与日期。\n- 上游分析节点产出：无。\n- 本报告未进行任何统计计算、外部检索或产品决策。\n\n### 本章结论\n\n在补齐上表材料前，本项目不具备进入立项评审的条件；本报告仅作为输入缺口清单使用。",
+                "outline": "# 立项报告\n## 项目背景与目标\n## 市场与竞品分析\n## 目标用户与核心场景\n## 需求优先级与MVP简介\n## 验证计划\n## 资源与里程碑\n## 风险与对策\n## 立项评审要点",
+                "summary": "## 资料完整性\n- 信息不充分：项目背景与目标：仅有“AI 宠物陪伴上班族”一句话想法，缺少要解决的问题定义、目标用户痛点证据、项目目标与成功指标；市场与竞品分析：完全没有市场规模、趋势、竞品或替代方案材料；目标用户与核心场景：仅有“上班族”笼统提法，缺用户画像、细分人群、核心使用场景与场景描述；需求优先级与MVP简介：缺需求清单，缺Kano、四象限、优先级矩阵等上游分析，缺MVP范围与不做什么的边界；验证计划：缺用户访谈、问卷、可用性测试、付费意愿验证等验证方式、样本与判定标准；资源与里程碑：缺人力投入、预算成本、时间计划与关键节点；风险与对策：缺风险识别（合规、隐私、内容安全、留存等）与对策材料；立项评审要点：缺可供评审的结论依据、决策选项与所需决策事项；证据与来源：全部输入标注为软件QA人造测试材料，无任何真实来源、访谈记录、数据口径与日期，不能作为市场或用户证据；上游分析缺口：材料中不存在任何分析节点产出（市场分析、用户研究、优先级分析、反方质疑等），相关章节只能标为缺口\n\n### 核心结论\n- 本轮仅整理唯一输入：一句产品想法“AI 宠物陪伴上班族”，并如实标注其为软件QA人造测试材料。\n- 八节大纲均保留标题；仅“项目背景与目标”能记录想法表述，其余七节均标为材料不足。\n- 未新增市场、用户、优先级、资源、风险等任何事实、统计或产品取舍。\n\n### 证据局限\n- 输入自述不含用户访谈、市场数据、竞品分析、付费证据、资源与成本信息，也无完整立项论证。\n- 无任何分析节点产出（市场分析、用户研究、Kano/四象限/优先级矩阵、反方质疑），相关章节只能标缺口。\n- 全部内容证据性质为“测试数据”，不能作为真实市场或用户证据使用。\n\n### 下一步\n- 补充问题定义、目标用户痛点证据、项目目标与成功指标。\n- 补充市场与竞品材料、用户画像与核心场景、需求清单及上游优先级分析。\n- 补充验证计划、资源预算与里程碑、风险识别，再进入立项评审。",
+                "quality": {
+                  "level": "partial",
+                  "missing": [
+                    "项目背景与目标：仅有“AI 宠物陪伴上班族”一句话想法，缺少要解决的问题定义、目标用户痛点证据、项目目标与成功指标",
+                    "市场与竞品分析：完全没有市场规模、趋势、竞品或替代方案材料",
+                    "目标用户与核心场景：仅有“上班族”笼统提法，缺用户画像、细分人群、核心使用场景与场景描述",
+                    "需求优先级与MVP简介：缺需求清单，缺Kano、四象限、优先级矩阵等上游分析，缺MVP范围与不做什么的边界",
+                    "验证计划：缺用户访谈、问卷、可用性测试、付费意愿验证等验证方式、样本与判定标准",
+                    "资源与里程碑：缺人力投入、预算成本、时间计划与关键节点",
+                    "风险与对策：缺风险识别（合规、隐私、内容安全、留存等）与对策材料",
+                    "立项评审要点：缺可供评审的结论依据、决策选项与所需决策事项",
+                    "证据与来源：全部输入标注为软件QA人造测试材料，无任何真实来源、访谈记录、数据口径与日期，不能作为市场或用户证据",
+                    "上游分析缺口：材料中不存在任何分析节点产出（市场分析、用户研究、优先级分析、反方质疑等），相关章节只能标为缺口"
+                  ],
+                  "note": "输入唯一内容为一句产品想法“AI 宠物陪伴上班族”，并自述为软件QA人造测试材料、不含访谈/市场/竞品/付费/资源成本信息。该想法与《立项报告》主题（产品立项）相关，不属于完全不相关，因此可整理；但内容仅停留在概念一句话层面，八节大纲中除“项目背景与目标”可勉强记录想法表述外，其余章节均无输入支持，也无任何上游分析可供归类。判定为相关但严重不足：若生成报告，必须在文档顶部及各缺失章节显著标明资料不足与证据性质（测试数据、非真实证据），不得用常识补齐市场、用户、需求优先级、资源或风险内容。"
+                }
+              }
+            ],
+            "sources": [],
+            "assumptions": [],
+            "summary": "### 核心结论\n- 本轮仅整理唯一输入：一句产品想法“AI 宠物陪伴上班族”，并如实标注其为软件QA人造测试材料。\n- 八节大纲均保留标题；仅“项目背景与目标”能记录想法表述，其余七节均标为材料不足。\n- 未新增市场、用户、优先级、资源、风险等任何事实、统计或产品取舍。\n\n### 证据局限\n- 输入自述不含用户访谈、市场数据、竞品分析、付费证据、资源与成本信息，也无完整立项论证。\n- 无任何分析节点产出（市场分析、用户研究、Kano/四象限/优先级矩阵、反方质疑），相关章节只能标缺口。\n- 全部内容证据性质为“测试数据”，不能作为真实市场或用户证据使用。\n\n### 下一步\n- 补充问题定义、目标用户痛点证据、项目目标与成功指标。\n- 补充市场与竞品材料、用户画像与核心场景、需求清单及上游优先级分析。\n- 补充验证计划、资源预算与里程碑、风险识别，再进入立项评审。",
+            "warnings": [
+              "信息不充分：项目背景与目标：仅有“AI 宠物陪伴上班族”一句话想法，缺少要解决的问题定义、目标用户痛点证据、项目目标与成功指标；市场与竞品分析：完全没有市场规模、趋势、竞品或替代方案材料；目标用户与核心场景：仅有“上班族”笼统提法，缺用户画像、细分人群、核心使用场景与场景描述；需求优先级与MVP简介：缺需求清单，缺Kano、四象限、优先级矩阵等上游分析，缺MVP范围与不做什么的边界；验证计划：缺用户访谈、问卷、可用性测试、付费意愿验证等验证方式、样本与判定标准；资源与里程碑：缺人力投入、预算成本、时间计划与关键节点；风险与对策：缺风险识别（合规、隐私、内容安全、留存等）与对策材料；立项评审要点：缺可供评审的结论依据、决策选项与所需决策事项；证据与来源：全部输入标注为软件QA人造测试材料，无任何真实来源、访谈记录、数据口径与日期，不能作为市场或用户证据；上游分析缺口：材料中不存在任何分析节点产出（市场分析、用户研究、优先级分析、反方质疑等），相关章节只能标为缺口",
+              "“AI 宠物陪伴上班族”要解决的具体问题是什么，为什么现在要做？",
+              "目标用户是哪一类上班族，其痛点是否有访谈或行为数据支持（样本、口径、日期）？",
+              "市场与竞品情况如何，是否存在任何付费或商业化证据？",
+              "需求清单与优先级分析（Kano、四象限、矩阵、反方质疑）由哪个上游环节产出？",
+              "验证方式、样本量与判定标准如何设定？",
+              "人力、预算、周期与关键节点由谁提供？",
+              "需要识别的风险范围（如合规与隐私、内容安全、留存）及对策责任方是谁？",
+              "本次评审需要做出什么决策，决策所需的最小材料集是什么？"
+            ],
+            "fileReferences": [],
+            "inputSnapshot": [
+              {
+                "id": "cded7154-5b76-4621-92fa-ca624b9f5c7b",
+                "title": "文字输入",
+                "evidence": "test_data"
+              }
+            ],
+            "quality": {
+              "level": "partial",
+              "missing": [
+                "项目背景与目标：仅有“AI 宠物陪伴上班族”一句话想法，缺少要解决的问题定义、目标用户痛点证据、项目目标与成功指标",
+                "市场与竞品分析：完全没有市场规模、趋势、竞品或替代方案材料",
+                "目标用户与核心场景：仅有“上班族”笼统提法，缺用户画像、细分人群、核心使用场景与场景描述",
+                "需求优先级与MVP简介：缺需求清单，缺Kano、四象限、优先级矩阵等上游分析，缺MVP范围与不做什么的边界",
+                "验证计划：缺用户访谈、问卷、可用性测试、付费意愿验证等验证方式、样本与判定标准",
+                "资源与里程碑：缺人力投入、预算成本、时间计划与关键节点",
+                "风险与对策：缺风险识别（合规、隐私、内容安全、留存等）与对策材料",
+                "立项评审要点：缺可供评审的结论依据、决策选项与所需决策事项",
+                "证据与来源：全部输入标注为软件QA人造测试材料，无任何真实来源、访谈记录、数据口径与日期，不能作为市场或用户证据",
+                "上游分析缺口：材料中不存在任何分析节点产出（市场分析、用户研究、优先级分析、反方质疑等），相关章节只能标为缺口"
+              ],
+              "note": "输入唯一内容为一句产品想法“AI 宠物陪伴上班族”，并自述为软件QA人造测试材料、不含访谈/市场/竞品/付费/资源成本信息。该想法与《立项报告》主题（产品立项）相关，不属于完全不相关，因此可整理；但内容仅停留在概念一句话层面，八节大纲中除“项目背景与目标”可勉强记录想法表述外，其余章节均无输入支持，也无任何上游分析可供归类。判定为相关但严重不足：若生成报告，必须在文档顶部及各缺失章节显著标明资料不足与证据性质（测试数据、非真实证据），不得用常识补齐市场、用户、需求优先级、资源或风险内容。"
+            },
+            "analysis": {
+              "documentType": "立项报告",
+              "evidenceStatus": "测试数据",
+              "sourceCount": 1,
+              "sectionsWithSufficientInput": [
+                "项目背景与目标（仅想法表述）"
+              ],
+              "sectionsMarkedInsufficient": [
+                "市场与竞品分析",
+                "目标用户与核心场景",
+                "需求优先级与MVP简介",
+                "验证计划",
+                "资源与里程碑",
+                "风险与对策",
+                "立项评审要点"
+              ],
+              "upstreamAnalysisAvailable": false,
+              "chartsGenerated": 0,
+              "decisionsMade": 0
+            },
+            "openQuestions": [
+              "“AI 宠物陪伴上班族”要解决的具体问题是什么，为什么现在要做？",
+              "目标用户是哪一类上班族，其痛点是否有访谈或行为数据支持（样本、口径、日期）？",
+              "市场与竞品情况如何，是否存在任何付费或商业化证据？",
+              "需求清单与优先级分析（Kano、四象限、矩阵、反方质疑）由哪个上游环节产出？",
+              "验证方式、样本量与判定标准如何设定？",
+              "人力、预算、周期与关键节点由谁提供？",
+              "需要识别的风险范围（如合规与隐私、内容安全、留存）及对策责任方是谁？",
+              "本次评审需要做出什么决策，决策所需的最小材料集是什么？"
+            ],
+            "computed": null
+          },
+          "completedAt": "2026-10-24T13:31:04.429Z"
+        }
+      },
+      "progress": "工作流已完成 · 信息不充分",
+      "currentNodeId": "report",
+      "completedAt": "2026-10-24T13:31:04.439Z"
+    }
+  ]
+}

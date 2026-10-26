@@ -1,0 +1,114 @@
+{
+  "model": "deepseek-flash",
+  "uiChecks": {
+    "chartImages": 2,
+    "invalidNumericInputRejected": true,
+    "validPreviewPassed": true,
+    "revisionCreatedAndOriginalKept": true,
+    "editAfterPreviewPersisted": false,
+    "prdMermaidRendered": false,
+    "summaryContainsCoreConversion": false
+  },
+  "findings": [
+    {
+      "priority": "P1",
+      "title": "01 · 网络错误被误归类为JSON错误",
+      "evidence": "已复现＋源码定位",
+      "actual": "连接尚未修复时，真实调用遇到401，界面却要求“调整材料”或仅提示模型无内容。有效连接后可继续运行，说明这次配置错误可以恢复，但诊断方向给错了。",
+      "cause": "harness.mjs 的调用结果未在预检解析前统一转换 turn/end 的错误状态；node-executors.mjs 直接 parseModelJson。",
+      "recommendation": "按认证、限流、超时、网络、截断、结构错误分别展示；附“测试连接/重试当前节点”，不展示原始SDK长堆栈。",
+      "acceptance": "无效Key必须显示认证失败；同一输入换回有效Key后可恢复，不能要求用户改材料。",
+      "location": "apps/workbench/src/harness.mjs；apps/workbench/src/node-executors.mjs:102、112"
+    },
+    {
+      "priority": "P1",
+      "title": "02 · 当前网络下联网取材不可用",
+      "evidence": "真实桌面运行＋DNS定位",
+      "actual": "A在deepseek-flash下约9秒失败，5次来源访问均被“本机、内网或保留地址”拦截；不是模型拒绝回答，也不能当作市场研究完成。",
+      "cause": "公共域名实际被代理解析为198.18.x.x与2001:2::混合地址。research.mjs 的代理假地址兼容只覆盖全部为198.18/19 IPv4的情形；混合地址未进入该兼容分支。",
+      "recommendation": "兼容经验证的代理解析路径，保留SSRF防护；提供单独网络诊断和逐来源失败原因。不可简单允许保留网段。",
+      "acceptance": "普通网络和双栈代理环境均能取公开来源；本机/内网/重定向内网仍必须拒绝。",
+      "location": "apps/workbench/src/research.mjs · publicTarget；实测-20261024/public-dns.json"
+    },
+    {
+      "priority": "P1",
+      "title": "03 · AI生成的Mermaid与渲染协议不一致",
+      "evidence": "真实文档＋桌面UI复现",
+      "actual": "D报告两张流程图均显示“请使用纯 Mermaid 流程源码”，SVG/PNG导出被禁用；正文还反复写“未渲染，待宿主渲染”。",
+      "cause": "真实文档包含 %%{init: ...}%% 主题指令；visuals.mjs:17明确禁止该格式。生成端和展示端规则冲突。",
+      "recommendation": "生成提示词只允许宿主支持的纯源码；在文档入库前走同一安全校验/预渲染，不通过则只修复图块；由宿主统一主题。",
+      "acceptance": "本次D报告两张图均可渲染；不靠放宽脚本、click或HTML限制解决。",
+      "location": "apps/workbench/public/visuals.mjs:17；生成文档/D-report-0.md"
+    },
+    {
+      "priority": "P1",
+      "title": "04 · 图表预览后继续编辑，保存丢失修改",
+      "evidence": "桌面UI复现＋源码定位",
+      "actual": "C中输入abc被正确拦截，改回1000并校验预览通过；随后将标题改成“转化漏斗（QA修订预览，人数未改）”再另存。产生修订v1，但保存内容仍是旧标题。原稿保留正常。",
+      "cause": "editDocumentCharts 的 parse()替换charts数组；fields()绑定的c仍引用预览前对象，后续输入修改旧对象，sync()序列化新数组。",
+      "recommendation": "统一编辑状态引用；预览后重绑字段或原地更新；保存后对比表单状态与落盘文档。",
+      "acceptance": "预览→改标题/数字/来源→保存→重开，各字段均保持；原稿仍不变。",
+      "location": "apps/workbench/public/node-app.mjs:1184–1210；C-runtime.json的图表修订v1"
+    },
+    {
+      "priority": "P2",
+      "title": "05 · 自然语言说明加CSV会使统计入口识别失败",
+      "evidence": "真实输入对照复现",
+      "actual": "C把背景说明与step,users CSV放在同一文字节点中时提示未找到可计算数据；换成纯CSV后成功。问题可以绕过，但错误提示没有说明哪行或哪列不对。",
+      "cause": "文本内容承担背景与机器数据两种职责；统计解析缺少可视预览与明确字段映射。",
+      "recommendation": "输入节点区分说明、表格数据；提供解析预览、列映射、示例与行级错误，不必自动猜测所有文本。",
+      "acceptance": "同一材料可明确选中CSV区块；运行前看到步骤/人数；有错误显示行列和修正方法。",
+      "location": "C运行历史与当前graph；apps/workbench/src/node-executors.mjs:86–93"
+    },
+    {
+      "priority": "P2",
+      "title": "06 · 总结分点了，但遗漏真正的业务结论",
+      "evidence": "真实文档UI＋规则定位",
+      "actual": "C当前文档总结显示原因假设、证据局限和改进建议，却没有核心2.4%转化率、5%目标及2.6个百分点差距。局限很充分，用户仍要返回正文找结论。",
+      "cause": "document-summary.mjs回退依赖章节名筛选，并跳过表格；“核心指标与口径”没有入选，而结果正好在列表/表格中。",
+      "recommendation": "报告节点为每份文档输出专属摘要：结论、关键数字、风险、行动；表格指标由结构数据填充。回退抽取必须覆盖关键结果。",
+      "acceptance": "本C文档摘要首屏出现2.4%、5%、-2.6pp及分母1000；无项目其他文档混入。",
+      "location": "apps/workbench/public/document-summary.mjs；C-report-0.md"
+    },
+    {
+      "priority": "P2",
+      "title": "07 · 文档警告重复，信息密度失衡",
+      "evidence": "真实B/D/E文档评审",
+      "actual": "B报告14条缺项、D报告11条缺项在顶部整块展开；正文再次完整声明，各节又重复。谨慎是正确的，但核心方案被埋住。分析节点显示complete，而报告显示partial也容易被理解为质量倒退。",
+      "cause": "运行成功、资料充分性、事实可信度目前没有清晰区分；程序加前缀与模型再写声明叠加。",
+      "recommendation": "状态分为执行结果/材料覆盖/证据等级；顶部只显示3个阻塞项，其余折叠，章节引用同一缺口ID。",
+      "acceptance": "用户一屏能读懂结论和阻塞项；完整缺项可展开；不删除必要的证据标签。",
+      "location": "B/D/E最新运行文档；node-executors.mjs quality默认值及notice拼接"
+    },
+    {
+      "priority": "P2",
+      "title": "08 · 计算结果依赖AI成功才能保存输出",
+      "evidence": "故障路径实测＋源码定位",
+      "actual": "早期C在连接失败时无法查看已经进入本地计算流程的独立结果；恢复连接后同CSV得到正确计算。未把AI解释失败与数据计算成功分离。",
+      "cause": "computed局部变量先得到结果，generateDocuments成功后才放入最终output；模型失败使整个节点失败。",
+      "recommendation": "统计节点先持久化确定性计算与图表，再生成解读；允许“计算完成，解读失败”，可单独重试解读。",
+      "acceptance": "断开模型时仍能看到经校验的漏斗数字/图表；恢复后只补解释，不改数字。",
+      "location": "apps/workbench/src/node-executors.mjs:86–132"
+    },
+    {
+      "priority": "P2",
+      "title": "09 · 节点内部SOP仍缺可验收的阶段产物",
+      "evidence": "源码结构核查，非新增完整流程实测",
+      "actual": "管理器能展示流程与提示词，但不能据此认为专业能力已全部落地。通用分析主要仍是充分性检查后一次文档生成，缺少每阶段可核查的输入、输出和决策记录。",
+      "cause": "workflow元数据展示与实际执行阶段尚未一一对应；分析到报告大量传递长文，B两级合计约1.7万字符。",
+      "recommendation": "阶段只保留必要检查点；分析输出结构化决策、证据、缺口、图表数据；报告单纯编排。不是把每段SOP拆成更多画布节点。",
+      "acceptance": "每个重要决策能回溯材料与证据状态；报告不新增未经确认事实；阶段失败可局部恢复。",
+      "location": "apps/workbench/src/node-executors.mjs；B-analysis-0.md与B-report-0.md"
+    },
+    {
+      "priority": "P2",
+      "title": "10 · 运行状态和补充交互不够明确",
+      "evidence": "桌面UI观察",
+      "actual": "运行时顶部“正在运行”和画布底部“已就绪，运行后可逐节点查看结果”并存；缺搜索词弹窗仍用通用材料占位文字；原始检索SDK错误指向软件不存在的插件设置路径。",
+      "cause": "状态与错误文案分散；补充面板未按节点所需数据类型定制。",
+      "recommendation": "统一状态来源，运行时突出当前节点/阶段/耗时/停止；搜索补充直接给查询词表单；错误提供本软件内有效入口。",
+      "acceptance": "同一屏无互相冲突状态；用户知道缺哪项、在哪里补、补完继续哪个节点。",
+      "location": "桌面实际操作；apps/workbench/public/node-app.mjs"
+    }
+  ]
+}

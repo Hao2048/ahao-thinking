@@ -1,0 +1,1100 @@
+{
+  "version": "2.4.0",
+  "reviewDate": "2026-10-24",
+  "method": "静态规则/代码检查 + 真实节点执行器的隔离样例；模型与检索为替身；未使用真实API Key/私人材料",
+  "sources": [
+    {
+      "path": "/Users/penghao/Documents/Skills/AI产品经理Skill/ai-product-manager-research/SKILL.md",
+      "sha256": "c82de22f4fe168401709fa8cc81b4609e861c0b06030a4596cc7517e05098bc4"
+    },
+    {
+      "path": "/Users/penghao/Documents/Skills/pm-initiation-report/SKILL.md",
+      "sha256": "e1b011b56385c39ba2965e29ca272e5238c572e1cd9176de6a5cbf7a836f9bb3"
+    },
+    {
+      "path": "/Users/penghao/Documents/Skills/edu-pm-workflow/SKILL.md",
+      "sha256": "6190ba144560ca6b29f2b04c0566bca90db737c00267386ebcf4edfc5b66c65b"
+    }
+  ],
+  "total": 30,
+  "totalCases": 64,
+  "failed": [],
+  "professionalFullPass": 0,
+  "records": [
+    {
+      "id": "analysis.ab",
+      "name": "A/B实验分析",
+      "category": "analysis",
+      "version": "1.1.0",
+      "nodeHash": "3871b997e9cc0c8c4d6481c5b17f58aa4c3113887f1bf213af57887fcdbb82d4",
+      "workflowSteps": 3,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 1,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "analysis"
+        }
+      ],
+      "blocker": "二元/连续统计、区间和Holm计算可用；业务目标/护栏和实验设计质量仍未有专属检查。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/analysis.ab/node.json",
+        "instruction": "apps/workbench/nodes/analysis.ab/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "analysis.acceptance",
+      "name": "验收设计分析",
+      "category": "analysis",
+      "version": "1.1.0",
+      "nodeHash": "db15c01fb9c510f932835980bd091833a00bf6da77a82d999106347d11aecaa7",
+      "workflowSteps": 4,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "analysis"
+        },
+        {
+          "mode": "insufficient",
+          "status": "passed",
+          "expected": "暂停并建议补充"
+        }
+      ],
+      "blocker": "四维验收设计规则存在；缺需求覆盖率、断言质量和未知规则的专属检查。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/analysis.acceptance/node.json",
+        "instruction": "apps/workbench/nodes/analysis.acceptance/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "analysis.demand",
+      "name": "需求洞察分析",
+      "category": "analysis",
+      "version": "1.1.0",
+      "nodeHash": "47bdfbc44192886397ae26c2a11b4be9869e6a1c880e8917a782c6eaa7ce421b",
+      "workflowSteps": 4,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "analysis"
+        },
+        {
+          "mode": "insufficient",
+          "status": "passed",
+          "expected": "暂停并建议补充"
+        }
+      ],
+      "blocker": "聚类/情绪/词频是模型规则；尚无可复算统计、原话定位与聚类质量检查。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/analysis.demand/node.json",
+        "instruction": "apps/workbench/nodes/analysis.demand/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "analysis.flow",
+      "name": "业务与交互流程分析",
+      "category": "analysis",
+      "version": "1.1.0",
+      "nodeHash": "90db8be3ef23a53219d8eb5ab5a9f15ca549da6550ae8f1bcdb415e7a6f01f7a",
+      "workflowSteps": 4,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "analysis"
+        },
+        {
+          "mode": "insufficient",
+          "status": "passed",
+          "expected": "暂停并建议补充"
+        }
+      ],
+      "blocker": "主线/异常/状态规则存在；缺真实Screen Flow、连线避障与几何零遮挡验收工具。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/analysis.flow/node.json",
+        "instruction": "apps/workbench/nodes/analysis.flow/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "analysis.funnel",
+      "name": "转化漏斗分析",
+      "category": "analysis",
+      "version": "1.1.0",
+      "nodeHash": "2d438d0760c1b1aee7f48d35a79fb7a44cb8be3a6529b700e568226cff1675ab",
+      "workflowSteps": 3,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 1,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "analysis"
+        }
+      ],
+      "blocker": "代码计算与输入口径检查可用；缺业务路径向导、分群/目标对比和专业解读质量验收。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/analysis.funnel/node.json",
+        "instruction": "apps/workbench/nodes/analysis.funnel/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "analysis.initiation",
+      "name": "立项论证分析",
+      "category": "analysis",
+      "version": "1.1.0",
+      "nodeHash": "7eb7961f15062672cfb15322472e0339160f0d36acb657cf10d8c2a8badd7c61",
+      "workflowSteps": 4,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "analysis"
+        },
+        {
+          "mode": "insufficient",
+          "status": "passed",
+          "expected": "暂停并建议补充"
+        }
+      ],
+      "blocker": "四类证据表、Kano和反方规则存在；没有独立证据提取/反方复核步骤和可恢复的阶段结果。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/analysis.initiation/node.json",
+        "instruction": "apps/workbench/nodes/analysis.initiation/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "analysis.market",
+      "name": "市场分析",
+      "category": "analysis",
+      "version": "1.1.0",
+      "nodeHash": "66be3be0acf61f60cce1e4f0b7175938e291c21ae05e39a206722959c3397ef7",
+      "workflowSteps": 4,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "analysis"
+        },
+        {
+          "mode": "insufficient",
+          "status": "passed",
+          "expected": "暂停并建议补充"
+        }
+      ],
+      "blocker": "研究方法已写入；没有调研计划确认、自动补取证据、双源核验工具及研究专属验收器。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/analysis.market/node.json",
+        "instruction": "apps/workbench/nodes/analysis.market/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "analysis.mvp",
+      "name": "MVP方案分析",
+      "category": "analysis",
+      "version": "1.1.0",
+      "nodeHash": "36e7e3806430882c6b97c4272e0ea1616ebd3cd2a36966c1f6166a91a2ed7db0",
+      "workflowSteps": 4,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "analysis"
+        },
+        {
+          "mode": "insufficient",
+          "status": "passed",
+          "expected": "暂停并建议补充"
+        }
+      ],
+      "blocker": "闭环和假设—功能—指标规则存在；缺逐项可追踪结构及核心假设覆盖检查器。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/analysis.mvp/node.json",
+        "instruction": "apps/workbench/nodes/analysis.mvp/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "analysis.opportunity",
+      "name": "机会与风险分析",
+      "category": "analysis",
+      "version": "1.1.0",
+      "nodeHash": "36a42e8512e13f3a410c34ba818d29177e7c954980e6e56dfb926132866e3d26",
+      "workflowSteps": 4,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "analysis"
+        },
+        {
+          "mode": "insufficient",
+          "status": "passed",
+          "expected": "暂停并建议补充"
+        }
+      ],
+      "blocker": "机会/风险方法已迁入；缺逐条机会到证据的强制关联和条件风险检查器。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/analysis.opportunity/node.json",
+        "instruction": "apps/workbench/nodes/analysis.opportunity/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "analysis.prd",
+      "name": "PRD方案分析",
+      "category": "analysis",
+      "version": "1.1.0",
+      "nodeHash": "7ff533d054b2df9898cf2431d2abbd433b35fad3399882a8692e83869a282d7a",
+      "workflowSteps": 4,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "analysis"
+        },
+        {
+          "mode": "insufficient",
+          "status": "passed",
+          "expected": "暂停并建议补充"
+        }
+      ],
+      "blocker": "专业方案规则存在；缺需求反向确认、章节裁剪批准和严格PRD专用校验器。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/analysis.prd/node.json",
+        "instruction": "apps/workbench/nodes/analysis.prd/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "analysis.prototype",
+      "name": "原型方案分析",
+      "category": "analysis",
+      "version": "1.1.0",
+      "nodeHash": "f302d27a3d63437102fa1af1d2c177490f54f10fa41b2fbe559939bee6ffeb6b",
+      "workflowSteps": 4,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "analysis"
+        },
+        {
+          "mode": "insufficient",
+          "status": "passed",
+          "expected": "暂停并建议补充"
+        }
+      ],
+      "blocker": "页面状态设计规则存在；缺可执行的浏览器逐页交互/PRD一致性检查。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/analysis.prototype/node.json",
+        "instruction": "apps/workbench/nodes/analysis.prototype/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "analysis.retention",
+      "name": "使用与留存分析",
+      "category": "analysis",
+      "version": "1.1.0",
+      "nodeHash": "7f6d62b7b032b82fafaa19bb88390d9a3101b75b447b4b03d4201150c8893f6e",
+      "workflowSteps": 3,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 1,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "analysis"
+        }
+      ],
+      "blocker": "指定日留存计算可用；使用频次、活跃、渗透率等更广义使用分析尚未实现。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/analysis.retention/node.json",
+        "instruction": "apps/workbench/nodes/analysis.retention/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "analysis.review",
+      "name": "迭代复盘分析",
+      "category": "analysis",
+      "version": "1.1.0",
+      "nodeHash": "a2d122393f77271439c08bbe617fe87ad39128e8cd13825944d4832c675280df",
+      "workflowSteps": 4,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "analysis"
+        },
+        {
+          "mode": "insufficient",
+          "status": "passed",
+          "expected": "暂停并建议补充"
+        }
+      ],
+      "blocker": "复盘规则存在；缺目标—变更—数据—反馈—原因的结构化追踪和跨文档联动。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/analysis.review/node.json",
+        "instruction": "apps/workbench/nodes/analysis.review/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "analysis.tracking",
+      "name": "埋点设计分析",
+      "category": "analysis",
+      "version": "1.1.0",
+      "nodeHash": "6cdf092a5da42b24f059ea94ee8801ab661db696e1923b6fc558e8eb2f8e44f6",
+      "workflowSteps": 4,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "analysis"
+        },
+        {
+          "mode": "insufficient",
+          "status": "passed",
+          "expected": "暂停并建议补充"
+        }
+      ],
+      "blocker": "字典与事件规则存在；缺字典导入映射、snake_case/六列表和页面覆盖专属检查。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/analysis.tracking/node.json",
+        "instruction": "apps/workbench/nodes/analysis.tracking/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "analysis.user",
+      "name": "用户分析",
+      "category": "analysis",
+      "version": "1.1.0",
+      "nodeHash": "a2d4f4dddbd5fcecca6dcbdf47f2556008ac93ef9df43ef001713a5bb13124ea",
+      "workflowSteps": 4,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "analysis"
+        },
+        {
+          "mode": "insufficient",
+          "status": "passed",
+          "expected": "暂停并建议补充"
+        }
+      ],
+      "blocker": "画像模板和逐章配图规则已迁入；缺每章证据/图表/置信度的专属自动检查器。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/analysis.user/node.json",
+        "instruction": "apps/workbench/nodes/analysis.user/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "input.artifact",
+      "name": "已有产物",
+      "category": "input",
+      "version": "1.1.0",
+      "nodeHash": "a06dfb01e7384597530e37b04b0b72beed93f4f6cc242c1ce18e52553adc1aae",
+      "workflowSteps": 2,
+      "rules": "partial",
+      "tools": "basic-ready",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 0,
+          "searchCalls": 0,
+          "documents": 0,
+          "outputKind": "materials"
+        }
+      ],
+      "blocker": "已有产物引用可用；缺已确认需求/决策与研究假设的强制语义交接检查。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/input.artifact/node.json",
+        "instruction": null
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "input.file",
+      "name": "文档输入",
+      "category": "input",
+      "version": "1.1.0",
+      "nodeHash": "841cb53af791b4a4e52f28f9c759f2c5e5adf1c2985d339c873848e46d840439",
+      "workflowSteps": 2,
+      "rules": "partial",
+      "tools": "basic-ready",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 0,
+          "searchCalls": 0,
+          "documents": 0,
+          "outputKind": "materials"
+        }
+      ],
+      "blocker": "文件/OCR工具已存在，尚无业务字段映射和四类证据自动归档/逐条定位校验。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/input.file/node.json",
+        "instruction": null
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "input.text",
+      "name": "文字输入",
+      "category": "input",
+      "version": "1.1.0",
+      "nodeHash": "ab910179df883d66c348de313ff1bdd39728bba0013a9fba13dc49793ddb7678",
+      "workflowSteps": 2,
+      "rules": "partial",
+      "tools": "basic-ready",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 0,
+          "searchCalls": 0,
+          "documents": 0,
+          "outputKind": "materials"
+        }
+      ],
+      "blocker": "三种研究模式仅为标签，尚无分模式追问、调研计划确认流程。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/input.text/node.json",
+        "instruction": null
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "input.web",
+      "name": "联网取材",
+      "category": "input",
+      "version": "1.1.0",
+      "nodeHash": "784b25fd126faf0d184a95185c72d4054aa686c16e50a9565ee6994aea5360b2",
+      "workflowSteps": 2,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 0,
+          "searchCalls": 1,
+          "documents": 0,
+          "outputKind": "sources"
+        }
+      ],
+      "blocker": "能实际搜索读取；缺多轮研究策略、来源覆盖/交叉验证/饱和度检查。本次用检索替身验证交接，不作联网质量验收。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/input.web/node.json",
+        "instruction": null
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "report.acceptance",
+      "name": "验收清单",
+      "category": "report",
+      "version": "1.1.0",
+      "nodeHash": "0ab72b9f27679c40b2c875e9409bbff526da3733fb42794add6d2fc880b0cec6",
+      "workflowSteps": 4,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "documents"
+        },
+        {
+          "mode": "partial",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "documents"
+        },
+        {
+          "mode": "unrelated",
+          "status": "passed",
+          "expected": "拒绝输出"
+        }
+      ],
+      "blocker": "可生成清单；无专用三态操作、进度统计、筛选/保存和验收结果导出工具。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/report.acceptance/node.json",
+        "instruction": "apps/workbench/nodes/report.acceptance/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "report.data",
+      "name": "数据分析报告",
+      "category": "report",
+      "version": "1.1.0",
+      "nodeHash": "53df579524b981269dc4513367064738397e67c9d2abf4597cefc90e4ab99d5d",
+      "workflowSteps": 4,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "documents"
+        },
+        {
+          "mode": "partial",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "documents"
+        },
+        {
+          "mode": "unrelated",
+          "status": "passed",
+          "expected": "拒绝输出"
+        }
+      ],
+      "blocker": "可整理计算结果与SVG图表；缺KPI/分群模板和报告数字与computed的逐值对账。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/report.data/node.json",
+        "instruction": "apps/workbench/nodes/report.data/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "report.demand",
+      "name": "需求文档",
+      "category": "report",
+      "version": "1.1.0",
+      "nodeHash": "a35f01eb77ac08279126a20bda08ee1f5ea4f3bd2128a0c3a5a5ab0d30e8503b",
+      "workflowSteps": 4,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "documents"
+        },
+        {
+          "mode": "partial",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "documents"
+        },
+        {
+          "mode": "unrelated",
+          "status": "passed",
+          "expected": "拒绝输出"
+        }
+      ],
+      "blocker": "需求与PRD已区分；缺需求洞察成果到需求清单的覆盖、来源、优先级检查。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/report.demand/node.json",
+        "instruction": "apps/workbench/nodes/report.demand/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "report.flow",
+      "name": "业务与交互流程",
+      "category": "report",
+      "version": "1.1.0",
+      "nodeHash": "7345cfa4bf493e0db527bd68e9575043eccda9645d3cf572b978ca9f563149f4",
+      "workflowSteps": 4,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "documents"
+        },
+        {
+          "mode": "partial",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "documents"
+        },
+        {
+          "mode": "unrelated",
+          "status": "passed",
+          "expected": "拒绝输出"
+        }
+      ],
+      "blocker": "Mermaid可渲染；真实界面拼接Screen Flow和时序源码专用交付尚未实现。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/report.flow/node.json",
+        "instruction": "apps/workbench/nodes/report.flow/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "report.initiation",
+      "name": "立项报告",
+      "category": "report",
+      "version": "1.1.0",
+      "nodeHash": "17664b448fc9407ab64e05e8d61b714fad77f56f2afdb76a6963f6f18312401e",
+      "workflowSteps": 4,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "documents"
+        },
+        {
+          "mode": "partial",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "documents"
+        },
+        {
+          "mode": "unrelated",
+          "status": "passed",
+          "expected": "拒绝输出"
+        }
+      ],
+      "blocker": "报告职责已收紧且默认八章已修正；缺八节表格/原话/验证资源口径专用检查，飞书交付未实现。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/report.initiation/node.json",
+        "instruction": "apps/workbench/nodes/report.initiation/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "report.iteration",
+      "name": "迭代计划",
+      "category": "report",
+      "version": "1.1.0",
+      "nodeHash": "285063a9a0864f6f7bf6ecde7bd061ee6e891c267b94e9291f52b89431c0180b",
+      "workflowSteps": 4,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "documents"
+        },
+        {
+          "mode": "partial",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "documents"
+        },
+        {
+          "mode": "unrelated",
+          "status": "passed",
+          "expected": "拒绝输出"
+        }
+      ],
+      "blocker": "可整理迭代计划；缺产品决策交接包和PRD/原型/流程的同步检查。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/report.iteration/node.json",
+        "instruction": "apps/workbench/nodes/report.iteration/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "report.mvp",
+      "name": "MVP方案",
+      "category": "report",
+      "version": "1.1.0",
+      "nodeHash": "7a7ecc0ed216c25e618baa2c81d49ca6a22e8b87b3f86766fd7a0e83d9b0b810",
+      "workflowSteps": 4,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "documents"
+        },
+        {
+          "mode": "partial",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "documents"
+        },
+        {
+          "mode": "unrelated",
+          "status": "passed",
+          "expected": "拒绝输出"
+        }
+      ],
+      "blocker": "只整理已有MVP成果；缺范围/假设/指标等章节的任务专属完备性校验。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/report.mvp/node.json",
+        "instruction": "apps/workbench/nodes/report.mvp/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "report.prd",
+      "name": "PRD文档",
+      "category": "report",
+      "version": "1.1.0",
+      "nodeHash": "4b71e17c334751a2c71761d86eef84b904af7669c68ad309db22a582e6c1fa0d",
+      "workflowSteps": 4,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "documents"
+        },
+        {
+          "mode": "partial",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "documents"
+        },
+        {
+          "mode": "unrelated",
+          "status": "passed",
+          "expected": "拒绝输出"
+        }
+      ],
+      "blocker": "默认章节已拆分；未集成原HTML模板、validate_prd、编辑器、复制含图、PRD/原型联动。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/report.prd/node.json",
+        "instruction": "apps/workbench/nodes/report.prd/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "report.prototype",
+      "name": "交互原型",
+      "category": "report",
+      "version": "1.1.0",
+      "nodeHash": "7d783badc94806be0ffa5f4162cd209f4653642bb5f6ed411737d8c0c3703fdf",
+      "workflowSteps": 4,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "documents"
+        },
+        {
+          "mode": "partial",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "documents"
+        },
+        {
+          "mode": "unrelated",
+          "status": "passed",
+          "expected": "拒绝输出"
+        }
+      ],
+      "blocker": "按需HTML入口存在；无专用页面hash/平铺装配、真实截图批量导出及交互验收工具。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/report.prototype/node.json",
+        "instruction": "apps/workbench/nodes/report.prototype/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "report.research",
+      "name": "研究报告",
+      "category": "report",
+      "version": "1.1.0",
+      "nodeHash": "7390f1349326b932617d2eba1a2af1f9d70b350ff4c8f29c86c66b561ba505cb",
+      "workflowSteps": 4,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "documents"
+        },
+        {
+          "mode": "partial",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "documents"
+        },
+        {
+          "mode": "unrelated",
+          "status": "passed",
+          "expected": "拒绝输出"
+        }
+      ],
+      "blocker": "通用整理和材料检查可用；没有研究模板选择器、合并/拆分Word/PDF等交付。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/report.research/node.json",
+        "instruction": "apps/workbench/nodes/report.research/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    },
+    {
+      "id": "report.tracking",
+      "name": "埋点方案",
+      "category": "report",
+      "version": "1.1.0",
+      "nodeHash": "ca1e1ccf5bd908e3eb72675c85a581304768fae308e3ef4254a6c8f8c41d4445",
+      "workflowSteps": 4,
+      "rules": "partial",
+      "tools": "partial",
+      "checks": "partial",
+      "samples": "basic-passed",
+      "sampleCases": [
+        {
+          "mode": "normal",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "documents"
+        },
+        {
+          "mode": "partial",
+          "status": "passed",
+          "modelCalls": 2,
+          "searchCalls": 0,
+          "documents": 1,
+          "outputKind": "documents"
+        },
+        {
+          "mode": "unrelated",
+          "status": "passed",
+          "expected": "拒绝输出"
+        }
+      ],
+      "blocker": "只整理上游埋点方案；缺固定列、字典复用、事件命名和覆盖的专门验收。",
+      "evidence": {
+        "definition": "apps/workbench/nodes/report.tracking/node.json",
+        "instruction": "apps/workbench/nodes/report.tracking/instructions.md"
+      },
+      "scope": "基础执行样例通过不代表专业语义/真实模型质量通过"
+    }
+  ],
+  "regressions": [
+    {
+      "name": "单元测试",
+      "status": "passed",
+      "log": "/tmp/four-layer-unit.log",
+      "result": "etadata (102.450625ms)\n✔ search settings never expose or carry credentials across endpoints (0.455167ms)\n✔ all three real provider adapters use expected request shape and collect snippet failures (29.355833ms)\n✔ slim CLI still includes every external import in upstream launcher and commands (6.744125ms)\n✔ minimal SDK plugin keeps executable imports but excludes unused ordinary-bundle Office plugins (4.575ms)\n✔ runtime copy keeps licenses and document engines while dropping development and browser duplicates (0.632959ms)\n✔ restart preserves projects and marks interrupted tasks failed (6.610542ms)\n✔ serialized writes preserve both updates and a failed transaction does not poison the store (6.930792ms)\n✔ desktop install replies before applying shutdown and refuses a running task (94.881958ms)\n✔ updater requires HTTPS, never downloads ad hoc builds and prevents duplicate checks (1.925958ms)\nℹ tests 76\nℹ suites 0\nℹ pass 76\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 4365.9905\n"
+    },
+    {
+      "name": "画布、执行、聊天和插件",
+      "status": "passed",
+      "log": "/tmp/four-layer-canvas.log",
+      "result": "PASS node canvas, real DAG execution, SVG reports, per-document summaries, streamed chat/question, undo, automatic plugin discovery/config/execution\n"
+    },
+    {
+      "name": "大纲与多文档",
+      "status": "passed",
+      "log": "/tmp/four-layer-outline.log",
+      "result": "PASS report outline editor/default/preview/save, multi-doc generation, heading/body export, per-doc outline snapshot, historical version preservation\n"
+    },
+    {
+      "name": "管理详情、文档与图表修订",
+      "status": "passed",
+      "log": "/tmp/four-layer-editor.log",
+      "result": "PASS management SOP/prompt; double-click document; numeric rejection; SVG preview; persistent chart revision; original retained; invalid API edits rejected\n"
+    },
+    {
+      "name": "双主题与项目切换",
+      "status": "passed",
+      "log": "/tmp/four-layer-theme.log",
+      "result": "PASS dark/silver themes; cross-port persistence; project/workflow selectors; aligned headers/edges at 1520,1100,1000; contrast; refreshed configuration editing; outlines; custom colors; library\n"
+    }
+  ]
+}

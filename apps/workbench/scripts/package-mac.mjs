@@ -9,7 +9,6 @@ import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { releaseOptions, notarize, fileDigest, updateManifest } from './release.mjs';
 import { createHash } from 'node:crypto';
-import { resolveSkillRoot } from '../src/skill-paths.mjs';
 
 const run = promisify(execFile);
 const appRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -17,7 +16,7 @@ const projectRoot = resolve(appRoot, '../..');
 const harnessRoot = join(projectRoot, 'deepseek-harness');
 const buildRoot = join(appRoot, '.desktop-build');
 const output = join(projectRoot, '产品经理工作台/桌面安装包');
-const displayName = '好浩的产品工作台';
+const displayName = '阿浩Thinking';
 const identifier = 'com.penghao.aipm.workbench';
 const require = createRequire(join(harnessRoot, 'apps/desktop/package.json'));
 const electron = require('electron');
@@ -112,10 +111,6 @@ async function prepareRuntime() {
   await cp(join(harnessRoot,'LICENSE'),join(runtime,'HARNESS_LICENSE'));
   await cp(join(harnessRoot,'THIRD_PARTY_NOTICES.md'),join(runtime,'THIRD_PARTY_NOTICES.md'));
   await writeFile(join(runtime,'runtime-manifest.json'),JSON.stringify({node:process.versions.node,harness:JSON.parse(await readFile(join(harnessRoot,'package.json'),'utf8')).version,packages:packages.size,architecture:process.arch},null,2));
-  const skillSource=resolveSkillRoot();
-  for (const path of ['AI产品经理Skill/ai-product-manager-research','edu-pm-workflow','pm-initiation-report']) {
-    await cp(join(skillSource,path),join(buildRoot,'skills',path),{recursive:true,dereference:true,filter:path=>!['.git','node_modules','__pycache__'].includes(path.split('/').at(-1))});
-  }
   console.log(`Runtime ready: ${packages.size} production packages + Node ${process.versions.node}`);
 }
 
@@ -146,9 +141,8 @@ async function packageApplication() {
   await run('/usr/bin/ditto',[electronApp,bundle]);
   const resources=join(bundle,'Contents/Resources');const packagedApp=join(resources,'app');
   await mkdir(packagedApp,{recursive:true});
-  for(const path of ['src','public','desktop','package.json','README.md'])await cp(join(appRoot,path),join(packagedApp,path),{recursive:true});
+  for(const path of ['src','public','desktop','nodes','package.json','README.md'])await cp(join(appRoot,path),join(packagedApp,path),{recursive:true});
   await cp(join(buildRoot,'runtime'),join(resources,'runtime'),{recursive:true,dereference:false,verbatimSymlinks:true});
-  await cp(join(buildRoot,'skills'),join(resources,'skills'),{recursive:true});
   // Electron's example app is not used: Resources/app is our actual entry.
   await rm(join(resources,'default_app.asar'),{force:true});
   await icon(join(resources,'workbench.icns'));
@@ -173,9 +167,6 @@ async function packageApplication() {
 }
 
 if(process.argv.includes('--reuse-runtime')) { await access(join(buildRoot,'runtime/runtime-manifest.json')); } else await prepareRuntime();
-// Refresh skill instructions even when the large dependency runtime is reused.
-const skillRefreshRoot=resolveSkillRoot();
-for(const path of ['AI产品经理Skill/ai-product-manager-research','edu-pm-workflow','pm-initiation-report'])await cp(join(skillRefreshRoot,path),join(buildRoot,'skills',path),{recursive:true,dereference:true,filter:path=>!['.git','node_modules','__pycache__'].includes(path.split('/').at(-1))});
 await run(process.execPath,[join(appRoot,'scripts/build-visuals.mjs')]);
 await prepareOCR();
 if(!process.argv.includes('--runtime-only')) {
@@ -185,7 +176,7 @@ if(!process.argv.includes('--runtime-only')) {
     await access(join(buildRoot,manifestName));
     await rm(stage,{recursive:true,force:true});
     await mkdir(stage,{recursive:true});await run('/usr/bin/ditto',[bundle,join(stage,`${displayName}.app`)]);await symlink('/Applications',join(stage,'Applications'),'dir');
-    const dmg=join(output,`好浩的产品工作台-${version}-mac-${process.arch}.dmg`);
+    const dmg=join(output,`阿浩Thinking-${version}-mac-${process.arch}.dmg`);
     await run('/usr/bin/hdiutil',['create','-volname',displayName,'-srcfolder',stage,'-ov','-format','UDZO',dmg],{maxBuffer:1024*1024});console.log(`DMG ${dmg}`);
     // The staging copy is reproducible; do not keep a second complete app.
     await rm(stage,{recursive:true});
@@ -194,7 +185,7 @@ if(!process.argv.includes('--runtime-only')) {
   if(release){
     const zip=join(output,`aipm-workbench-${version}-mac-${process.arch}.zip`);
     await run('/usr/bin/ditto',['-c','-k','--sequesterRsrc','--keepParent',bundle,zip]);
-    await writeFile(join(output,`latest-${process.arch}.json`),JSON.stringify(updateManifest({version,architecture:process.arch,baseURL:release.baseURL,digest:await fileDigest(zip),notes:'好浩的产品工作台正式发布'}),null,2));
+    await writeFile(join(output,`latest-${process.arch}.json`),JSON.stringify(updateManifest({version,architecture:process.arch,baseURL:release.baseURL,digest:await fileDigest(zip),notes:'阿浩Thinking正式发布'}),null,2));
     console.log('Signed release ZIP and architecture-specific update manifest ready (not published)');
   }
   if(process.argv.includes('--install')) {

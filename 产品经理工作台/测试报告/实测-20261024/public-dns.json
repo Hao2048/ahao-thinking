@@ -1,0 +1,41 @@
+[
+  {
+    "host": "en.wikipedia.org",
+    "addresses": [
+      {
+        "address": "198.18.0.37",
+        "family": 4
+      },
+      {
+        "address": "2001:2::70",
+        "family": 6
+      }
+    ]
+  },
+  {
+    "host": "www.deepseek.com",
+    "addresses": [
+      {
+        "address": "198.18.0.38",
+        "family": 4
+      },
+      {
+        "address": "2001:2::71",
+        "family": 6
+      }
+    ]
+  },
+  {
+    "host": "store.steampowered.com",
+    "addresses": [
+      {
+        "address": "198.18.0.36",
+        "family": 4
+      },
+      {
+        "address": "2001:2::6f",
+        "family": 6
+      }
+    ]
+  }
+]

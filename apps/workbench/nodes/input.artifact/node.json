@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "input.artifact",
+  "name": "已有产物",
+  "version": "1.1.0",
+  "category": "input",
+  "description": "引用旧版或历史节点产物的指定版本。",
+  "icon": "folder",
+  "enabled": true,
+  "executor": "artifact",
+  "inputs": [],
+  "outputs": [
+    {
+      "id": "data",
+      "name": "已有产物结果",
+      "types": [
+        "materials"
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "key": "artifact",
+      "label": "选择已有产物",
+      "type": "artifact",
+      "default": ""
+    }
+  ],
+  "instructions": null,
+  "requirements": [
+    "至少一份相关输入"
+  ],
+  "implementation": "artifact",
+  "origin": {
+    "skill": "产品经理工作流 / 现有本地工具",
+    "adaptedAt": "2026-10-18",
+    "scope": "引用旧版或历史节点产物的指定版本。"
+  },
+  "workflow": [
+    {
+      "id": "collect",
+      "title": "采集或引用材料",
+      "prompt": "引用旧版或历史节点产物的指定版本。"
+    },
+    {
+      "id": "confirm",
+      "title": "保留内容与来源",
+      "prompt": "原样交接材料、来源和证据性质，不承担下游分析或报告整理。"
+    }
+  ],
+  "capabilities": {
+    "search": false,
+    "generateDecisions": false
+  }
+}

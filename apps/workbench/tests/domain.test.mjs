@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { makeInput, validateModel, publicModel, funnelFromInputs, validateResult } from '../src/domain.mjs';
+import { validateModel, publicModel, funnelFromInputs, validateResult } from '../src/domain.mjs';
 const csv = content => [{ id: 'input-1', title: 'data.csv', evidence: 'test_data', content }];
 test('funnel uses supplied counts and preserves evidence', () => {
   const chart = funnelFromInputs(csv('step,users\n访问,1200\n创建,840\n喂养,660\n发布,180'));
@@ -12,10 +12,6 @@ test('funnel uses supplied counts and preserves evidence', () => {
 test('funnel rejects increasing, fractional, duplicate and zero-base counts', () => {
   for (const content of ['step,users\na,2\nb,3','step,users\na,3\nb,1.2','step,users\na,3\na,1','step,users\na,0\nb,0']) assert.throws(() => funnelFromInputs(csv(content)));
   assert.equal(funnelFromInputs(csv('step,users\na,3\nb,0\nc,0')).rows[2].stepRate, null);
-});
-test('empty input and unsupported module rejected', () => {
-  assert.throws(()=>makeInput({moduleId:'idea', title:'材料',content:' ',kind:'manual',evidence:'material'}));
-  assert.throws(()=>makeInput({moduleId:'fake', title:'材料',content:'test',kind:'manual',evidence:'material'}));
 });
 test('model public representation never contains secret',()=>{
   const model=validateModel({name:'内部模型',model:'test',api:'openai-completions',baseURL:'http://localhost:9999/v1',apiKey:'test-secret'});

@@ -23,5 +23,5 @@ export function updateManifest({version,architecture,baseURL,digest,notes='',dat
   if(!/^\d+\.\d+\.\d+$/.test(version)||!['arm64','x64'].includes(architecture))throw new Error('发布版本或架构不合法');
   const url=new URL(`aipm-workbench-${version}-mac-${architecture}.zip`,baseURL).href;
   if(new URL(url).protocol!=='https:')throw new Error('更新包需 HTTPS 地址');
-  return{currentRelease:version,releases:[{version,updateTo:{version,url,name:`产品经理工作台 ${version}`,notes,pub_date:date,...digest}}]};
+  return{currentRelease:version,releases:[{version,updateTo:{version,url,name:`阿浩Thinking ${version}`,notes,pub_date:date,...digest}}]};
 }

@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "id": "analysis.review",
+  "name": "迭代复盘分析",
+  "version": "1.1.0",
+  "category": "analysis",
+  "description": "对比目标与结果，定位问题并形成改进建议。",
+  "icon": "clock",
+  "enabled": true,
+  "executor": "ai",
+  "inputs": [
+    {
+      "id": "materials",
+      "name": "输入材料",
+      "types": [
+        "materials",
+        "sources",
+        "analysis",
+        "dataset",
+        "documents"
+      ],
+      "multiple": true
+    }
+  ],
+  "outputs": [
+    {
+      "id": "data",
+      "name": "迭代复盘分析结果",
+      "types": [
+        "analysis"
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "key": "task",
+      "label": "本次目标与补充要求",
+      "type": "textarea",
+      "default": ""
+    },
+    {
+      "key": "modelId",
+      "label": "执行模型",
+      "type": "model",
+      "default": ""
+    },
+    {
+      "key": "outline",
+      "label": "输出大纲",
+      "type": "textarea",
+      "default": "# 迭代复盘分析\n## 目标与实际结果\n## 问题与原因\n## 经验与证据\n## 改进优先级"
+    }
+  ],
+  "instructions": "instructions.md",
+  "requirements": [
+    "目标、上线变更、实际数据、反馈和约束。"
+  ],
+  "implementation": "ai",
+  "origin": {
+    "skill": "产品经理工作流 / 现有本地工具",
+    "adaptedAt": "2026-10-18",
+    "scope": "对比目标与结果，定位问题并形成改进建议。"
+  },
+  "capabilities": {
+    "search": false,
+    "generateDecisions": true
+  },
+  "workflow": [
+    {
+      "id": "inventory",
+      "title": "盘点材料与范围",
+      "prompt": "检查最低输入要求、来源性质与缺口。"
+    },
+    {
+      "id": "analysis",
+      "title": "执行专业分析",
+      "prompt": "对照目标与实际、发布变更与用户反馈形成复盘。逐条列证据、可能原因与验证方法，不以相关代替因果。给下一轮目标、优先级、角色、依赖、资源和通过/止损条件，未知日期人员待确认。"
+    },
+    {
+      "id": "verify",
+      "title": "检查证据与结论",
+      "prompt": "核对来源、事实/推断/假设、数字和图表口径，标记未确认事项。"
+    },
+    {
+      "id": "output",
+      "title": "交接分析成果",
+      "prompt": "输出供下游使用的结论、方案、规则、证据与待确认项。"
+    }
+  ]
+}

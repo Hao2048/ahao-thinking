@@ -1,14 +1,12 @@
+import {installBundledNodes} from "./node-installation.mjs";
 import { createRequire } from 'node:module';
 import { spawn } from 'node:child_process';
-import { mkdir, access, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, access, readFile, writeFile, cp } from 'node:fs/promises';
 import { createWriteStream, mkdirSync } from 'node:fs';
 import { resolve, dirname, join } from 'node:path';
-import { homedir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { createUpdater } from './updater.mjs';
 import { createDynamicReader } from './dynamic-research.mjs';
-import { importLegacyData } from './storage.mjs';
-import { resolveSkillRoot } from '../src/skill-paths.mjs';
 
 // Electron's ESM named exports eagerly evaluate safeStorage. Load the CommonJS
 // getters so the historical app name is set before Keychain initialization.
@@ -16,7 +14,7 @@ const electron = createRequire(import.meta.url)('electron');
 const { app, BrowserWindow, Menu, dialog, shell, session, autoUpdater } = electron;
 
 const appRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const name = '好浩的产品工作台';
+const name = '阿浩Thinking';
 // Keep the original Keychain identity so a display-name change does not select
 // a different safeStorage key for existing encrypted projects and model keys.
 // The bundle, window, menu and About panel use the public display name above.
@@ -36,6 +34,7 @@ let log;
 let boundsTimer;
 let hostExited;
 let dynamicReader;
+const researchJobs=new Map();
 let updater;
 const isOwnPage = url => Boolean(origin && (url === origin || url === `${origin}/` || url.startsWith(`${origin}/#`)));
 
@@ -64,8 +63,6 @@ async function boot() {
   log = createWriteStream(join(dataDir, 'logs', 'desktop.log'), { flags: 'a', mode: 0o600 });
   log.write('Desktop starting\n');
   if (!safeStorage.isEncryptionAvailable()) throw new Error('macOS 钥匙串加密不可用。请解锁登录钥匙串后重试；工作台不会以明文保存桌面数据。');
-  const legacy = process.env.AIPM_IMPORT_FROM || join(homedir(), 'Documents/AIProduct/AIProductControl/apps/workbench/data');
-  await importLegacyData(legacy, dataDir);
   const runtimeRoot = app.isPackaged ? join(process.resourcesPath, 'runtime') : resolve(appRoot, '.desktop-build/runtime');
   const bundledNode = join(runtimeRoot, 'node');
   await access(bundledNode);
@@ -75,9 +72,7 @@ async function boot() {
   let distributable=false;
   if(app.isPackaged){try{distributable=JSON.parse(await readFile(join(process.resourcesPath,'aipm-desktop-build.json'),'utf8')).signing==='developer-id';}catch{}}
   updater=createUpdater({autoUpdater,supported:distributable,version:app.getVersion(),prepareInstall:async()=>{shuttingDown='running';dynamicReader.close();await stopHost();shuttingDown='complete';log?.end();}});
-  const packagedSkills = app.isPackaged ? join(process.resourcesPath, 'skills') : join(appRoot, '.desktop-build/skills');
-  const skillRoot = resolveSkillRoot(packagedSkills);
-  await startHost(bundledNode, modules, skillRoot);
+  await startHost(bundledNode, modules);
   const ses = session.defaultSession;
   ses.setPermissionRequestHandler((_contents, _permission, callback) => callback(false));
   ses.setPermissionCheckHandler(() => false);
@@ -86,10 +81,12 @@ async function boot() {
   await createWindow();
 }
 
-async function startHost(node, modules, skillRoot) {
+async function startHost(node, modules) {
+  const nodeRoot=app.isPackaged?join(dataDir,'nodes'):join(appRoot,'nodes');
+  if(app.isPackaged){const installed=await installBundledNodes(join(appRoot,'nodes'),nodeRoot);if(installed.conflicts.length)log?.write('Preserved customized node files: '+installed.conflicts.join(', ')+'\n');}
   host = spawn(node, [join(appRoot, 'desktop/host.mjs')], {
     cwd: dataDir, detached: true,
-    env: { ...process.env, AIPM_DATA_DIR: dataDir, AIPM_HARNESS_NODE_MODULES: modules, AIPM_SKILL_ROOT: skillRoot },
+    env: { ...process.env, AIPM_DATA_DIR: dataDir, AIPM_HARNESS_NODE_MODULES: modules, AIPM_NODE_ROOT: nodeRoot },
     stdio: ['ignore', 'pipe', 'pipe', 'ipc'],
   });
   host.stdout.pipe(log, { end: false }); host.stderr.pipe(log, { end: false });
@@ -103,8 +100,10 @@ async function startHost(node, modules, skillRoot) {
       if(message?.type==='update-request'&&typeof message.id==='string'&&['status','configure','check','install','apply'].includes(message.action)){
         void Promise.resolve().then(()=>updater[message.action==='install'?'requestInstall':message.action==='apply'?'install':message.action](message.value)).then(result=>{if(host.connected)host.send({type:'update-result',id:message.id,result});}).catch(error=>{if(host.connected)host.send({type:'update-result',id:message.id,error:error.message});});
       }
+      if(message?.type==='research-cancel'){researchJobs.get(message.id)?.abort();return;}
       if(message?.type==='research-request'&&typeof message.id==='string'&&typeof message.url==='string'){
-        void dynamicReader.page(message.url).then(result=>{if(host.connected)host.send({type:'research-result',id:message.id,result});}).catch(error=>{if(host.connected)host.send({type:'research-result',id:message.id,error:error.message});});
+        const controller=new AbortController();researchJobs.set(message.id,controller);
+        void dynamicReader.page(message.url,{signal:controller.signal}).then(result=>{if(host.connected)host.send({type:'research-result',id:message.id,result});}).catch(error=>{if(host.connected)host.send({type:'research-result',id:message.id,error:error.message});}).finally(()=>researchJobs.delete(message.id));
       }
       if (message?.type === 'storage-request') {
         try {
@@ -143,7 +142,7 @@ async function createWindow() {
     const saved = JSON.parse(await readFile(join(dataDir, 'window.json'), 'utf8'));
     if (Number.isFinite(saved.width) && Number.isFinite(saved.height)) bounds = { width: Math.max(1000, Math.min(saved.width, 2600)), height: Math.max(700, Math.min(saved.height, 1800)) };
   } catch (error) { if (error.code !== 'ENOENT') log?.write('Window preferences unavailable; using defaults.\n'); }
-  window = new BrowserWindow({ ...bounds, minWidth: 1000, minHeight: 700, show: false, title: name, titleBarStyle: 'hiddenInset', backgroundColor: '#f5f8f6', webPreferences: { preload: join(appRoot, 'desktop/preload.cjs'), nodeIntegration: false, contextIsolation: true, sandbox: true, webSecurity: true, devTools: !app.isPackaged || process.env.AIPM_DESKTOP_TEST === '1' } });
+  window = new BrowserWindow({ ...bounds, minWidth: 1000, minHeight: 700, show: false, title: name, titleBarStyle: 'hiddenInset', backgroundColor: '#171c26', webPreferences: { preload: join(appRoot, 'desktop/preload.cjs'), nodeIntegration: false, contextIsolation: true, sandbox: true, webSecurity: true, devTools: !app.isPackaged || process.env.AIPM_DESKTOP_TEST === '1' } });
   window.webContents.setWindowOpenHandler(({url}) => {
     try {
       const target = new URL(url);
@@ -192,7 +191,7 @@ function installMenu() {
     { label: '编辑', submenu: [ { label: '撤销', role: 'undo' }, { label: '重做', role: 'redo' }, { type: 'separator' }, { label: '剪切', role: 'cut' }, { label: '复制', role: 'copy' }, { label: '粘贴', role: 'paste' }, { label: '全选', role: 'selectAll' } ] },
     { label: '视图', submenu: [ { label: '重新加载', role: 'reload' }, { label: '实际大小', role: 'resetZoom' }, { label: '放大', role: 'zoomIn' }, { label: '缩小', role: 'zoomOut' }, { type: 'separator' }, { label: '进入全屏', role: 'togglefullscreen' } ] },
     { label: '窗口', submenu: [ { label: '最小化', role: 'minimize' }, { label: '缩放', role: 'zoom' }, { label: '显示工作台', click: () => { if (window) window.show(); else void createWindow(); } }, { role: 'front', label: '前置全部窗口' } ] },
-    { label: '帮助', submenu: [ {label:'检查更新…',click:()=>{void Promise.resolve().then(()=>updater.check()).then(status=>dialog.showMessageBox(window,{message:'应用更新',detail:status.error||'请在设置页查看更新进度或配置更新服务。',buttons:['知道了']})).catch(error=>dialog.showMessageBox(window,{message:error.message,buttons:['知道了']}));}}, { label: '使用说明', click: () => { void dialog.showMessageBox(window, { type: 'info', message: '开始使用好浩的产品工作台', detail: '1. 新建产品项目\n2. 模型设置：添加服务地址、模型 ID 与密钥，测试连接\n3. 选择任意模块并加入材料，或对话补充后确认\n4. 运行、查看版本并交接产物\n\n关闭窗口后任务继续；⌘Q 退出时停止服务。桌面项目数据通过 macOS 钥匙串加密，保存在 Application Support/AIPM Workbench。', buttons: ['知道了'] }); } }, { label: 'DeepSeek Harness 文档', click: () => { void shell.openExternal('https://github.com/deepseek-ai/deepseek-harness'); } } ] },
+    { label: '帮助', submenu: [ {label:'检查更新…',click:()=>{void Promise.resolve().then(()=>updater.check()).then(status=>dialog.showMessageBox(window,{message:'应用更新',detail:status.error||'请在设置页查看更新进度或配置更新服务。',buttons:['知道了']})).catch(error=>dialog.showMessageBox(window,{message:error.message,buttons:['知道了']}));}}, { label: '使用说明', click: () => { void dialog.showMessageBox(window, { type: 'info', message: '开始使用阿浩Thinking', detail: '1. 新建产品项目\n2. 模型设置：添加服务地址、模型 ID 与密钥，测试连接\n3. 选择任意模块并加入材料，或对话补充后确认\n4. 运行、查看版本并交接产物\n\n关闭窗口后任务继续；⌘Q 退出时停止服务。桌面项目数据通过 macOS 钥匙串加密，保存在 Application Support/AIPM Workbench。', buttons: ['知道了'] }); } }, { label: 'DeepSeek Harness 文档', click: () => { void shell.openExternal('https://github.com/deepseek-ai/deepseek-harness'); } } ] },
   ]));
 }
 

@@ -1,0 +1,20 @@
+{
+  "gallery": true,
+  "prototypes": [
+    {
+      "style": "银白精密",
+      "tabsInside": true,
+      "reportClear": true
+    },
+    {
+      "style": "暖灰编辑",
+      "tabsInside": true,
+      "reportClear": true
+    },
+    {
+      "style": "深色专业",
+      "tabsInside": true,
+      "reportClear": true
+    }
+  ]
+}

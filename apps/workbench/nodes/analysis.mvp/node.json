@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "id": "analysis.mvp",
+  "name": "MVP方案分析",
+  "version": "1.1.0",
+  "category": "analysis",
+  "description": "建立假设—功能—验证指标的映射，设计最小可用闭环。判断不做某功能是否仍可验证核心假设，区分本期/不做/以后做并给理由。分析依赖、成本、周期，",
+  "icon": "grid",
+  "enabled": true,
+  "executor": "ai",
+  "inputs": [
+    {
+      "id": "materials",
+      "name": "输入材料",
+      "types": [
+        "materials",
+        "sources",
+        "analysis",
+        "dataset",
+        "documents"
+      ],
+      "multiple": true
+    }
+  ],
+  "outputs": [
+    {
+      "id": "data",
+      "name": "MVP方案分析结果",
+      "types": [
+        "analysis"
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "key": "task",
+      "label": "本次目标与补充要求",
+      "type": "textarea",
+      "default": ""
+    },
+    {
+      "key": "modelId",
+      "label": "执行模型",
+      "type": "model",
+      "default": ""
+    },
+    {
+      "key": "outline",
+      "label": "输出大纲",
+      "type": "textarea",
+      "default": "# MVP方案分析\n## 核心结论\n## 证据与分析\n## 方案与规则\n## 待确认与下一步"
+    }
+  ],
+  "instructions": "instructions.md",
+  "requirements": [
+    "目标用户问题与场景、本期目标、资源周期或明确未知项。"
+  ],
+  "implementation": "ai",
+  "origin": {
+    "skill": "三个产品技能的对应专业SOP",
+    "adaptedAt": "2026-10-24",
+    "scope": "建立假设—功能—验证指标的映射，设计最小可用闭环。判断不做某功能是否仍可验证核心假设，区分本期/不做/以后做并给理由。分析依赖、成本、周期，定义通过/止损与反馈节奏。新方案是分析建议，非用户已确认决策。"
+  },
+  "capabilities": {
+    "search": false,
+    "generateDecisions": true
+  },
+  "workflow": [
+    {
+      "id": "inventory",
+      "title": "盘点材料与范围",
+      "prompt": "检查最低输入要求、来源性质与缺口。"
+    },
+    {
+      "id": "analysis",
+      "title": "执行专业分析",
+      "prompt": "建立假设—功能—验证指标的映射，设计最小可用闭环。判断不做某功能是否仍可验证核心假设，区分本期/不做/以后做并给理由。分析依赖、成本、周期，定义通过/止损与反馈节奏。新方案是分析建议，非用户已确认决策。"
+    },
+    {
+      "id": "verify",
+      "title": "检查证据与结论",
+      "prompt": "核对来源、事实/推断/假设、数字和图表口径，标记未确认事项。"
+    },
+    {
+      "id": "output",
+      "title": "交接分析成果",
+      "prompt": "输出供下游使用的结论、方案、规则、证据与待确认项。"
+    }
+  ]
+}

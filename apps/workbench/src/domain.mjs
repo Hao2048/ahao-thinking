@@ -1,6 +1,5 @@
 import { resolveProvider } from './providers.mjs';
 import { randomUUID } from 'node:crypto';
-import { getModule } from './catalog.mjs';
 import { datasetInput, parseCSV } from './analytics.mjs';
 
 export const MAX_INPUT_BYTES = 512 * 1024;
@@ -8,14 +7,6 @@ export const MAX_CONTEXT_BYTES = 2 * 1024 * 1024;
 export function text(value, label, limit = 200) {
   if (typeof value !== 'string' || !value.trim() || value.length > limit) throw new Error(`${label}不能为空，且不能超过 ${limit} 个字符`);
   return value.trim();
-}
-export function makeInput(body) {
-  getModule(body.moduleId);
-  const content = text(body.content, '材料内容', MAX_INPUT_BYTES);
-  if (Buffer.byteLength(content) > MAX_INPUT_BYTES) throw new Error('材料超过 512 KB');
-  if (!['user_statement', 'material', 'test_data', 'ai_hypothesis'].includes(body.evidence)) throw new Error('请选择材料性质');
-  if (!['manual', 'file', 'chat'].includes(body.kind)) throw new Error('不支持的输入方式');
-  return { id: randomUUID(), moduleId: body.moduleId, kind: body.kind, title: text(body.title, '材料标题'), content, evidence: body.evidence, createdAt: new Date().toISOString() };
 }
 export function validateModel(body) {
   body=resolveProvider(body);

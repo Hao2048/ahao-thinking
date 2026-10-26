@@ -1,5 +1,6 @@
 import {legacySvg} from './legacy-diagram.mjs';
 import {validateChart,chartOption} from './chart-model.mjs';
+import {mermaidSource} from './diagram-source.mjs';
 const live=new Map();let sequence=0,mermaidPromise;
 function save(name,blob){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name.replace(/[\\/:*?"<>|]/g,'_');a.click();setTimeout(()=>URL.revokeObjectURL(url),3000);}
 function safeSvg(raw){const doc=new DOMParser().parseFromString(raw,'image/svg+xml');if(doc.querySelector('parsererror')||doc.documentElement.localName!=='svg')throw new Error('图形返回格式错误');doc.querySelectorAll('script,foreignObject,image,a').forEach(n=>n.remove());for(const node of doc.querySelectorAll('*'))for(const a of [...node.attributes]){if(/^on/i.test(a.name)||(/href$/i.test(a.name)&&!a.value.startsWith('#'))||([...a.value.matchAll(/url\(([^)]*)\)/gi)].some(m=>!/^\s*['"]?#/.test(m[1]))))node.removeAttribute(a.name);}return new XMLSerializer().serializeToString(doc.documentElement);}
@@ -14,9 +15,9 @@ async function draw(figure){const canvas=figure.querySelector('.visual-canvas'),
    const c=validateChart(JSON.parse(source)),{echarts}=await import('./vendor/echarts.mjs');if(!figure.isConnected)return;
    dataTable(figure,c);canvas.style.height=Math.max(380,Math.min(1200,c.data.length*48+100))+'px';const chart=echarts.init(canvas,null,{renderer:'svg'});chart.setOption(chartOption(c));const observer=new ResizeObserver(()=>{if(figure.isConnected)chart.resize();});observer.observe(canvas);live.set(figure,{chart,observer});figure.querySelector('.visual-title').textContent=c.title;canvas.setAttribute('aria-label',c.title+' · '+c.evidenceStatus);status.textContent=c.evidenceStatus;figure.querySelector('.visual-note').textContent=[c.subtitle,c.note,'来源：'+c.sources.map(s=>s.title).join('；')].filter(Boolean).join(' · ');
   }else{
-   if(/%%\s*\{|^\s*---|\bclick\s|<\s*(?:script|iframe|img|style)/im.test(source))throw new Error('请使用纯 Mermaid 流程源码');
+   const diagram=mermaidSource(source);
    mermaidPromise??=import('./vendor/mermaid.mjs').then(({default:m})=>{m.initialize({startOnLoad:false,securityLevel:'strict',suppressErrorRendering:true,theme:'base',htmlLabels:false,themeVariables:{primaryColor:'#eef5f0',primaryTextColor:'#263c35',primaryBorderColor:'#8cb6a2',lineColor:'#649e89',fontFamily:'PingFang SC, sans-serif'},flowchart:{htmlLabels:false,curve:'linear'},secure:['securityLevel','startOnLoad','secure','htmlLabels','theme','themeVariables']});return m;});
-   const m=await mermaidPromise;const {svg}=await m.render('pm-diagram-'+(++sequence),source);if(!figure.isConnected)return;canvas.innerHTML=safeSvg(svg);status.textContent='已渲染';
+   const m=await mermaidPromise;const {svg}=await m.render('pm-diagram-'+(++sequence),diagram);if(!figure.isConnected)return;canvas.innerHTML=safeSvg(svg);status.textContent='已渲染';
   }
   bindActions(figure);
  }catch(e){if(!figure.isConnected)return;canvas.textContent='图表未能渲染，原始数据与源码已保留。';status.textContent=e.message;figure.querySelectorAll('.visual-actions button').forEach(b=>b.disabled=true);figure.querySelector('details').open=true;}

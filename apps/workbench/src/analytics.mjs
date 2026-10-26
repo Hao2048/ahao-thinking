@@ -28,6 +28,22 @@ export function datasetInput(inputs, schemas) {
   const files=[];
   for (const input of inputs) {
     const content=input.content.trim().replace(/^```(?:csv|json)?\s*\n/i,'').replace(/\n```$/,'');
+    // Only extract explicitly recognised headers, never guess column meanings or
+    // skip malformed rows. Blank lines/fence boundaries delimit embedded data.
+    if (!/\.csv$/i.test(input.title)) {
+      const lines=content.split(/\r?\n/), starts=lines.flatMap((line,i)=>schemas.some(schema=>line.replace(/^\uFEFF/,'').trim()===schema.join(','))?[i]:[]);
+      if(starts.length){
+        for(const start of starts){
+          let end=start+1;
+          while(end<lines.length && lines[end].trim() && !/^```/.test(lines[end]))end++;
+          const block=lines.slice(start,end).join('\n');
+          // parseCSV validates rows rather than silently discarding bad input.
+          try{parseCSV(block);}catch(error){throw new Error(`材料“${input.title}”第${start+1}行起的数据：${error.message}；请用空行分隔说明与CSV`);}
+          files.push({...input,content:block,sourceFormat:'csv',dataStartLine:start+1});
+        }
+        continue;
+      }
+    }
     if (/\.csv$/i.test(input.title) || schemas.some(schema=>content.replace(/^\uFEFF/,'').split(/\r?\n/)[0]===schema.join(','))) { files.push({...input,content,sourceFormat:'csv'}); continue; }
     if (!/^[\[{]/.test(content)) continue;
     let value;try{value=JSON.parse(content);}catch{continue;}

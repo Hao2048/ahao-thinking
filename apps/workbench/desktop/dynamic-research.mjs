@@ -4,7 +4,8 @@ import { fetchPublicResource, extractPage } from '../src/research.mjs';
 export function createDynamicReader({BrowserWindow,session}, fetcher=fetchPublicResource) {
   const windows=new Set(),controls=new Map();
   return {
-    async page(value){
+    async page(value,{signal}={}){
+      signal?.throwIfAborted();
       const target=new URL(value);
       if(!['http:','https:'].includes(target.protocol)||target.username||target.password)throw new Error('动态取材仅支持公开 HTTP(S) 网页');
       if(windows.size>=2)throw new Error('动态网页正在读取，请稍后重试');
@@ -38,6 +39,8 @@ export function createDynamicReader({BrowserWindow,session}, fetcher=fetchPublic
       window.webContents.on('will-attach-webview',event=>event.preventDefault());
       window.webContents.on('will-navigate',event=>event.preventDefault());
       let timer;const control={abort,reject:()=>{}};controls.set(window,control);
+      const cancelled=()=>{abort.abort();control.reject(new Error("动态取材已停止"));};
+      signal?.addEventListener("abort",cancelled,{once:true});
       try{
         const task=(async()=>{
           await window.loadURL(target.href);
@@ -46,8 +49,9 @@ export function createDynamicReader({BrowserWindow,session}, fetcher=fetchPublic
           const parsed=extractPage(rendered.html);if(parsed.content.length<80)throw new Error('动态网页正文不足，可能需要登录或访问受限');
           return{...parsed,url:rendered.url,status:'page',method:'dynamic-render',warnings:['独立无登录状态的动态页面截取；正文可能尚未完整加载，访问限制不能绕过。'],retrievedAt:new Date().toISOString(),sha256:createHash('sha256').update(rendered.html).digest('hex')};
         })();
-        return await Promise.race([task,new Promise((_,reject)=>{control.reject=reject;}),new Promise((_,reject)=>{timer=setTimeout(()=>reject(new Error('动态网页读取超过 45 秒')),45000);})]);
+        return await Promise.race([task,new Promise((_,reject)=>{control.reject=reject;if(signal?.aborted)cancelled();}),new Promise((_,reject)=>{timer=setTimeout(()=>reject(new Error('动态网页读取超过 45 秒')),45000);})]);
       }finally{
+        signal?.removeEventListener("abort",cancelled);
         clearTimeout(timer);abort.abort();controls.delete(window);windows.delete(window);if(!window.isDestroyed())window.destroy();
         isolated.protocol.unhandle('http');isolated.protocol.unhandle('https');
         await isolated.clearStorageData().catch(()=>{});

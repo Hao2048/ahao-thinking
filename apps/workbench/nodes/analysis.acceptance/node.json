@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "id": "analysis.acceptance",
+  "name": "验收设计分析",
+  "version": "1.1.0",
+  "category": "analysis",
+  "description": "逐条追踪需求，给前置条件/操作/预期结果/异常/优先级；按核心流程P0、边界异常P0/P1、UI还原P1/P2和数据埋点四维检查，规则未知待",
+  "icon": "grid",
+  "enabled": true,
+  "executor": "ai",
+  "inputs": [
+    {
+      "id": "materials",
+      "name": "输入材料",
+      "types": [
+        "materials",
+        "sources",
+        "analysis",
+        "dataset",
+        "documents"
+      ],
+      "multiple": true
+    }
+  ],
+  "outputs": [
+    {
+      "id": "data",
+      "name": "验收设计分析结果",
+      "types": [
+        "analysis"
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "key": "task",
+      "label": "本次目标与补充要求",
+      "type": "textarea",
+      "default": ""
+    },
+    {
+      "key": "modelId",
+      "label": "执行模型",
+      "type": "model",
+      "default": ""
+    },
+    {
+      "key": "outline",
+      "label": "输出大纲",
+      "type": "textarea",
+      "default": "# 验收设计分析\n## 核心结论\n## 证据与分析\n## 方案与规则\n## 待确认与下一步"
+    }
+  ],
+  "instructions": "instructions.md",
+  "requirements": [
+    "PRD、规则、原型与埋点方案。"
+  ],
+  "implementation": "ai",
+  "origin": {
+    "skill": "三个产品技能的对应专业SOP",
+    "adaptedAt": "2026-10-24",
+    "scope": "逐条追踪需求，给前置条件/操作/预期结果/异常/优先级；按核心流程P0、边界异常P0/P1、UI还原P1/P2和数据埋点四维检查，规则未知待确认，不假装已实际验收。"
+  },
+  "capabilities": {
+    "search": false,
+    "generateDecisions": true
+  },
+  "workflow": [
+    {
+      "id": "inventory",
+      "title": "盘点材料与范围",
+      "prompt": "检查最低输入要求、来源性质与缺口。"
+    },
+    {
+      "id": "analysis",
+      "title": "执行专业分析",
+      "prompt": "逐条追踪需求，给前置条件/操作/预期结果/异常/优先级；按核心流程P0、边界异常P0/P1、UI还原P1/P2和数据埋点四维检查，规则未知待确认，不假装已实际验收。"
+    },
+    {
+      "id": "verify",
+      "title": "检查证据与结论",
+      "prompt": "核对来源、事实/推断/假设、数字和图表口径，标记未确认事项。"
+    },
+    {
+      "id": "output",
+      "title": "交接分析成果",
+      "prompt": "输出供下游使用的结论、方案、规则、证据与待确认项。"
+    }
+  ]
+}

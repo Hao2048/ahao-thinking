@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "id": "analysis.market",
+  "name": "市场分析",
+  "version": "1.1.0",
+  "category": "analysis",
+  "description": "判断市场边界、趋势、竞争与商业模式。",
+  "icon": "search",
+  "enabled": true,
+  "executor": "ai",
+  "inputs": [
+    {
+      "id": "materials",
+      "name": "输入材料",
+      "types": [
+        "materials",
+        "sources",
+        "analysis",
+        "dataset",
+        "documents"
+      ],
+      "multiple": true
+    }
+  ],
+  "outputs": [
+    {
+      "id": "data",
+      "name": "市场分析结果",
+      "types": [
+        "analysis"
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "key": "task",
+      "label": "本次目标与补充要求",
+      "type": "textarea",
+      "default": ""
+    },
+    {
+      "key": "modelId",
+      "label": "执行模型",
+      "type": "model",
+      "default": ""
+    },
+    {
+      "key": "outline",
+      "label": "输出大纲",
+      "type": "textarea",
+      "default": "# 市场分析\n## 执行摘要\n## 市场定义与边界\n## 市场现状、规模与趋势\n## 需求驱动因素与关键变化\n## 竞品与替代方案矩阵\n## 重点竞品分析\n## 定价与商业模式\n## 用户反馈中的共性信号\n## 中国市场与海外参照\n## 对产品决策的意义\n## 证据局限与冲突信息"
+    }
+  ],
+  "instructions": "instructions.md",
+  "requirements": [
+    "研究对象、地域、时间范围与资料。"
+  ],
+  "implementation": "ai",
+  "origin": {
+    "skill": "AI 产品经理研究助手",
+    "adaptedAt": "2026-10-18",
+    "scope": "判断市场边界、趋势、竞争与商业模式。"
+  },
+  "capabilities": {
+    "search": false,
+    "generateDecisions": true
+  },
+  "workflow": [
+    {
+      "id": "inventory",
+      "title": "盘点材料与范围",
+      "prompt": "检查最低输入要求、来源性质与缺口。"
+    },
+    {
+      "id": "analysis",
+      "title": "执行专业分析",
+      "prompt": "盘点研究范围与来源，区分原文网页和搜索摘要；对价格/规模注明日期和口径。比较3–5直接竞品与1–3替代方式，有意义才加标杆，缺资料不凑数。重要结论尽可能用两个独立来源交叉验证，展示冲突与偏差。仅分析输入，不自行联网，需更多来源列成联网节点的建议检索任务。"
+    },
+    {
+      "id": "verify",
+      "title": "检查证据与结论",
+      "prompt": "核对来源、事实/推断/假设、数字和图表口径，标记未确认事项。"
+    },
+    {
+      "id": "output",
+      "title": "交接分析成果",
+      "prompt": "输出供下游使用的结论、方案、规则、证据与待确认项。"
+    }
+  ]
+}

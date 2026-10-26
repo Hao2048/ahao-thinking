@@ -11,6 +11,6 @@ window.addEventListener('DOMContentLoaded', () => {
   document.body.classList.add('desktop');
   const bar = document.createElement('div');
   bar.className = 'desktop-titlebar';
-  bar.textContent = '好浩的产品工作台';
+  bar.textContent = '阿浩Thinking';
   document.body.prepend(bar);
 });

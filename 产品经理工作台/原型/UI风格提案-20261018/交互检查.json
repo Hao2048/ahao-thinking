@@ -1,0 +1,32 @@
+[
+  {
+    "style": "银白精密",
+    "pass": true,
+    "layout": {
+      "width": 1280,
+      "scroll": 1280,
+      "height": 900,
+      "doc": 900
+    }
+  },
+  {
+    "style": "暖灰编辑",
+    "pass": true,
+    "layout": {
+      "width": 1280,
+      "scroll": 1280,
+      "height": 900,
+      "doc": 900
+    }
+  },
+  {
+    "style": "深色专业",
+    "pass": true,
+    "layout": {
+      "width": 1280,
+      "scroll": 1280,
+      "height": 900,
+      "doc": 900
+    }
+  }
+]

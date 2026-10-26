@@ -1,0 +1,102 @@
+{
+  "id": "user-insight",
+  "name": "从想法到用户分析报告",
+  "graph": {
+    "nodes": [
+      {
+        "id": "idea",
+        "type": "input.text",
+        "name": "产品想法",
+        "x": 100,
+        "y": 140,
+        "config": {
+          "researchMode": "idea",
+          "content": "",
+          "evidence": "user_statement"
+        }
+      },
+      {
+        "id": "web",
+        "type": "input.web",
+        "name": "联网取材",
+        "x": 390,
+        "y": 70,
+        "config": {
+          "queries": "",
+          "urls": "",
+          "dynamic": false
+        }
+      },
+      {
+        "id": "files",
+        "type": "input.file",
+        "name": "文档输入",
+        "x": 390,
+        "y": 350,
+        "config": {}
+      },
+      {
+        "id": "user",
+        "type": "analysis.user",
+        "name": "用户分析",
+        "x": 700,
+        "y": 200,
+        "config": {
+          "task": "",
+          "modelId": "",
+          "outline": "# 用户分析报告\n## 核心用户与用户分布\n## 用户任务与使用场景\n## 用户痛点\n## 当前替代方案与切换成本\n## 用户付费意愿\n## 用户使用频率、留存与流失\n## 获客渠道与购买决策\n## 用户群体优先级与建议\n## 证据缺口与验证建议"
+        }
+      },
+      {
+        "id": "report",
+        "type": "report.research",
+        "name": "研究报告",
+        "x": 1000,
+        "y": 200,
+        "config": {
+          "task": "",
+          "modelId": "",
+          "outline": "# 研究报告\n## 核心结论\n## 分析依据与数据\n## 限制与风险\n## 下一步建议"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "idea-user",
+        "from": "idea",
+        "to": "user",
+        "output": "data",
+        "input": "materials"
+      },
+      {
+        "id": "idea-web",
+        "from": "idea",
+        "to": "web",
+        "output": "data",
+        "input": "materials"
+      },
+      {
+        "id": "web-user",
+        "from": "web",
+        "to": "user",
+        "output": "data",
+        "input": "materials"
+      },
+      {
+        "id": "files-user",
+        "from": "files",
+        "to": "user",
+        "output": "data",
+        "input": "materials"
+      },
+      {
+        "id": "user-report",
+        "from": "user",
+        "to": "report",
+        "output": "data",
+        "input": "materials"
+      }
+    ],
+    "groups": []
+  }
+}

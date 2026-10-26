@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "id": "analysis.opportunity",
+  "name": "机会与风险分析",
+  "version": "1.1.0",
+  "category": "analysis",
+  "description": "比较机会方向、优先级、风险与验证路径。",
+  "icon": "bolt",
+  "enabled": true,
+  "executor": "ai",
+  "inputs": [
+    {
+      "id": "materials",
+      "name": "输入材料",
+      "types": [
+        "materials",
+        "sources",
+        "analysis",
+        "dataset",
+        "documents"
+      ],
+      "multiple": true
+    }
+  ],
+  "outputs": [
+    {
+      "id": "data",
+      "name": "机会与风险分析结果",
+      "types": [
+        "analysis"
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "key": "task",
+      "label": "本次目标与补充要求",
+      "type": "textarea",
+      "default": ""
+    },
+    {
+      "key": "modelId",
+      "label": "执行模型",
+      "type": "model",
+      "default": ""
+    },
+    {
+      "key": "outline",
+      "label": "输出大纲",
+      "type": "textarea",
+      "default": "# 机会与风险分析\n## 机会方向\n## 价值与可行性\n## 优先级理由\n## 风险与验证"
+    }
+  ],
+  "instructions": "instructions.md",
+  "requirements": [
+    "市场/用户材料及关键约束。"
+  ],
+  "implementation": "ai",
+  "origin": {
+    "skill": "AI 产品经理研究助手",
+    "adaptedAt": "2026-10-18",
+    "scope": "比较机会方向、优先级、风险与验证路径。"
+  },
+  "capabilities": {
+    "search": false,
+    "generateDecisions": true
+  },
+  "workflow": [
+    {
+      "id": "inventory",
+      "title": "盘点材料与范围",
+      "prompt": "检查最低输入要求、来源性质与缺口。"
+    },
+    {
+      "id": "analysis",
+      "title": "执行专业分析",
+      "prompt": "逐机会串联痛点、证据、价值、差异化、可行性、依赖、假设与最小验证。用有依据的高/中/低优先级，不制造精确评分。按项目实际检查隐私、AI可靠性、IP、未成年人、监管、模型/API/平台依赖、获客与变现风险；缺最新政策来源时待确认。"
+    },
+    {
+      "id": "verify",
+      "title": "检查证据与结论",
+      "prompt": "核对来源、事实/推断/假设、数字和图表口径，标记未确认事项。"
+    },
+    {
+      "id": "output",
+      "title": "交接分析成果",
+      "prompt": "输出供下游使用的结论、方案、规则、证据与待确认项。"
+    }
+  ]
+}

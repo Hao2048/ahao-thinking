@@ -1,0 +1,1711 @@
+{
+  "name": "B-MVP方案到报告",
+  "flowId": "2c0bcc0e-c073-4088-8c9c-0ffde9640744",
+  "graph": {
+    "nodes": [
+      {
+        "id": "text",
+        "type": "input.text",
+        "name": "文字输入",
+        "x": 80,
+        "y": 160,
+        "config": {
+          "researchMode": "materials",
+          "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n测试产品：跨端AI宠物。目标：验证独处上班族能否形成连续7天的陪伴习惯。已确认测试范围：电脑桌面显示宠物、手机文字聊天、每日喂养一次、两端同步亲密度、免打扰。人力：1名客户端、1名服务端、1名兼职设计；时间4周；预算2万元。现有替代方式为独自刷短视频，用户证据缺失须待验证。约束：仅软件，不做硬件/社区/语音视频/医疗功能。核心假设：跨端持续陪伴有价值。测试招募20位，关键指标为7日内互动>=4天人数；通过线>=8人，<4人停止投入，其间调整后复测。以上指标是测试计划不是已达成结果。请据此设计闭环、范围/不做项、假设功能指标对应、资源风险与验证节奏，不搜索信息。",
+          "evidence": "test_data"
+        }
+      },
+      {
+        "id": "analysis",
+        "type": "analysis.mvp",
+        "name": "MVP方案分析",
+        "x": 400,
+        "y": 160,
+        "config": {
+          "task": "依据给定目标和约束形成可执行MVP方案，所有建议标为测试分析推断，不新增事实。",
+          "modelId": "",
+          "outline": "# MVP方案分析\n## 核心结论\n## 证据与分析\n## 方案与规则\n## 待确认与下一步"
+        }
+      },
+      {
+        "id": "report",
+        "type": "report.mvp",
+        "name": "MVP方案",
+        "x": 720,
+        "y": 160,
+        "config": {
+          "task": "",
+          "modelId": "",
+          "outline": "# MVP方案\n## 目标用户与核心问题\n## 核心闭环\n## 本期范围与不做项\n## 优先级\n## 资源与周期\n## 验证指标与实验\n## 风险与止损"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "text-analysis",
+        "from": "text",
+        "to": "analysis",
+        "output": "data",
+        "input": "materials"
+      },
+      {
+        "id": "analysis-report",
+        "from": "analysis",
+        "to": "report",
+        "output": "data",
+        "input": "materials"
+      }
+    ],
+    "groups": [],
+    "view": {
+      "x": 60,
+      "y": 100,
+      "k": 1
+    }
+  },
+  "runs": [
+    {
+      "id": "4d5aae45-a20f-4859-b938-a0609754a1a2",
+      "version": 1,
+      "status": "failed",
+      "createdAt": "2026-10-24T13:12:11.063Z",
+      "graph": {
+        "nodes": [
+          {
+            "id": "text",
+            "type": "input.text",
+            "name": "文字输入",
+            "x": 80,
+            "y": 160,
+            "config": {
+              "researchMode": "materials",
+              "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n测试产品：跨端AI宠物。目标：验证独处上班族能否形成连续7天的陪伴习惯。已确认测试范围：电脑桌面显示宠物、手机文字聊天、每日喂养一次、两端同步亲密度、免打扰。人力：1名客户端、1名服务端、1名兼职设计；时间4周；预算2万元。现有替代方式为独自刷短视频，用户证据缺失须待验证。约束：仅软件，不做硬件/社区/语音视频/医疗功能。核心假设：跨端持续陪伴有价值。测试招募20位，关键指标为7日内互动>=4天人数；通过线>=8人，<4人停止投入，其间调整后复测。以上指标是测试计划不是已达成结果。请据此设计闭环、范围/不做项、假设功能指标对应、资源风险与验证节奏，不搜索信息。",
+              "evidence": "test_data"
+            }
+          },
+          {
+            "id": "analysis",
+            "type": "analysis.mvp",
+            "name": "MVP方案分析",
+            "x": 400,
+            "y": 160,
+            "config": {
+              "task": "依据给定目标和约束形成可执行MVP方案，所有建议标为测试分析推断，不新增事实。",
+              "modelId": "",
+              "outline": "# MVP方案分析\n## 核心结论\n## 证据与分析\n## 方案与规则\n## 待确认与下一步"
+            }
+          },
+          {
+            "id": "report",
+            "type": "report.mvp",
+            "name": "MVP方案",
+            "x": 720,
+            "y": 160,
+            "config": {
+              "task": "",
+              "modelId": "",
+              "outline": "# MVP方案\n## 目标用户与核心问题\n## 核心闭环\n## 本期范围与不做项\n## 优先级\n## 资源与周期\n## 验证指标与实验\n## 风险与止损"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "text-analysis",
+            "from": "text",
+            "to": "analysis",
+            "output": "data",
+            "input": "materials"
+          },
+          {
+            "id": "analysis-report",
+            "from": "analysis",
+            "to": "report",
+            "output": "data",
+            "input": "materials"
+          }
+        ],
+        "groups": [],
+        "view": {
+          "x": 60,
+          "y": 100,
+          "k": 1
+        }
+      },
+      "graphHash": "853a86a6547376fac3afce01cc3ff1c47c7efa2bd3103e2f7589d7a1d0493744",
+      "order": [
+        "text",
+        "analysis",
+        "report"
+      ],
+      "force": false,
+      "nodes": {
+        "text": {
+          "status": "succeeded",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "input.text",
+            "name": "文字输入",
+            "version": "1.1.0",
+            "category": "input",
+            "description": "输入想法、产品、用户需求或 CSV/JSON 数据。",
+            "icon": "input",
+            "enabled": true,
+            "executor": "text",
+            "inputs": [],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "文字输入结果",
+                "types": [
+                  "materials"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "researchMode",
+                "label": "输入方式",
+                "type": "select",
+                "options": [
+                  {
+                    "value": "materials",
+                    "label": "文档 / 数据材料"
+                  },
+                  {
+                    "value": "idea",
+                    "label": "产品想法"
+                  },
+                  {
+                    "value": "product",
+                    "label": "指定产品 / 竞品"
+                  },
+                  {
+                    "value": "user_need",
+                    "label": "用户需求"
+                  }
+                ],
+                "default": "materials"
+              },
+              {
+                "key": "content",
+                "label": "材料正文 / CSV / JSON",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "evidence",
+                "label": "材料性质",
+                "type": "select",
+                "options": [
+                  {
+                    "value": "user_statement",
+                    "label": "用户陈述"
+                  },
+                  {
+                    "value": "material",
+                    "label": "已有材料"
+                  },
+                  {
+                    "value": "test_data",
+                    "label": "测试数据"
+                  },
+                  {
+                    "value": "ai_hypothesis",
+                    "label": "AI假设（待验证）"
+                  }
+                ],
+                "default": "user_statement"
+              }
+            ],
+            "instructions": null,
+            "requirements": [
+              "至少一份相关输入"
+            ],
+            "implementation": "text",
+            "origin": {
+              "skill": "产品经理工作流 / 现有本地工具",
+              "adaptedAt": "2026-10-18",
+              "scope": "输入想法、产品、用户需求或 CSV/JSON 数据。"
+            },
+            "workflow": [
+              {
+                "id": "collect",
+                "title": "采集或引用材料",
+                "prompt": "输入想法、产品、用户需求或 CSV/JSON 数据。"
+              },
+              {
+                "id": "confirm",
+                "title": "保留内容与来源",
+                "prompt": "原样交接材料、来源和证据性质，不承担下游分析或报告整理。"
+              }
+            ],
+            "capabilities": {
+              "search": false,
+              "generateDecisions": false
+            },
+            "hash": "ab910179df883d66c348de313ff1bdd39728bba0013a9fba13dc49793ddb7678",
+            "instruction": "",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/input.text"
+          },
+          "supplements": [],
+          "draft": false,
+          "startedAt": "2026-10-24T13:12:11.080Z",
+          "fingerprint": "f511e034e3eff542b82d05defb6d46c7ce964210111f91e1feac3e4b0fc517ab",
+          "model": {
+            "id": "294a5b94-cf4f-4936-84b0-0ea6f6d9900d",
+            "api": "deepseek-messages",
+            "baseURL": "https://api.deepseek.com/anthropic",
+            "model": "deepseek-flash"
+          },
+          "output": {
+            "kind": "materials",
+            "materials": [
+              {
+                "id": "4841001d-f4f7-4204-8e21-c51d91040a6f",
+                "title": "文字输入",
+                "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n测试产品：跨端AI宠物。目标：验证独处上班族能否形成连续7天的陪伴习惯。已确认测试范围：电脑桌面显示宠物、手机文字聊天、每日喂养一次、两端同步亲密度、免打扰。人力：1名客户端、1名服务端、1名兼职设计；时间4周；预算2万元。现有替代方式为独自刷短视频，用户证据缺失须待验证。约束：仅软件，不做硬件/社区/语音视频/医疗功能。核心假设：跨端持续陪伴有价值。测试招募20位，关键指标为7日内互动>=4天人数；通过线>=8人，<4人停止投入，其间调整后复测。以上指标是测试计划不是已达成结果。请据此设计闭环、范围/不做项、假设功能指标对应、资源风险与验证节奏，不搜索信息。",
+                "evidence": "test_data",
+                "researchMode": "materials"
+              }
+            ],
+            "documents": [],
+            "sources": [],
+            "assumptions": [],
+            "summary": "已提供文字材料",
+            "warnings": [],
+            "fileReferences": []
+          },
+          "completedAt": "2026-10-24T13:12:11.083Z"
+        },
+        "analysis": {
+          "status": "failed",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "analysis.mvp",
+            "name": "MVP方案分析",
+            "version": "1.1.0",
+            "category": "analysis",
+            "description": "建立假设—功能—验证指标的映射，设计最小可用闭环。判断不做某功能是否仍可验证核心假设，区分本期/不做/以后做并给理由。分析依赖、成本、周期，",
+            "icon": "grid",
+            "enabled": true,
+            "executor": "ai",
+            "inputs": [
+              {
+                "id": "materials",
+                "name": "输入材料",
+                "types": [
+                  "materials",
+                  "sources",
+                  "analysis",
+                  "dataset",
+                  "documents"
+                ],
+                "multiple": true
+              }
+            ],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "MVP方案分析结果",
+                "types": [
+                  "analysis"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "task",
+                "label": "本次目标与补充要求",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "modelId",
+                "label": "执行模型",
+                "type": "model",
+                "default": ""
+              },
+              {
+                "key": "outline",
+                "label": "输出大纲",
+                "type": "textarea",
+                "default": "# MVP方案分析\n## 核心结论\n## 证据与分析\n## 方案与规则\n## 待确认与下一步"
+              }
+            ],
+            "instructions": "instructions.md",
+            "requirements": [
+              "目标用户问题与场景、本期目标、资源周期或明确未知项。"
+            ],
+            "implementation": "ai",
+            "origin": {
+              "skill": "三个产品技能的对应专业SOP",
+              "adaptedAt": "2026-10-24",
+              "scope": "建立假设—功能—验证指标的映射，设计最小可用闭环。判断不做某功能是否仍可验证核心假设，区分本期/不做/以后做并给理由。分析依赖、成本、周期，定义通过/止损与反馈节奏。新方案是分析建议，非用户已确认决策。"
+            },
+            "capabilities": {
+              "search": false,
+              "generateDecisions": true
+            },
+            "workflow": [
+              {
+                "id": "inventory",
+                "title": "盘点材料与范围",
+                "prompt": "检查最低输入要求、来源性质与缺口。"
+              },
+              {
+                "id": "analysis",
+                "title": "执行专业分析",
+                "prompt": "建立假设—功能—验证指标的映射，设计最小可用闭环。判断不做某功能是否仍可验证核心假设，区分本期/不做/以后做并给理由。分析依赖、成本、周期，定义通过/止损与反馈节奏。新方案是分析建议，非用户已确认决策。"
+              },
+              {
+                "id": "verify",
+                "title": "检查证据与结论",
+                "prompt": "核对来源、事实/推断/假设、数字和图表口径，标记未确认事项。"
+              },
+              {
+                "id": "output",
+                "title": "交接分析成果",
+                "prompt": "输出供下游使用的结论、方案、规则、证据与待确认项。"
+              }
+            ],
+            "hash": "36e7e3806430882c6b97c4272e0ea1616ebd3cd2a36966c1f6166a91a2ed7db0",
+            "instruction": "# MVP方案分析\n\n建立假设—功能—验证指标的映射，设计最小可用闭环。判断不做某功能是否仍可验证核心假设，区分本期/不做/以后做并给理由。分析依赖、成本、周期，定义通过/止损与反馈节奏。新方案是分析建议，非用户已确认决策。\n\n只分析传入材料，不自行搜索或访问外部资料。无材料先请求补充；数据不足必须标明证据缺口，不得编造。\n\n# 文档图表输出与渲染规范\n\n## 技术选择\n\n- 数据比较、趋势、占比、漏斗、留存热力图、痛点与优先级矩阵：ECharts。文档小型图默认 SVG；数据密集图可用 Canvas。按使用的图种加载依赖，桌面/离线交付使用本地资源。\n- 业务流程、关系、状态、用户决策链路：Mermaid，保留可复制源码，使用 theme: base 与宿主品牌色。已有研发向源码专用章节和真实界面拼接流程图保留原来的用途与交互，不强制改成另一种图。\n- 对比、需求、画像明细：语义化 HTML table＋CSS；Markdown 交付保留数据表，宿主负责表格样式。\n- 统计图交付由程序渲染矢量图或清晰 PNG；AI 插画、照片和真实原型截图保留原始资产，不用统计图引擎代替。\n\n## AI 与宿主的职责\n\nAI 提供结论、原始数据、来源和声明式图表规范；宿主把规范映射为 ECharts option 或 Mermaid SVG。图表不要求额外生成整篇 HTML；全文 HTML 仍按原流程或用户请求生成。宿主输出协议优先，已有 chart 字段时按其协议；无协议的 Markdown 使用紧邻正文的 chart JSON 围栏与 mermaid 围栏。\n\n下面的 pm-chart-v1 是本 Skill 的交接规范，宿主接入后才能自动绘图；它不是 ECharts option，也不是已经实现的工作台接口。宿主只接收白名单图种、字段和数据，不执行 AI 提供的 JS、formatter 函数或任意 HTML。\n\n## 图表数据协议\n\nchart JSON 每张图独立，字段：schema、id、type、title、evidenceStatus、sources、data、encoding；subtitle、note 可选。\n\n- schema 固定 pm-chart-v1；id 在文档内唯一，用于引用和导出。\n- type：bar / line / pie / funnel / heatmap / matrix / scatter。柱线图的数据记录提供分类或时间、数值与可选分组；encoding 指出字段名。漏斗记录给出步骤顺序和原始人数，率由代码计算。矩阵可用类别坐标；heatmap 明确行列及指标。\n- encoding.x / y 指出 field、scale（category / ordinal / quantitative / time）、label、unit；类别轴给出有序 categories。series / label / value 指明相关字段（按图种提供）。\n- evidenceStatus：已验证事实 / 用户观点 / 估算 / 分析推断 / 待验证 / 测试数据。sources 为来源 id、标题、url 或材料定位、日期；每行数据使用 sourceIds 引用来源。不同证据性质混用时逐行标注 evidenceStatus。\n- 缺数值用 null，不能用 0 替代；缺失数据不绘制为已观测值。百分比保留分母、统计口径和周期说明；估算附依据及置信度。等级是类别，不转换为未经解释的精确分数。\n\n### 定性痛点矩阵示例（演示数据）\n\n```chart\n{\n  \"schema\": \"pm-chart-v1\",\n  \"id\": \"pain-matrix\",\n  \"type\": \"matrix\",\n  \"title\": \"痛点矩阵\",\n  \"subtitle\": \"分析假设 · 待验证\",\n  \"evidenceStatus\": \"测试数据\",\n  \"sources\": [{\"id\":\"demo\",\"title\":\"规范演示数据，不能进入项目结论\"}],\n  \"data\": [\n    {\"id\":\"P1\",\"pain\":\"缺少持续陪伴\",\"frequency\":\"高\",\"severity\":\"高\",\"sourceIds\":[\"demo\"]},\n    {\"id\":\"P2\",\"pain\":\"使用负担\",\"frequency\":\"低\",\"severity\":\"中\",\"sourceIds\":[\"demo\"]}\n  ],\n  \"encoding\": {\n    \"x\":{\"field\":\"frequency\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"高\"],\"label\":\"发生频率\",\"unit\":\"等级\"},\n    \"y\":{\"field\":\"severity\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"中高\",\"高\"],\"label\":\"严重程度\",\"unit\":\"等级\"},\n    \"label\":\"id\"\n  },\n  \"note\":\"点位表示定性等级，不能读成统计频率；悬停显示痛点、来源与证据状态。\"\n}\n```\n\n保留同一组数据的 Markdown 表格和 1–3 句读图结论。例子只解释格式，实际图表必须使用当前项目数据。先确定数据与 encoding，再由渲染器映射为图形；不让模型手写字符轴线或字符条形图。\n\n## 视觉与交互\n\n复用宿主品牌字体、主色和明暗模式。同一报告的图表配色和同类对象颜色保持一致；无品牌规范时采用白底、深色文字、低饱和主色与浅网格，风险色只用于风险。HTML 表格设置合理列宽、长文换行、数字对齐、表头和分组；宽表在局部滚动，交互文档可固定表头。\n\n每图有标题、轴名、单位、图例（有多系列时）、来源、证据状态及读图结论。定性矩阵使用分类坐标和浅色分区；同一格多点错开并保持等级归属，提供完整名称和明细表，避免 P1–P9 堆叠遮挡。标签不足时增大容器或提供缩放，不缩小到难以阅读。\n\n交互文档提供悬停详情、适配宽度、放大查看和导出 SVG/PNG；静态导出把悬停信息的重要部分写入图注或数据表。按实际工具能力实现，不能声称未实现的交互可用。\n\n## 交付检查与降级\n\n核对图、表、正文的分类、单位、值、分母、来源和证据性质一致；检查默认尺寸与放大后文字无重叠、裁切，主题和打印/导出背景清晰。完成实际渲染才称“图表已渲染”。\n\n环境缺渲染器时保留 chart 数据或 Mermaid 源码＋数据表＋结论，并明确“待宿主渲染”；Markdown 阅读器不支持时可附已生成 SVG/PNG。渲染失败显示明细表与原因，不丢弃正文，也不回退为 ASCII 字符矩阵。没有可用分析数据的章节用“缺失证据表”说明待补内容，不生成虚构分布、比例、留存曲线或点位。\n",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/analysis.mvp"
+          },
+          "supplements": [],
+          "draft": false,
+          "startedAt": "2026-10-24T13:12:11.102Z",
+          "fingerprint": "587ec3c82f956f07a90c4befb0bd2b8960235a9237c24f35fc43f5c30ac1cb5b",
+          "model": {
+            "id": "294a5b94-cf4f-4936-84b0-0ea6f6d9900d",
+            "api": "deepseek-messages",
+            "baseURL": "https://api.deepseek.com/anthropic",
+            "model": "deepseek-flash"
+          },
+          "error": "模型没有返回有效 JSON，请调整材料后重试；旧版本已保留",
+          "suggestions": []
+        },
+        "report": {
+          "status": "queued",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "report.mvp",
+            "name": "MVP方案",
+            "version": "1.1.0",
+            "category": "report",
+            "description": "仅根据传入的相关成果，按大纲整理MVP方案；不搜索、不另作产品决策。",
+            "icon": "grid",
+            "enabled": true,
+            "executor": "ai",
+            "inputs": [
+              {
+                "id": "materials",
+                "name": "输入材料",
+                "types": [
+                  "materials",
+                  "sources",
+                  "analysis",
+                  "dataset",
+                  "documents"
+                ],
+                "multiple": true
+              }
+            ],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "MVP方案结果",
+                "types": [
+                  "documents"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "task",
+                "label": "本次目标与补充要求",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "modelId",
+                "label": "执行模型",
+                "type": "model",
+                "default": ""
+              },
+              {
+                "key": "outline",
+                "label": "输出大纲",
+                "type": "textarea",
+                "default": "# MVP方案\n## 目标用户与核心问题\n## 核心闭环\n## 本期范围与不做项\n## 优先级\n## 资源与周期\n## 验证指标与实验\n## 风险与止损"
+              }
+            ],
+            "instructions": "instructions.md",
+            "requirements": [
+              "本期产品目标",
+              "核心用户问题与使用场景",
+              "资源、周期或明确的未知约束"
+            ],
+            "implementation": "ai",
+            "origin": {
+              "skill": "产品经理工作流 / 现有本地工具",
+              "adaptedAt": "2026-10-18",
+              "scope": "确定核心闭环、本期范围、优先级与验证指标。"
+            },
+            "capabilities": {
+              "search": false,
+              "calculate": false,
+              "generateDecisions": false
+            },
+            "workflow": [
+              {
+                "id": "relevance",
+                "title": "检查材料相关性",
+                "prompt": "完全不相关或没有可用内容时停止，不输出文档。"
+              },
+              {
+                "id": "coverage",
+                "title": "对照大纲检查覆盖",
+                "prompt": "逐章识别输入支持的内容和缺口；相关但不足可整理，必须显著提示。"
+              },
+              {
+                "id": "compose",
+                "title": "按大纲整理报告",
+                "prompt": "仅归类、去重、编排和总结材料，不搜索、不新建事实、统计或产品决策。"
+              },
+              {
+                "id": "verify",
+                "title": "核对来源与文档",
+                "prompt": "数字和结论须由输入支持，缺失章节写材料不足，保留上游假设/局限。"
+              }
+            ],
+            "hash": "7a7ecc0ed216c25e618baa2c81d49ca6a22e8b87b3f86766fd7a0e83d9b0b810",
+            "instruction": "# MVP方案\n\n本节点只编排输入，不进行联网检索、独立分析、产品决策或统计计算。相关材料不充分时仍整理已有部分，在文档顶部及缺失章节标明资料不足；完全不相关时拒绝生成。保留来源、假设、证据局限，不用常识补齐缺少的事实。\n\n\n# 文档图表输出与渲染规范\n\n## 技术选择\n\n- 数据比较、趋势、占比、漏斗、留存热力图、痛点与优先级矩阵：ECharts。文档小型图默认 SVG；数据密集图可用 Canvas。按使用的图种加载依赖，桌面/离线交付使用本地资源。\n- 业务流程、关系、状态、用户决策链路：Mermaid，保留可复制源码，使用 theme: base 与宿主品牌色。已有研发向源码专用章节和真实界面拼接流程图保留原来的用途与交互，不强制改成另一种图。\n- 对比、需求、画像明细：语义化 HTML table＋CSS；Markdown 交付保留数据表，宿主负责表格样式。\n- 统计图交付由程序渲染矢量图或清晰 PNG；AI 插画、照片和真实原型截图保留原始资产，不用统计图引擎代替。\n\n## AI 与宿主的职责\n\nAI 提供结论、原始数据、来源和声明式图表规范；宿主把规范映射为 ECharts option 或 Mermaid SVG。图表不要求额外生成整篇 HTML；全文 HTML 仍按原流程或用户请求生成。宿主输出协议优先，已有 chart 字段时按其协议；无协议的 Markdown 使用紧邻正文的 chart JSON 围栏与 mermaid 围栏。\n\n下面的 pm-chart-v1 是本 Skill 的交接规范，宿主接入后才能自动绘图；它不是 ECharts option，也不是已经实现的工作台接口。宿主只接收白名单图种、字段和数据，不执行 AI 提供的 JS、formatter 函数或任意 HTML。\n\n## 图表数据协议\n\nchart JSON 每张图独立，字段：schema、id、type、title、evidenceStatus、sources、data、encoding；subtitle、note 可选。\n\n- schema 固定 pm-chart-v1；id 在文档内唯一，用于引用和导出。\n- type：bar / line / pie / funnel / heatmap / matrix / scatter。柱线图的数据记录提供分类或时间、数值与可选分组；encoding 指出字段名。漏斗记录给出步骤顺序和原始人数，率由代码计算。矩阵可用类别坐标；heatmap 明确行列及指标。\n- encoding.x / y 指出 field、scale（category / ordinal / quantitative / time）、label、unit；类别轴给出有序 categories。series / label / value 指明相关字段（按图种提供）。\n- evidenceStatus：已验证事实 / 用户观点 / 估算 / 分析推断 / 待验证 / 测试数据。sources 为来源 id、标题、url 或材料定位、日期；每行数据使用 sourceIds 引用来源。不同证据性质混用时逐行标注 evidenceStatus。\n- 缺数值用 null，不能用 0 替代；缺失数据不绘制为已观测值。百分比保留分母、统计口径和周期说明；估算附依据及置信度。等级是类别，不转换为未经解释的精确分数。\n\n### 定性痛点矩阵示例（演示数据）\n\n```chart\n{\n  \"schema\": \"pm-chart-v1\",\n  \"id\": \"pain-matrix\",\n  \"type\": \"matrix\",\n  \"title\": \"痛点矩阵\",\n  \"subtitle\": \"分析假设 · 待验证\",\n  \"evidenceStatus\": \"测试数据\",\n  \"sources\": [{\"id\":\"demo\",\"title\":\"规范演示数据，不能进入项目结论\"}],\n  \"data\": [\n    {\"id\":\"P1\",\"pain\":\"缺少持续陪伴\",\"frequency\":\"高\",\"severity\":\"高\",\"sourceIds\":[\"demo\"]},\n    {\"id\":\"P2\",\"pain\":\"使用负担\",\"frequency\":\"低\",\"severity\":\"中\",\"sourceIds\":[\"demo\"]}\n  ],\n  \"encoding\": {\n    \"x\":{\"field\":\"frequency\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"高\"],\"label\":\"发生频率\",\"unit\":\"等级\"},\n    \"y\":{\"field\":\"severity\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"中高\",\"高\"],\"label\":\"严重程度\",\"unit\":\"等级\"},\n    \"label\":\"id\"\n  },\n  \"note\":\"点位表示定性等级，不能读成统计频率；悬停显示痛点、来源与证据状态。\"\n}\n```\n\n保留同一组数据的 Markdown 表格和 1–3 句读图结论。例子只解释格式，实际图表必须使用当前项目数据。先确定数据与 encoding，再由渲染器映射为图形；不让模型手写字符轴线或字符条形图。\n\n## 视觉与交互\n\n复用宿主品牌字体、主色和明暗模式。同一报告的图表配色和同类对象颜色保持一致；无品牌规范时采用白底、深色文字、低饱和主色与浅网格，风险色只用于风险。HTML 表格设置合理列宽、长文换行、数字对齐、表头和分组；宽表在局部滚动，交互文档可固定表头。\n\n每图有标题、轴名、单位、图例（有多系列时）、来源、证据状态及读图结论。定性矩阵使用分类坐标和浅色分区；同一格多点错开并保持等级归属，提供完整名称和明细表，避免 P1–P9 堆叠遮挡。标签不足时增大容器或提供缩放，不缩小到难以阅读。\n\n交互文档提供悬停详情、适配宽度、放大查看和导出 SVG/PNG；静态导出把悬停信息的重要部分写入图注或数据表。按实际工具能力实现，不能声称未实现的交互可用。\n\n## 交付检查与降级\n\n核对图、表、正文的分类、单位、值、分母、来源和证据性质一致；检查默认尺寸与放大后文字无重叠、裁切，主题和打印/导出背景清晰。完成实际渲染才称“图表已渲染”。\n\n环境缺渲染器时保留 chart 数据或 Mermaid 源码＋数据表＋结论，并明确“待宿主渲染”；Markdown 阅读器不支持时可附已生成 SVG/PNG。渲染失败显示明细表与原因，不丢弃正文，也不回退为 ASCII 字符矩阵。没有可用分析数据的章节用“缺失证据表”说明待补内容，不生成虚构分布、比例、留存曲线或点位。\n",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/report.mvp"
+          },
+          "supplements": [],
+          "draft": false
+        }
+      },
+      "progress": "模型没有返回有效 JSON，请调整材料后重试；旧版本已保留",
+      "currentNodeId": "analysis",
+      "completedAt": "2026-10-24T13:12:19.367Z"
+    },
+    {
+      "id": "5ea358be-037b-4fe6-9dce-5e9323a4e685",
+      "version": 2,
+      "status": "succeeded",
+      "createdAt": "2026-10-24T13:18:45.362Z",
+      "graph": {
+        "nodes": [
+          {
+            "id": "text",
+            "type": "input.text",
+            "name": "文字输入",
+            "x": 80,
+            "y": 160,
+            "config": {
+              "researchMode": "materials",
+              "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n测试产品：跨端AI宠物。目标：验证独处上班族能否形成连续7天的陪伴习惯。已确认测试范围：电脑桌面显示宠物、手机文字聊天、每日喂养一次、两端同步亲密度、免打扰。人力：1名客户端、1名服务端、1名兼职设计；时间4周；预算2万元。现有替代方式为独自刷短视频，用户证据缺失须待验证。约束：仅软件，不做硬件/社区/语音视频/医疗功能。核心假设：跨端持续陪伴有价值。测试招募20位，关键指标为7日内互动>=4天人数；通过线>=8人，<4人停止投入，其间调整后复测。以上指标是测试计划不是已达成结果。请据此设计闭环、范围/不做项、假设功能指标对应、资源风险与验证节奏，不搜索信息。",
+              "evidence": "test_data"
+            }
+          },
+          {
+            "id": "analysis",
+            "type": "analysis.mvp",
+            "name": "MVP方案分析",
+            "x": 400,
+            "y": 160,
+            "config": {
+              "task": "依据给定目标和约束形成可执行MVP方案，所有建议标为测试分析推断，不新增事实。",
+              "modelId": "",
+              "outline": "# MVP方案分析\n## 核心结论\n## 证据与分析\n## 方案与规则\n## 待确认与下一步"
+            }
+          },
+          {
+            "id": "report",
+            "type": "report.mvp",
+            "name": "MVP方案",
+            "x": 720,
+            "y": 160,
+            "config": {
+              "task": "",
+              "modelId": "",
+              "outline": "# MVP方案\n## 目标用户与核心问题\n## 核心闭环\n## 本期范围与不做项\n## 优先级\n## 资源与周期\n## 验证指标与实验\n## 风险与止损"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "text-analysis",
+            "from": "text",
+            "to": "analysis",
+            "output": "data",
+            "input": "materials"
+          },
+          {
+            "id": "analysis-report",
+            "from": "analysis",
+            "to": "report",
+            "output": "data",
+            "input": "materials"
+          }
+        ],
+        "groups": [],
+        "view": {
+          "x": 60,
+          "y": 100,
+          "k": 1
+        }
+      },
+      "graphHash": "853a86a6547376fac3afce01cc3ff1c47c7efa2bd3103e2f7589d7a1d0493744",
+      "order": [
+        "text",
+        "analysis",
+        "report"
+      ],
+      "force": false,
+      "nodes": {
+        "text": {
+          "status": "succeeded",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "input.text",
+            "name": "文字输入",
+            "version": "1.1.0",
+            "category": "input",
+            "description": "输入想法、产品、用户需求或 CSV/JSON 数据。",
+            "icon": "input",
+            "enabled": true,
+            "executor": "text",
+            "inputs": [],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "文字输入结果",
+                "types": [
+                  "materials"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "researchMode",
+                "label": "输入方式",
+                "type": "select",
+                "options": [
+                  {
+                    "value": "materials",
+                    "label": "文档 / 数据材料"
+                  },
+                  {
+                    "value": "idea",
+                    "label": "产品想法"
+                  },
+                  {
+                    "value": "product",
+                    "label": "指定产品 / 竞品"
+                  },
+                  {
+                    "value": "user_need",
+                    "label": "用户需求"
+                  }
+                ],
+                "default": "materials"
+              },
+              {
+                "key": "content",
+                "label": "材料正文 / CSV / JSON",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "evidence",
+                "label": "材料性质",
+                "type": "select",
+                "options": [
+                  {
+                    "value": "user_statement",
+                    "label": "用户陈述"
+                  },
+                  {
+                    "value": "material",
+                    "label": "已有材料"
+                  },
+                  {
+                    "value": "test_data",
+                    "label": "测试数据"
+                  },
+                  {
+                    "value": "ai_hypothesis",
+                    "label": "AI假设（待验证）"
+                  }
+                ],
+                "default": "user_statement"
+              }
+            ],
+            "instructions": null,
+            "requirements": [
+              "至少一份相关输入"
+            ],
+            "implementation": "text",
+            "origin": {
+              "skill": "产品经理工作流 / 现有本地工具",
+              "adaptedAt": "2026-10-18",
+              "scope": "输入想法、产品、用户需求或 CSV/JSON 数据。"
+            },
+            "workflow": [
+              {
+                "id": "collect",
+                "title": "采集或引用材料",
+                "prompt": "输入想法、产品、用户需求或 CSV/JSON 数据。"
+              },
+              {
+                "id": "confirm",
+                "title": "保留内容与来源",
+                "prompt": "原样交接材料、来源和证据性质，不承担下游分析或报告整理。"
+              }
+            ],
+            "capabilities": {
+              "search": false,
+              "generateDecisions": false
+            },
+            "hash": "ab910179df883d66c348de313ff1bdd39728bba0013a9fba13dc49793ddb7678",
+            "instruction": "",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/input.text"
+          },
+          "supplements": [],
+          "draft": false,
+          "startedAt": "2026-10-24T13:18:45.389Z",
+          "fingerprint": "66b511f76bc6a917b3ba01242e2893abddef2e57ecca2cfa198c264ca700dacb",
+          "model": {
+            "id": "16ec0cbc-ab42-4a56-a5ad-76cd5ac1646a",
+            "api": "deepseek-messages",
+            "baseURL": "https://api.deepseek.com/anthropic",
+            "model": "deepseek-v4-pro"
+          },
+          "output": {
+            "kind": "materials",
+            "materials": [
+              {
+                "id": "d959bfda-4847-40bb-a0a7-f69b01431ec9",
+                "title": "文字输入",
+                "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n测试产品：跨端AI宠物。目标：验证独处上班族能否形成连续7天的陪伴习惯。已确认测试范围：电脑桌面显示宠物、手机文字聊天、每日喂养一次、两端同步亲密度、免打扰。人力：1名客户端、1名服务端、1名兼职设计；时间4周；预算2万元。现有替代方式为独自刷短视频，用户证据缺失须待验证。约束：仅软件，不做硬件/社区/语音视频/医疗功能。核心假设：跨端持续陪伴有价值。测试招募20位，关键指标为7日内互动>=4天人数；通过线>=8人，<4人停止投入，其间调整后复测。以上指标是测试计划不是已达成结果。请据此设计闭环、范围/不做项、假设功能指标对应、资源风险与验证节奏，不搜索信息。",
+                "evidence": "test_data",
+                "researchMode": "materials"
+              }
+            ],
+            "documents": [],
+            "sources": [],
+            "assumptions": [],
+            "summary": "已提供文字材料",
+            "warnings": [],
+            "fileReferences": []
+          },
+          "completedAt": "2026-10-24T13:18:45.400Z"
+        },
+        "analysis": {
+          "status": "succeeded",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "analysis.mvp",
+            "name": "MVP方案分析",
+            "version": "1.1.0",
+            "category": "analysis",
+            "description": "建立假设—功能—验证指标的映射，设计最小可用闭环。判断不做某功能是否仍可验证核心假设，区分本期/不做/以后做并给理由。分析依赖、成本、周期，",
+            "icon": "grid",
+            "enabled": true,
+            "executor": "ai",
+            "inputs": [
+              {
+                "id": "materials",
+                "name": "输入材料",
+                "types": [
+                  "materials",
+                  "sources",
+                  "analysis",
+                  "dataset",
+                  "documents"
+                ],
+                "multiple": true
+              }
+            ],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "MVP方案分析结果",
+                "types": [
+                  "analysis"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "task",
+                "label": "本次目标与补充要求",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "modelId",
+                "label": "执行模型",
+                "type": "model",
+                "default": ""
+              },
+              {
+                "key": "outline",
+                "label": "输出大纲",
+                "type": "textarea",
+                "default": "# MVP方案分析\n## 核心结论\n## 证据与分析\n## 方案与规则\n## 待确认与下一步"
+              }
+            ],
+            "instructions": "instructions.md",
+            "requirements": [
+              "目标用户问题与场景、本期目标、资源周期或明确未知项。"
+            ],
+            "implementation": "ai",
+            "origin": {
+              "skill": "三个产品技能的对应专业SOP",
+              "adaptedAt": "2026-10-24",
+              "scope": "建立假设—功能—验证指标的映射，设计最小可用闭环。判断不做某功能是否仍可验证核心假设，区分本期/不做/以后做并给理由。分析依赖、成本、周期，定义通过/止损与反馈节奏。新方案是分析建议，非用户已确认决策。"
+            },
+            "capabilities": {
+              "search": false,
+              "generateDecisions": true
+            },
+            "workflow": [
+              {
+                "id": "inventory",
+                "title": "盘点材料与范围",
+                "prompt": "检查最低输入要求、来源性质与缺口。"
+              },
+              {
+                "id": "analysis",
+                "title": "执行专业分析",
+                "prompt": "建立假设—功能—验证指标的映射，设计最小可用闭环。判断不做某功能是否仍可验证核心假设，区分本期/不做/以后做并给理由。分析依赖、成本、周期，定义通过/止损与反馈节奏。新方案是分析建议，非用户已确认决策。"
+              },
+              {
+                "id": "verify",
+                "title": "检查证据与结论",
+                "prompt": "核对来源、事实/推断/假设、数字和图表口径，标记未确认事项。"
+              },
+              {
+                "id": "output",
+                "title": "交接分析成果",
+                "prompt": "输出供下游使用的结论、方案、规则、证据与待确认项。"
+              }
+            ],
+            "hash": "36e7e3806430882c6b97c4272e0ea1616ebd3cd2a36966c1f6166a91a2ed7db0",
+            "instruction": "# MVP方案分析\n\n建立假设—功能—验证指标的映射，设计最小可用闭环。判断不做某功能是否仍可验证核心假设，区分本期/不做/以后做并给理由。分析依赖、成本、周期，定义通过/止损与反馈节奏。新方案是分析建议，非用户已确认决策。\n\n只分析传入材料，不自行搜索或访问外部资料。无材料先请求补充；数据不足必须标明证据缺口，不得编造。\n\n# 文档图表输出与渲染规范\n\n## 技术选择\n\n- 数据比较、趋势、占比、漏斗、留存热力图、痛点与优先级矩阵：ECharts。文档小型图默认 SVG；数据密集图可用 Canvas。按使用的图种加载依赖，桌面/离线交付使用本地资源。\n- 业务流程、关系、状态、用户决策链路：Mermaid，保留可复制源码，使用 theme: base 与宿主品牌色。已有研发向源码专用章节和真实界面拼接流程图保留原来的用途与交互，不强制改成另一种图。\n- 对比、需求、画像明细：语义化 HTML table＋CSS；Markdown 交付保留数据表，宿主负责表格样式。\n- 统计图交付由程序渲染矢量图或清晰 PNG；AI 插画、照片和真实原型截图保留原始资产，不用统计图引擎代替。\n\n## AI 与宿主的职责\n\nAI 提供结论、原始数据、来源和声明式图表规范；宿主把规范映射为 ECharts option 或 Mermaid SVG。图表不要求额外生成整篇 HTML；全文 HTML 仍按原流程或用户请求生成。宿主输出协议优先，已有 chart 字段时按其协议；无协议的 Markdown 使用紧邻正文的 chart JSON 围栏与 mermaid 围栏。\n\n下面的 pm-chart-v1 是本 Skill 的交接规范，宿主接入后才能自动绘图；它不是 ECharts option，也不是已经实现的工作台接口。宿主只接收白名单图种、字段和数据，不执行 AI 提供的 JS、formatter 函数或任意 HTML。\n\n## 图表数据协议\n\nchart JSON 每张图独立，字段：schema、id、type、title、evidenceStatus、sources、data、encoding；subtitle、note 可选。\n\n- schema 固定 pm-chart-v1；id 在文档内唯一，用于引用和导出。\n- type：bar / line / pie / funnel / heatmap / matrix / scatter。柱线图的数据记录提供分类或时间、数值与可选分组；encoding 指出字段名。漏斗记录给出步骤顺序和原始人数，率由代码计算。矩阵可用类别坐标；heatmap 明确行列及指标。\n- encoding.x / y 指出 field、scale（category / ordinal / quantitative / time）、label、unit；类别轴给出有序 categories。series / label / value 指明相关字段（按图种提供）。\n- evidenceStatus：已验证事实 / 用户观点 / 估算 / 分析推断 / 待验证 / 测试数据。sources 为来源 id、标题、url 或材料定位、日期；每行数据使用 sourceIds 引用来源。不同证据性质混用时逐行标注 evidenceStatus。\n- 缺数值用 null，不能用 0 替代；缺失数据不绘制为已观测值。百分比保留分母、统计口径和周期说明；估算附依据及置信度。等级是类别，不转换为未经解释的精确分数。\n\n### 定性痛点矩阵示例（演示数据）\n\n```chart\n{\n  \"schema\": \"pm-chart-v1\",\n  \"id\": \"pain-matrix\",\n  \"type\": \"matrix\",\n  \"title\": \"痛点矩阵\",\n  \"subtitle\": \"分析假设 · 待验证\",\n  \"evidenceStatus\": \"测试数据\",\n  \"sources\": [{\"id\":\"demo\",\"title\":\"规范演示数据，不能进入项目结论\"}],\n  \"data\": [\n    {\"id\":\"P1\",\"pain\":\"缺少持续陪伴\",\"frequency\":\"高\",\"severity\":\"高\",\"sourceIds\":[\"demo\"]},\n    {\"id\":\"P2\",\"pain\":\"使用负担\",\"frequency\":\"低\",\"severity\":\"中\",\"sourceIds\":[\"demo\"]}\n  ],\n  \"encoding\": {\n    \"x\":{\"field\":\"frequency\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"高\"],\"label\":\"发生频率\",\"unit\":\"等级\"},\n    \"y\":{\"field\":\"severity\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"中高\",\"高\"],\"label\":\"严重程度\",\"unit\":\"等级\"},\n    \"label\":\"id\"\n  },\n  \"note\":\"点位表示定性等级，不能读成统计频率；悬停显示痛点、来源与证据状态。\"\n}\n```\n\n保留同一组数据的 Markdown 表格和 1–3 句读图结论。例子只解释格式，实际图表必须使用当前项目数据。先确定数据与 encoding，再由渲染器映射为图形；不让模型手写字符轴线或字符条形图。\n\n## 视觉与交互\n\n复用宿主品牌字体、主色和明暗模式。同一报告的图表配色和同类对象颜色保持一致；无品牌规范时采用白底、深色文字、低饱和主色与浅网格，风险色只用于风险。HTML 表格设置合理列宽、长文换行、数字对齐、表头和分组；宽表在局部滚动，交互文档可固定表头。\n\n每图有标题、轴名、单位、图例（有多系列时）、来源、证据状态及读图结论。定性矩阵使用分类坐标和浅色分区；同一格多点错开并保持等级归属，提供完整名称和明细表，避免 P1–P9 堆叠遮挡。标签不足时增大容器或提供缩放，不缩小到难以阅读。\n\n交互文档提供悬停详情、适配宽度、放大查看和导出 SVG/PNG；静态导出把悬停信息的重要部分写入图注或数据表。按实际工具能力实现，不能声称未实现的交互可用。\n\n## 交付检查与降级\n\n核对图、表、正文的分类、单位、值、分母、来源和证据性质一致；检查默认尺寸与放大后文字无重叠、裁切，主题和打印/导出背景清晰。完成实际渲染才称“图表已渲染”。\n\n环境缺渲染器时保留 chart 数据或 Mermaid 源码＋数据表＋结论，并明确“待宿主渲染”；Markdown 阅读器不支持时可附已生成 SVG/PNG。渲染失败显示明细表与原因，不丢弃正文，也不回退为 ASCII 字符矩阵。没有可用分析数据的章节用“缺失证据表”说明待补内容，不生成虚构分布、比例、留存曲线或点位。\n",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/analysis.mvp"
+          },
+          "supplements": [],
+          "draft": false,
+          "startedAt": "2026-10-24T13:18:45.418Z",
+          "fingerprint": "394472d9efe4506202c3ebe5eb0ac89861cef54f61f375280870f0909079d6a1",
+          "model": {
+            "id": "16ec0cbc-ab42-4a56-a5ad-76cd5ac1646a",
+            "api": "deepseek-messages",
+            "baseURL": "https://api.deepseek.com/anthropic",
+            "model": "deepseek-v4-pro"
+          },
+          "output": {
+            "kind": "analysis",
+            "materials": [],
+            "documents": [
+              {
+                "id": "62e8562f-edaa-4fd5-a65d-b53fe6adc0c8",
+                "title": "MVP方案分析",
+                "format": "markdown",
+                "content": "# MVP方案分析\n\n## 核心结论\n\n- 本材料为软件 QA 人造测试材料，不能当作真实市场证据或用户访谈；以下结论均是基于给定约束的分析推断。\n- 最小可用闭环建议为：桌面宠物显示 + 手机文字聊天 + 每日喂养一次 + 两端亲密度同步 + 免打扰。该范围已在测试材料中确认。\n- 核心假设：跨端持续陪伴有价值。主验证指标：20 位测试用户中，7 日内互动≥4 天人数。通过线≥8 人，<4 人停止投入，4–7 人调整后复测。\n- 本期不做硬件、社区、语音视频、医疗功能。其中硬件、医疗功能不做；社区、语音视频建议以后做。\n- 主要风险：在 4 周、2 万元预算、1 名客户端 + 1 名服务端 + 1 名兼职设计的人力下，完成跨端开发、测试运行与指标回收存在排期和资源风险。互动口径、亲密度规则、样本招募需在测试前确认。\n\n## 证据与分析\n\n### 证据盘点\n\n| 证据项 | 内容 | 证据状态 | 缺口 |\n| --- | --- | --- | --- |\n| 测试产品与目标 | 跨端 AI 宠物；验证独处上班族能否形成连续 7 天陪伴习惯 | 测试数据，待验证 | 无真实用户验证 |\n| 已确认测试范围 | 电脑桌面显示宠物、手机文字聊天、每日喂养一次、两端同步亲密度、免打扰 | 测试数据，测试计划 | 具体交互和实现规则未定义 |\n| 资源约束 | 1 名客户端、1 名服务端、1 名兼职设计；4 周；2 万元 | 测试数据，约束条件 | 是否覆盖成本未确认 |\n| 核心假设 | 跨端持续陪伴有价值 | 测试数据，待验证 | 无用户证据 |\n| 测试指标 | 20 位测试用户；关键指标为 7 日内互动≥4 天人数；通过线≥8 人，<4 人停止投入，其间调整后复测 | 测试数据，测试计划 | 互动口径未定义 |\n| 现有替代方式 | 独自刷短视频 | 用户陈述缺失 | 待验证 |\n\n### 假设—功能—验证指标映射\n\n| 假设 | 功能 | 验证指标 | 证据状态 | 备注 |\n| --- | --- | --- | --- | --- |\n| H1 跨端持续陪伴有价值 | 桌面宠物显示、手机文字聊天、两端亲密度同步 | 主指标：20 人中 7 日内互动≥4 天人数；通过线≥8 人 | 测试数据（测试计划） | 材料给定主指标 |\n| H2 每日喂养形成习惯入口 | 每日喂养一次 | 建议辅助指标：7 日内喂养≥4 天人数、喂养完成天数 | 分析推断，需埋点 | 材料未明确 |\n| H3 免打扰降低陪伴负担 | 免打扰 | 建议辅助指标：免打扰开启率、留存/退出率 | 分析推断，需埋点 | 材料未明确 |\n| H4 跨端亲密度同步强化反馈 | 两端同步亲密度 | 建议辅助指标：跨端登录覆盖、亲密度变化 | 分析推断，需埋点 | 材料未明确 |\n\n### 不做某功能是否仍可验证核心假设\n\n- 不做手机文字聊天：不能验证跨端陪伴，只验证单端桌面陪伴，核心假设被明显削弱，建议本期必做。\n- 不做每日喂养一次：仍可能验证被动陪伴，但缺少每日主动互动与习惯锚点，7 日习惯验证会被弱化，建议本期做。\n- 不做两端同步亲密度：仍可能部分验证跨端陪伴，但跨端反馈和一致性弱；因材料已确认范围，建议本期简化为数值同步，不做复杂等级。\n- 不做免打扰：可能因打扰导致留存下降，干扰验证结果；建议本期做简单开关。\n- 不做硬件、社区、语音视频、医疗功能：不影响核心假设验证，因此建议本期不做或以后做。\n\n## 方案与规则\n\n### MVP 闭环\n\n```mermaid\nflowchart LR\n  A[安装桌面端] --> B[桌面宠物常驻]\n  B --> C[离开桌面时手机文字聊天]\n  C --> D[每日喂养一次]\n  D --> E[两端亲密度同步]\n  E --> F[免打扰控制]\n  F --> G[7日测试与指标回收]\n```\n\n### 范围决策\n\n| 事项 | 决策 | 理由 | 证据状态 |\n| --- | --- | --- | --- |\n| 桌面宠物显示 | 本期 | 验证常驻陪伴触点；不做会削弱核心假设 | 测试材料已确认范围 |\n| 手机文字聊天 | 本期 | 验证跨端持续性；不做则退化为单端 | 测试材料已确认范围 |\n| 每日喂养一次 | 本期 | 提供每日主动互动和习惯锚点 | 测试材料已确认范围 |\n| 两端同步亲密度 | 本期（简化） | 不做仍可部分验证，但反馈弱；建议简化为数值同步 | 分析推断 |\n| 免打扰 | 本期 | 降低负担，避免打扰干扰留存；建议简单开关 | 分析推断 |\n| 硬件 | 不做 | 约束仅软件 | 测试材料约束 |\n| 社区 | 以后做 | 需先验证基础陪伴价值 | 分析推断 |\n| 语音视频 | 以后做 | 需先验证文字陪伴和基础交互 | 分析推断 |\n| 医疗功能 | 不做 | 产品定位与约束不符 | 测试材料约束 |\n\n### 依赖、成本与周期\n\n以下周期为估算，不是已确认排期，需由开发与设计确认。\n\n| 工作项 | 依赖 | 成本/周期风险 |\n| --- | --- | --- |\n| 桌面端显示 | 客户端 + 兼职设计 | 约 1.5 周；桌面常驻、窗口管理和宠物动画资源 |\n| 手机文字聊天 | 客户端 + 服务端 + 设计 | 约 1.5 周；账号、消息通道、跨端同步 |\n| 每日喂养一次 + 亲密度同步 | 两端 + 服务端 | 约 1 周；每日状态刷新与数值同步 |\n| 免打扰 | 客户端/服务端配置 | 约 0.5 周；简单开关 |\n| 测试招募与运行 | 测试设计、埋点 | 需预留≥7 天测试 + 1 天回收；招募应提前并行 |\n\n### 通过/止损与反馈节奏\n\n| 指标结果 | 决策 | 备注 |\n| --- | --- | --- |\n| 7 日内互动≥4 天人数≥8 | 通过 | 进入下一阶段；后续动作材料未定义 |\n| 7 日内互动≥4 天人数<4 | 停止投入 | 材料给定；记录原因与用户反馈 |\n| 7 日内互动≥4 天人数 4–7 | 调整后复测 | 分析推断：最多复测 1 轮；复测后仍未达 8 人则暂停或重估 |\n\n反馈节奏建议：\n- 第 0–2 天：完成安装激活，确认样本进入测试。\n- 第 3 天：中期检查，观察互动天数分布和技术阻断。\n- 第 7 天：终评主指标。\n- 第 8 天：数据回收，输出测试结论。\n\n调整边界：只调整提醒时机、喂养门槛、修复阻断问题；不改变核心假设、样本和指标口径，否则测试结论不可比。\n\n### 验证规则建议\n\n- 分母为完成安装并进入测试的 20 人；缺失数据用 null，不按 0 处理。\n- 互动口径需在测试前锁定：建议任一主动互动（文字聊天、喂养、点击/互动桌面宠物）记为当天互动，但需产品确认。\n- 所有数据只使用已采集数据；未采集的指标不上报、不推断。\n\n## 待确认与下一步\n\n1. 互动定义：文字聊天、喂养、点击桌面宠物是否均计为互动；跨端去重规则。\n2. 亲密度计算规则与展示形式。\n3. 样本招募：独处上班族筛选标准、渠道、20 人代表性。\n4. 预算与排期：2 万元、4 周、3 人是否覆盖；若不能需裁剪设计资源或简化亲密度。\n5. 数据埋点与隐私合规：需采集哪些日志、用户授权。\n6. 调整后复测的时间与预算预留。\n7. 通过后下一步：进入后续迭代、扩大样本或验证其他价值，材料未定义。\n\n以上待确认项是本分析提出的确认请求，不是已确认事实。",
+                "summary": "### 核心结论\n- 基于给定测试材料，MVP 最小可用闭环为：桌面宠物显示、手机文字聊天、每日喂养一次、两端亲密度同步、免打扰。\n- 核心假设为“跨端持续陪伴有价值”，主指标为 20 位测试用户中 7 日内互动≥4 天人数；通过线≥8 人，<4 人停止投入，4–7 人调整后复测（复测规则为分析推断）。\n- 本期不做硬件、社区、语音视频、医疗功能；社区/语音视频建议以后做。\n\n### 证据局限\n- 材料为软件 QA 人造测试材料，不能当作真实市场证据或用户访谈。\n- 无用户访谈、行为数据或真实测试结果；关键指标是测试计划，不是已达成结果。\n- 互动口径、亲密度规则、样本招募、预算排期等均待确认。\n\n### 下一步\n- 确认互动定义与埋点口径；确认亲密度规则与实现范围。\n- 确认样本招募和预算排期；测试前锁定通过/止损与调整边界。\n- 根据确认结果更新 MVP 范围和验证节奏。"
+              }
+            ],
+            "sources": [],
+            "assumptions": [],
+            "summary": "### 核心结论\n- 基于给定测试材料，MVP 最小可用闭环为：桌面宠物显示、手机文字聊天、每日喂养一次、两端亲密度同步、免打扰。\n- 核心假设为“跨端持续陪伴有价值”，主指标为 20 位测试用户中 7 日内互动≥4 天人数；通过线≥8 人，<4 人停止投入，4–7 人调整后复测（复测规则为分析推断）。\n- 本期不做硬件、社区、语音视频、医疗功能；社区/语音视频建议以后做。\n\n### 证据局限\n- 材料为软件 QA 人造测试材料，不能当作真实市场证据或用户访谈。\n- 无用户访谈、行为数据或真实测试结果；关键指标是测试计划，不是已达成结果。\n- 互动口径、亲密度规则、样本招募、预算排期等均待确认。\n\n### 下一步\n- 确认互动定义与埋点口径；确认亲密度规则与实现范围。\n- 确认样本招募和预算排期；测试前锁定通过/止损与调整边界。\n- 根据确认结果更新 MVP 范围和验证节奏。",
+            "warnings": [],
+            "fileReferences": [],
+            "inputSnapshot": [
+              {
+                "id": "d959bfda-4847-40bb-a0a7-f69b01431ec9",
+                "title": "文字输入",
+                "evidence": "test_data"
+              }
+            ],
+            "quality": {
+              "level": "complete",
+              "missing": [],
+              "note": ""
+            },
+            "analysis": {},
+            "openQuestions": [],
+            "computed": null
+          },
+          "completedAt": "2026-10-24T13:20:24.321Z"
+        },
+        "report": {
+          "status": "succeeded",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "report.mvp",
+            "name": "MVP方案",
+            "version": "1.1.0",
+            "category": "report",
+            "description": "仅根据传入的相关成果，按大纲整理MVP方案；不搜索、不另作产品决策。",
+            "icon": "grid",
+            "enabled": true,
+            "executor": "ai",
+            "inputs": [
+              {
+                "id": "materials",
+                "name": "输入材料",
+                "types": [
+                  "materials",
+                  "sources",
+                  "analysis",
+                  "dataset",
+                  "documents"
+                ],
+                "multiple": true
+              }
+            ],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "MVP方案结果",
+                "types": [
+                  "documents"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "task",
+                "label": "本次目标与补充要求",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "modelId",
+                "label": "执行模型",
+                "type": "model",
+                "default": ""
+              },
+              {
+                "key": "outline",
+                "label": "输出大纲",
+                "type": "textarea",
+                "default": "# MVP方案\n## 目标用户与核心问题\n## 核心闭环\n## 本期范围与不做项\n## 优先级\n## 资源与周期\n## 验证指标与实验\n## 风险与止损"
+              }
+            ],
+            "instructions": "instructions.md",
+            "requirements": [
+              "本期产品目标",
+              "核心用户问题与使用场景",
+              "资源、周期或明确的未知约束"
+            ],
+            "implementation": "ai",
+            "origin": {
+              "skill": "产品经理工作流 / 现有本地工具",
+              "adaptedAt": "2026-10-18",
+              "scope": "确定核心闭环、本期范围、优先级与验证指标。"
+            },
+            "capabilities": {
+              "search": false,
+              "calculate": false,
+              "generateDecisions": false
+            },
+            "workflow": [
+              {
+                "id": "relevance",
+                "title": "检查材料相关性",
+                "prompt": "完全不相关或没有可用内容时停止，不输出文档。"
+              },
+              {
+                "id": "coverage",
+                "title": "对照大纲检查覆盖",
+                "prompt": "逐章识别输入支持的内容和缺口；相关但不足可整理，必须显著提示。"
+              },
+              {
+                "id": "compose",
+                "title": "按大纲整理报告",
+                "prompt": "仅归类、去重、编排和总结材料，不搜索、不新建事实、统计或产品决策。"
+              },
+              {
+                "id": "verify",
+                "title": "核对来源与文档",
+                "prompt": "数字和结论须由输入支持，缺失章节写材料不足，保留上游假设/局限。"
+              }
+            ],
+            "hash": "7a7ecc0ed216c25e618baa2c81d49ca6a22e8b87b3f86766fd7a0e83d9b0b810",
+            "instruction": "# MVP方案\n\n本节点只编排输入，不进行联网检索、独立分析、产品决策或统计计算。相关材料不充分时仍整理已有部分，在文档顶部及缺失章节标明资料不足；完全不相关时拒绝生成。保留来源、假设、证据局限，不用常识补齐缺少的事实。\n\n\n# 文档图表输出与渲染规范\n\n## 技术选择\n\n- 数据比较、趋势、占比、漏斗、留存热力图、痛点与优先级矩阵：ECharts。文档小型图默认 SVG；数据密集图可用 Canvas。按使用的图种加载依赖，桌面/离线交付使用本地资源。\n- 业务流程、关系、状态、用户决策链路：Mermaid，保留可复制源码，使用 theme: base 与宿主品牌色。已有研发向源码专用章节和真实界面拼接流程图保留原来的用途与交互，不强制改成另一种图。\n- 对比、需求、画像明细：语义化 HTML table＋CSS；Markdown 交付保留数据表，宿主负责表格样式。\n- 统计图交付由程序渲染矢量图或清晰 PNG；AI 插画、照片和真实原型截图保留原始资产，不用统计图引擎代替。\n\n## AI 与宿主的职责\n\nAI 提供结论、原始数据、来源和声明式图表规范；宿主把规范映射为 ECharts option 或 Mermaid SVG。图表不要求额外生成整篇 HTML；全文 HTML 仍按原流程或用户请求生成。宿主输出协议优先，已有 chart 字段时按其协议；无协议的 Markdown 使用紧邻正文的 chart JSON 围栏与 mermaid 围栏。\n\n下面的 pm-chart-v1 是本 Skill 的交接规范，宿主接入后才能自动绘图；它不是 ECharts option，也不是已经实现的工作台接口。宿主只接收白名单图种、字段和数据，不执行 AI 提供的 JS、formatter 函数或任意 HTML。\n\n## 图表数据协议\n\nchart JSON 每张图独立，字段：schema、id、type、title、evidenceStatus、sources、data、encoding；subtitle、note 可选。\n\n- schema 固定 pm-chart-v1；id 在文档内唯一，用于引用和导出。\n- type：bar / line / pie / funnel / heatmap / matrix / scatter。柱线图的数据记录提供分类或时间、数值与可选分组；encoding 指出字段名。漏斗记录给出步骤顺序和原始人数，率由代码计算。矩阵可用类别坐标；heatmap 明确行列及指标。\n- encoding.x / y 指出 field、scale（category / ordinal / quantitative / time）、label、unit；类别轴给出有序 categories。series / label / value 指明相关字段（按图种提供）。\n- evidenceStatus：已验证事实 / 用户观点 / 估算 / 分析推断 / 待验证 / 测试数据。sources 为来源 id、标题、url 或材料定位、日期；每行数据使用 sourceIds 引用来源。不同证据性质混用时逐行标注 evidenceStatus。\n- 缺数值用 null，不能用 0 替代；缺失数据不绘制为已观测值。百分比保留分母、统计口径和周期说明；估算附依据及置信度。等级是类别，不转换为未经解释的精确分数。\n\n### 定性痛点矩阵示例（演示数据）\n\n```chart\n{\n  \"schema\": \"pm-chart-v1\",\n  \"id\": \"pain-matrix\",\n  \"type\": \"matrix\",\n  \"title\": \"痛点矩阵\",\n  \"subtitle\": \"分析假设 · 待验证\",\n  \"evidenceStatus\": \"测试数据\",\n  \"sources\": [{\"id\":\"demo\",\"title\":\"规范演示数据，不能进入项目结论\"}],\n  \"data\": [\n    {\"id\":\"P1\",\"pain\":\"缺少持续陪伴\",\"frequency\":\"高\",\"severity\":\"高\",\"sourceIds\":[\"demo\"]},\n    {\"id\":\"P2\",\"pain\":\"使用负担\",\"frequency\":\"低\",\"severity\":\"中\",\"sourceIds\":[\"demo\"]}\n  ],\n  \"encoding\": {\n    \"x\":{\"field\":\"frequency\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"高\"],\"label\":\"发生频率\",\"unit\":\"等级\"},\n    \"y\":{\"field\":\"severity\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"中高\",\"高\"],\"label\":\"严重程度\",\"unit\":\"等级\"},\n    \"label\":\"id\"\n  },\n  \"note\":\"点位表示定性等级，不能读成统计频率；悬停显示痛点、来源与证据状态。\"\n}\n```\n\n保留同一组数据的 Markdown 表格和 1–3 句读图结论。例子只解释格式，实际图表必须使用当前项目数据。先确定数据与 encoding，再由渲染器映射为图形；不让模型手写字符轴线或字符条形图。\n\n## 视觉与交互\n\n复用宿主品牌字体、主色和明暗模式。同一报告的图表配色和同类对象颜色保持一致；无品牌规范时采用白底、深色文字、低饱和主色与浅网格，风险色只用于风险。HTML 表格设置合理列宽、长文换行、数字对齐、表头和分组；宽表在局部滚动，交互文档可固定表头。\n\n每图有标题、轴名、单位、图例（有多系列时）、来源、证据状态及读图结论。定性矩阵使用分类坐标和浅色分区；同一格多点错开并保持等级归属，提供完整名称和明细表，避免 P1–P9 堆叠遮挡。标签不足时增大容器或提供缩放，不缩小到难以阅读。\n\n交互文档提供悬停详情、适配宽度、放大查看和导出 SVG/PNG；静态导出把悬停信息的重要部分写入图注或数据表。按实际工具能力实现，不能声称未实现的交互可用。\n\n## 交付检查与降级\n\n核对图、表、正文的分类、单位、值、分母、来源和证据性质一致；检查默认尺寸与放大后文字无重叠、裁切，主题和打印/导出背景清晰。完成实际渲染才称“图表已渲染”。\n\n环境缺渲染器时保留 chart 数据或 Mermaid 源码＋数据表＋结论，并明确“待宿主渲染”；Markdown 阅读器不支持时可附已生成 SVG/PNG。渲染失败显示明细表与原因，不丢弃正文，也不回退为 ASCII 字符矩阵。没有可用分析数据的章节用“缺失证据表”说明待补内容，不生成虚构分布、比例、留存曲线或点位。\n",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/report.mvp"
+          },
+          "supplements": [],
+          "draft": false,
+          "startedAt": "2026-10-24T13:20:24.337Z",
+          "fingerprint": "6fcf8baad074dc3c96383a28d76d0181bd725e5420291a3f8eefa07afa307673",
+          "model": {
+            "id": "3b9de208-5b65-4b40-acbc-a7c3d618e5e4",
+            "api": "deepseek-messages",
+            "baseURL": "https://api.deepseek.com/anthropic",
+            "model": "deepseek-flash"
+          },
+          "output": {
+            "kind": "documents",
+            "materials": [],
+            "documents": [
+              {
+                "id": "d3dc4a0c-7533-4bbf-9d3a-18557eee0c91",
+                "title": "MVP方案",
+                "format": "markdown",
+                "content": "> **资料完整性提示：信息不充分**\n> - 目标用户与核心问题：仅有“独处上班族”这一测试设定，缺少用户画像、场景细节与真实用户证据；现有替代方式“独自刷短视频”被标为用户陈述缺失／待验证，不能作为已证事实\n> - 优先级：材料只有“本期做／不做／以后做”的范围决策与理由，没有功能间优先顺序或分级（如 P0/P1），也未给出排序依据\n> - 核心闭环：有 Mermaid 线性流程（安装桌面端→宠物常驻→手机聊天→每日喂养→亲密度同步→免打扰→测试回收），但缺少各环节的交互规则、状态定义与异常、中断路径\n> - 资源与周期：周期为约数估算且未确认，缺少排期甘特或里程碑、2 万元预算构成、3 人（含兼职设计）投入分配，以及招募与测试窗口的并行安排细节\n> - 验证指标与实验：主指标已给定（20 人中 7 日内互动≥4 天，通过≥8 人、<4 人停止、4–7 人复测），但互动口径未定义、跨端去重规则缺失、样本招募标准与渠道缺失、辅助指标仅为分析推断且需埋点，缺少实验设计与埋点方案\n> - 风险与止损：有通过／止损阈值与调整边界，但缺少风险清单、发生概率与影响评估、对应缓解措施，以及技术阻断、招募不足、样本流失等具体风险应对\n> - 待确认项未闭环：亲密度规则、隐私合规与数据授权、复测预算与时间、通过后下一步均未定义，材料自身标注为确认请求\n\n# MVP方案\n\n> **资料不足提示（全文适用）**：本材料为软件 QA 人造测试材料，明确标注为测试数据／待验证，不含真实市场证据或用户访谈。以下内容仅对上游材料做归类、去重、编排与总结，不新增事实、统计或产品决策。凡标“分析推断”的内容为上游分析节点的建议，尚未确认；标“材料不足”的章节不补齐内容，仅列所需输入。\n\n## 目标用户与核心问题\n\n**材料不足。** 仅有测试设定中的一句用户描述，缺少画像、场景细节与真实用户证据；核心问题在材料中未被定义。\n\n| 项目 | 材料中的内容 | 证据状态 | 缺口 |\n| --- | --- | --- | --- |\n| 目标用户 | 独处上班族 | 测试数据，待验证 | 无用户画像（年龄、职业、独处时长、设备条件）、无场景细节、无真实用户样本 |\n| 核心问题 | 材料未直接定义；仅有待验证假设“跨端持续陪伴有价值” | 测试数据，待验证 | 问题陈述、用户痛点证据、需求强度 |\n| 现有替代方式 | 独自刷短视频 | 用户陈述缺失／待验证 | 不能作为已证事实使用；无来源、无样本 |\n| 使用场景 | 电脑桌面常驻 + 离开桌面时手机文字聊天 | 测试数据，测试计划 | 具体时段、频次、打断场景未定义 |\n\n**所需输入**：目标用户画像与筛选标准、核心问题陈述及支持证据、替代方案调研结论（含来源与样本）。\n\n## 核心闭环\n\n材料给出一条线性闭环，来源为测试材料已确认范围；各环节交互规则、状态定义与异常／中断路径缺失。\n\n```mermaid\n%%{init: {'theme':'base'}}%%\nflowchart LR\n  A[安装桌面端] --> B[桌面宠物常驻]\n  B --> C[离开桌面时手机文字聊天]\n  C --> D[每日喂养一次]\n  D --> E[两端亲密度同步]\n  E --> F[免打扰控制]\n  F --> G[7日测试与指标回收]\n```\n\n（上述 Mermaid 为流程源码，待宿主渲染；渲染不可用时以上文字顺序即为闭环顺序。）\n\n| 环节 | 材料中的描述 | 证据状态 | 缺口 |\n| --- | --- | --- | --- |\n| 安装桌面端 | 闭环起点 | 测试材料已确认范围 | 安装方式、激活判定未定义 |\n| 桌面宠物常驻 | 常驻显示 | 测试材料已确认范围 | 窗口行为、动画资源、常驻规则未定义 |\n| 手机文字聊天 | “离开桌面时”使用 | 测试材料已确认范围 | 账号体系、消息通道、跨端同步规则未定义 |\n| 每日喂养一次 | 每日主动互动入口 | 测试材料已确认范围 | 每日刷新时点、门槛、失败处理未定义 |\n| 两端亲密度同步 | 数值同步 | 测试材料已确认范围；简化为数值同步属**分析推断** | 计算规则与展示形式未定义 |\n| 免打扰控制 | 简单开关 | 测试材料已确认范围；简单开关属**分析推断** | 开关粒度、生效范围未定义 |\n| 测试与指标回收 | 7 日测试 + 回收 | 测试数据，测试计划 | 埋点方案、回收流程未定义 |\n\n**所需输入**：各环节交互规则与状态机、异常与中断路径（跨端断连、数据不同步、未喂养等）、账号与同步技术方案。\n\n## 本期范围与不做项\n\n范围来自材料中的范围决策表；除“分析推断”标注项外，均属测试材料已确认范围。\n\n| 事项 | 决策 | 理由（材料原文归纳） | 证据状态 |\n| --- | --- | --- | --- |\n| 桌面宠物显示 | 本期 | 验证常驻陪伴触点；不做会削弱核心假设 | 测试材料已确认范围 |\n| 手机文字聊天 | 本期 | 验证跨端持续性；不做则退化为单端 | 测试材料已确认范围 |\n| 每日喂养一次 | 本期 | 提供每日主动互动和习惯锚点 | 测试材料已确认范围 |\n| 两端同步亲密度 | 本期（简化为数值同步） | 不做仍可部分验证，但跨端反馈与一致性弱 | 测试材料已确认范围 + 简化建议为分析推断 |\n| 免打扰 | 本期（简单开关） | 降低陪伴负担，避免打扰干扰留存结果 | 测试材料已确认范围 + 简单开关为分析推断 |\n| 硬件 | 不做 | 约束为纯软件 | 测试材料约束 |\n| 社区 | 以后做 | 需先验证基础陪伴价值 | 分析推断 |\n| 语音视频 | 以后做 | 需先验证文字陪伴与基础交互 | 分析推断 |\n| 医疗功能 | 不做 | 与产品定位及约束不符 | 测试材料约束 |\n\n**注意**：“以后做”不等于本期排期承诺；材料未定义以后做的时间点与前置条件。\n\n## 优先级\n\n**材料不足。** 材料只有“本期做／不做／以后做”的范围决策，没有功能之间的优先顺序或分级（如 P0/P1），也没有排序依据（价值、成本、风险权重等）。本节不自行排序。\n\n| 需补内容 | 说明 | 现状 |\n| --- | --- | --- |\n| 功能优先级分级 | 本期范围内 5 项功能的先后与分级 | 缺失 |\n| 排序依据 | 价值／成本／风险／依赖关系的判断标准 | 缺失 |\n| 最小可验证子集 | 若排期或预算不足时的裁剪顺序 | 材料仅指出“若不能需裁剪设计资源或简化亲密度”（分析推断），未形成排序 |\n\n**所需输入**：产品负责人给出的优先级分级与排序依据；开发与设计对各功能工作量的确认结果。\n\n## 资源与周期\n\n资源与周期来自测试材料的约束条件；工作项周期为估算，非已确认排期，需由开发与设计确认。\n\n| 项目 | 材料内容 | 证据状态 |\n| --- | --- | --- |\n| 人力 | 1 名客户端 + 1 名服务端 + 1 名兼职设计 | 测试数据，约束条件 |\n| 周期 | 4 周 | 测试数据，约束条件 |\n| 预算 | 2 万元 | 测试数据，约束条件；是否覆盖成本未确认 |\n\n| 工作项 | 依赖 | 周期／成本风险 | 证据状态 |\n| --- | --- | --- | --- |\n| 桌面端显示 | 客户端 + 兼职设计 | 约 1.5 周；桌面常驻、窗口管理与宠物动画资源 | 估算，未确认 |\n| 手机文字聊天 | 客户端 + 服务端 + 设计 | 约 1.5 周；账号、消息通道、跨端同步 | 估算，未确认 |\n| 每日喂养一次 + 亲密度同步 | 两端 + 服务端 | 约 1 周；每日状态刷新与数值同步 | 估算，未确认 |\n| 免打扰 | 客户端／服务端配置 | 约 0.5 周；简单开关 | 估算，未确认 |\n| 测试招募与运行 | 测试设计、埋点 | 需预留≥7 天测试 + 1 天回收；招募应提前并行 | 测试数据，测试计划 |\n\n反馈节奏（材料中的建议，**分析推断·待确认**）：第 0–2 天完成安装激活并确认样本进入测试；第 3 天中期检查，观察互动天数分布与技术阻断；第 7 天终评主指标；第 8 天数据回收并输出结论。\n\n**缺口**：无里程碑或甘特排期、无 2 万元预算构成、无 3 人（含兼职设计）投入分配、无招募与开发并行安排细节；各工作项耗时之和与 4 周窗口的关系未在材料中核对。\n\n## 验证指标与实验\n\n### 主指标与判定阈值（测试数据，测试计划）\n\n| 指标结果 | 决策 | 备注 |\n| --- | --- | --- |\n| 7 日内互动≥4 天人数 ≥8 | 通过 | 进入下一阶段；后续动作材料未定义 |\n| 7 日内互动≥4 天人数 <4 | 停止投入 | 材料给定；同时记录原因与用户反馈 |\n| 7 日内互动≥4 天人数 4–7 | 调整后复测 | **分析推断**：最多复测 1 轮；复测后仍未达 8 人则暂停或重估 |\n\n口径与分母：分母为完成安装并进入测试的 20 人；缺失数据用 null，不按 0 处理（材料建议，待确认）。互动口径尚未定义。\n\n### 假设—功能—指标映射\n\n| 假设 | 功能 | 验证指标 | 证据状态 |\n| --- | --- | --- | --- |\n| H1 跨端持续陪伴有价值 | 桌面宠物显示、手机文字聊天、两端亲密度同步 | 主指标：20 人中 7 日内互动≥4 天人数；通过线≥8 人 | 测试数据（测试计划） |\n| H2 每日喂养形成习惯入口 | 每日喂养一次 | 建议辅助指标：7 日内喂养≥4 天人数、喂养完成天数 | 分析推断，需埋点 |\n| H3 免打扰降低陪伴负担 | 免打扰 | 建议辅助指标：免打扰开启率、留存／退出率 | 分析推断，需埋点 |\n| H4 跨端亲密度同步强化反馈 | 两端同步亲密度 | 建议辅助指标：跨端登录覆盖、亲密度变化 | 分析推断，需埋点 |\n\n### 实验设计缺口\n\n- 互动定义未锁定：文字聊天、喂养、点击桌面宠物是否均计为互动，跨端是否去重，均需产品确认。\n- 样本招募：独处上班族筛选标准、渠道、20 人代表性均未定义。\n- 埋点与隐私合规：需采集哪些日志、用户授权方式未定义。\n- 辅助指标均为分析推断，尚未埋点，不能作为结论上报。\n- 调整边界（材料原文）：只调整提醒时机、喂养门槛、修复阻断问题；不改变核心假设、样本和指标口径，否则结论不可比。\n\n## 风险与止损\n\n### 已知风险（材料中明确的）\n\n| 风险 | 材料中的描述 | 证据状态 |\n| --- | --- | --- |\n| 排期与资源风险 | 4 周、2 万元、1 客户端 + 1 服务端 + 1 兼职设计下，完成跨端开发、测试运行与指标回收存在排期和资源风险 | 分析推断 |\n| 口径风险 | 互动口径、亲密度规则、样本招募需在测试前确认 | 分析推断（确认请求） |\n| 成本覆盖未确认 | 2 万元是否覆盖成本未确认 | 测试数据，约束条件中的待确认项 |\n\n### 止损与调整规则（测试数据，测试计划）\n\n| 触发条件 | 动作 | 材料完整性 |\n| --- | --- | --- |\n| 互动≥4 天人数 <4 | 停止投入，记录原因与用户反馈 | 材料给定 |\n| 4–7 人 | 调整后复测（最多 1 轮属分析推断） | 部分，复测时间与预算未预留 |\n| ≥8 人 | 通过，进入下一阶段 | 后续动作材料未定义 |\n\n调整边界：只调整提醒时机、喂养门槛、修复阻断问题；不改变核心假设、样本与指标口径。\n\n### 缺失的风险内容\n\n- 无风险清单与分级：未列技术阻断、招募不足、样本流失、跨端同步失败、隐私合规等具体风险项。\n- 无发生概率与影响评估，无对应缓解措施与责任人。\n- 无止损后的收尾安排：用户告知、数据处置、资源释放未定义。\n- 待确认项未闭环：亲密度计算规则与展示形式、样本招募标准与渠道、预算与排期是否覆盖、数据埋点与隐私合规、复测的时间与预算预留、通过后的下一步，均在材料中标注为确认请求，不是已确认事实。\n\n**所需输入**：风险登记表（风险项、概率、影响、缓解措施、责任人）、止损后的处理流程、上述待确认项的确认结论。",
+                "outline": "# MVP方案\n## 目标用户与核心问题\n## 核心闭环\n## 本期范围与不做项\n## 优先级\n## 资源与周期\n## 验证指标与实验\n## 风险与止损",
+                "summary": "## 资料完整性\n- 信息不充分：目标用户与核心问题：仅有“独处上班族”这一测试设定，缺少用户画像、场景细节与真实用户证据；现有替代方式“独自刷短视频”被标为用户陈述缺失／待验证，不能作为已证事实；优先级：材料只有“本期做／不做／以后做”的范围决策与理由，没有功能间优先顺序或分级（如 P0/P1），也未给出排序依据；核心闭环：有 Mermaid 线性流程（安装桌面端→宠物常驻→手机聊天→每日喂养→亲密度同步→免打扰→测试回收），但缺少各环节的交互规则、状态定义与异常、中断路径；资源与周期：周期为约数估算且未确认，缺少排期甘特或里程碑、2 万元预算构成、3 人（含兼职设计）投入分配，以及招募与测试窗口的并行安排细节；验证指标与实验：主指标已给定（20 人中 7 日内互动≥4 天，通过≥8 人、<4 人停止、4–7 人复测），但互动口径未定义、跨端去重规则缺失、样本招募标准与渠道缺失、辅助指标仅为分析推断且需埋点，缺少实验设计与埋点方案；风险与止损：有通过／止损阈值与调整边界，但缺少风险清单、发生概率与影响评估、对应缓解措施，以及技术阻断、招募不足、样本流失等具体风险应对；待确认项未闭环：亲密度规则、隐私合规与数据授权、复测预算与时间、通过后下一步均未定义，材料自身标注为确认请求\n\n## 核心结论\n- 本文件只按大纲整理并归类上游材料，未新增事实、统计或产品决策；材料为软件 QA 人造测试材料，全部结论保持“测试数据／待验证／分析推断”标记。\n- 已整理出的可用内容：MVP 最小闭环（桌面宠物显示、手机文字聊天、每日喂养一次、两端亲密度同步、免打扰）、本期做／不做范围、主验证指标与通过／止损阈值、人力与周期约束、已知风险。\n- 目标用户“独处上班族”仅为测试设定；核心问题、现有替代方式、功能优先级排序在材料中没有可用输入。\n\n## 证据局限\n- 无真实用户证据、无市场证据，不能作为真实结论引用。\n- 周期为估算，且未由开发与设计确认；2 万元预算构成未确认。\n- 互动口径、跨端去重、亲密度规则、样本招募标准、埋点与隐私合规、复测预算均未定义。\n\n## 下一步\n- 由产品或测试负责人确认互动口径、亲密度规则、样本招募标准与埋点方案后，再锁定测试。\n- 补齐用户画像与场景证据、功能优先级排序依据、风险清单与缓解措施。\n- 由开发与设计确认排期与预算是否覆盖 4 周、2 万元、3 人约束。",
+                "quality": {
+                  "level": "partial",
+                  "missing": [
+                    "目标用户与核心问题：仅有“独处上班族”这一测试设定，缺少用户画像、场景细节与真实用户证据；现有替代方式“独自刷短视频”被标为用户陈述缺失／待验证，不能作为已证事实",
+                    "优先级：材料只有“本期做／不做／以后做”的范围决策与理由，没有功能间优先顺序或分级（如 P0/P1），也未给出排序依据",
+                    "核心闭环：有 Mermaid 线性流程（安装桌面端→宠物常驻→手机聊天→每日喂养→亲密度同步→免打扰→测试回收），但缺少各环节的交互规则、状态定义与异常、中断路径",
+                    "资源与周期：周期为约数估算且未确认，缺少排期甘特或里程碑、2 万元预算构成、3 人（含兼职设计）投入分配，以及招募与测试窗口的并行安排细节",
+                    "验证指标与实验：主指标已给定（20 人中 7 日内互动≥4 天，通过≥8 人、<4 人停止、4–7 人复测），但互动口径未定义、跨端去重规则缺失、样本招募标准与渠道缺失、辅助指标仅为分析推断且需埋点，缺少实验设计与埋点方案",
+                    "风险与止损：有通过／止损阈值与调整边界，但缺少风险清单、发生概率与影响评估、对应缓解措施，以及技术阻断、招募不足、样本流失等具体风险应对",
+                    "待确认项未闭环：亲密度规则、隐私合规与数据授权、复测预算与时间、通过后下一步均未定义，材料自身标注为确认请求"
+                  ],
+                  "note": "材料是软件 QA 人造测试材料，明确为测试数据／待验证，不含真实市场或用户证据；主题与大纲高度相关，可整理 MVP 方案。核心闭环、范围与不做项、主验证指标与止损阈值有直接输入，资源与周期、风险与止损有部分但未确认的估算。目标用户与核心问题缺乏用户证据，优先级排序完全缺失，互动口径、招募标准、埋点与隐私合规均待确认。因此判为相关但不足：可整理现有部分，须在文档顶部及各缺口章节显著标注资料不足，并保持上游“分析推断／测试数据／待验证”的证据状态，不补齐事实。"
+                }
+              }
+            ],
+            "sources": [],
+            "assumptions": [],
+            "summary": "## 核心结论\n- 本文件只按大纲整理并归类上游材料，未新增事实、统计或产品决策；材料为软件 QA 人造测试材料，全部结论保持“测试数据／待验证／分析推断”标记。\n- 已整理出的可用内容：MVP 最小闭环（桌面宠物显示、手机文字聊天、每日喂养一次、两端亲密度同步、免打扰）、本期做／不做范围、主验证指标与通过／止损阈值、人力与周期约束、已知风险。\n- 目标用户“独处上班族”仅为测试设定；核心问题、现有替代方式、功能优先级排序在材料中没有可用输入。\n\n## 证据局限\n- 无真实用户证据、无市场证据，不能作为真实结论引用。\n- 周期为估算，且未由开发与设计确认；2 万元预算构成未确认。\n- 互动口径、跨端去重、亲密度规则、样本招募标准、埋点与隐私合规、复测预算均未定义。\n\n## 下一步\n- 由产品或测试负责人确认互动口径、亲密度规则、样本招募标准与埋点方案后，再锁定测试。\n- 补齐用户画像与场景证据、功能优先级排序依据、风险清单与缓解措施。\n- 由开发与设计确认排期与预算是否覆盖 4 周、2 万元、3 人约束。",
+            "warnings": [
+              "信息不充分：目标用户与核心问题：仅有“独处上班族”这一测试设定，缺少用户画像、场景细节与真实用户证据；现有替代方式“独自刷短视频”被标为用户陈述缺失／待验证，不能作为已证事实；优先级：材料只有“本期做／不做／以后做”的范围决策与理由，没有功能间优先顺序或分级（如 P0/P1），也未给出排序依据；核心闭环：有 Mermaid 线性流程（安装桌面端→宠物常驻→手机聊天→每日喂养→亲密度同步→免打扰→测试回收），但缺少各环节的交互规则、状态定义与异常、中断路径；资源与周期：周期为约数估算且未确认，缺少排期甘特或里程碑、2 万元预算构成、3 人（含兼职设计）投入分配，以及招募与测试窗口的并行安排细节；验证指标与实验：主指标已给定（20 人中 7 日内互动≥4 天，通过≥8 人、<4 人停止、4–7 人复测），但互动口径未定义、跨端去重规则缺失、样本招募标准与渠道缺失、辅助指标仅为分析推断且需埋点，缺少实验设计与埋点方案；风险与止损：有通过／止损阈值与调整边界，但缺少风险清单、发生概率与影响评估、对应缓解措施，以及技术阻断、招募不足、样本流失等具体风险应对；待确认项未闭环：亲密度规则、隐私合规与数据授权、复测预算与时间、通过后下一步均未定义，材料自身标注为确认请求",
+              "互动定义：文字聊天、喂养、点击桌面宠物是否均计为互动；跨端去重规则如何设定？",
+              "亲密度计算规则与展示形式如何定义（本期是否简化为数值同步）？",
+              "样本招募：独处上班族的筛选标准、渠道、20 人代表性如何保证？",
+              "2 万元预算、4 周周期、1 客户端 + 1 服务端 + 1 兼职设计是否覆盖开发、测试与回收？",
+              "数据埋点与隐私合规：需采集哪些日志、如何获得用户授权？",
+              "调整后复测的时间与预算是否预留？",
+              "主指标通过后进入的下一阶段动作是什么（材料未定义）？",
+              "本期 5 项功能之间的优先级分级与排序依据是什么（材料缺失）？",
+              "目标用户画像、核心问题陈述与替代方式的真实证据从哪里获取（材料缺失）？"
+            ],
+            "fileReferences": [],
+            "inputSnapshot": [
+              {
+                "id": "f7e5bffd-12ee-4c5c-854e-334678b5aeeb",
+                "title": "MVP方案分析",
+                "evidence": "material"
+              }
+            ],
+            "quality": {
+              "level": "partial",
+              "missing": [
+                "目标用户与核心问题：仅有“独处上班族”这一测试设定，缺少用户画像、场景细节与真实用户证据；现有替代方式“独自刷短视频”被标为用户陈述缺失／待验证，不能作为已证事实",
+                "优先级：材料只有“本期做／不做／以后做”的范围决策与理由，没有功能间优先顺序或分级（如 P0/P1），也未给出排序依据",
+                "核心闭环：有 Mermaid 线性流程（安装桌面端→宠物常驻→手机聊天→每日喂养→亲密度同步→免打扰→测试回收），但缺少各环节的交互规则、状态定义与异常、中断路径",
+                "资源与周期：周期为约数估算且未确认，缺少排期甘特或里程碑、2 万元预算构成、3 人（含兼职设计）投入分配，以及招募与测试窗口的并行安排细节",
+                "验证指标与实验：主指标已给定（20 人中 7 日内互动≥4 天，通过≥8 人、<4 人停止、4–7 人复测），但互动口径未定义、跨端去重规则缺失、样本招募标准与渠道缺失、辅助指标仅为分析推断且需埋点，缺少实验设计与埋点方案",
+                "风险与止损：有通过／止损阈值与调整边界，但缺少风险清单、发生概率与影响评估、对应缓解措施，以及技术阻断、招募不足、样本流失等具体风险应对",
+                "待确认项未闭环：亲密度规则、隐私合规与数据授权、复测预算与时间、通过后下一步均未定义，材料自身标注为确认请求"
+              ],
+              "note": "材料是软件 QA 人造测试材料，明确为测试数据／待验证，不含真实市场或用户证据；主题与大纲高度相关，可整理 MVP 方案。核心闭环、范围与不做项、主验证指标与止损阈值有直接输入，资源与周期、风险与止损有部分但未确认的估算。目标用户与核心问题缺乏用户证据，优先级排序完全缺失，互动口径、招募标准、埋点与隐私合规均待确认。因此判为相关但不足：可整理现有部分，须在文档顶部及各缺口章节显著标注资料不足，并保持上游“分析推断／测试数据／待验证”的证据状态，不补齐事实。"
+            },
+            "analysis": {
+              "documentTitle": "MVP方案",
+              "materialSufficiency": "partial",
+              "sectionCoverage": [
+                {
+                  "section": "目标用户与核心问题",
+                  "status": "材料不足",
+                  "hasInput": false
+                },
+                {
+                  "section": "核心闭环",
+                  "status": "部分可用",
+                  "hasInput": true
+                },
+                {
+                  "section": "本期范围与不做项",
+                  "status": "可用",
+                  "hasInput": true
+                },
+                {
+                  "section": "优先级",
+                  "status": "材料不足",
+                  "hasInput": false
+                },
+                {
+                  "section": "资源与周期",
+                  "status": "部分可用（估算未确认）",
+                  "hasInput": true
+                },
+                {
+                  "section": "验证指标与实验",
+                  "status": "部分可用（主指标可用，实验设计缺失）",
+                  "hasInput": true
+                },
+                {
+                  "section": "风险与止损",
+                  "status": "部分可用（阈值可用，风险清单缺失）",
+                  "hasInput": true
+                }
+              ],
+              "evidenceLabels": [
+                "测试数据",
+                "测试数据／待验证",
+                "分析推断",
+                "用户陈述缺失／待验证"
+              ],
+              "knownConstraints": {
+                "team": "1 名客户端 + 1 名服务端 + 1 名兼职设计",
+                "duration": "4 周（估算，未经确认）",
+                "budget": "2 万元（是否覆盖成本未确认）"
+              },
+              "mainMetric": "20 位测试用户中，7 日内互动≥4 天人数；通过线≥8 人，<4 人停止投入，4–7 人调整后复测"
+            },
+            "openQuestions": [
+              "互动定义：文字聊天、喂养、点击桌面宠物是否均计为互动；跨端去重规则如何设定？",
+              "亲密度计算规则与展示形式如何定义（本期是否简化为数值同步）？",
+              "样本招募：独处上班族的筛选标准、渠道、20 人代表性如何保证？",
+              "2 万元预算、4 周周期、1 客户端 + 1 服务端 + 1 兼职设计是否覆盖开发、测试与回收？",
+              "数据埋点与隐私合规：需采集哪些日志、如何获得用户授权？",
+              "调整后复测的时间与预算是否预留？",
+              "主指标通过后进入的下一阶段动作是什么（材料未定义）？",
+              "本期 5 项功能之间的优先级分级与排序依据是什么（材料缺失）？",
+              "目标用户画像、核心问题陈述与替代方式的真实证据从哪里获取（材料缺失）？"
+            ],
+            "computed": null
+          },
+          "completedAt": "2026-10-24T13:21:01.473Z"
+        }
+      },
+      "progress": "工作流已完成 · 信息不充分",
+      "currentNodeId": "report",
+      "completedAt": "2026-10-24T13:21:01.479Z"
+    },
+    {
+      "id": "724e0dad-097e-4ce0-90d8-54739fc06155",
+      "version": 3,
+      "status": "succeeded",
+      "createdAt": "2026-10-24T13:23:33.378Z",
+      "graph": {
+        "nodes": [
+          {
+            "id": "text",
+            "type": "input.text",
+            "name": "文字输入",
+            "x": 80,
+            "y": 160,
+            "config": {
+              "researchMode": "materials",
+              "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n测试产品：跨端AI宠物。目标：验证独处上班族能否形成连续7天的陪伴习惯。已确认测试范围：电脑桌面显示宠物、手机文字聊天、每日喂养一次、两端同步亲密度、免打扰。人力：1名客户端、1名服务端、1名兼职设计；时间4周；预算2万元。现有替代方式为独自刷短视频，用户证据缺失须待验证。约束：仅软件，不做硬件/社区/语音视频/医疗功能。核心假设：跨端持续陪伴有价值。测试招募20位，关键指标为7日内互动>=4天人数；通过线>=8人，<4人停止投入，其间调整后复测。以上指标是测试计划不是已达成结果。请据此设计闭环、范围/不做项、假设功能指标对应、资源风险与验证节奏，不搜索信息。",
+              "evidence": "test_data"
+            }
+          },
+          {
+            "id": "analysis",
+            "type": "analysis.mvp",
+            "name": "MVP方案分析",
+            "x": 400,
+            "y": 160,
+            "config": {
+              "task": "依据给定目标和约束形成可执行MVP方案，所有建议标为测试分析推断，不新增事实。",
+              "modelId": "",
+              "outline": "# MVP方案分析\n## 核心结论\n## 证据与分析\n## 方案与规则\n## 待确认与下一步"
+            }
+          },
+          {
+            "id": "report",
+            "type": "report.mvp",
+            "name": "MVP方案",
+            "x": 720,
+            "y": 160,
+            "config": {
+              "task": "",
+              "modelId": "",
+              "outline": "# MVP方案\n## 目标用户与核心问题\n## 核心闭环\n## 本期范围与不做项\n## 优先级\n## 资源与周期\n## 验证指标与实验\n## 风险与止损"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "text-analysis",
+            "from": "text",
+            "to": "analysis",
+            "output": "data",
+            "input": "materials"
+          },
+          {
+            "id": "analysis-report",
+            "from": "analysis",
+            "to": "report",
+            "output": "data",
+            "input": "materials"
+          }
+        ],
+        "groups": [],
+        "view": {
+          "x": 60,
+          "y": 100,
+          "k": 1
+        }
+      },
+      "graphHash": "853a86a6547376fac3afce01cc3ff1c47c7efa2bd3103e2f7589d7a1d0493744",
+      "order": [
+        "text",
+        "analysis",
+        "report"
+      ],
+      "force": false,
+      "nodes": {
+        "text": {
+          "status": "succeeded",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "input.text",
+            "name": "文字输入",
+            "version": "1.1.0",
+            "category": "input",
+            "description": "输入想法、产品、用户需求或 CSV/JSON 数据。",
+            "icon": "input",
+            "enabled": true,
+            "executor": "text",
+            "inputs": [],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "文字输入结果",
+                "types": [
+                  "materials"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "researchMode",
+                "label": "输入方式",
+                "type": "select",
+                "options": [
+                  {
+                    "value": "materials",
+                    "label": "文档 / 数据材料"
+                  },
+                  {
+                    "value": "idea",
+                    "label": "产品想法"
+                  },
+                  {
+                    "value": "product",
+                    "label": "指定产品 / 竞品"
+                  },
+                  {
+                    "value": "user_need",
+                    "label": "用户需求"
+                  }
+                ],
+                "default": "materials"
+              },
+              {
+                "key": "content",
+                "label": "材料正文 / CSV / JSON",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "evidence",
+                "label": "材料性质",
+                "type": "select",
+                "options": [
+                  {
+                    "value": "user_statement",
+                    "label": "用户陈述"
+                  },
+                  {
+                    "value": "material",
+                    "label": "已有材料"
+                  },
+                  {
+                    "value": "test_data",
+                    "label": "测试数据"
+                  },
+                  {
+                    "value": "ai_hypothesis",
+                    "label": "AI假设（待验证）"
+                  }
+                ],
+                "default": "user_statement"
+              }
+            ],
+            "instructions": null,
+            "requirements": [
+              "至少一份相关输入"
+            ],
+            "implementation": "text",
+            "origin": {
+              "skill": "产品经理工作流 / 现有本地工具",
+              "adaptedAt": "2026-10-18",
+              "scope": "输入想法、产品、用户需求或 CSV/JSON 数据。"
+            },
+            "workflow": [
+              {
+                "id": "collect",
+                "title": "采集或引用材料",
+                "prompt": "输入想法、产品、用户需求或 CSV/JSON 数据。"
+              },
+              {
+                "id": "confirm",
+                "title": "保留内容与来源",
+                "prompt": "原样交接材料、来源和证据性质，不承担下游分析或报告整理。"
+              }
+            ],
+            "capabilities": {
+              "search": false,
+              "generateDecisions": false
+            },
+            "hash": "ab910179df883d66c348de313ff1bdd39728bba0013a9fba13dc49793ddb7678",
+            "instruction": "",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/input.text"
+          },
+          "supplements": [],
+          "draft": false,
+          "startedAt": "2026-10-24T13:23:33.418Z",
+          "fingerprint": "c9664cd3019ff94b8f53be173ef39fd433456821a5914f7698d3af678939c49c",
+          "model": {
+            "id": "3b9de208-5b65-4b40-acbc-a7c3d618e5e4",
+            "api": "deepseek-messages",
+            "baseURL": "https://api.deepseek.com/anthropic",
+            "model": "deepseek-flash"
+          },
+          "output": {
+            "kind": "materials",
+            "materials": [
+              {
+                "id": "3a1a1270-7482-4692-a49f-be0e760b1798",
+                "title": "文字输入",
+                "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n测试产品：跨端AI宠物。目标：验证独处上班族能否形成连续7天的陪伴习惯。已确认测试范围：电脑桌面显示宠物、手机文字聊天、每日喂养一次、两端同步亲密度、免打扰。人力：1名客户端、1名服务端、1名兼职设计；时间4周；预算2万元。现有替代方式为独自刷短视频，用户证据缺失须待验证。约束：仅软件，不做硬件/社区/语音视频/医疗功能。核心假设：跨端持续陪伴有价值。测试招募20位，关键指标为7日内互动>=4天人数；通过线>=8人，<4人停止投入，其间调整后复测。以上指标是测试计划不是已达成结果。请据此设计闭环、范围/不做项、假设功能指标对应、资源风险与验证节奏，不搜索信息。",
+                "evidence": "test_data",
+                "researchMode": "materials"
+              }
+            ],
+            "documents": [],
+            "sources": [],
+            "assumptions": [],
+            "summary": "已提供文字材料",
+            "warnings": [],
+            "fileReferences": []
+          },
+          "completedAt": "2026-10-24T13:23:33.440Z"
+        },
+        "analysis": {
+          "status": "succeeded",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "analysis.mvp",
+            "name": "MVP方案分析",
+            "version": "1.1.0",
+            "category": "analysis",
+            "description": "建立假设—功能—验证指标的映射，设计最小可用闭环。判断不做某功能是否仍可验证核心假设，区分本期/不做/以后做并给理由。分析依赖、成本、周期，",
+            "icon": "grid",
+            "enabled": true,
+            "executor": "ai",
+            "inputs": [
+              {
+                "id": "materials",
+                "name": "输入材料",
+                "types": [
+                  "materials",
+                  "sources",
+                  "analysis",
+                  "dataset",
+                  "documents"
+                ],
+                "multiple": true
+              }
+            ],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "MVP方案分析结果",
+                "types": [
+                  "analysis"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "task",
+                "label": "本次目标与补充要求",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "modelId",
+                "label": "执行模型",
+                "type": "model",
+                "default": ""
+              },
+              {
+                "key": "outline",
+                "label": "输出大纲",
+                "type": "textarea",
+                "default": "# MVP方案分析\n## 核心结论\n## 证据与分析\n## 方案与规则\n## 待确认与下一步"
+              }
+            ],
+            "instructions": "instructions.md",
+            "requirements": [
+              "目标用户问题与场景、本期目标、资源周期或明确未知项。"
+            ],
+            "implementation": "ai",
+            "origin": {
+              "skill": "三个产品技能的对应专业SOP",
+              "adaptedAt": "2026-10-24",
+              "scope": "建立假设—功能—验证指标的映射，设计最小可用闭环。判断不做某功能是否仍可验证核心假设，区分本期/不做/以后做并给理由。分析依赖、成本、周期，定义通过/止损与反馈节奏。新方案是分析建议，非用户已确认决策。"
+            },
+            "capabilities": {
+              "search": false,
+              "generateDecisions": true
+            },
+            "workflow": [
+              {
+                "id": "inventory",
+                "title": "盘点材料与范围",
+                "prompt": "检查最低输入要求、来源性质与缺口。"
+              },
+              {
+                "id": "analysis",
+                "title": "执行专业分析",
+                "prompt": "建立假设—功能—验证指标的映射，设计最小可用闭环。判断不做某功能是否仍可验证核心假设，区分本期/不做/以后做并给理由。分析依赖、成本、周期，定义通过/止损与反馈节奏。新方案是分析建议，非用户已确认决策。"
+              },
+              {
+                "id": "verify",
+                "title": "检查证据与结论",
+                "prompt": "核对来源、事实/推断/假设、数字和图表口径，标记未确认事项。"
+              },
+              {
+                "id": "output",
+                "title": "交接分析成果",
+                "prompt": "输出供下游使用的结论、方案、规则、证据与待确认项。"
+              }
+            ],
+            "hash": "36e7e3806430882c6b97c4272e0ea1616ebd3cd2a36966c1f6166a91a2ed7db0",
+            "instruction": "# MVP方案分析\n\n建立假设—功能—验证指标的映射，设计最小可用闭环。判断不做某功能是否仍可验证核心假设，区分本期/不做/以后做并给理由。分析依赖、成本、周期，定义通过/止损与反馈节奏。新方案是分析建议，非用户已确认决策。\n\n只分析传入材料，不自行搜索或访问外部资料。无材料先请求补充；数据不足必须标明证据缺口，不得编造。\n\n# 文档图表输出与渲染规范\n\n## 技术选择\n\n- 数据比较、趋势、占比、漏斗、留存热力图、痛点与优先级矩阵：ECharts。文档小型图默认 SVG；数据密集图可用 Canvas。按使用的图种加载依赖，桌面/离线交付使用本地资源。\n- 业务流程、关系、状态、用户决策链路：Mermaid，保留可复制源码，使用 theme: base 与宿主品牌色。已有研发向源码专用章节和真实界面拼接流程图保留原来的用途与交互，不强制改成另一种图。\n- 对比、需求、画像明细：语义化 HTML table＋CSS；Markdown 交付保留数据表，宿主负责表格样式。\n- 统计图交付由程序渲染矢量图或清晰 PNG；AI 插画、照片和真实原型截图保留原始资产，不用统计图引擎代替。\n\n## AI 与宿主的职责\n\nAI 提供结论、原始数据、来源和声明式图表规范；宿主把规范映射为 ECharts option 或 Mermaid SVG。图表不要求额外生成整篇 HTML；全文 HTML 仍按原流程或用户请求生成。宿主输出协议优先，已有 chart 字段时按其协议；无协议的 Markdown 使用紧邻正文的 chart JSON 围栏与 mermaid 围栏。\n\n下面的 pm-chart-v1 是本 Skill 的交接规范，宿主接入后才能自动绘图；它不是 ECharts option，也不是已经实现的工作台接口。宿主只接收白名单图种、字段和数据，不执行 AI 提供的 JS、formatter 函数或任意 HTML。\n\n## 图表数据协议\n\nchart JSON 每张图独立，字段：schema、id、type、title、evidenceStatus、sources、data、encoding；subtitle、note 可选。\n\n- schema 固定 pm-chart-v1；id 在文档内唯一，用于引用和导出。\n- type：bar / line / pie / funnel / heatmap / matrix / scatter。柱线图的数据记录提供分类或时间、数值与可选分组；encoding 指出字段名。漏斗记录给出步骤顺序和原始人数，率由代码计算。矩阵可用类别坐标；heatmap 明确行列及指标。\n- encoding.x / y 指出 field、scale（category / ordinal / quantitative / time）、label、unit；类别轴给出有序 categories。series / label / value 指明相关字段（按图种提供）。\n- evidenceStatus：已验证事实 / 用户观点 / 估算 / 分析推断 / 待验证 / 测试数据。sources 为来源 id、标题、url 或材料定位、日期；每行数据使用 sourceIds 引用来源。不同证据性质混用时逐行标注 evidenceStatus。\n- 缺数值用 null，不能用 0 替代；缺失数据不绘制为已观测值。百分比保留分母、统计口径和周期说明；估算附依据及置信度。等级是类别，不转换为未经解释的精确分数。\n\n### 定性痛点矩阵示例（演示数据）\n\n```chart\n{\n  \"schema\": \"pm-chart-v1\",\n  \"id\": \"pain-matrix\",\n  \"type\": \"matrix\",\n  \"title\": \"痛点矩阵\",\n  \"subtitle\": \"分析假设 · 待验证\",\n  \"evidenceStatus\": \"测试数据\",\n  \"sources\": [{\"id\":\"demo\",\"title\":\"规范演示数据，不能进入项目结论\"}],\n  \"data\": [\n    {\"id\":\"P1\",\"pain\":\"缺少持续陪伴\",\"frequency\":\"高\",\"severity\":\"高\",\"sourceIds\":[\"demo\"]},\n    {\"id\":\"P2\",\"pain\":\"使用负担\",\"frequency\":\"低\",\"severity\":\"中\",\"sourceIds\":[\"demo\"]}\n  ],\n  \"encoding\": {\n    \"x\":{\"field\":\"frequency\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"高\"],\"label\":\"发生频率\",\"unit\":\"等级\"},\n    \"y\":{\"field\":\"severity\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"中高\",\"高\"],\"label\":\"严重程度\",\"unit\":\"等级\"},\n    \"label\":\"id\"\n  },\n  \"note\":\"点位表示定性等级，不能读成统计频率；悬停显示痛点、来源与证据状态。\"\n}\n```\n\n保留同一组数据的 Markdown 表格和 1–3 句读图结论。例子只解释格式，实际图表必须使用当前项目数据。先确定数据与 encoding，再由渲染器映射为图形；不让模型手写字符轴线或字符条形图。\n\n## 视觉与交互\n\n复用宿主品牌字体、主色和明暗模式。同一报告的图表配色和同类对象颜色保持一致；无品牌规范时采用白底、深色文字、低饱和主色与浅网格，风险色只用于风险。HTML 表格设置合理列宽、长文换行、数字对齐、表头和分组；宽表在局部滚动，交互文档可固定表头。\n\n每图有标题、轴名、单位、图例（有多系列时）、来源、证据状态及读图结论。定性矩阵使用分类坐标和浅色分区；同一格多点错开并保持等级归属，提供完整名称和明细表，避免 P1–P9 堆叠遮挡。标签不足时增大容器或提供缩放，不缩小到难以阅读。\n\n交互文档提供悬停详情、适配宽度、放大查看和导出 SVG/PNG；静态导出把悬停信息的重要部分写入图注或数据表。按实际工具能力实现，不能声称未实现的交互可用。\n\n## 交付检查与降级\n\n核对图、表、正文的分类、单位、值、分母、来源和证据性质一致；检查默认尺寸与放大后文字无重叠、裁切，主题和打印/导出背景清晰。完成实际渲染才称“图表已渲染”。\n\n环境缺渲染器时保留 chart 数据或 Mermaid 源码＋数据表＋结论，并明确“待宿主渲染”；Markdown 阅读器不支持时可附已生成 SVG/PNG。渲染失败显示明细表与原因，不丢弃正文，也不回退为 ASCII 字符矩阵。没有可用分析数据的章节用“缺失证据表”说明待补内容，不生成虚构分布、比例、留存曲线或点位。\n",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/analysis.mvp"
+          },
+          "supplements": [],
+          "draft": false,
+          "startedAt": "2026-10-24T13:23:33.493Z",
+          "fingerprint": "d928872ec569cd041f83bd553d2bf89ffb5be52429fba7d46eeb661b3891feb0",
+          "model": {
+            "id": "3b9de208-5b65-4b40-acbc-a7c3d618e5e4",
+            "api": "deepseek-messages",
+            "baseURL": "https://api.deepseek.com/anthropic",
+            "model": "deepseek-flash"
+          },
+          "output": {
+            "kind": "analysis",
+            "materials": [],
+            "documents": [
+              {
+                "id": "38ea3d29-9a62-4f5d-8168-fd0b02e2f713",
+                "title": "MVP方案分析",
+                "format": "markdown",
+                "content": "# MVP方案分析\n\n> **材料性质**：本文全部输入来自一份标注为「软件QA人造测试材料」的文字输入，**不能当作真实市场证据或用户访谈**。文中所有取舍、排期、口径与风险判断均为**分析推断**，是建议而非用户已确认的决策；材料给定的约束、人力、预算、阈值按原文引用。当前无用户证据，属于必须标注的证据缺口。\n\n## 核心结论\n\n1. **可验证的最小闭环已由材料范围决定，本节点不建议扩张**：桌面端宠物显示 + 手机文字聊天 + 每日喂养一次 + 亲密度跨端同步 + 免打扰。但这五项本身是「功能集合」，不是「闭环」——闭环还缺一个**次日回访诱因**（推演，见 3.3）。\n2. **核心假设「跨端持续陪伴有价值」无法被功能上线证明，只能被重复回访行为部分验证**。建议把单一假设拆成 H1 重复回访、H2 跨端同步被感知、H3 免打扰不破坏陪伴感、H4 相对短视频替代的偏好，其中只有 H1 进入主判定（分析推断）。\n3. **通过线 ≥8 人、止损线 <4 人可以沿用，但判定口径必须先补齐**：何为一个「互动日」、7 天窗口从哪天起算、什么叫有效样本。口径不定，指标无法判读（分析推断）。\n4. **砍掉社区、语音视频、医疗、硬件、装扮、付费不影响核心假设的可验证性**；其中去掉社区与语音反而是正向的——它们会引入社交驱动或内容新鲜度，混淆「陪伴价值」本身（分析推断）。\n5. **最大风险不在功能，而在时间与样本**：3 人（含 1 名兼职设计）、4 周内要完成开发、招募、7 天观察与判定，材料未说明 4 周是否包含观察期。若包含，则**没有任何缓冲**，必须前置范围冻结（分析推断）。\n6. **20 人样本不足以支撑统计意义上的结论**：8 人与 4 人在 n=20 下的区分能力有限，结论应表述为「方向性信号 / 是否值得继续投入」，而非「陪伴有价值已被证明」。此处未做统计功效计算（材料无相关输入，不编造数值）。\n\n## 证据与分析\n\n### 3.1 证据清单与缺口\n\n| 编号 | 内容 | 证据性质 | 可用性 |\n| --- | --- | --- | --- |\n| mat-01 | 测试产品范围、人力、预算、周期、约束、招募人数与阈值（材料全文） | 测试数据（人造测试材料） | 可作为**约束与计划**引用，不可作为市场或用户事实 |\n| mat-02 | 「现有替代方式为独自刷短视频」 | 材料陈述，无量化、无来源 | 只能作为待验证假设 |\n| mat-03 | 「用户证据缺失须待验证」 | 材料自述 | 确认证据缺口存在 |\n\n**缺失证据表（待补，不得以推断替代）**\n\n| 待补内容 | 为什么影响方案 | 状态 |\n| --- | --- | --- |\n| 目标用户（独处上班族）的行为或访谈证据 | 决定闭环中的回访诱因是否成立 | 完全缺失 |\n| 技术基线（是否已有代码/框架/账号体系） | 决定 4 周是否可行 | 完全缺失 |\n| 2 万元预算构成 | 决定能否覆盖招募激励与云端资源 | 完全缺失 |\n| AI 宠物回复的内容来源（预设脚本 / 模型调用） | 直接影响成本、时延与内容风险 | 完全缺失 |\n| 招募渠道与 20 人来源 | 决定样本能否按时到位 | 完全缺失 |\n| 「免打扰」是否等于「无任何主动提醒」 | 决定回访是否完全依赖用户自发，直接影响主指标 | 材料未明确 |\n\n### 3.2 假设分解与可测性\n\n| 子假设 | 内容 | 当前可测性 | 缺口 |\n| --- | --- | --- | --- |\n| H1（主） | 用户会在无外部强制下于 7 天内重复回访（≥4 天互动） | 可测，行为数据即可判定 | 无历史基线，无法区分「新鲜感」与「习惯」 |\n| H2（辅） | 跨端亲密度同步被用户感知并强化连续感 | 部分可测（同步成功事件 + 双端查看） | 需补埋点定义；「感知」需 1 题自报告 |\n| H3（辅） | 免打扰不破坏陪伴感 | 部分可测（免打扰开启率与其后互动变化） | 开启率过低时无判读意义 |\n| H4（辅/定性） | 陪伴体验相对「独自刷短视频」有优势 | 弱可测，仅能自报告对比 | 自报告偏差大，不能替代行为指标 |\n\n### 3.3 假设—功能—指标映射\n\n| 子假设 | 本期功能 | 观测指标（口径见 4.4） | 作用 | 备注 |\n| --- | --- | --- | --- | --- |\n| H1 | 桌面宠物显示 + 每日喂养一次 | 7 日内互动 ≥4 天人数 | **主判定** | 唯一决定通过与止损 |\n| H2 | 亲密度跨端同步 | 双端同步事件成功率；两端近 7 日均有活动的用户数 | 辅助解释 | 只用来说明 H1 成立或失败的原因 |\n| H3 | 免打扰 | 免打扰开启人数与开启后互动天数变化 | 辅助解释 | 样本小，仅作定性 |\n| H4 | 整体体验 | 简短自报告（1–2 题，D7 收集） | 定性补充 | 不作为判定依据 |\n\n**读法提示**：主判定只看 H1 的一个人数指标；H2、H3、H4 只用于解释「为什么达标 / 为什么不达标」，不参与通过与否的裁决（分析推断）。这样可避免用多个弱指标拼出一个看似成立、实则无判读力的结论。\n\n### 3.4 最小可用闭环（分析推断）\n\n闭环必须闭合在「用户第二天为什么回来」上，而非闭合在「功能互相调用」上。\n\n```mermaid\n%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef2f7','primaryTextColor':'#1f2937','primaryBorderColor':'#94a3b8','lineColor':'#64748b','fontFamily':'inherit'}}}%%\nflowchart LR\n  A[\"桌面端：宠物在场<br/>亲密度状态可见\"] --> B{\"用户动作\"}\n  B -->|\"每日喂养（限 1 次）\"| C[\"即时反馈<br/>亲密度变化 · 宠物回应\"]\n  B -->|\"手机端文字聊天\"| C\n  C --> D[\"跨端同步<br/>另一端可见最新亲密度与对话\"]\n  D --> E{\"次日回访诱因\"}\n  E -->|\"亲密度未满 / 宠物状态变化\"| A\n  E -->|\"免打扰时段内\"| F[\"不打断：状态保留，次日可见\"]\n  F --> A\n  E -->|\"无任何诱因（待确认）\"| G[\"回访完全依赖用户自发<br/>→ 主指标被动压低\"]\n  G --> A\n```\n\n**闭环成立的关键前提（分析推断）**：\n- 反馈必须**即时且可见**，否则喂养无法形成重复动作；\n- 跨端同步必须**一端动作、另一端可感知**，这是「跨端」假设的唯一落地点；\n- 若「免打扰」被理解为**完全没有主动提醒**，则回访诱因只剩「状态变化」，H1 的通过率会被结构性压低——这不代表假设为假，而是测试设计偏保守（重要待确认项）。\n\n## 方案与规则\n\n### 4.1 本期做（P0，全部为分析推断的最小实现标准）\n\n| 功能 | 最小实现标准 | 支撑假设 | 不可再削减的部分 |\n| --- | --- | --- | --- |\n| 桌面端宠物显示 | 常驻可见，展示宠物形象与亲密度状态；可最小化不消失 | H1 | 状态可见性（否则无回访理由） |\n| 手机端文字聊天 | 文本收发 + 宠物固定风格回应；不做语音、不做多轮长记忆 | H1、H4 | 回应的即时性与一致性 |\n| 每日喂养一次 | 每日限 1 次，有明确冷却与完成反馈 | H1 | 「一天一次」的节奏（这是习惯验证的最小单位） |\n| 亲密度跨端同步 | 喂养/聊天后另一端刷新可见；同步失败有重试 | H2 | 同步成功率可观测 |\n| 免打扰 | 时段设置，时段内不发任何提示 | H3 | 需先确认它是否等于「无提醒」 |\n\n> 需要指出：材料给定范围中**没有**「主动提醒/推送」项，也没有明确排除它。这是方案里唯一可能显著改变主指标结果的开关，必须由需求方拍定，不能由实现方默认（推断）。\n\n### 4.2 本期不做（及理由）\n\n| 不做项 | 理由 |\n| --- | --- |\n| 硬件 | 材料明确约束：仅软件 |\n| 社区 | 材料约束排除；且社交驱动会混淆「陪伴价值」这一变量 |\n| 语音 / 视频 | 材料约束排除；成本高、4 周内不可控 |\n| 医疗类功能 | 材料约束排除；涉及资质与合规风险 |\n| 多宠物 / 收集养成 | 增加内容与数值设计成本，不改变 H1 的可测性 |\n| 装扮商城 / 任何付费 | 引入支付摩擦，改变招募样本的意愿结构，混淆主指标 |\n| 复杂人设与长记忆对话 | 成本与内容风险不可控，并且不是验证「持续陪伴」的必要条件 |\n| 社交分享、排行榜 | 靠外部刺激拉回访，会直接污染 H1 |\n\n### 4.3 以后做（含触发条件，分析推断）\n\n| 候选项 | 触发条件（满足再做） |\n| --- | --- |\n| 主动提醒 / 推送 | 数据显示回访在第 3–4 天明显跌落，且确认「免打扰」不等于「无提醒」 |\n| 装扮 / 皮肤 | H1 达标后，作为提升长期动机的手段再验证（不能用来救回访） |\n| 多宠物 | 单宠物互动已稳定，且用户明确提出收集需求 |\n| 社区 | 陪伴价值已被验证，且已评估内容审核与运营成本 |\n| 语音 | 文字互动量饱和，且用户明确表达语音偏好 |\n\n### 4.4 「不做仍可验证」论证（关键判断）\n\n| 被砍功能 | 若不做，核心假设是否仍可验证 | 说明 |\n| --- | --- | --- |\n| 社区 | **可验证，且更干净** | 社区提供的是社交驱动；去掉后 7 天回访只能由陪伴动机解释 |\n| 语音 / 视频 | **可验证** | 影响体验强度，不影响「是否存在持续陪伴价值」 |\n| 多宠物 / 装扮 | **可验证** | 影响动机强度与新鲜感，去掉后剩余动机更接近真实习惯 |\n| 付费 | **可验证，且必要** | 付费会筛掉一部分样本，扭曲主指标 |\n| 医疗 | **无关** | 与核心假设无逻辑关系 |\n| 硬件 | **可验证** | 跨端同步已在「桌面 + 手机」内实现跨端检验 |\n| 主动提醒 | **取决于是否为隐式必需** | 若回访完全依赖提醒，去掉后测的是「自发习惯」；若产品定位含提醒，去掉后测的就不是同一产品。**必须确认后再定** |\n\n### 4.5 指标与判定规则（口径为分析推断，需确认）\n\n| 规则项 | 建议定义 | 状态 |\n| --- | --- | --- |\n| 互动日 | 一个自然日内完成至少 1 次喂养，或发送至少 1 条消息；仅打开不算 | 待确认 |\n| 7 天窗口 | 自该用户完成绑定并首次喂养起算 D0，连续 7 个自然日 | 待确认 |\n| 有效样本 | 完成绑定且至少产生 1 条互动记录的用户；未完成绑定者剔除并替补 | 阈值待确认 |\n| 主指标 | 7 日内互动 ≥4 天的**人数**（不是次数、不是比例） | 材料给定 |\n| 通过 | ≥8 人 | 材料给定 |\n| 止损 | <4 人 | 材料给定 |\n| 灰色区间 | 4–7 人：调整后复测一轮 | 由材料区间推出（推断） |\n| 换算说明 | 8/20 = 40%、4/20 = 20%，为**阈值换算**，不是观测结果 | 计算所得，非数据 |\n\n**最小埋点清单（分析推断，仅用于让上述口径可计算）**：绑定完成、桌面端启动、喂养动作、消息发送条数、同步事件（成功/失败）、免打扰设置变更、最后一次活跃时间。不采集与判定无关的字段。\n\n### 4.6 判定与决策路径（分析推断）\n\n```mermaid\n%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef2f7','primaryTextColor':'#1f2937','primaryBorderColor':'#94a3b8','lineColor':'#64748b','fontFamily':'inherit'}}}%%\nflowchart TD\n  A[\"D7 数据冻结\"] --> B{\"有效样本是否足以判定<br/>（阈值待确认）\"}\n  B -->|\"不足\"| B1[\"延长招募或补测<br/>暂不下结论\"]\n  B -->|\"足够\"| C{\"7 日内互动 ≥4 天人数\"}\n  C -->|\"≥8\"| P[\"通过：进入下一阶段<br/>扩大样本、延长周期\"]\n  C -->|\"4–7\"| G[\"灰色区间：复测一轮\"]\n  C -->|\"<4\"| X[\"止损：停止投入，回到假设层\"]\n  P --> P1[\"下一步验证：无外部激励时留存是否延续\"]\n  G --> G1[\"一次只改一个变量：提醒机制 / 首次引导 / 反馈密度\"]\n  X --> X1[\"记录否定证据，并区分是假设失败还是执行失败\"]\n```\n\n**止损的两类归因（必须区分，否则会误杀假设）**：一是假设本身不成立；二是执行问题（招募不达标、同步不稳定、宠物回应过于单调）。后者应先修复再复测，不计入否定证据（分析推断）。\n\n### 4.7 依赖、成本与周期\n\n**依赖（分析推断）**\n\n| 依赖 | 影响 | 风险等级 |\n| --- | --- | --- |\n| 20 位独处上班族的招募渠道 | 无样本则无结论 | 高（材料未提供渠道） |\n| 桌面端到手机端的同步链路 | H2 唯一落地点，故障会直接压低 H1 | 高 |\n| 宠物回应内容供给 | 回应单调会导致第 2–3 天流失 | 中高（仅 1 名兼职设计） |\n| 聊天与亲密度数据的存储与告知同意 | 涉及隐私合规 | 中（材料未提合规安排） |\n| 埋点与统计口径 | 决定 D7 能否判读 | 中 |\n\n**成本与周期（换算自材料给定值，非新事实）**\n\n- 人力：1 客户端 + 1 服务端 + 0.5 设计 ≈ **10 人周**（4 + 4 + 2，按 4 周计；换算式推断）。\n- 预算：2 万元（材料给定）。**构成未给出，不拆分具体金额**；可能的用途类别为招募激励、云端资源、素材/字体授权、应急，各项额度待确认。\n- 周期：4 周（材料给定）。**是否包含 7 天观察期未说明**，两种情形差别极大：\n  - 情形 A（含观察期）：约 W1–W2 开发，W2 末完成招募，W3 为 D0–D7，W4 判定 → **零缓冲**；\n  - 情形 B（不含观察期）：总周期约 5 周，可保留 1 周缓冲。\n\n### 4.8 反馈节奏（分析推断）\n\n| 时点 | 事件 | 产出 | 是否出结论 |\n| --- | --- | --- | --- |\n| W1 末 | 可运行骨架（桌面显示 + 喂养 + 同步） | 内部可演示版本 | 否 |\n| W2 中 | 招募启动（并行，不等到开发完成） | 意向名单 | 否 |\n| W2 末 | 端到端可测（含聊天与免打扰）+ **范围冻结** | 冻结清单 | 否 |\n| W3 初 | 2–3 人内部试跑（只查可用性与埋点） | 缺陷清单 | 否 |\n| W3 D0 | 正式开放 | 正式开始日期 | 否 |\n| W3 D3 | 埋点完整性检查（不看结果） | 数据可用性结论 | 否 |\n| W4 D7 | 数据冻结 + 判定会 | 通过 / 灰色 / 止损 | **是** |\n\n**节奏原则**：开发期不做结论，观察期不改进产品；一旦 D0 后改动功能，主指标就会被污染（分析推断）。\n\n## 待确认与下一步\n\n### 5.1 待确认清单（按阻塞程度排序）\n\n| # | 待确认项 | 为什么阻塞 | 需要谁决定 |\n| --- | --- | --- | --- |\n| 1 | 4 周是否包含 7 天观察期 | 直接决定排期是零缓冲还是可留 1 周缓冲 | 需求方 |\n| 2 | 「免打扰」是否等于「无任何主动提醒」 | 决定主指标是在「有诱因」还是「纯自发」条件下测得的 | 产品负责人 |\n| 3 | 20 位目标用户的招募渠道与时间 | 无样本则 4 周方案不成立 | 需求方 / 运营 |\n| 4 | 有效样本定义与替补规则 | 决定 D7 是否有资格判定 | 产品负责人 |\n| 5 | 2 万元预算构成与可覆盖范围 | 决定招募激励与云端资源是否够 | 需求方 |\n| 6 | 宠物回应的内容来源（预设脚本或模型调用） | 影响成本、时延与内容风险 | 技术负责人 |\n| 7 | 是否存在可复用技术基线 | 影响 4 周可行性 | 技术负责人 |\n| 8 | 聊天与亲密度数据的告知同意方式 | 影响能否合法采集与留存 | 需求方 |\n\n### 5.2 下一步（建议动作，非已确认计划）\n\n1. **先答 5.1 的第 1、2 项**，再冻结排期；这两项未定之前，其余排期都属于纸面推演。\n2. **把 4.5 的口径写成 1 页测试方案**，与埋点清单一起评审，确保 D7 的数可算。\n3. **W2 末范围冻结**，冻结后只修缺陷不加功能；任何新增功能都应放入 4.3 的「以后做」。\n4. **招募与开发并行启动**，不要等版本完成才找人（最大进度风险）。\n5. **D7 判定会同时记录否定证据**，特别是要写清「假设不成立」与「执行不到位」的区分依据。\n6. **在 D7 后补一轮定性访谈**（3–5 人即可），解释主指标背后的原因；访谈提纲需先设计，不能临时提问（否则证据不可用）。\n\n### 5.3 本轮结论的证据状态\n\n| 内容 | 状态 |\n| --- | --- |\n| 产品范围、人力、预算、周期、20 人、≥8 / <4 阈值、约束项 | 材料给定（测试数据，非真实市场证据） |\n| 假设拆分、闭环设计、范围取舍、口径、排期、风险与归因规则 | **分析推断**，未经验证 |\n| 8/20=40%、4/20=20%、约 10 人周 | 由材料数值换算，非观测结果 |\n| 用户需求、留存、偏好、竞品相关的一切陈述 | **无证据，全部待验证** |\n\n> 本方案的任何通过/止损判断在 D7 之前都不存在；材料中的阈值是测试计划，不是已达成结果。",
+                "summary": "### 核心结论\n- 材料是软件 QA 人造测试材料（test_data），不含用户证据。以下方案、范围取舍与排期均为**分析推断**，不是用户已确认的决策。\n- 最小可用闭环由给定范围组成：桌面宠物显示、手机文字聊天、每日喂养一次、亲密度跨端同步、免打扰，并需补上一个明确的「次日回访诱因」。砍掉社区、语音视频、医疗、硬件、装扮、付费等不影响核心假设的可验证性；其中去掉社区和语音还能减少变量干扰。\n- 通过线 ≥8 人、止损线 <4 人可直接沿用，但必须补「互动日」「7 天窗口起点」「有效样本」三个口径。材料未说明 4 周是否含 7 天观察期，这项必须先确认。\n- 20 人样本对 8 与 4 的区分能力有限（分析推断，未做统计功效计算），结论只作为方向性信号。\n\n### 证据局限\n- 没有用户访谈或行为数据，替代方式「独自刷短视频」仅是材料陈述，没有量化；也没有技术基线（是否已有代码）、预算构成、AI 回复来源。\n- 8/20=40%、4/20=20% 只是阈值换算，不是观测结果；本轮未做任何真实指标计算。\n\n### 下一步\n- 先确认五项：4 周是否含观察期、免打扰是否等于没有任何主动提醒、20 人招募渠道、有效样本替补规则、2 万元预算构成。\n- 第 2 周末冻结范围，第 3 周 D0 开始，第 4 周 D7 冻结数据，按通过/灰色/止损三条路径行动。"
+              }
+            ],
+            "sources": [],
+            "assumptions": [],
+            "summary": "### 核心结论\n- 材料是软件 QA 人造测试材料（test_data），不含用户证据。以下方案、范围取舍与排期均为**分析推断**，不是用户已确认的决策。\n- 最小可用闭环由给定范围组成：桌面宠物显示、手机文字聊天、每日喂养一次、亲密度跨端同步、免打扰，并需补上一个明确的「次日回访诱因」。砍掉社区、语音视频、医疗、硬件、装扮、付费等不影响核心假设的可验证性；其中去掉社区和语音还能减少变量干扰。\n- 通过线 ≥8 人、止损线 <4 人可直接沿用，但必须补「互动日」「7 天窗口起点」「有效样本」三个口径。材料未说明 4 周是否含 7 天观察期，这项必须先确认。\n- 20 人样本对 8 与 4 的区分能力有限（分析推断，未做统计功效计算），结论只作为方向性信号。\n\n### 证据局限\n- 没有用户访谈或行为数据，替代方式「独自刷短视频」仅是材料陈述，没有量化；也没有技术基线（是否已有代码）、预算构成、AI 回复来源。\n- 8/20=40%、4/20=20% 只是阈值换算，不是观测结果；本轮未做任何真实指标计算。\n\n### 下一步\n- 先确认五项：4 周是否含观察期、免打扰是否等于没有任何主动提醒、20 人招募渠道、有效样本替补规则、2 万元预算构成。\n- 第 2 周末冻结范围，第 3 周 D0 开始，第 4 周 D7 冻结数据，按通过/灰色/止损三条路径行动。",
+            "warnings": [
+              "4 周时间是否包含 7 天观察期？若包含，开发+招募+观察零缓冲，需确认是否接受或缩范围。",
+              "「免打扰」是否等于「无任何主动提醒」？若等于，主指标将在纯自发回访条件下测得，通过线可能被结构性压低。",
+              "20 位独处上班族的招募渠道与到位时间由谁负责？",
+              "「互动日」「7 天窗口起点」「有效样本与替补规则」三项口径由谁拍定？",
+              "2 万元预算的构成与可覆盖范围（招募激励、云端资源、素材授权）？",
+              "AI 宠物回应的内容来源是预设脚本还是模型调用？现有技术基线是否可复用？",
+              "测试是否已安排用户告知与数据采集同意方式？"
+            ],
+            "fileReferences": [],
+            "inputSnapshot": [
+              {
+                "id": "3a1a1270-7482-4692-a49f-be0e760b1798",
+                "title": "文字输入",
+                "evidence": "test_data"
+              }
+            ],
+            "quality": {
+              "level": "complete",
+              "missing": [],
+              "note": ""
+            },
+            "analysis": {
+              "evidenceStatus": "全部为测试材料（test_data）+ 分析推断，无用户证据",
+              "coreHypothesis": "跨端持续陪伴有价值（材料给定，待验证）",
+              "primaryMetric": "7日内互动>=4天人数（n=20）",
+              "thresholds": {
+                "pass": ">=8人（材料给定）",
+                "stop": "<4人（材料给定）",
+                "gray": "4–7人（由材料区间推出的分析推断）"
+              },
+              "scope": {
+                "in": [
+                  "桌面端宠物显示",
+                  "手机文字聊天",
+                  "每日喂养一次",
+                  "亲密度跨端同步",
+                  "免打扰"
+                ],
+                "out": [
+                  "硬件",
+                  "社区",
+                  "语音视频",
+                  "医疗",
+                  "多宠物",
+                  "装扮商城/付费"
+                ],
+                "later": [
+                  "主动提醒（待确认是否已含）",
+                  "装扮/皮肤",
+                  "多宠物",
+                  "社区",
+                  "语音"
+                ]
+              },
+              "openQuestions": [
+                "4周是否包含7天观察期",
+                "免打扰与主动提醒的边界",
+                "有效样本定义与替补招募规则",
+                "2万元预算构成",
+                "AI回复内容来源（预设脚本或模型调用）",
+                "技术基线是否存在可复用代码"
+              ]
+            },
+            "openQuestions": [
+              "4 周时间是否包含 7 天观察期？若包含，开发+招募+观察零缓冲，需确认是否接受或缩范围。",
+              "「免打扰」是否等于「无任何主动提醒」？若等于，主指标将在纯自发回访条件下测得，通过线可能被结构性压低。",
+              "20 位独处上班族的招募渠道与到位时间由谁负责？",
+              "「互动日」「7 天窗口起点」「有效样本与替补规则」三项口径由谁拍定？",
+              "2 万元预算的构成与可覆盖范围（招募激励、云端资源、素材授权）？",
+              "AI 宠物回应的内容来源是预设脚本还是模型调用？现有技术基线是否可复用？",
+              "测试是否已安排用户告知与数据采集同意方式？"
+            ],
+            "computed": null
+          },
+          "completedAt": "2026-10-24T13:24:51.293Z"
+        },
+        "report": {
+          "status": "succeeded",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "report.mvp",
+            "name": "MVP方案",
+            "version": "1.1.0",
+            "category": "report",
+            "description": "仅根据传入的相关成果，按大纲整理MVP方案；不搜索、不另作产品决策。",
+            "icon": "grid",
+            "enabled": true,
+            "executor": "ai",
+            "inputs": [
+              {
+                "id": "materials",
+                "name": "输入材料",
+                "types": [
+                  "materials",
+                  "sources",
+                  "analysis",
+                  "dataset",
+                  "documents"
+                ],
+                "multiple": true
+              }
+            ],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "MVP方案结果",
+                "types": [
+                  "documents"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "task",
+                "label": "本次目标与补充要求",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "modelId",
+                "label": "执行模型",
+                "type": "model",
+                "default": ""
+              },
+              {
+                "key": "outline",
+                "label": "输出大纲",
+                "type": "textarea",
+                "default": "# MVP方案\n## 目标用户与核心问题\n## 核心闭环\n## 本期范围与不做项\n## 优先级\n## 资源与周期\n## 验证指标与实验\n## 风险与止损"
+              }
+            ],
+            "instructions": "instructions.md",
+            "requirements": [
+              "本期产品目标",
+              "核心用户问题与使用场景",
+              "资源、周期或明确的未知约束"
+            ],
+            "implementation": "ai",
+            "origin": {
+              "skill": "产品经理工作流 / 现有本地工具",
+              "adaptedAt": "2026-10-18",
+              "scope": "确定核心闭环、本期范围、优先级与验证指标。"
+            },
+            "capabilities": {
+              "search": false,
+              "calculate": false,
+              "generateDecisions": false
+            },
+            "workflow": [
+              {
+                "id": "relevance",
+                "title": "检查材料相关性",
+                "prompt": "完全不相关或没有可用内容时停止，不输出文档。"
+              },
+              {
+                "id": "coverage",
+                "title": "对照大纲检查覆盖",
+                "prompt": "逐章识别输入支持的内容和缺口；相关但不足可整理，必须显著提示。"
+              },
+              {
+                "id": "compose",
+                "title": "按大纲整理报告",
+                "prompt": "仅归类、去重、编排和总结材料，不搜索、不新建事实、统计或产品决策。"
+              },
+              {
+                "id": "verify",
+                "title": "核对来源与文档",
+                "prompt": "数字和结论须由输入支持，缺失章节写材料不足，保留上游假设/局限。"
+              }
+            ],
+            "hash": "7a7ecc0ed216c25e618baa2c81d49ca6a22e8b87b3f86766fd7a0e83d9b0b810",
+            "instruction": "# MVP方案\n\n本节点只编排输入，不进行联网检索、独立分析、产品决策或统计计算。相关材料不充分时仍整理已有部分，在文档顶部及缺失章节标明资料不足；完全不相关时拒绝生成。保留来源、假设、证据局限，不用常识补齐缺少的事实。\n\n\n# 文档图表输出与渲染规范\n\n## 技术选择\n\n- 数据比较、趋势、占比、漏斗、留存热力图、痛点与优先级矩阵：ECharts。文档小型图默认 SVG；数据密集图可用 Canvas。按使用的图种加载依赖，桌面/离线交付使用本地资源。\n- 业务流程、关系、状态、用户决策链路：Mermaid，保留可复制源码，使用 theme: base 与宿主品牌色。已有研发向源码专用章节和真实界面拼接流程图保留原来的用途与交互，不强制改成另一种图。\n- 对比、需求、画像明细：语义化 HTML table＋CSS；Markdown 交付保留数据表，宿主负责表格样式。\n- 统计图交付由程序渲染矢量图或清晰 PNG；AI 插画、照片和真实原型截图保留原始资产，不用统计图引擎代替。\n\n## AI 与宿主的职责\n\nAI 提供结论、原始数据、来源和声明式图表规范；宿主把规范映射为 ECharts option 或 Mermaid SVG。图表不要求额外生成整篇 HTML；全文 HTML 仍按原流程或用户请求生成。宿主输出协议优先，已有 chart 字段时按其协议；无协议的 Markdown 使用紧邻正文的 chart JSON 围栏与 mermaid 围栏。\n\n下面的 pm-chart-v1 是本 Skill 的交接规范，宿主接入后才能自动绘图；它不是 ECharts option，也不是已经实现的工作台接口。宿主只接收白名单图种、字段和数据，不执行 AI 提供的 JS、formatter 函数或任意 HTML。\n\n## 图表数据协议\n\nchart JSON 每张图独立，字段：schema、id、type、title、evidenceStatus、sources、data、encoding；subtitle、note 可选。\n\n- schema 固定 pm-chart-v1；id 在文档内唯一，用于引用和导出。\n- type：bar / line / pie / funnel / heatmap / matrix / scatter。柱线图的数据记录提供分类或时间、数值与可选分组；encoding 指出字段名。漏斗记录给出步骤顺序和原始人数，率由代码计算。矩阵可用类别坐标；heatmap 明确行列及指标。\n- encoding.x / y 指出 field、scale（category / ordinal / quantitative / time）、label、unit；类别轴给出有序 categories。series / label / value 指明相关字段（按图种提供）。\n- evidenceStatus：已验证事实 / 用户观点 / 估算 / 分析推断 / 待验证 / 测试数据。sources 为来源 id、标题、url 或材料定位、日期；每行数据使用 sourceIds 引用来源。不同证据性质混用时逐行标注 evidenceStatus。\n- 缺数值用 null，不能用 0 替代；缺失数据不绘制为已观测值。百分比保留分母、统计口径和周期说明；估算附依据及置信度。等级是类别，不转换为未经解释的精确分数。\n\n### 定性痛点矩阵示例（演示数据）\n\n```chart\n{\n  \"schema\": \"pm-chart-v1\",\n  \"id\": \"pain-matrix\",\n  \"type\": \"matrix\",\n  \"title\": \"痛点矩阵\",\n  \"subtitle\": \"分析假设 · 待验证\",\n  \"evidenceStatus\": \"测试数据\",\n  \"sources\": [{\"id\":\"demo\",\"title\":\"规范演示数据，不能进入项目结论\"}],\n  \"data\": [\n    {\"id\":\"P1\",\"pain\":\"缺少持续陪伴\",\"frequency\":\"高\",\"severity\":\"高\",\"sourceIds\":[\"demo\"]},\n    {\"id\":\"P2\",\"pain\":\"使用负担\",\"frequency\":\"低\",\"severity\":\"中\",\"sourceIds\":[\"demo\"]}\n  ],\n  \"encoding\": {\n    \"x\":{\"field\":\"frequency\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"高\"],\"label\":\"发生频率\",\"unit\":\"等级\"},\n    \"y\":{\"field\":\"severity\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"中高\",\"高\"],\"label\":\"严重程度\",\"unit\":\"等级\"},\n    \"label\":\"id\"\n  },\n  \"note\":\"点位表示定性等级，不能读成统计频率；悬停显示痛点、来源与证据状态。\"\n}\n```\n\n保留同一组数据的 Markdown 表格和 1–3 句读图结论。例子只解释格式，实际图表必须使用当前项目数据。先确定数据与 encoding，再由渲染器映射为图形；不让模型手写字符轴线或字符条形图。\n\n## 视觉与交互\n\n复用宿主品牌字体、主色和明暗模式。同一报告的图表配色和同类对象颜色保持一致；无品牌规范时采用白底、深色文字、低饱和主色与浅网格，风险色只用于风险。HTML 表格设置合理列宽、长文换行、数字对齐、表头和分组；宽表在局部滚动，交互文档可固定表头。\n\n每图有标题、轴名、单位、图例（有多系列时）、来源、证据状态及读图结论。定性矩阵使用分类坐标和浅色分区；同一格多点错开并保持等级归属，提供完整名称和明细表，避免 P1–P9 堆叠遮挡。标签不足时增大容器或提供缩放，不缩小到难以阅读。\n\n交互文档提供悬停详情、适配宽度、放大查看和导出 SVG/PNG；静态导出把悬停信息的重要部分写入图注或数据表。按实际工具能力实现，不能声称未实现的交互可用。\n\n## 交付检查与降级\n\n核对图、表、正文的分类、单位、值、分母、来源和证据性质一致；检查默认尺寸与放大后文字无重叠、裁切，主题和打印/导出背景清晰。完成实际渲染才称“图表已渲染”。\n\n环境缺渲染器时保留 chart 数据或 Mermaid 源码＋数据表＋结论，并明确“待宿主渲染”；Markdown 阅读器不支持时可附已生成 SVG/PNG。渲染失败显示明细表与原因，不丢弃正文，也不回退为 ASCII 字符矩阵。没有可用分析数据的章节用“缺失证据表”说明待补内容，不生成虚构分布、比例、留存曲线或点位。\n",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/report.mvp"
+          },
+          "supplements": [],
+          "draft": false,
+          "startedAt": "2026-10-24T13:24:51.332Z",
+          "fingerprint": "42725b9fa98c3e96b18dedd4dc0cfaeda44bc3744696324cc4dea67b894c581a",
+          "model": {
+            "id": "3b9de208-5b65-4b40-acbc-a7c3d618e5e4",
+            "api": "deepseek-messages",
+            "baseURL": "https://api.deepseek.com/anthropic",
+            "model": "deepseek-flash"
+          },
+          "output": {
+            "kind": "documents",
+            "materials": [],
+            "documents": [
+              {
+                "id": "e0f1c3f7-7a99-454d-9e45-6d9e84f12ca3",
+                "title": "MVP方案",
+                "format": "markdown",
+                "content": "> **资料完整性提示：信息不充分**\n> - 目标用户（独处上班族）的行为数据或访谈证据：当前仅有材料陈述，核心问题无量化、无来源\n> - 「现有替代方式为独自刷短视频」的验证证据：仅为待验证假设，无样本与数据\n> - 4 周周期是否包含 7 天观察期的确认：决定排期是否零缓冲，材料未说明\n> - 「免打扰」是否等于「无任何主动提醒」的产品定义：决定回访诱因是否存在，直接影响主指标口径\n> - 20 位目标用户的招募渠道、招募时间与到位保障：材料未提供\n> - 有效样本定义与剔除/替补规则的最终确认：当前仅为本节点建议口径，待需求方拍定\n> - 2 万元预算的构成与可覆盖范围（招募激励、云端资源、素材授权、应急）：未拆分\n> - 技术基线（是否已有代码、框架、账号体系）与可复用程度：完全缺失，影响 4 周可行性\n> - 宠物回应内容来源（预设脚本或模型调用）：影响成本、时延与内容风险，未定\n> - 聊天与亲密度数据的告知同意与隐私合规安排：材料未提\n> - 埋点清单与主指标统计口径的评审确认：现有埋点为分析推断，尚未定稿\n> - 优先级排序依据（为何这五项为 P0、排序方法）与「主动提醒/推送」是否属于本期的决策\n> - 竞品与替代方案的对比证据（含短视频替代的时间/频次数据）\n> - 通过/止损阈值在 n=20 下的判读效力说明（统计功效）：材料明确未做计算\n\n# MVP方案\n\n> **资料不足声明（全文适用）**：本文只编排上游材料《MVP方案分析》。该材料自述来自一份标注为「软件QA人造测试材料」的文字输入，**不能当作真实市场证据或用户访谈**。文中范围、人力、预算、周期、20 人样本与通过/止损阈值属**材料给定的测试数据**；假设拆分、闭环设计、范围取舍、统计口径、排期推演与风险归因规则属**分析推断**，是建议而非已确认决策。目标用户行为证据、技术基线、招募渠道、预算构成、回应内容来源与合规安排均缺失，相关章节按「材料不足」处理，未做补齐。\n\n## 目标用户与核心问题\n\n### 材料给定内容\n\n| 项 | 内容 | 证据性质 |\n| --- | --- | --- |\n| 目标用户 | 独处上班族 | 材料给定（测试数据，非真实用户证据） |\n| 核心问题表述 | 现有替代方式为「独自刷短视频」 | 材料陈述，无量化、无来源，只能作为待验证假设 |\n| 证据缺口自述 | 用户证据缺失须待验证 | 材料自述 |\n\n来源：mat-01（材料全文）、mat-02（替代方式陈述）、mat-03（证据缺口自述）。\n\n### 资料不足\n\n| 待补内容 | 为什么影响方案 | 状态 |\n| --- | --- | --- |\n| 独处上班族的行为数据或访谈证据 | 决定闭环中的回访诱因是否成立 | 完全缺失 |\n| 「独自刷短视频」的时间/频次与场景数据 | 决定核心问题是否真实存在、H4 是否有可比基线 | 完全缺失 |\n| 用户对「陪伴」的具体期待与现有替代品清单 | 决定回应风格、喂养节奏是否与实际期望匹配 | 完全缺失 |\n\n> 本节只能确认「材料声称的问题」，不能确认「问题真实存在」。任何用户规模、留存、偏好数字均无输入，本文不生成。\n\n## 核心闭环\n\n### 闭环结构（分析推断，待宿主渲染 Mermaid）\n\n以下源码来自上游分析，保留原用途；当前环境未确认渲染器，**待宿主渲染**，其结论以本节文字与后续表格为准。\n\n```mermaid\n%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef2f7','primaryTextColor':'#1f2937','primaryBorderColor':'#94a3b8','lineColor':'#64748b','fontFamily':'inherit'}}}%%\nflowchart LR\n  A[\"桌面端：宠物在场<br/>亲密度状态可见\"] --> B{\"用户动作\"}\n  B -->|\"每日喂养（限 1 次）\"| C[\"即时反馈<br/>亲密度变化 · 宠物回应\"]\n  B -->|\"手机端文字聊天\"| C\n  C --> D[\"跨端同步<br/>另一端可见最新亲密度与对话\"]\n  D --> E{\"次日回访诱因\"}\n  E -->|\"亲密度未满 / 宠物状态变化\"| A\n  E -->|\"免打扰时段内\"| F[\"不打断：状态保留，次日可见\"]\n  F --> A\n  E -->|\"无任何诱因（待确认）\"| G[\"回访完全依赖用户自发<br/>→ 主指标被动压低\"]\n  G --> A\n```\n\n### 闭环要素对照\n\n| 环节 | 本期承载功能 | 闭环作用 | 状态 |\n| --- | --- | --- | --- |\n| 在场 | 桌面端宠物显示 | 提供回访的去处与状态可见性 | 分析推断 |\n| 动作 | 每日喂养一次、手机端文字聊天 | 形成可重复的最小行为单元 | 分析推断 |\n| 反馈 | 亲密度变化、宠物回应 | 决定重复动作是否成立，必须即时可见 | 分析推断 |\n| 跨端 | 亲密度跨端同步 | H2 的唯一落地点，「跨端」假设只能在此被检验 | 分析推断 |\n| 回访诱因 | 无明确功能承载 | **闭环未闭合处**：材料未给主动提醒，也未明确排除 | 关键缺口 |\n\n### 闭环成立的前提与缺口（分析推断）\n\n- 反馈必须即时且可见，否则喂养无法形成重复动作。\n- 跨端同步必须做到「一端动作、另一端可感知」，否则跨端假设未被真正检验。\n- 若「免打扰」被理解为「完全没有主动提醒」，回访诱因只剩状态变化，H1 通过率会被结构性压低；这不等于假设为假，而是测试设计偏保守。此项**必须由产品负责人拍定**，不能由实现方默认。\n\n## 本期范围与不做项\n\n### 本期做（P0）\n\n范围五项为材料给定；「最小实现标准」与「不可再削减部分」为分析推断。\n\n| 功能 | 最小实现标准（分析推断） | 支撑假设 | 不可再削减的部分 |\n| --- | --- | --- | --- |\n| 桌面端宠物显示 | 常驻可见，展示宠物形象与亲密度状态；可最小化不消失 | H1 | 状态可见性（否则无回访理由） |\n| 手机端文字聊天 | 文本收发 + 宠物固定风格回应；不做语音、不做多轮长记忆 | H1、H4 | 回应的即时性与一致性 |\n| 每日喂养一次 | 每日限 1 次，有明确冷却与完成反馈 | H1 | 「一天一次」的节奏（习惯验证的最小单位） |\n| 亲密度跨端同步 | 喂养/聊天后另一端刷新可见；同步失败有重试 | H2 | 同步成功率可观测 |\n| 免打扰 | 时段设置，时段内不发任何提示 | H3 | 需先确认它是否等于「无提醒」 |\n\n> 材料给定范围中**没有**「主动提醒/推送」项，也没有明确排除它。这是唯一可能显著改变主指标结果的开关，属未决项。\n\n### 本期不做\n\n| 不做项 | 理由 | 证据性质 |\n| --- | --- | --- |\n| 硬件 | 材料明确约束：仅软件 | 材料给定 |\n| 社区 | 材料约束排除；社交驱动会混淆「陪伴价值」变量 | 材料给定 + 分析推断 |\n| 语音 / 视频 | 材料约束排除；成本高、4 周内不可控 | 材料给定 + 分析推断 |\n| 医疗类功能 | 材料约束排除；涉及资质与合规风险 | 材料给定 + 分析推断 |\n| 多宠物 / 收集养成 | 增加内容与数值设计成本，不改变 H1 可测性 | 分析推断 |\n| 装扮商城 / 任何付费 | 引入支付摩擦，改变招募样本意愿结构，混淆主指标 | 分析推断 |\n| 复杂人设与长记忆对话 | 成本与内容风险不可控，非验证「持续陪伴」的必要条件 | 分析推断 |\n| 社交分享、排行榜 | 靠外部刺激拉回访，直接污染 H1 | 分析推断 |\n\n### 以后做（含触发条件，分析推断）\n\n| 候选项 | 触发条件（满足再做） |\n| --- | --- |\n| 主动提醒 / 推送 | 数据显示回访在第 3–4 天明显跌落，且确认「免打扰」不等于「无提醒」 |\n| 装扮 / 皮肤 | H1 达标后作为长期动机手段再验证，不能用来救回访 |\n| 多宠物 | 单宠物互动已稳定，且用户明确提出收集需求 |\n| 社区 | 陪伴价值已验证，且已评估内容审核与运营成本 |\n| 语音 | 文字互动量饱和，且用户明确表达语音偏好 |\n\n### 「不做仍可验证」论证（上游关键判断）\n\n| 被砍功能 | 核心假设是否仍可验证 | 说明 |\n| --- | --- | --- |\n| 社区 | 可验证，且更干净 | 去掉社交驱动后，7 天回访只能由陪伴动机解释 |\n| 语音 / 视频 | 可验证 | 影响体验强度，不影响「是否存在持续陪伴价值」 |\n| 多宠物 / 装扮 | 可验证 | 去掉后剩余动机更接近真实习惯 |\n| 付费 | 可验证，且必要 | 付费会筛掉部分样本，扭曲主指标 |\n| 医疗 | 无关 | 与核心假设无逻辑关系 |\n| 硬件 | 可验证 | 跨端同步已在「桌面 + 手机」内实现跨端检验 |\n| 主动提醒 | 取决于是否为隐式必需 | 去掉后测的是「自发习惯」；若产品定位含提醒，则测的不是同一产品，须先确认 |\n\n## 优先级\n\n### 资料不足\n\n材料**未提供优先级排序方法或评分依据**（无价值×成本、RICE、KANO 等输入），因此本节点**不自行排序**，也不生成优先级分值或排序结论。以下只整理材料中已有的结构性关系：哪些功能进入主判定、哪些只作解释、哪些被排除。\n\n### 判定优先级（材料给定阈值 + 分析推断的读法）\n\n| 层级 | 内容 | 依据 |\n| --- | --- | --- |\n| 唯一主判定 | 7 日内互动 ≥4 天人数 | 材料给定阈值 |\n| 辅助解释，不参与裁决 | 双端同步成功率、两端近 7 日均有活动的用户数（H2）；免打扰开启人数与开启后互动天数变化（H3）；D7 自报告 1–2 题（H4） | 分析推断 |\n| 范围外 | 见「本期不做」表 | 材料给定 + 分析推断 |\n\n> 这样安排的作用是避免用多个弱指标拼出看似成立、实则无判读力的结论。此读法为分析推断，尚未经确认。\n\n### 待决定的优先级问题\n\n| # | 待确认项 | 影响 |\n| --- | --- | --- |\n| 1 | 五项 P0 之间是否存在先后或可否分批上线 | 若分批，主指标观察窗口需重新定义 |\n| 2 | 「主动提醒/推送」是否属于本期 | 直接改变回访诱因结构，进而改变主指标含义 |\n| 3 | 若 4 周内资源不足，先砍哪一项 | 材料未给出取舍顺序，本节点不代做决定 |\n\n## 资源与周期\n\n### 材料给定与换算\n\n| 项 | 内容 | 证据性质 |\n| --- | --- | --- |\n| 人力 | 1 客户端 + 1 服务端 + 0.5 设计 = 3 人（含 1 名兼职设计） | 材料给定 |\n| 人力换算 | 按 4 周计约 10 人周（4 + 4 + 2） | 换算式推断，非观测结果 |\n| 预算 | 2 万元 | 材料给定，**构成未给出，不拆分具体金额** |\n| 周期 | 4 周 | 材料给定，**是否包含 7 天观察期未说明** |\n\n### 周期的两种情形（分析推断）\n\n| 情形 | 假设 | 排布 | 缓冲 |\n| --- | --- | --- | --- |\n| A | 4 周**包含** 7 天观察期 | W1–W2 开发，W2 末完成招募，W3 为 D0–D7，W4 判定 | 零缓冲 |\n| B | 4 周**不含**观察期 | 总周期约 5 周 | 可留约 1 周缓冲 |\n\n> 该差异直接决定排期是否可行，属阻塞级未决项，须由需求方确认后本表才能收敛为单一方案。\n\n### 依赖清单（风险等级为分析推断）\n\n| 依赖 | 影响 | 风险等级 |\n| --- | --- | --- |\n| 20 位独处上班族的招募渠道 | 无样本则无结论 | 高（材料未提供渠道） |\n| 桌面端到手机端的同步链路 | H2 唯一落地点，故障直接压低 H1 | 高 |\n| 宠物回应内容供给 | 回应单调可能导致第 2–3 天流失 | 中高（仅 1 名兼职设计） |\n| 聊天与亲密度数据的存储与告知同意 | 涉及隐私合规 | 中（材料未提合规安排） |\n| 埋点与统计口径 | 决定 D7 能否判读 | 中 |\n\n### 反馈节奏（分析推断，依赖情形 A）\n\n| 时点 | 事件 | 产出 | 是否出结论 |\n| --- | --- | --- | --- |\n| W1 末 | 可运行骨架（桌面显示 + 喂养 + 同步） | 内部可演示版本 | 否 |\n| W2 中 | 招募启动（与开发并行） | 意向名单 | 否 |\n| W2 末 | 端到端可测（含聊天与免打扰）+ 范围冻结 | 冻结清单 | 否 |\n| W3 初 | 2–3 人内部试跑（只查可用性与埋点） | 缺陷清单 | 否 |\n| W3 D0 | 正式开放 | 正式开始日期 | 否 |\n| W3 D3 | 埋点完整性检查（不看结果） | 数据可用性结论 | 否 |\n| W4 D7 | 数据冻结 + 判定会 | 通过 / 灰色 / 止损 | 是 |\n\n**节奏原则（分析推断）**：开发期不做结论，观察期不改进产品；D0 后改动功能会污染主指标。\n\n### 资料不足\n\n- 2 万元预算构成：完全缺失，无法判断能否覆盖招募激励与云端资源。\n- 技术基线（是否已有代码、框架、账号体系）：完全缺失，4 周可行性无法评估。\n- 招募渠道与时间：完全缺失。\n- 宠物回应内容来源（预设脚本 / 模型调用）：完全缺失，影响成本、时延与内容风险。\n\n## 验证指标与实验\n\n### 假设分解（分析推断）\n\n| 子假设 | 内容 | 当前可测性 | 缺口 |\n| --- | --- | --- | --- |\n| H1（主） | 用户会在无外部强制下于 7 天内重复回访（≥4 天互动） | 可测，行为数据即可判定 | 无历史基线，无法区分新鲜感与习惯 |\n| H2（辅） | 跨端亲密度同步被用户感知并强化连续感 | 部分可测（同步成功事件 + 双端查看） | 需补埋点定义；「感知」需 1 题自报告 |\n| H3（辅） | 免打扰不破坏陪伴感 | 部分可测（开启率与其后互动变化） | 开启率过低时无判读意义 |\n| H4（辅/定性） | 陪伴体验相对独自刷短视频有优势 | 弱可测，仅能自报告对比 | 自报告偏差大，不能替代行为指标 |\n\n### 假设—功能—指标映射\n\n| 子假设 | 本期功能 | 观测指标 | 作用 |\n| --- | --- | --- | --- |\n| H1 | 桌面宠物显示 + 每日喂养一次 | 7 日内互动 ≥4 天人数 | 主判定 |\n| H2 | 亲密度跨端同步 | 双端同步事件成功率；两端近 7 日均有活动的用户数 | 辅助解释 |\n| H3 | 免打扰 | 免打扰开启人数与开启后互动天数变化 | 辅助解释（样本小，仅定性） |\n| H4 | 整体体验 | D7 简短自报告 1–2 题 | 定性补充，不作判定依据 |\n\n### 判定口径（建议定义，均为待确认）\n\n| 规则项 | 建议定义 | 状态 |\n| --- | --- | --- |\n| 互动日 | 一个自然日内完成至少 1 次喂养，或发送至少 1 条消息；仅打开不算 | 待确认 |\n| 7 天窗口 | 自用户完成绑定并首次喂养起算 D0，连续 7 个自然日 | 待确认 |\n| 有效样本 | 完成绑定且至少产生 1 条互动记录的用户；未完成绑定者剔除并替补 | 阈值待确认 |\n| 主指标 | 7 日内互动 ≥4 天的**人数**（不是次数、不是比例） | 材料给定 |\n| 通过 | ≥8 人 | 材料给定 |\n| 止损 | <4 人 | 材料给定 |\n| 灰色区间 | 4–7 人：调整后复测一轮 | 由材料区间推出（推断） |\n| 换算说明 | 8/20 = 40%、4/20 = 20%，为**阈值换算**，不是观测结果 | 计算所得，非数据 |\n\n### 最小埋点清单（分析推断）\n\n绑定完成、桌面端启动、喂养动作、消息发送条数、同步事件（成功/失败）、免打扰设置变更、最后一次活跃时间。不采集与判定无关的字段。\n\n### 判定与决策路径（分析推断，待宿主渲染 Mermaid）\n\n```mermaid\n%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef2f7','primaryTextColor':'#1f2937','primaryBorderColor':'#94a3b8','lineColor':'#64748b','fontFamily':'inherit'}}}%%\nflowchart TD\n  A[\"D7 数据冻结\"] --> B{\"有效样本是否足以判定<br/>（阈值待确认）\"}\n  B -->|\"不足\"| B1[\"延长招募或补测<br/>暂不下结论\"]\n  B -->|\"足够\"| C{\"7 日内互动 ≥4 天人数\"}\n  C -->|\"≥8\"| P[\"通过：进入下一阶段<br/>扩大样本、延长周期\"]\n  C -->|\"4–7\"| G[\"灰色区间：复测一轮\"]\n  C -->|\"<4\"| X[\"止损：停止投入，回到假设层\"]\n  P --> P1[\"下一步验证：无外部激励时留存是否延续\"]\n  G --> G1[\"一次只改一个变量：提醒机制 / 首次引导 / 反馈密度\"]\n  X --> X1[\"记录否定证据，并区分是假设失败还是执行失败\"]\n```\n\n### 实验效力局限（材料自述与推断）\n\n- 20 人样本不足以支撑统计意义上的结论；8 人与 4 人在 n=20 下的区分能力有限。结论应表述为「方向性信号 / 是否值得继续投入」，而非「陪伴有价值已被证明」。\n- **未做统计功效计算**（材料无相关输入），本文不编造该数值。\n- 若「免打扰」等于无任何主动提醒，H1 是在「纯自发」条件下测得，与含提醒的产品不是同一问题，须在结论中写明。\n\n## 风险与止损\n\n### 主要风险（分析推断，除标注外）\n\n| # | 风险 | 影响 | 依据 |\n| --- | --- | --- | --- |\n| 1 | 4 周是否含观察期未定 | 含则零缓冲，任何延误直接吞掉判定窗口 | 材料未说明 |\n| 2 | 招募不到位 | 无样本则 4 周方案不成立，最大进度风险 | 材料未提供渠道 |\n| 3 | 同步链路不稳定 | H2 无法检验，并直接压低 H1 | 分析推断 |\n| 4 | 宠物回应单调 | 第 2–3 天流失，可能被误读为假设失败 | 分析推断（仅 1 名兼职设计） |\n| 5 | 「免打扰」定义未定 | 主指标口径不确定，结论不可比 | 材料未明确 |\n| 6 | 统计口径与埋点未评审 | D7 数据不可算，判定无效 | 分析推断 |\n| 7 | 隐私合规安排缺失 | 可能无法合法采集与留存聊天/亲密度数据 | 材料未提 |\n| 8 | 样本量小 | 结论只能作方向性信号 | 材料自述 + 推断 |\n\n### 止损判定与两类归因\n\n止损线为材料给定：7 日内互动 ≥4 天人数 <4 人即止损；4–7 人为灰色区间，调整后复测一轮（推断）。\n\n止损时必须区分两类归因，否则会误杀假设（分析推断）：\n\n| 归因 | 含义 | 处理 |\n| --- | --- | --- |\n| 假设失败 | 无外部强制下确实没有重复回访 | 记录否定证据，回到假设层 |\n| 执行失败 | 招募不达标、同步不稳定、回应过于单调、口径不可算 | 先修复再复测，不计入否定证据 |\n\n### 阻塞级未决项\n\n| # | 待确认项 | 为什么阻塞 | 需要谁决定 |\n| --- | --- | --- | --- |\n| 1 | 4 周是否包含 7 天观察期 | 决定排期是零缓冲还是可留 1 周缓冲 | 需求方 |\n| 2 | 「免打扰」是否等于「无任何主动提醒」 | 决定主指标在「有诱因」还是「纯自发」条件下测得 | 产品负责人 |\n| 3 | 20 位目标用户的招募渠道与时间 | 无样本则 4 周方案不成立 | 需求方 / 运营 |\n| 4 | 有效样本定义与替补规则 | 决定 D7 是否有资格判定 | 产品负责人 |\n| 5 | 2 万元预算构成与可覆盖范围 | 决定招募激励与云端资源是否够 | 需求方 |\n| 6 | 宠物回应内容来源（预设脚本或模型调用） | 影响成本、时延与内容风险 | 技术负责人 |\n| 7 | 是否存在可复用技术基线 | 影响 4 周可行性 | 技术负责人 |\n| 8 | 聊天与亲密度数据的告知同意方式 | 影响能否合法采集与留存 | 需求方 |\n\n### 下一步（建议动作，非已确认计划，分析推断）\n\n1. 先答阻塞级第 1、2 项再冻结排期；这两项未定之前，其余排期都属于纸面推演。\n2. 把判定口径写成 1 页测试方案，与埋点清单一起评审，确保 D7 的数可算。\n3. W2 末范围冻结，冻结后只修缺陷不加功能；新增需求进入「以后做」。\n4. 招募与开发并行启动，不等版本完成才找人。\n5. D7 判定会同时记录否定证据，写清「假设不成立」与「执行不到位」的区分依据。\n6. D7 后补一轮 3–5 人定性访谈解释主指标，访谈提纲须提前设计。\n\n### 本轮结论的证据状态\n\n| 内容 | 状态 |\n| --- | --- |\n| 产品范围、人力、预算、周期、20 人、≥8 / <4 阈值、约束项 | 材料给定（测试数据，非真实市场证据） |\n| 假设拆分、闭环设计、范围取舍、口径、排期、风险与归因规则 | 分析推断，未经验证 |\n| 8/20=40%、4/20=20%、约 10 人周 | 由材料数值换算，非观测结果 |\n| 用户需求、留存、偏好、竞品相关的一切陈述 | 无证据，全部待验证 |\n\n> 本方案的任何通过/止损判断在 D7 之前都不存在；材料中的阈值是测试计划，不是已达成结果。",
+                "outline": "# MVP方案\n## 目标用户与核心问题\n## 核心闭环\n## 本期范围与不做项\n## 优先级\n## 资源与周期\n## 验证指标与实验\n## 风险与止损",
+                "summary": "## 资料完整性\n- 信息不充分：目标用户（独处上班族）的行为数据或访谈证据：当前仅有材料陈述，核心问题无量化、无来源；「现有替代方式为独自刷短视频」的验证证据：仅为待验证假设，无样本与数据；4 周周期是否包含 7 天观察期的确认：决定排期是否零缓冲，材料未说明；「免打扰」是否等于「无任何主动提醒」的产品定义：决定回访诱因是否存在，直接影响主指标口径；20 位目标用户的招募渠道、招募时间与到位保障：材料未提供；有效样本定义与剔除/替补规则的最终确认：当前仅为本节点建议口径，待需求方拍定；2 万元预算的构成与可覆盖范围（招募激励、云端资源、素材授权、应急）：未拆分；技术基线（是否已有代码、框架、账号体系）与可复用程度：完全缺失，影响 4 周可行性；宠物回应内容来源（预设脚本或模型调用）：影响成本、时延与内容风险，未定；聊天与亲密度数据的告知同意与隐私合规安排：材料未提；埋点清单与主指标统计口径的评审确认：现有埋点为分析推断，尚未定稿；优先级排序依据（为何这五项为 P0、排序方法）与「主动提醒/推送」是否属于本期的决策；竞品与替代方案的对比证据（含短视频替代的时间/频次数据）；通过/止损阈值在 n=20 下的判读效力说明（统计功效）：材料明确未做计算\n\n## 核心结论\n- 材料覆盖 MVP 的目标用户、核心闭环、本期范围与不做项、资源周期、验证指标与止损规则，但这些内容均来自一份自述为“软件QA人造测试材料”的文本，不能作为真实市场或用户证据。\n- 材料给定约束为：3 人（含 1 名兼职设计）、4 周、2 万元、20 位独处上班族、主指标为 7 日内互动≥4 天人数，通过≥8 人、止损<4 人。\n- 核心假设被拆为 H1 重复回访（主判定）与 H2 跨端同步感知、H3 免打扰不破坏陪伴感、H4 相对短视频替代偏好（仅作解释），拆分属分析推断。\n- 闭环最大缺口是“次日回访诱因”，且“免打扰是否等于无任何主动提醒”未定，直接改变主指标的口径与结果。\n## 证据局限\n- 目标用户行为、短视频替代、招募渠道、技术基线、预算构成、AI 回应内容来源、隐私合规安排全部缺失。\n- 8/20=40%、4/20=20%、约 10 人周为阈值的换算式，不是观测结果；n=20 的判读效力未做统计功效计算。\n- 排期、统计口径、范围取舍、风险归因规则均为分析推断，未经需求方确认。\n## 下一步\n- 先确认 4 周是否包含 7 天观察期，以及“免打扰”的产品定义，再冻结排期。\n- 把互动日、7 天窗口、有效样本与替补规则写成 1 页测试方案并评审。\n- 招募与开发并行启动，W2 末范围冻结；D7 判定会须同时记录否定证据并区分假设失败与执行失败。",
+                "quality": {
+                  "level": "partial",
+                  "missing": [
+                    "目标用户（独处上班族）的行为数据或访谈证据：当前仅有材料陈述，核心问题无量化、无来源",
+                    "「现有替代方式为独自刷短视频」的验证证据：仅为待验证假设，无样本与数据",
+                    "4 周周期是否包含 7 天观察期的确认：决定排期是否零缓冲，材料未说明",
+                    "「免打扰」是否等于「无任何主动提醒」的产品定义：决定回访诱因是否存在，直接影响主指标口径",
+                    "20 位目标用户的招募渠道、招募时间与到位保障：材料未提供",
+                    "有效样本定义与剔除/替补规则的最终确认：当前仅为本节点建议口径，待需求方拍定",
+                    "2 万元预算的构成与可覆盖范围（招募激励、云端资源、素材授权、应急）：未拆分",
+                    "技术基线（是否已有代码、框架、账号体系）与可复用程度：完全缺失，影响 4 周可行性",
+                    "宠物回应内容来源（预设脚本或模型调用）：影响成本、时延与内容风险，未定",
+                    "聊天与亲密度数据的告知同意与隐私合规安排：材料未提",
+                    "埋点清单与主指标统计口径的评审确认：现有埋点为分析推断，尚未定稿",
+                    "优先级排序依据（为何这五项为 P0、排序方法）与「主动提醒/推送」是否属于本期的决策",
+                    "竞品与替代方案的对比证据（含短视频替代的时间/频次数据）",
+                    "通过/止损阈值在 n=20 下的判读效力说明（统计功效）：材料明确未做计算"
+                  ],
+                  "note": "输入材料《MVP方案分析》与「MVP方案」大纲直接相关：已覆盖目标用户与核心问题（仅材料陈述）、核心闭环（含 Mermaid 闭环图与「次日回访诱因」缺口）、本期范围与不做项（P0 五项、不做项与以后做及触发条件）、优先级（P0 最小实现标准）、资源与周期（3 人≈10 人周、2 万元、4 周及 A/B 两种情形推演）、验证指标与实验（H1–H4、互动日与 7 天窗口口径、≥8 人通过/<4 人止损、埋点清单、判定决策路径）、风险与止损（依赖风险、止损两类归因、待确认清单）。但材料自述全部为「软件QA人造测试材料」，不能作为真实市场或用户证据；范围、人力、预算、周期、20 人、阈值属材料给定的测试数据，假设拆分、闭环设计、范围取舍、统计口径、排期与风险规则均属分析推断。上述关键决策输入与用户证据缺失，故判定为相关但不充分：可整理现有部分成文，并须在文档顶部及各缺失章节显著标注资料不足与证据性质，不得补齐事实或生成虚构数据。"
+                }
+              }
+            ],
+            "sources": [],
+            "assumptions": [],
+            "summary": "## 核心结论\n- 材料覆盖 MVP 的目标用户、核心闭环、本期范围与不做项、资源周期、验证指标与止损规则，但这些内容均来自一份自述为“软件QA人造测试材料”的文本，不能作为真实市场或用户证据。\n- 材料给定约束为：3 人（含 1 名兼职设计）、4 周、2 万元、20 位独处上班族、主指标为 7 日内互动≥4 天人数，通过≥8 人、止损<4 人。\n- 核心假设被拆为 H1 重复回访（主判定）与 H2 跨端同步感知、H3 免打扰不破坏陪伴感、H4 相对短视频替代偏好（仅作解释），拆分属分析推断。\n- 闭环最大缺口是“次日回访诱因”，且“免打扰是否等于无任何主动提醒”未定，直接改变主指标的口径与结果。\n## 证据局限\n- 目标用户行为、短视频替代、招募渠道、技术基线、预算构成、AI 回应内容来源、隐私合规安排全部缺失。\n- 8/20=40%、4/20=20%、约 10 人周为阈值的换算式，不是观测结果；n=20 的判读效力未做统计功效计算。\n- 排期、统计口径、范围取舍、风险归因规则均为分析推断，未经需求方确认。\n## 下一步\n- 先确认 4 周是否包含 7 天观察期，以及“免打扰”的产品定义，再冻结排期。\n- 把互动日、7 天窗口、有效样本与替补规则写成 1 页测试方案并评审。\n- 招募与开发并行启动，W2 末范围冻结；D7 判定会须同时记录否定证据并区分假设失败与执行失败。",
+            "warnings": [
+              "4 周时间是否包含 7 天观察期？若包含，开发+招募+观察零缓冲，需确认是否接受或缩范围。",
+              "「免打扰」是否等于「无任何主动提醒」？若等于，主指标将在纯自发回访条件下测得，通过线可能被结构性压低。",
+              "20 位独处上班族的招募渠道与到位时间由谁负责？",
+              "「互动日」「7 天窗口起点」「有效样本与替补规则」三项口径由谁拍定？",
+              "2 万元预算的构成与可覆盖范围（招募激励、云端资源、素材授权）？",
+              "AI 宠物回应的内容来源是预设脚本还是模型调用？现有技术基线是否可复用？",
+              "测试是否已安排用户告知与数据采集同意方式？",
+              "信息不充分：目标用户（独处上班族）的行为数据或访谈证据：当前仅有材料陈述，核心问题无量化、无来源；「现有替代方式为独自刷短视频」的验证证据：仅为待验证假设，无样本与数据；4 周周期是否包含 7 天观察期的确认：决定排期是否零缓冲，材料未说明；「免打扰」是否等于「无任何主动提醒」的产品定义：决定回访诱因是否存在，直接影响主指标口径；20 位目标用户的招募渠道、招募时间与到位保障：材料未提供；有效样本定义与剔除/替补规则的最终确认：当前仅为本节点建议口径，待需求方拍定；2 万元预算的构成与可覆盖范围（招募激励、云端资源、素材授权、应急）：未拆分；技术基线（是否已有代码、框架、账号体系）与可复用程度：完全缺失，影响 4 周可行性；宠物回应内容来源（预设脚本或模型调用）：影响成本、时延与内容风险，未定；聊天与亲密度数据的告知同意与隐私合规安排：材料未提；埋点清单与主指标统计口径的评审确认：现有埋点为分析推断，尚未定稿；优先级排序依据（为何这五项为 P0、排序方法）与「主动提醒/推送」是否属于本期的决策；竞品与替代方案的对比证据（含短视频替代的时间/频次数据）；通过/止损阈值在 n=20 下的判读效力说明（统计功效）：材料明确未做计算",
+              "4 周周期是否包含 7 天观察期（决定排期是零缓冲还是可留约 1 周缓冲）？",
+              "「免打扰」是否等于「无任何主动提醒」（决定主指标在纯自发还是有诱因条件下测得）？",
+              "20 位独处上班族的招募渠道、启动时间与到位保障是什么？",
+              "有效样本定义与剔除/替补规则是否按建议口径定稿？",
+              "2 万元预算的构成与可覆盖范围（招募激励、云端资源、素材授权、应急）如何分配？",
+              "是否存在可复用技术基线与宠物回应内容来源（预设脚本或模型调用）？",
+              "聊天与亲密度数据的告知同意与隐私合规安排如何落地？",
+              "五项 P0 之间是否需要分批上线，若资源不足先砍哪一项？"
+            ],
+            "fileReferences": [],
+            "inputSnapshot": [
+              {
+                "id": "3adef595-7654-4842-bf54-b736bbc694ca",
+                "title": "MVP方案分析",
+                "evidence": "material"
+              }
+            ],
+            "quality": {
+              "level": "partial",
+              "missing": [
+                "目标用户（独处上班族）的行为数据或访谈证据：当前仅有材料陈述，核心问题无量化、无来源",
+                "「现有替代方式为独自刷短视频」的验证证据：仅为待验证假设，无样本与数据",
+                "4 周周期是否包含 7 天观察期的确认：决定排期是否零缓冲，材料未说明",
+                "「免打扰」是否等于「无任何主动提醒」的产品定义：决定回访诱因是否存在，直接影响主指标口径",
+                "20 位目标用户的招募渠道、招募时间与到位保障：材料未提供",
+                "有效样本定义与剔除/替补规则的最终确认：当前仅为本节点建议口径，待需求方拍定",
+                "2 万元预算的构成与可覆盖范围（招募激励、云端资源、素材授权、应急）：未拆分",
+                "技术基线（是否已有代码、框架、账号体系）与可复用程度：完全缺失，影响 4 周可行性",
+                "宠物回应内容来源（预设脚本或模型调用）：影响成本、时延与内容风险，未定",
+                "聊天与亲密度数据的告知同意与隐私合规安排：材料未提",
+                "埋点清单与主指标统计口径的评审确认：现有埋点为分析推断，尚未定稿",
+                "优先级排序依据（为何这五项为 P0、排序方法）与「主动提醒/推送」是否属于本期的决策",
+                "竞品与替代方案的对比证据（含短视频替代的时间/频次数据）",
+                "通过/止损阈值在 n=20 下的判读效力说明（统计功效）：材料明确未做计算"
+              ],
+              "note": "输入材料《MVP方案分析》与「MVP方案」大纲直接相关：已覆盖目标用户与核心问题（仅材料陈述）、核心闭环（含 Mermaid 闭环图与「次日回访诱因」缺口）、本期范围与不做项（P0 五项、不做项与以后做及触发条件）、优先级（P0 最小实现标准）、资源与周期（3 人≈10 人周、2 万元、4 周及 A/B 两种情形推演）、验证指标与实验（H1–H4、互动日与 7 天窗口口径、≥8 人通过/<4 人止损、埋点清单、判定决策路径）、风险与止损（依赖风险、止损两类归因、待确认清单）。但材料自述全部为「软件QA人造测试材料」，不能作为真实市场或用户证据；范围、人力、预算、周期、20 人、阈值属材料给定的测试数据，假设拆分、闭环设计、范围取舍、统计口径、排期与风险规则均属分析推断。上述关键决策输入与用户证据缺失，故判定为相关但不充分：可整理现有部分成文，并须在文档顶部及各缺失章节显著标注资料不足与证据性质，不得补齐事实或生成虚构数据。"
+            },
+            "analysis": {},
+            "openQuestions": [
+              "4 周周期是否包含 7 天观察期（决定排期是零缓冲还是可留约 1 周缓冲）？",
+              "「免打扰」是否等于「无任何主动提醒」（决定主指标在纯自发还是有诱因条件下测得）？",
+              "20 位独处上班族的招募渠道、启动时间与到位保障是什么？",
+              "有效样本定义与剔除/替补规则是否按建议口径定稿？",
+              "2 万元预算的构成与可覆盖范围（招募激励、云端资源、素材授权、应急）如何分配？",
+              "是否存在可复用技术基线与宠物回应内容来源（预设脚本或模型调用）？",
+              "聊天与亲密度数据的告知同意与隐私合规安排如何落地？",
+              "五项 P0 之间是否需要分批上线，若资源不足先砍哪一项？"
+            ],
+            "computed": null
+          },
+          "completedAt": "2026-10-24T13:25:35.918Z"
+        }
+      },
+      "progress": "工作流已完成 · 信息不充分",
+      "currentNodeId": "report",
+      "completedAt": "2026-10-24T13:25:35.928Z"
+    }
+  ]
+}

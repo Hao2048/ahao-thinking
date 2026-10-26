@@ -1,0 +1,312 @@
+{
+  "flowId": "fc269ca0-56a9-4bee-afad-33b3ac0fe32e",
+  "run": {
+    "id": "2ab0cf9d-ad5e-4ecc-b691-b32d28c99a7d",
+    "version": 4,
+    "status": "failed",
+    "createdAt": "2026-10-24T13:58:23.762Z",
+    "graph": {
+      "nodes": [
+        {
+          "id": "text",
+          "type": "input.text",
+          "name": "文字输入",
+          "x": 80,
+          "y": 160,
+          "config": {
+            "researchMode": "materials",
+            "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n与任何产品方案无关的随机食谱：番茄两个，鸡蛋三个，盐少许。没有产品想法、用户目标、业务需求或MVP成果。本任务仅为输入不匹配测试，不能把做菜解释为软件产品需求。",
+            "evidence": "test_data"
+          }
+        },
+        {
+          "id": "report",
+          "type": "report.mvp",
+          "name": "MVP方案",
+          "x": 440,
+          "y": 160,
+          "config": {
+            "task": "",
+            "modelId": "",
+            "outline": "# MVP方案\n## 目标用户与核心问题\n## 核心闭环\n## 本期范围与不做项\n## 优先级\n## 资源与周期\n## 验证指标与实验\n## 风险与止损"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "text-report",
+          "from": "text",
+          "to": "report",
+          "output": "data",
+          "input": "materials"
+        }
+      ],
+      "groups": [],
+      "view": {
+        "x": 60,
+        "y": 100,
+        "k": 1
+      }
+    },
+    "graphHash": "6292e58393d1b247bac2508e01e948d18d4122a7c8323b0ab891c0d80873aef7",
+    "order": [
+      "text",
+      "report"
+    ],
+    "force": true,
+    "nodes": {
+      "text": {
+        "status": "succeeded",
+        "definition": {
+          "schemaVersion": 1,
+          "id": "input.text",
+          "name": "文字输入",
+          "version": "1.1.0",
+          "category": "input",
+          "description": "输入想法、产品、用户需求或 CSV/JSON 数据。",
+          "icon": "input",
+          "enabled": true,
+          "executor": "text",
+          "inputs": [],
+          "outputs": [
+            {
+              "id": "data",
+              "name": "文字输入结果",
+              "types": [
+                "materials"
+              ]
+            }
+          ],
+          "fields": [
+            {
+              "key": "researchMode",
+              "label": "输入方式",
+              "type": "select",
+              "options": [
+                {
+                  "value": "materials",
+                  "label": "文档 / 数据材料"
+                },
+                {
+                  "value": "idea",
+                  "label": "产品想法"
+                },
+                {
+                  "value": "product",
+                  "label": "指定产品 / 竞品"
+                },
+                {
+                  "value": "user_need",
+                  "label": "用户需求"
+                }
+              ],
+              "default": "materials"
+            },
+            {
+              "key": "content",
+              "label": "材料正文 / CSV / JSON",
+              "type": "textarea",
+              "default": ""
+            },
+            {
+              "key": "evidence",
+              "label": "材料性质",
+              "type": "select",
+              "options": [
+                {
+                  "value": "user_statement",
+                  "label": "用户陈述"
+                },
+                {
+                  "value": "material",
+                  "label": "已有材料"
+                },
+                {
+                  "value": "test_data",
+                  "label": "测试数据"
+                },
+                {
+                  "value": "ai_hypothesis",
+                  "label": "AI假设（待验证）"
+                }
+              ],
+              "default": "user_statement"
+            }
+          ],
+          "instructions": null,
+          "requirements": [
+            "至少一份相关输入"
+          ],
+          "implementation": "text",
+          "origin": {
+            "skill": "产品经理工作流 / 现有本地工具",
+            "adaptedAt": "2026-10-18",
+            "scope": "输入想法、产品、用户需求或 CSV/JSON 数据。"
+          },
+          "workflow": [
+            {
+              "id": "collect",
+              "title": "采集或引用材料",
+              "prompt": "输入想法、产品、用户需求或 CSV/JSON 数据。"
+            },
+            {
+              "id": "confirm",
+              "title": "保留内容与来源",
+              "prompt": "原样交接材料、来源和证据性质，不承担下游分析或报告整理。"
+            }
+          ],
+          "capabilities": {
+            "search": false,
+            "generateDecisions": false
+          },
+          "hash": "ab910179df883d66c348de313ff1bdd39728bba0013a9fba13dc49793ddb7678",
+          "instruction": "",
+          "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/input.text"
+        },
+        "supplements": [],
+        "draft": false,
+        "startedAt": "2026-10-24T13:58:23.889Z",
+        "fingerprint": "e8280a651f5601e5f34236c55c720658c8096f4cb415122abeb2740954d418b2",
+        "model": {
+          "id": "3b9de208-5b65-4b40-acbc-a7c3d618e5e4",
+          "api": "deepseek-messages",
+          "baseURL": "https://api.deepseek.com/anthropic",
+          "model": "deepseek-flash"
+        },
+        "output": {
+          "kind": "materials",
+          "materials": [
+            {
+              "id": "cc711351-5de6-45a5-9513-9215f472c491",
+              "title": "文字输入",
+              "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n与任何产品方案无关的随机食谱：番茄两个，鸡蛋三个，盐少许。没有产品想法、用户目标、业务需求或MVP成果。本任务仅为输入不匹配测试，不能把做菜解释为软件产品需求。",
+              "evidence": "test_data",
+              "researchMode": "materials"
+            }
+          ],
+          "documents": [],
+          "sources": [],
+          "assumptions": [],
+          "summary": "已提供文字材料",
+          "warnings": [],
+          "fileReferences": []
+        },
+        "completedAt": "2026-10-24T13:58:23.933Z"
+      },
+      "report": {
+        "status": "failed",
+        "definition": {
+          "schemaVersion": 1,
+          "id": "report.mvp",
+          "name": "MVP方案",
+          "version": "1.1.0",
+          "category": "report",
+          "description": "仅根据传入的相关成果，按大纲整理MVP方案；不搜索、不另作产品决策。",
+          "icon": "grid",
+          "enabled": true,
+          "executor": "ai",
+          "inputs": [
+            {
+              "id": "materials",
+              "name": "输入材料",
+              "types": [
+                "materials",
+                "sources",
+                "analysis",
+                "dataset",
+                "documents"
+              ],
+              "multiple": true
+            }
+          ],
+          "outputs": [
+            {
+              "id": "data",
+              "name": "MVP方案结果",
+              "types": [
+                "documents"
+              ]
+            }
+          ],
+          "fields": [
+            {
+              "key": "task",
+              "label": "本次目标与补充要求",
+              "type": "textarea",
+              "default": ""
+            },
+            {
+              "key": "modelId",
+              "label": "执行模型",
+              "type": "model",
+              "default": ""
+            },
+            {
+              "key": "outline",
+              "label": "输出大纲",
+              "type": "textarea",
+              "default": "# MVP方案\n## 目标用户与核心问题\n## 核心闭环\n## 本期范围与不做项\n## 优先级\n## 资源与周期\n## 验证指标与实验\n## 风险与止损"
+            }
+          ],
+          "instructions": "instructions.md",
+          "requirements": [
+            "本期产品目标",
+            "核心用户问题与使用场景",
+            "资源、周期或明确的未知约束"
+          ],
+          "implementation": "ai",
+          "origin": {
+            "skill": "产品经理工作流 / 现有本地工具",
+            "adaptedAt": "2026-10-18",
+            "scope": "确定核心闭环、本期范围、优先级与验证指标。"
+          },
+          "capabilities": {
+            "search": false,
+            "calculate": false,
+            "generateDecisions": false
+          },
+          "workflow": [
+            {
+              "id": "relevance",
+              "title": "检查材料相关性",
+              "prompt": "完全不相关或没有可用内容时停止，不输出文档。"
+            },
+            {
+              "id": "coverage",
+              "title": "对照大纲检查覆盖",
+              "prompt": "逐章识别输入支持的内容和缺口；相关但不足可整理，必须显著提示。"
+            },
+            {
+              "id": "compose",
+              "title": "按大纲整理报告",
+              "prompt": "仅归类、去重、编排和总结材料，不搜索、不新建事实、统计或产品决策。"
+            },
+            {
+              "id": "verify",
+              "title": "核对来源与文档",
+              "prompt": "数字和结论须由输入支持，缺失章节写材料不足，保留上游假设/局限。"
+            }
+          ],
+          "hash": "7a7ecc0ed216c25e618baa2c81d49ca6a22e8b87b3f86766fd7a0e83d9b0b810",
+          "instruction": "# MVP方案\n\n本节点只编排输入，不进行联网检索、独立分析、产品决策或统计计算。相关材料不充分时仍整理已有部分，在文档顶部及缺失章节标明资料不足；完全不相关时拒绝生成。保留来源、假设、证据局限，不用常识补齐缺少的事实。\n\n\n# 文档图表输出与渲染规范\n\n## 技术选择\n\n- 数据比较、趋势、占比、漏斗、留存热力图、痛点与优先级矩阵：ECharts。文档小型图默认 SVG；数据密集图可用 Canvas。按使用的图种加载依赖，桌面/离线交付使用本地资源。\n- 业务流程、关系、状态、用户决策链路：Mermaid，保留可复制源码，使用 theme: base 与宿主品牌色。已有研发向源码专用章节和真实界面拼接流程图保留原来的用途与交互，不强制改成另一种图。\n- 对比、需求、画像明细：语义化 HTML table＋CSS；Markdown 交付保留数据表，宿主负责表格样式。\n- 统计图交付由程序渲染矢量图或清晰 PNG；AI 插画、照片和真实原型截图保留原始资产，不用统计图引擎代替。\n\n## AI 与宿主的职责\n\nAI 提供结论、原始数据、来源和声明式图表规范；宿主把规范映射为 ECharts option 或 Mermaid SVG。图表不要求额外生成整篇 HTML；全文 HTML 仍按原流程或用户请求生成。宿主输出协议优先，已有 chart 字段时按其协议；无协议的 Markdown 使用紧邻正文的 chart JSON 围栏与 mermaid 围栏。\n\n下面的 pm-chart-v1 是本 Skill 的交接规范，宿主接入后才能自动绘图；它不是 ECharts option，也不是已经实现的工作台接口。宿主只接收白名单图种、字段和数据，不执行 AI 提供的 JS、formatter 函数或任意 HTML。\n\n## 图表数据协议\n\nchart JSON 每张图独立，字段：schema、id、type、title、evidenceStatus、sources、data、encoding；subtitle、note 可选。\n\n- schema 固定 pm-chart-v1；id 在文档内唯一，用于引用和导出。\n- type：bar / line / pie / funnel / heatmap / matrix / scatter。柱线图的数据记录提供分类或时间、数值与可选分组；encoding 指出字段名。漏斗记录给出步骤顺序和原始人数，率由代码计算。矩阵可用类别坐标；heatmap 明确行列及指标。\n- encoding.x / y 指出 field、scale（category / ordinal / quantitative / time）、label、unit；类别轴给出有序 categories。series / label / value 指明相关字段（按图种提供）。\n- evidenceStatus：已验证事实 / 用户观点 / 估算 / 分析推断 / 待验证 / 测试数据。sources 为来源 id、标题、url 或材料定位、日期；每行数据使用 sourceIds 引用来源。不同证据性质混用时逐行标注 evidenceStatus。\n- 缺数值用 null，不能用 0 替代；缺失数据不绘制为已观测值。百分比保留分母、统计口径和周期说明；估算附依据及置信度。等级是类别，不转换为未经解释的精确分数。\n\n### 定性痛点矩阵示例（演示数据）\n\n```chart\n{\n  \"schema\": \"pm-chart-v1\",\n  \"id\": \"pain-matrix\",\n  \"type\": \"matrix\",\n  \"title\": \"痛点矩阵\",\n  \"subtitle\": \"分析假设 · 待验证\",\n  \"evidenceStatus\": \"测试数据\",\n  \"sources\": [{\"id\":\"demo\",\"title\":\"规范演示数据，不能进入项目结论\"}],\n  \"data\": [\n    {\"id\":\"P1\",\"pain\":\"缺少持续陪伴\",\"frequency\":\"高\",\"severity\":\"高\",\"sourceIds\":[\"demo\"]},\n    {\"id\":\"P2\",\"pain\":\"使用负担\",\"frequency\":\"低\",\"severity\":\"中\",\"sourceIds\":[\"demo\"]}\n  ],\n  \"encoding\": {\n    \"x\":{\"field\":\"frequency\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"高\"],\"label\":\"发生频率\",\"unit\":\"等级\"},\n    \"y\":{\"field\":\"severity\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"中高\",\"高\"],\"label\":\"严重程度\",\"unit\":\"等级\"},\n    \"label\":\"id\"\n  },\n  \"note\":\"点位表示定性等级，不能读成统计频率；悬停显示痛点、来源与证据状态。\"\n}\n```\n\n保留同一组数据的 Markdown 表格和 1–3 句读图结论。例子只解释格式，实际图表必须使用当前项目数据。先确定数据与 encoding，再由渲染器映射为图形；不让模型手写字符轴线或字符条形图。\n\n## 视觉与交互\n\n复用宿主品牌字体、主色和明暗模式。同一报告的图表配色和同类对象颜色保持一致；无品牌规范时采用白底、深色文字、低饱和主色与浅网格，风险色只用于风险。HTML 表格设置合理列宽、长文换行、数字对齐、表头和分组；宽表在局部滚动，交互文档可固定表头。\n\n每图有标题、轴名、单位、图例（有多系列时）、来源、证据状态及读图结论。定性矩阵使用分类坐标和浅色分区；同一格多点错开并保持等级归属，提供完整名称和明细表，避免 P1–P9 堆叠遮挡。标签不足时增大容器或提供缩放，不缩小到难以阅读。\n\n交互文档提供悬停详情、适配宽度、放大查看和导出 SVG/PNG；静态导出把悬停信息的重要部分写入图注或数据表。按实际工具能力实现，不能声称未实现的交互可用。\n\n## 交付检查与降级\n\n核对图、表、正文的分类、单位、值、分母、来源和证据性质一致；检查默认尺寸与放大后文字无重叠、裁切，主题和打印/导出背景清晰。完成实际渲染才称“图表已渲染”。\n\n环境缺渲染器时保留 chart 数据或 Mermaid 源码＋数据表＋结论，并明确“待宿主渲染”；Markdown 阅读器不支持时可附已生成 SVG/PNG。渲染失败显示明细表与原因，不丢弃正文，也不回退为 ASCII 字符矩阵。没有可用分析数据的章节用“缺失证据表”说明待补内容，不生成虚构分布、比例、留存曲线或点位。\n",
+          "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/report.mvp"
+        },
+        "supplements": [],
+        "draft": false,
+        "startedAt": "2026-10-24T13:58:23.963Z",
+        "fingerprint": "5d649e4cac6bdf5be0fc0869377161f873ccd0af4fecbe9978e6429001e70f3c",
+        "model": {
+          "id": "3b9de208-5b65-4b40-acbc-a7c3d618e5e4",
+          "api": "deepseek-messages",
+          "baseURL": "https://api.deepseek.com/anthropic",
+          "model": "deepseek-flash"
+        },
+        "error": "无法输出文档：输入材料与本报告任务不相关。输入材料为标注“软件QA人造测试材料”的番茄鸡蛋食谱，明确说明没有产品想法、用户目标、业务需求或MVP成果，与MVP方案大纲各章节无任何可对应内容。属于完全不相关输入，按要求停止生成报告，不进行联网检索或事实补齐；如需继续，请提供产品背景、目标用户与问题、候选方案范围或已有调研/数据材料。",
+        "suggestions": []
+      }
+    },
+    "progress": "无法输出文档：输入材料与本报告任务不相关。输入材料为标注“软件QA人造测试材料”的番茄鸡蛋食谱，明确说明没有产品想法、用户目标、业务需求或MVP成果，与MVP方案大纲各章节无任何可对应内容。属于完全不相关输入，按要求停止生成报告，不进行联网检索或事实补齐；如需继续，请提供产品背景、目标用户与问题、候选方案范围或已有调研/数据材料。",
+    "currentNodeId": "report",
+    "completedAt": "2026-10-24T13:58:27.099Z"
+  }
+}

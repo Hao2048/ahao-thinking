@@ -1,0 +1,1675 @@
+{
+  "name": "D-已确认需求到PRD",
+  "flowId": "c75fd5f9-b1e4-4488-a203-dfb9e56d2e34",
+  "graph": {
+    "nodes": [
+      {
+        "id": "text",
+        "type": "input.text",
+        "name": "文字输入",
+        "x": 80,
+        "y": 160,
+        "config": {
+          "researchMode": "materials",
+          "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n【本测试已确认的需求与规则】需求名：宠物免打扰设置。背景：测试用户在工作时会被主动问候打断；无实际访谈和基线。目标：用户可开启免打扰并设置每日时间段，观察主动消息投诉率，目标值待基线确认。页面只有设置页及时间选择弹层。默认关闭免打扰；开启后默认22:00到08:00，按设备当前时区，跨午夜合法；起止相同为全天免打扰并有明确提示。免打扰仅阻止主动问候，不阻止用户主动聊天；喂养成长不暂停。保存失败提示重试并保留上次成功状态；未登录先登录。两端状态同步，冲突以服务端最近成功保存为准；离线可改但显示待同步，恢复联网后提交。范围外：不做多时间段、不做按星期、不做推送系统重构。已有埋点字典：dnd_toggle参数enabled:boolean；dnd_save参数start_time:string,end_time:string,time_zone:string,result枚举success/fail；不得编成已经上线。品牌主色#315eb6；没有真实原型截图。人员未知待确认。只需这一需求PRD，不扩展社区、商业模式等。\n现有方案：当前测试版本没有免打扰，主动问候全部直接展示，用户只能退出应用。这里评估的是已确认功能规格，不是市场接受度；所有产品规则是本次测试的给定输入，无需补造真实访谈，文档须保留测试数据标记。",
+          "evidence": "test_data"
+        }
+      },
+      {
+        "id": "analysis",
+        "type": "analysis.prd",
+        "name": "PRD方案分析",
+        "x": 400,
+        "y": 160,
+        "config": {
+          "task": "形成可供PRD报告节点整理的逐页规则、状态、异常、共享规则、已确认/待确认和埋点方案。",
+          "modelId": "",
+          "outline": "# PRD方案分析\n## 核心结论\n## 证据与分析\n## 方案与规则\n## 待确认与下一步"
+        }
+      },
+      {
+        "id": "report",
+        "type": "report.prd",
+        "name": "PRD文档",
+        "x": 720,
+        "y": 160,
+        "config": {
+          "task": "",
+          "modelId": "",
+          "outline": "# PRD文档\n## 项目信息\n## 版本记录\n## 需求背景\n## 需求目标\n## 需求概述\n## 业务流程图\n## 交互流程图\n## 详细方案\n## 数据埋点\n## 待确认事项"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "text-analysis",
+        "from": "text",
+        "to": "analysis",
+        "output": "data",
+        "input": "materials"
+      },
+      {
+        "id": "analysis-report",
+        "from": "analysis",
+        "to": "report",
+        "output": "data",
+        "input": "materials"
+      }
+    ],
+    "groups": [],
+    "view": {
+      "x": 60,
+      "y": 100,
+      "k": 1
+    }
+  },
+  "runs": [
+    {
+      "id": "6be9799d-7a14-41a9-af61-7d293f3b0d79",
+      "version": 1,
+      "status": "failed",
+      "createdAt": "2026-10-24T13:13:42.600Z",
+      "graph": {
+        "nodes": [
+          {
+            "id": "text",
+            "type": "input.text",
+            "name": "文字输入",
+            "x": 80,
+            "y": 160,
+            "config": {
+              "researchMode": "materials",
+              "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n【本测试已确认的需求与规则】需求名：宠物免打扰设置。背景：测试用户在工作时会被主动问候打断；无实际访谈和基线。目标：用户可开启免打扰并设置每日时间段，观察主动消息投诉率，目标值待基线确认。页面只有设置页及时间选择弹层。默认关闭免打扰；开启后默认22:00到08:00，按设备当前时区，跨午夜合法；起止相同为全天免打扰并有明确提示。免打扰仅阻止主动问候，不阻止用户主动聊天；喂养成长不暂停。保存失败提示重试并保留上次成功状态；未登录先登录。两端状态同步，冲突以服务端最近成功保存为准；离线可改但显示待同步，恢复联网后提交。范围外：不做多时间段、不做按星期、不做推送系统重构。已有埋点字典：dnd_toggle参数enabled:boolean；dnd_save参数start_time:string,end_time:string,time_zone:string,result枚举success/fail；不得编成已经上线。品牌主色#315eb6；没有真实原型截图。人员未知待确认。只需这一需求PRD，不扩展社区、商业模式等。",
+              "evidence": "test_data"
+            }
+          },
+          {
+            "id": "analysis",
+            "type": "analysis.prd",
+            "name": "PRD方案分析",
+            "x": 400,
+            "y": 160,
+            "config": {
+              "task": "形成可供PRD报告节点整理的逐页规则、状态、异常、共享规则、已确认/待确认和埋点方案。",
+              "modelId": "",
+              "outline": "# PRD方案分析\n## 核心结论\n## 证据与分析\n## 方案与规则\n## 待确认与下一步"
+            }
+          },
+          {
+            "id": "report",
+            "type": "report.prd",
+            "name": "PRD文档",
+            "x": 720,
+            "y": 160,
+            "config": {
+              "task": "",
+              "modelId": "",
+              "outline": "# PRD文档\n## 项目信息\n## 版本记录\n## 需求背景\n## 需求目标\n## 需求概述\n## 业务流程图\n## 交互流程图\n## 详细方案\n## 数据埋点\n## 待确认事项"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "text-analysis",
+            "from": "text",
+            "to": "analysis",
+            "output": "data",
+            "input": "materials"
+          },
+          {
+            "id": "analysis-report",
+            "from": "analysis",
+            "to": "report",
+            "output": "data",
+            "input": "materials"
+          }
+        ],
+        "groups": [],
+        "view": {
+          "x": 60,
+          "y": 100,
+          "k": 1
+        }
+      },
+      "graphHash": "88d0fdb1ca3c0d4c3e4c9e8a9f2a2d7eb9352f892e6ab1adb5539fa3dec908e6",
+      "order": [
+        "text",
+        "analysis",
+        "report"
+      ],
+      "force": false,
+      "nodes": {
+        "text": {
+          "status": "succeeded",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "input.text",
+            "name": "文字输入",
+            "version": "1.1.0",
+            "category": "input",
+            "description": "输入想法、产品、用户需求或 CSV/JSON 数据。",
+            "icon": "input",
+            "enabled": true,
+            "executor": "text",
+            "inputs": [],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "文字输入结果",
+                "types": [
+                  "materials"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "researchMode",
+                "label": "输入方式",
+                "type": "select",
+                "options": [
+                  {
+                    "value": "materials",
+                    "label": "文档 / 数据材料"
+                  },
+                  {
+                    "value": "idea",
+                    "label": "产品想法"
+                  },
+                  {
+                    "value": "product",
+                    "label": "指定产品 / 竞品"
+                  },
+                  {
+                    "value": "user_need",
+                    "label": "用户需求"
+                  }
+                ],
+                "default": "materials"
+              },
+              {
+                "key": "content",
+                "label": "材料正文 / CSV / JSON",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "evidence",
+                "label": "材料性质",
+                "type": "select",
+                "options": [
+                  {
+                    "value": "user_statement",
+                    "label": "用户陈述"
+                  },
+                  {
+                    "value": "material",
+                    "label": "已有材料"
+                  },
+                  {
+                    "value": "test_data",
+                    "label": "测试数据"
+                  },
+                  {
+                    "value": "ai_hypothesis",
+                    "label": "AI假设（待验证）"
+                  }
+                ],
+                "default": "user_statement"
+              }
+            ],
+            "instructions": null,
+            "requirements": [
+              "至少一份相关输入"
+            ],
+            "implementation": "text",
+            "origin": {
+              "skill": "产品经理工作流 / 现有本地工具",
+              "adaptedAt": "2026-10-18",
+              "scope": "输入想法、产品、用户需求或 CSV/JSON 数据。"
+            },
+            "workflow": [
+              {
+                "id": "collect",
+                "title": "采集或引用材料",
+                "prompt": "输入想法、产品、用户需求或 CSV/JSON 数据。"
+              },
+              {
+                "id": "confirm",
+                "title": "保留内容与来源",
+                "prompt": "原样交接材料、来源和证据性质，不承担下游分析或报告整理。"
+              }
+            ],
+            "capabilities": {
+              "search": false,
+              "generateDecisions": false
+            },
+            "hash": "ab910179df883d66c348de313ff1bdd39728bba0013a9fba13dc49793ddb7678",
+            "instruction": "",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/input.text"
+          },
+          "supplements": [],
+          "draft": false,
+          "startedAt": "2026-10-24T13:13:42.619Z",
+          "fingerprint": "94e6be9b01689823576af762a8000ff04c500cc5854f95d9c70fa2842c8ecdd0",
+          "model": {
+            "id": "294a5b94-cf4f-4936-84b0-0ea6f6d9900d",
+            "api": "deepseek-messages",
+            "baseURL": "https://api.deepseek.com/anthropic",
+            "model": "deepseek-flash"
+          },
+          "output": {
+            "kind": "materials",
+            "materials": [
+              {
+                "id": "44ec2dbc-c036-40b9-b4df-d9b057649814",
+                "title": "文字输入",
+                "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n【本测试已确认的需求与规则】需求名：宠物免打扰设置。背景：测试用户在工作时会被主动问候打断；无实际访谈和基线。目标：用户可开启免打扰并设置每日时间段，观察主动消息投诉率，目标值待基线确认。页面只有设置页及时间选择弹层。默认关闭免打扰；开启后默认22:00到08:00，按设备当前时区，跨午夜合法；起止相同为全天免打扰并有明确提示。免打扰仅阻止主动问候，不阻止用户主动聊天；喂养成长不暂停。保存失败提示重试并保留上次成功状态；未登录先登录。两端状态同步，冲突以服务端最近成功保存为准；离线可改但显示待同步，恢复联网后提交。范围外：不做多时间段、不做按星期、不做推送系统重构。已有埋点字典：dnd_toggle参数enabled:boolean；dnd_save参数start_time:string,end_time:string,time_zone:string,result枚举success/fail；不得编成已经上线。品牌主色#315eb6；没有真实原型截图。人员未知待确认。只需这一需求PRD，不扩展社区、商业模式等。",
+                "evidence": "test_data",
+                "researchMode": "materials"
+              }
+            ],
+            "documents": [],
+            "sources": [],
+            "assumptions": [],
+            "summary": "已提供文字材料",
+            "warnings": [],
+            "fileReferences": []
+          },
+          "completedAt": "2026-10-24T13:13:42.625Z"
+        },
+        "analysis": {
+          "status": "failed",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "analysis.prd",
+            "name": "PRD方案分析",
+            "version": "1.1.0",
+            "category": "analysis",
+            "description": "盘点问题、目标、用户场景、现有方案、业务规则、埋点字典/品牌/已有原型。列出已确认/待确认项与章节取舍，不把假设写成确认。背景按场景问题—影",
+            "icon": "grid",
+            "enabled": true,
+            "executor": "ai",
+            "inputs": [
+              {
+                "id": "materials",
+                "name": "输入材料",
+                "types": [
+                  "materials",
+                  "sources",
+                  "analysis",
+                  "dataset",
+                  "documents"
+                ],
+                "multiple": true
+              }
+            ],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "PRD方案分析结果",
+                "types": [
+                  "analysis"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "task",
+                "label": "本次目标与补充要求",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "modelId",
+                "label": "执行模型",
+                "type": "model",
+                "default": ""
+              },
+              {
+                "key": "outline",
+                "label": "输出大纲",
+                "type": "textarea",
+                "default": "# PRD方案分析\n## 核心结论\n## 证据与分析\n## 方案与规则\n## 待确认与下一步"
+              }
+            ],
+            "instructions": "instructions.md",
+            "requirements": [
+              "已确认需求/范围、业务规则、现有方案、材料字典和参考。"
+            ],
+            "implementation": "ai",
+            "origin": {
+              "skill": "三个产品技能的对应专业SOP",
+              "adaptedAt": "2026-10-24",
+              "scope": "盘点问题、目标、用户场景、现有方案、业务规则、埋点字典/品牌/已有原型。列出已确认/待确认项与章节取舍，不把假设写成确认。背景按场景问题—影响—证据；目标有口径与基线。每个详细方案行对应一屏/状态，含页面元素、交互说明、所属边界；跨页规则集中，描述不写技术接口。项目与版本记录分开，业务与交互流程分开，时序为研发可复制源码。生成方案供报告整理，不宣称未经实际校验的PRD已验收。"
+            },
+            "capabilities": {
+              "search": false,
+              "generateDecisions": true
+            },
+            "workflow": [
+              {
+                "id": "inventory",
+                "title": "盘点材料与范围",
+                "prompt": "检查最低输入要求、来源性质与缺口。"
+              },
+              {
+                "id": "analysis",
+                "title": "执行专业分析",
+                "prompt": "盘点问题、目标、用户场景、现有方案、业务规则、埋点字典/品牌/已有原型。列出已确认/待确认项与章节取舍，不把假设写成确认。背景按场景问题—影响—证据；目标有口径与基线。每个详细方案行对应一屏/状态，含页面元素、交互说明、所属边界；跨页规则集中，描述不写技术接口。项目与版本记录分开，业务与交互流程分开，时序为研发可复制源码。生成方案供报告整理，不宣称未经实际校验的PRD已验收。"
+              },
+              {
+                "id": "verify",
+                "title": "检查证据与结论",
+                "prompt": "核对来源、事实/推断/假设、数字和图表口径，标记未确认事项。"
+              },
+              {
+                "id": "output",
+                "title": "交接分析成果",
+                "prompt": "输出供下游使用的结论、方案、规则、证据与待确认项。"
+              }
+            ],
+            "hash": "7ff533d054b2df9898cf2431d2abbd433b35fad3399882a8692e83869a282d7a",
+            "instruction": "# PRD方案分析\n\n盘点问题、目标、用户场景、现有方案、业务规则、埋点字典/品牌/已有原型。列出已确认/待确认项与章节取舍，不把假设写成确认。背景按场景问题—影响—证据；目标有口径与基线。每个详细方案行对应一屏/状态，含页面元素、交互说明、所属边界；跨页规则集中，描述不写技术接口。项目与版本记录分开，业务与交互流程分开，时序为研发可复制源码。生成方案供报告整理，不宣称未经实际校验的PRD已验收。\n\n只分析传入材料，不自行搜索或访问外部资料。无材料先请求补充；数据不足必须标明证据缺口，不得编造。\n\n# 文档图表输出与渲染规范\n\n## 技术选择\n\n- 数据比较、趋势、占比、漏斗、留存热力图、痛点与优先级矩阵：ECharts。文档小型图默认 SVG；数据密集图可用 Canvas。按使用的图种加载依赖，桌面/离线交付使用本地资源。\n- 业务流程、关系、状态、用户决策链路：Mermaid，保留可复制源码，使用 theme: base 与宿主品牌色。已有研发向源码专用章节和真实界面拼接流程图保留原来的用途与交互，不强制改成另一种图。\n- 对比、需求、画像明细：语义化 HTML table＋CSS；Markdown 交付保留数据表，宿主负责表格样式。\n- 统计图交付由程序渲染矢量图或清晰 PNG；AI 插画、照片和真实原型截图保留原始资产，不用统计图引擎代替。\n\n## AI 与宿主的职责\n\nAI 提供结论、原始数据、来源和声明式图表规范；宿主把规范映射为 ECharts option 或 Mermaid SVG。图表不要求额外生成整篇 HTML；全文 HTML 仍按原流程或用户请求生成。宿主输出协议优先，已有 chart 字段时按其协议；无协议的 Markdown 使用紧邻正文的 chart JSON 围栏与 mermaid 围栏。\n\n下面的 pm-chart-v1 是本 Skill 的交接规范，宿主接入后才能自动绘图；它不是 ECharts option，也不是已经实现的工作台接口。宿主只接收白名单图种、字段和数据，不执行 AI 提供的 JS、formatter 函数或任意 HTML。\n\n## 图表数据协议\n\nchart JSON 每张图独立，字段：schema、id、type、title、evidenceStatus、sources、data、encoding；subtitle、note 可选。\n\n- schema 固定 pm-chart-v1；id 在文档内唯一，用于引用和导出。\n- type：bar / line / pie / funnel / heatmap / matrix / scatter。柱线图的数据记录提供分类或时间、数值与可选分组；encoding 指出字段名。漏斗记录给出步骤顺序和原始人数，率由代码计算。矩阵可用类别坐标；heatmap 明确行列及指标。\n- encoding.x / y 指出 field、scale（category / ordinal / quantitative / time）、label、unit；类别轴给出有序 categories。series / label / value 指明相关字段（按图种提供）。\n- evidenceStatus：已验证事实 / 用户观点 / 估算 / 分析推断 / 待验证 / 测试数据。sources 为来源 id、标题、url 或材料定位、日期；每行数据使用 sourceIds 引用来源。不同证据性质混用时逐行标注 evidenceStatus。\n- 缺数值用 null，不能用 0 替代；缺失数据不绘制为已观测值。百分比保留分母、统计口径和周期说明；估算附依据及置信度。等级是类别，不转换为未经解释的精确分数。\n\n### 定性痛点矩阵示例（演示数据）\n\n```chart\n{\n  \"schema\": \"pm-chart-v1\",\n  \"id\": \"pain-matrix\",\n  \"type\": \"matrix\",\n  \"title\": \"痛点矩阵\",\n  \"subtitle\": \"分析假设 · 待验证\",\n  \"evidenceStatus\": \"测试数据\",\n  \"sources\": [{\"id\":\"demo\",\"title\":\"规范演示数据，不能进入项目结论\"}],\n  \"data\": [\n    {\"id\":\"P1\",\"pain\":\"缺少持续陪伴\",\"frequency\":\"高\",\"severity\":\"高\",\"sourceIds\":[\"demo\"]},\n    {\"id\":\"P2\",\"pain\":\"使用负担\",\"frequency\":\"低\",\"severity\":\"中\",\"sourceIds\":[\"demo\"]}\n  ],\n  \"encoding\": {\n    \"x\":{\"field\":\"frequency\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"高\"],\"label\":\"发生频率\",\"unit\":\"等级\"},\n    \"y\":{\"field\":\"severity\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"中高\",\"高\"],\"label\":\"严重程度\",\"unit\":\"等级\"},\n    \"label\":\"id\"\n  },\n  \"note\":\"点位表示定性等级，不能读成统计频率；悬停显示痛点、来源与证据状态。\"\n}\n```\n\n保留同一组数据的 Markdown 表格和 1–3 句读图结论。例子只解释格式，实际图表必须使用当前项目数据。先确定数据与 encoding，再由渲染器映射为图形；不让模型手写字符轴线或字符条形图。\n\n## 视觉与交互\n\n复用宿主品牌字体、主色和明暗模式。同一报告的图表配色和同类对象颜色保持一致；无品牌规范时采用白底、深色文字、低饱和主色与浅网格，风险色只用于风险。HTML 表格设置合理列宽、长文换行、数字对齐、表头和分组；宽表在局部滚动，交互文档可固定表头。\n\n每图有标题、轴名、单位、图例（有多系列时）、来源、证据状态及读图结论。定性矩阵使用分类坐标和浅色分区；同一格多点错开并保持等级归属，提供完整名称和明细表，避免 P1–P9 堆叠遮挡。标签不足时增大容器或提供缩放，不缩小到难以阅读。\n\n交互文档提供悬停详情、适配宽度、放大查看和导出 SVG/PNG；静态导出把悬停信息的重要部分写入图注或数据表。按实际工具能力实现，不能声称未实现的交互可用。\n\n## 交付检查与降级\n\n核对图、表、正文的分类、单位、值、分母、来源和证据性质一致；检查默认尺寸与放大后文字无重叠、裁切，主题和打印/导出背景清晰。完成实际渲染才称“图表已渲染”。\n\n环境缺渲染器时保留 chart 数据或 Mermaid 源码＋数据表＋结论，并明确“待宿主渲染”；Markdown 阅读器不支持时可附已生成 SVG/PNG。渲染失败显示明细表与原因，不丢弃正文，也不回退为 ASCII 字符矩阵。没有可用分析数据的章节用“缺失证据表”说明待补内容，不生成虚构分布、比例、留存曲线或点位。\n",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/analysis.prd"
+          },
+          "supplements": [],
+          "draft": false,
+          "startedAt": "2026-10-24T13:13:42.651Z",
+          "fingerprint": "69927bdf8521ff0d573b494bd75c27618cabfa3b5745e1590a1d1f80650b2d4b",
+          "model": {
+            "id": "294a5b94-cf4f-4936-84b0-0ea6f6d9900d",
+            "api": "deepseek-messages",
+            "baseURL": "https://api.deepseek.com/anthropic",
+            "model": "deepseek-flash"
+          },
+          "error": "模型没有返回有效 JSON，请调整材料后重试；旧版本已保留",
+          "suggestions": []
+        },
+        "report": {
+          "status": "queued",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "report.prd",
+            "name": "PRD文档",
+            "version": "1.1.0",
+            "category": "report",
+            "description": "仅根据传入的相关成果，按大纲整理PRD文档；不搜索、不另作产品决策。",
+            "icon": "file",
+            "enabled": true,
+            "executor": "ai",
+            "inputs": [
+              {
+                "id": "materials",
+                "name": "输入材料",
+                "types": [
+                  "materials",
+                  "sources",
+                  "analysis",
+                  "dataset",
+                  "documents"
+                ],
+                "multiple": true
+              }
+            ],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "PRD文档结果",
+                "types": [
+                  "documents"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "task",
+                "label": "本次目标与补充要求",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "modelId",
+                "label": "执行模型",
+                "type": "model",
+                "default": ""
+              },
+              {
+                "key": "outline",
+                "label": "输出大纲",
+                "type": "textarea",
+                "default": "# PRD文档\n## 项目信息\n## 版本记录\n## 需求背景\n## 需求目标\n## 需求概述\n## 业务流程图\n## 交互流程图\n## 详细方案\n## 数据埋点\n## 待确认事项"
+              }
+            ],
+            "instructions": "instructions.md",
+            "requirements": [
+              "已确认需求与范围",
+              "业务规则或待确认规则清单"
+            ],
+            "implementation": "ai",
+            "origin": {
+              "skill": "产品经理工作流 / 现有本地工具",
+              "adaptedAt": "2026-10-18",
+              "scope": "将已确认需求细化为可设计、开发和验收的方案。"
+            },
+            "capabilities": {
+              "search": false,
+              "calculate": false,
+              "generateDecisions": false
+            },
+            "workflow": [
+              {
+                "id": "relevance",
+                "title": "检查材料相关性",
+                "prompt": "完全不相关或没有可用内容时停止，不输出文档。"
+              },
+              {
+                "id": "coverage",
+                "title": "对照大纲检查覆盖",
+                "prompt": "逐章识别输入支持的内容和缺口；相关但不足可整理，必须显著提示。"
+              },
+              {
+                "id": "compose",
+                "title": "按大纲整理报告",
+                "prompt": "仅归类、去重、编排和总结材料，不搜索、不新建事实、统计或产品决策。"
+              },
+              {
+                "id": "verify",
+                "title": "核对来源与文档",
+                "prompt": "数字和结论须由输入支持，缺失章节写材料不足，保留上游假设/局限。"
+              }
+            ],
+            "hash": "4b71e17c334751a2c71761d86eef84b904af7669c68ad309db22a582e6c1fa0d",
+            "instruction": "# PRD文档\n\n本节点只编排输入，不进行联网检索、独立分析、产品决策或统计计算。相关材料不充分时仍整理已有部分，在文档顶部及缺失章节标明资料不足；完全不相关时拒绝生成。保留来源、假设、证据局限，不用常识补齐缺少的事实。\n项目信息/版本记录独立；详细方案一屏/状态一行，列为一级模块、二级功能、原型、描述。页面元素和交互说明必含，边界归所属页面，跨页规则集中。没有原型不伪造截图。时序章节保留源码，不冒充运行验证。\n\n# 文档图表输出与渲染规范\n\n## 技术选择\n\n- 数据比较、趋势、占比、漏斗、留存热力图、痛点与优先级矩阵：ECharts。文档小型图默认 SVG；数据密集图可用 Canvas。按使用的图种加载依赖，桌面/离线交付使用本地资源。\n- 业务流程、关系、状态、用户决策链路：Mermaid，保留可复制源码，使用 theme: base 与宿主品牌色。已有研发向源码专用章节和真实界面拼接流程图保留原来的用途与交互，不强制改成另一种图。\n- 对比、需求、画像明细：语义化 HTML table＋CSS；Markdown 交付保留数据表，宿主负责表格样式。\n- 统计图交付由程序渲染矢量图或清晰 PNG；AI 插画、照片和真实原型截图保留原始资产，不用统计图引擎代替。\n\n## AI 与宿主的职责\n\nAI 提供结论、原始数据、来源和声明式图表规范；宿主把规范映射为 ECharts option 或 Mermaid SVG。图表不要求额外生成整篇 HTML；全文 HTML 仍按原流程或用户请求生成。宿主输出协议优先，已有 chart 字段时按其协议；无协议的 Markdown 使用紧邻正文的 chart JSON 围栏与 mermaid 围栏。\n\n下面的 pm-chart-v1 是本 Skill 的交接规范，宿主接入后才能自动绘图；它不是 ECharts option，也不是已经实现的工作台接口。宿主只接收白名单图种、字段和数据，不执行 AI 提供的 JS、formatter 函数或任意 HTML。\n\n## 图表数据协议\n\nchart JSON 每张图独立，字段：schema、id、type、title、evidenceStatus、sources、data、encoding；subtitle、note 可选。\n\n- schema 固定 pm-chart-v1；id 在文档内唯一，用于引用和导出。\n- type：bar / line / pie / funnel / heatmap / matrix / scatter。柱线图的数据记录提供分类或时间、数值与可选分组；encoding 指出字段名。漏斗记录给出步骤顺序和原始人数，率由代码计算。矩阵可用类别坐标；heatmap 明确行列及指标。\n- encoding.x / y 指出 field、scale（category / ordinal / quantitative / time）、label、unit；类别轴给出有序 categories。series / label / value 指明相关字段（按图种提供）。\n- evidenceStatus：已验证事实 / 用户观点 / 估算 / 分析推断 / 待验证 / 测试数据。sources 为来源 id、标题、url 或材料定位、日期；每行数据使用 sourceIds 引用来源。不同证据性质混用时逐行标注 evidenceStatus。\n- 缺数值用 null，不能用 0 替代；缺失数据不绘制为已观测值。百分比保留分母、统计口径和周期说明；估算附依据及置信度。等级是类别，不转换为未经解释的精确分数。\n\n### 定性痛点矩阵示例（演示数据）\n\n```chart\n{\n  \"schema\": \"pm-chart-v1\",\n  \"id\": \"pain-matrix\",\n  \"type\": \"matrix\",\n  \"title\": \"痛点矩阵\",\n  \"subtitle\": \"分析假设 · 待验证\",\n  \"evidenceStatus\": \"测试数据\",\n  \"sources\": [{\"id\":\"demo\",\"title\":\"规范演示数据，不能进入项目结论\"}],\n  \"data\": [\n    {\"id\":\"P1\",\"pain\":\"缺少持续陪伴\",\"frequency\":\"高\",\"severity\":\"高\",\"sourceIds\":[\"demo\"]},\n    {\"id\":\"P2\",\"pain\":\"使用负担\",\"frequency\":\"低\",\"severity\":\"中\",\"sourceIds\":[\"demo\"]}\n  ],\n  \"encoding\": {\n    \"x\":{\"field\":\"frequency\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"高\"],\"label\":\"发生频率\",\"unit\":\"等级\"},\n    \"y\":{\"field\":\"severity\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"中高\",\"高\"],\"label\":\"严重程度\",\"unit\":\"等级\"},\n    \"label\":\"id\"\n  },\n  \"note\":\"点位表示定性等级，不能读成统计频率；悬停显示痛点、来源与证据状态。\"\n}\n```\n\n保留同一组数据的 Markdown 表格和 1–3 句读图结论。例子只解释格式，实际图表必须使用当前项目数据。先确定数据与 encoding，再由渲染器映射为图形；不让模型手写字符轴线或字符条形图。\n\n## 视觉与交互\n\n复用宿主品牌字体、主色和明暗模式。同一报告的图表配色和同类对象颜色保持一致；无品牌规范时采用白底、深色文字、低饱和主色与浅网格，风险色只用于风险。HTML 表格设置合理列宽、长文换行、数字对齐、表头和分组；宽表在局部滚动，交互文档可固定表头。\n\n每图有标题、轴名、单位、图例（有多系列时）、来源、证据状态及读图结论。定性矩阵使用分类坐标和浅色分区；同一格多点错开并保持等级归属，提供完整名称和明细表，避免 P1–P9 堆叠遮挡。标签不足时增大容器或提供缩放，不缩小到难以阅读。\n\n交互文档提供悬停详情、适配宽度、放大查看和导出 SVG/PNG；静态导出把悬停信息的重要部分写入图注或数据表。按实际工具能力实现，不能声称未实现的交互可用。\n\n## 交付检查与降级\n\n核对图、表、正文的分类、单位、值、分母、来源和证据性质一致；检查默认尺寸与放大后文字无重叠、裁切，主题和打印/导出背景清晰。完成实际渲染才称“图表已渲染”。\n\n环境缺渲染器时保留 chart 数据或 Mermaid 源码＋数据表＋结论，并明确“待宿主渲染”；Markdown 阅读器不支持时可附已生成 SVG/PNG。渲染失败显示明细表与原因，不丢弃正文，也不回退为 ASCII 字符矩阵。没有可用分析数据的章节用“缺失证据表”说明待补内容，不生成虚构分布、比例、留存曲线或点位。\n",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/report.prd"
+          },
+          "supplements": [],
+          "draft": false
+        }
+      },
+      "progress": "模型没有返回有效 JSON，请调整材料后重试；旧版本已保留",
+      "currentNodeId": "analysis",
+      "completedAt": "2026-10-24T13:13:43.775Z"
+    },
+    {
+      "id": "cdeb8f2b-17ca-4bf2-9a7e-95bc17e3af60",
+      "version": 2,
+      "status": "cancelled",
+      "createdAt": "2026-10-24T13:20:05.338Z",
+      "graph": {
+        "nodes": [
+          {
+            "id": "text",
+            "type": "input.text",
+            "name": "文字输入",
+            "x": 80,
+            "y": 160,
+            "config": {
+              "researchMode": "materials",
+              "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n【本测试已确认的需求与规则】需求名：宠物免打扰设置。背景：测试用户在工作时会被主动问候打断；无实际访谈和基线。目标：用户可开启免打扰并设置每日时间段，观察主动消息投诉率，目标值待基线确认。页面只有设置页及时间选择弹层。默认关闭免打扰；开启后默认22:00到08:00，按设备当前时区，跨午夜合法；起止相同为全天免打扰并有明确提示。免打扰仅阻止主动问候，不阻止用户主动聊天；喂养成长不暂停。保存失败提示重试并保留上次成功状态；未登录先登录。两端状态同步，冲突以服务端最近成功保存为准；离线可改但显示待同步，恢复联网后提交。范围外：不做多时间段、不做按星期、不做推送系统重构。已有埋点字典：dnd_toggle参数enabled:boolean；dnd_save参数start_time:string,end_time:string,time_zone:string,result枚举success/fail；不得编成已经上线。品牌主色#315eb6；没有真实原型截图。人员未知待确认。只需这一需求PRD，不扩展社区、商业模式等。",
+              "evidence": "test_data"
+            }
+          },
+          {
+            "id": "analysis",
+            "type": "analysis.prd",
+            "name": "PRD方案分析",
+            "x": 400,
+            "y": 160,
+            "config": {
+              "task": "形成可供PRD报告节点整理的逐页规则、状态、异常、共享规则、已确认/待确认和埋点方案。",
+              "modelId": "",
+              "outline": "# PRD方案分析\n## 核心结论\n## 证据与分析\n## 方案与规则\n## 待确认与下一步"
+            }
+          },
+          {
+            "id": "report",
+            "type": "report.prd",
+            "name": "PRD文档",
+            "x": 720,
+            "y": 160,
+            "config": {
+              "task": "",
+              "modelId": "",
+              "outline": "# PRD文档\n## 项目信息\n## 版本记录\n## 需求背景\n## 需求目标\n## 需求概述\n## 业务流程图\n## 交互流程图\n## 详细方案\n## 数据埋点\n## 待确认事项"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "text-analysis",
+            "from": "text",
+            "to": "analysis",
+            "output": "data",
+            "input": "materials"
+          },
+          {
+            "id": "analysis-report",
+            "from": "analysis",
+            "to": "report",
+            "output": "data",
+            "input": "materials"
+          }
+        ],
+        "groups": [],
+        "view": {
+          "x": 60,
+          "y": 100,
+          "k": 1
+        }
+      },
+      "graphHash": "88d0fdb1ca3c0d4c3e4c9e8a9f2a2d7eb9352f892e6ab1adb5539fa3dec908e6",
+      "order": [
+        "text",
+        "analysis",
+        "report"
+      ],
+      "force": false,
+      "nodes": {
+        "text": {
+          "status": "succeeded",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "input.text",
+            "name": "文字输入",
+            "version": "1.1.0",
+            "category": "input",
+            "description": "输入想法、产品、用户需求或 CSV/JSON 数据。",
+            "icon": "input",
+            "enabled": true,
+            "executor": "text",
+            "inputs": [],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "文字输入结果",
+                "types": [
+                  "materials"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "researchMode",
+                "label": "输入方式",
+                "type": "select",
+                "options": [
+                  {
+                    "value": "materials",
+                    "label": "文档 / 数据材料"
+                  },
+                  {
+                    "value": "idea",
+                    "label": "产品想法"
+                  },
+                  {
+                    "value": "product",
+                    "label": "指定产品 / 竞品"
+                  },
+                  {
+                    "value": "user_need",
+                    "label": "用户需求"
+                  }
+                ],
+                "default": "materials"
+              },
+              {
+                "key": "content",
+                "label": "材料正文 / CSV / JSON",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "evidence",
+                "label": "材料性质",
+                "type": "select",
+                "options": [
+                  {
+                    "value": "user_statement",
+                    "label": "用户陈述"
+                  },
+                  {
+                    "value": "material",
+                    "label": "已有材料"
+                  },
+                  {
+                    "value": "test_data",
+                    "label": "测试数据"
+                  },
+                  {
+                    "value": "ai_hypothesis",
+                    "label": "AI假设（待验证）"
+                  }
+                ],
+                "default": "user_statement"
+              }
+            ],
+            "instructions": null,
+            "requirements": [
+              "至少一份相关输入"
+            ],
+            "implementation": "text",
+            "origin": {
+              "skill": "产品经理工作流 / 现有本地工具",
+              "adaptedAt": "2026-10-18",
+              "scope": "输入想法、产品、用户需求或 CSV/JSON 数据。"
+            },
+            "workflow": [
+              {
+                "id": "collect",
+                "title": "采集或引用材料",
+                "prompt": "输入想法、产品、用户需求或 CSV/JSON 数据。"
+              },
+              {
+                "id": "confirm",
+                "title": "保留内容与来源",
+                "prompt": "原样交接材料、来源和证据性质，不承担下游分析或报告整理。"
+              }
+            ],
+            "capabilities": {
+              "search": false,
+              "generateDecisions": false
+            },
+            "hash": "ab910179df883d66c348de313ff1bdd39728bba0013a9fba13dc49793ddb7678",
+            "instruction": "",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/input.text"
+          },
+          "supplements": [],
+          "draft": false,
+          "startedAt": "2026-10-24T13:20:05.389Z",
+          "fingerprint": "44044ec95bfd4eab34b5cf4d7c54ad9522e913c83f8c100cf1a2c11cbfc74e08",
+          "model": {
+            "id": "16ec0cbc-ab42-4a56-a5ad-76cd5ac1646a",
+            "api": "deepseek-messages",
+            "baseURL": "https://api.deepseek.com/anthropic",
+            "model": "deepseek-v4-pro"
+          },
+          "output": {
+            "kind": "materials",
+            "materials": [
+              {
+                "id": "0afdadd1-3b3a-4e7f-a67b-c391e79227bf",
+                "title": "文字输入",
+                "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n【本测试已确认的需求与规则】需求名：宠物免打扰设置。背景：测试用户在工作时会被主动问候打断；无实际访谈和基线。目标：用户可开启免打扰并设置每日时间段，观察主动消息投诉率，目标值待基线确认。页面只有设置页及时间选择弹层。默认关闭免打扰；开启后默认22:00到08:00，按设备当前时区，跨午夜合法；起止相同为全天免打扰并有明确提示。免打扰仅阻止主动问候，不阻止用户主动聊天；喂养成长不暂停。保存失败提示重试并保留上次成功状态；未登录先登录。两端状态同步，冲突以服务端最近成功保存为准；离线可改但显示待同步，恢复联网后提交。范围外：不做多时间段、不做按星期、不做推送系统重构。已有埋点字典：dnd_toggle参数enabled:boolean；dnd_save参数start_time:string,end_time:string,time_zone:string,result枚举success/fail；不得编成已经上线。品牌主色#315eb6；没有真实原型截图。人员未知待确认。只需这一需求PRD，不扩展社区、商业模式等。",
+                "evidence": "test_data",
+                "researchMode": "materials"
+              }
+            ],
+            "documents": [],
+            "sources": [],
+            "assumptions": [],
+            "summary": "已提供文字材料",
+            "warnings": [],
+            "fileReferences": []
+          },
+          "completedAt": "2026-10-24T13:20:05.395Z"
+        },
+        "analysis": {
+          "status": "cancelled",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "analysis.prd",
+            "name": "PRD方案分析",
+            "version": "1.1.0",
+            "category": "analysis",
+            "description": "盘点问题、目标、用户场景、现有方案、业务规则、埋点字典/品牌/已有原型。列出已确认/待确认项与章节取舍，不把假设写成确认。背景按场景问题—影",
+            "icon": "grid",
+            "enabled": true,
+            "executor": "ai",
+            "inputs": [
+              {
+                "id": "materials",
+                "name": "输入材料",
+                "types": [
+                  "materials",
+                  "sources",
+                  "analysis",
+                  "dataset",
+                  "documents"
+                ],
+                "multiple": true
+              }
+            ],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "PRD方案分析结果",
+                "types": [
+                  "analysis"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "task",
+                "label": "本次目标与补充要求",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "modelId",
+                "label": "执行模型",
+                "type": "model",
+                "default": ""
+              },
+              {
+                "key": "outline",
+                "label": "输出大纲",
+                "type": "textarea",
+                "default": "# PRD方案分析\n## 核心结论\n## 证据与分析\n## 方案与规则\n## 待确认与下一步"
+              }
+            ],
+            "instructions": "instructions.md",
+            "requirements": [
+              "已确认需求/范围、业务规则、现有方案、材料字典和参考。"
+            ],
+            "implementation": "ai",
+            "origin": {
+              "skill": "三个产品技能的对应专业SOP",
+              "adaptedAt": "2026-10-24",
+              "scope": "盘点问题、目标、用户场景、现有方案、业务规则、埋点字典/品牌/已有原型。列出已确认/待确认项与章节取舍，不把假设写成确认。背景按场景问题—影响—证据；目标有口径与基线。每个详细方案行对应一屏/状态，含页面元素、交互说明、所属边界；跨页规则集中，描述不写技术接口。项目与版本记录分开，业务与交互流程分开，时序为研发可复制源码。生成方案供报告整理，不宣称未经实际校验的PRD已验收。"
+            },
+            "capabilities": {
+              "search": false,
+              "generateDecisions": true
+            },
+            "workflow": [
+              {
+                "id": "inventory",
+                "title": "盘点材料与范围",
+                "prompt": "检查最低输入要求、来源性质与缺口。"
+              },
+              {
+                "id": "analysis",
+                "title": "执行专业分析",
+                "prompt": "盘点问题、目标、用户场景、现有方案、业务规则、埋点字典/品牌/已有原型。列出已确认/待确认项与章节取舍，不把假设写成确认。背景按场景问题—影响—证据；目标有口径与基线。每个详细方案行对应一屏/状态，含页面元素、交互说明、所属边界；跨页规则集中，描述不写技术接口。项目与版本记录分开，业务与交互流程分开，时序为研发可复制源码。生成方案供报告整理，不宣称未经实际校验的PRD已验收。"
+              },
+              {
+                "id": "verify",
+                "title": "检查证据与结论",
+                "prompt": "核对来源、事实/推断/假设、数字和图表口径，标记未确认事项。"
+              },
+              {
+                "id": "output",
+                "title": "交接分析成果",
+                "prompt": "输出供下游使用的结论、方案、规则、证据与待确认项。"
+              }
+            ],
+            "hash": "7ff533d054b2df9898cf2431d2abbd433b35fad3399882a8692e83869a282d7a",
+            "instruction": "# PRD方案分析\n\n盘点问题、目标、用户场景、现有方案、业务规则、埋点字典/品牌/已有原型。列出已确认/待确认项与章节取舍，不把假设写成确认。背景按场景问题—影响—证据；目标有口径与基线。每个详细方案行对应一屏/状态，含页面元素、交互说明、所属边界；跨页规则集中，描述不写技术接口。项目与版本记录分开，业务与交互流程分开，时序为研发可复制源码。生成方案供报告整理，不宣称未经实际校验的PRD已验收。\n\n只分析传入材料，不自行搜索或访问外部资料。无材料先请求补充；数据不足必须标明证据缺口，不得编造。\n\n# 文档图表输出与渲染规范\n\n## 技术选择\n\n- 数据比较、趋势、占比、漏斗、留存热力图、痛点与优先级矩阵：ECharts。文档小型图默认 SVG；数据密集图可用 Canvas。按使用的图种加载依赖，桌面/离线交付使用本地资源。\n- 业务流程、关系、状态、用户决策链路：Mermaid，保留可复制源码，使用 theme: base 与宿主品牌色。已有研发向源码专用章节和真实界面拼接流程图保留原来的用途与交互，不强制改成另一种图。\n- 对比、需求、画像明细：语义化 HTML table＋CSS；Markdown 交付保留数据表，宿主负责表格样式。\n- 统计图交付由程序渲染矢量图或清晰 PNG；AI 插画、照片和真实原型截图保留原始资产，不用统计图引擎代替。\n\n## AI 与宿主的职责\n\nAI 提供结论、原始数据、来源和声明式图表规范；宿主把规范映射为 ECharts option 或 Mermaid SVG。图表不要求额外生成整篇 HTML；全文 HTML 仍按原流程或用户请求生成。宿主输出协议优先，已有 chart 字段时按其协议；无协议的 Markdown 使用紧邻正文的 chart JSON 围栏与 mermaid 围栏。\n\n下面的 pm-chart-v1 是本 Skill 的交接规范，宿主接入后才能自动绘图；它不是 ECharts option，也不是已经实现的工作台接口。宿主只接收白名单图种、字段和数据，不执行 AI 提供的 JS、formatter 函数或任意 HTML。\n\n## 图表数据协议\n\nchart JSON 每张图独立，字段：schema、id、type、title、evidenceStatus、sources、data、encoding；subtitle、note 可选。\n\n- schema 固定 pm-chart-v1；id 在文档内唯一，用于引用和导出。\n- type：bar / line / pie / funnel / heatmap / matrix / scatter。柱线图的数据记录提供分类或时间、数值与可选分组；encoding 指出字段名。漏斗记录给出步骤顺序和原始人数，率由代码计算。矩阵可用类别坐标；heatmap 明确行列及指标。\n- encoding.x / y 指出 field、scale（category / ordinal / quantitative / time）、label、unit；类别轴给出有序 categories。series / label / value 指明相关字段（按图种提供）。\n- evidenceStatus：已验证事实 / 用户观点 / 估算 / 分析推断 / 待验证 / 测试数据。sources 为来源 id、标题、url 或材料定位、日期；每行数据使用 sourceIds 引用来源。不同证据性质混用时逐行标注 evidenceStatus。\n- 缺数值用 null，不能用 0 替代；缺失数据不绘制为已观测值。百分比保留分母、统计口径和周期说明；估算附依据及置信度。等级是类别，不转换为未经解释的精确分数。\n\n### 定性痛点矩阵示例（演示数据）\n\n```chart\n{\n  \"schema\": \"pm-chart-v1\",\n  \"id\": \"pain-matrix\",\n  \"type\": \"matrix\",\n  \"title\": \"痛点矩阵\",\n  \"subtitle\": \"分析假设 · 待验证\",\n  \"evidenceStatus\": \"测试数据\",\n  \"sources\": [{\"id\":\"demo\",\"title\":\"规范演示数据，不能进入项目结论\"}],\n  \"data\": [\n    {\"id\":\"P1\",\"pain\":\"缺少持续陪伴\",\"frequency\":\"高\",\"severity\":\"高\",\"sourceIds\":[\"demo\"]},\n    {\"id\":\"P2\",\"pain\":\"使用负担\",\"frequency\":\"低\",\"severity\":\"中\",\"sourceIds\":[\"demo\"]}\n  ],\n  \"encoding\": {\n    \"x\":{\"field\":\"frequency\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"高\"],\"label\":\"发生频率\",\"unit\":\"等级\"},\n    \"y\":{\"field\":\"severity\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"中高\",\"高\"],\"label\":\"严重程度\",\"unit\":\"等级\"},\n    \"label\":\"id\"\n  },\n  \"note\":\"点位表示定性等级，不能读成统计频率；悬停显示痛点、来源与证据状态。\"\n}\n```\n\n保留同一组数据的 Markdown 表格和 1–3 句读图结论。例子只解释格式，实际图表必须使用当前项目数据。先确定数据与 encoding，再由渲染器映射为图形；不让模型手写字符轴线或字符条形图。\n\n## 视觉与交互\n\n复用宿主品牌字体、主色和明暗模式。同一报告的图表配色和同类对象颜色保持一致；无品牌规范时采用白底、深色文字、低饱和主色与浅网格，风险色只用于风险。HTML 表格设置合理列宽、长文换行、数字对齐、表头和分组；宽表在局部滚动，交互文档可固定表头。\n\n每图有标题、轴名、单位、图例（有多系列时）、来源、证据状态及读图结论。定性矩阵使用分类坐标和浅色分区；同一格多点错开并保持等级归属，提供完整名称和明细表，避免 P1–P9 堆叠遮挡。标签不足时增大容器或提供缩放，不缩小到难以阅读。\n\n交互文档提供悬停详情、适配宽度、放大查看和导出 SVG/PNG；静态导出把悬停信息的重要部分写入图注或数据表。按实际工具能力实现，不能声称未实现的交互可用。\n\n## 交付检查与降级\n\n核对图、表、正文的分类、单位、值、分母、来源和证据性质一致；检查默认尺寸与放大后文字无重叠、裁切，主题和打印/导出背景清晰。完成实际渲染才称“图表已渲染”。\n\n环境缺渲染器时保留 chart 数据或 Mermaid 源码＋数据表＋结论，并明确“待宿主渲染”；Markdown 阅读器不支持时可附已生成 SVG/PNG。渲染失败显示明细表与原因，不丢弃正文，也不回退为 ASCII 字符矩阵。没有可用分析数据的章节用“缺失证据表”说明待补内容，不生成虚构分布、比例、留存曲线或点位。\n",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/analysis.prd"
+          },
+          "supplements": [],
+          "draft": false,
+          "startedAt": "2026-10-24T13:20:05.433Z",
+          "fingerprint": "25991e27446b1ff94a6ae6810fce58298a66aad4d402ef0cb6311a3bc4f1f8e8",
+          "model": {
+            "id": "16ec0cbc-ab42-4a56-a5ad-76cd5ac1646a",
+            "api": "deepseek-messages",
+            "baseURL": "https://api.deepseek.com/anthropic",
+            "model": "deepseek-v4-pro"
+          },
+          "error": "材料已覆盖已确认需求/范围、详细业务规则、埋点字典与品牌色，可支撑后续规则与埋点分析；但缺少现有方案说明，且材料为QA人造测试材料，不能作为真实市场证据，存在证据缺口。",
+          "suggestions": [
+            "补充现有方案：当前主动问候的触发规则、频率、已有设置页/推送逻辑或相关系统现状。",
+            "补充真实用户场景与背景证据，包括用户被打断的具体场景、影响和证据来源；当前测试数据不能作为真实市场证据。",
+            "明确目标口径与基线数据来源，当前目标值待基线确认且无实际访谈。",
+            "补充已有原型截图或页面参考，当前无真实原型截图。",
+            "补充人员、项目/版本记录及相关方信息，当前人员未知待确认。",
+            "补充埋点字段定义、触发时机与数据用途，当前仅给出两个事件名称及参数。"
+          ]
+        },
+        "report": {
+          "status": "cancelled",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "report.prd",
+            "name": "PRD文档",
+            "version": "1.1.0",
+            "category": "report",
+            "description": "仅根据传入的相关成果，按大纲整理PRD文档；不搜索、不另作产品决策。",
+            "icon": "file",
+            "enabled": true,
+            "executor": "ai",
+            "inputs": [
+              {
+                "id": "materials",
+                "name": "输入材料",
+                "types": [
+                  "materials",
+                  "sources",
+                  "analysis",
+                  "dataset",
+                  "documents"
+                ],
+                "multiple": true
+              }
+            ],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "PRD文档结果",
+                "types": [
+                  "documents"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "task",
+                "label": "本次目标与补充要求",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "modelId",
+                "label": "执行模型",
+                "type": "model",
+                "default": ""
+              },
+              {
+                "key": "outline",
+                "label": "输出大纲",
+                "type": "textarea",
+                "default": "# PRD文档\n## 项目信息\n## 版本记录\n## 需求背景\n## 需求目标\n## 需求概述\n## 业务流程图\n## 交互流程图\n## 详细方案\n## 数据埋点\n## 待确认事项"
+              }
+            ],
+            "instructions": "instructions.md",
+            "requirements": [
+              "已确认需求与范围",
+              "业务规则或待确认规则清单"
+            ],
+            "implementation": "ai",
+            "origin": {
+              "skill": "产品经理工作流 / 现有本地工具",
+              "adaptedAt": "2026-10-18",
+              "scope": "将已确认需求细化为可设计、开发和验收的方案。"
+            },
+            "capabilities": {
+              "search": false,
+              "calculate": false,
+              "generateDecisions": false
+            },
+            "workflow": [
+              {
+                "id": "relevance",
+                "title": "检查材料相关性",
+                "prompt": "完全不相关或没有可用内容时停止，不输出文档。"
+              },
+              {
+                "id": "coverage",
+                "title": "对照大纲检查覆盖",
+                "prompt": "逐章识别输入支持的内容和缺口；相关但不足可整理，必须显著提示。"
+              },
+              {
+                "id": "compose",
+                "title": "按大纲整理报告",
+                "prompt": "仅归类、去重、编排和总结材料，不搜索、不新建事实、统计或产品决策。"
+              },
+              {
+                "id": "verify",
+                "title": "核对来源与文档",
+                "prompt": "数字和结论须由输入支持，缺失章节写材料不足，保留上游假设/局限。"
+              }
+            ],
+            "hash": "4b71e17c334751a2c71761d86eef84b904af7669c68ad309db22a582e6c1fa0d",
+            "instruction": "# PRD文档\n\n本节点只编排输入，不进行联网检索、独立分析、产品决策或统计计算。相关材料不充分时仍整理已有部分，在文档顶部及缺失章节标明资料不足；完全不相关时拒绝生成。保留来源、假设、证据局限，不用常识补齐缺少的事实。\n项目信息/版本记录独立；详细方案一屏/状态一行，列为一级模块、二级功能、原型、描述。页面元素和交互说明必含，边界归所属页面，跨页规则集中。没有原型不伪造截图。时序章节保留源码，不冒充运行验证。\n\n# 文档图表输出与渲染规范\n\n## 技术选择\n\n- 数据比较、趋势、占比、漏斗、留存热力图、痛点与优先级矩阵：ECharts。文档小型图默认 SVG；数据密集图可用 Canvas。按使用的图种加载依赖，桌面/离线交付使用本地资源。\n- 业务流程、关系、状态、用户决策链路：Mermaid，保留可复制源码，使用 theme: base 与宿主品牌色。已有研发向源码专用章节和真实界面拼接流程图保留原来的用途与交互，不强制改成另一种图。\n- 对比、需求、画像明细：语义化 HTML table＋CSS；Markdown 交付保留数据表，宿主负责表格样式。\n- 统计图交付由程序渲染矢量图或清晰 PNG；AI 插画、照片和真实原型截图保留原始资产，不用统计图引擎代替。\n\n## AI 与宿主的职责\n\nAI 提供结论、原始数据、来源和声明式图表规范；宿主把规范映射为 ECharts option 或 Mermaid SVG。图表不要求额外生成整篇 HTML；全文 HTML 仍按原流程或用户请求生成。宿主输出协议优先，已有 chart 字段时按其协议；无协议的 Markdown 使用紧邻正文的 chart JSON 围栏与 mermaid 围栏。\n\n下面的 pm-chart-v1 是本 Skill 的交接规范，宿主接入后才能自动绘图；它不是 ECharts option，也不是已经实现的工作台接口。宿主只接收白名单图种、字段和数据，不执行 AI 提供的 JS、formatter 函数或任意 HTML。\n\n## 图表数据协议\n\nchart JSON 每张图独立，字段：schema、id、type、title、evidenceStatus、sources、data、encoding；subtitle、note 可选。\n\n- schema 固定 pm-chart-v1；id 在文档内唯一，用于引用和导出。\n- type：bar / line / pie / funnel / heatmap / matrix / scatter。柱线图的数据记录提供分类或时间、数值与可选分组；encoding 指出字段名。漏斗记录给出步骤顺序和原始人数，率由代码计算。矩阵可用类别坐标；heatmap 明确行列及指标。\n- encoding.x / y 指出 field、scale（category / ordinal / quantitative / time）、label、unit；类别轴给出有序 categories。series / label / value 指明相关字段（按图种提供）。\n- evidenceStatus：已验证事实 / 用户观点 / 估算 / 分析推断 / 待验证 / 测试数据。sources 为来源 id、标题、url 或材料定位、日期；每行数据使用 sourceIds 引用来源。不同证据性质混用时逐行标注 evidenceStatus。\n- 缺数值用 null，不能用 0 替代；缺失数据不绘制为已观测值。百分比保留分母、统计口径和周期说明；估算附依据及置信度。等级是类别，不转换为未经解释的精确分数。\n\n### 定性痛点矩阵示例（演示数据）\n\n```chart\n{\n  \"schema\": \"pm-chart-v1\",\n  \"id\": \"pain-matrix\",\n  \"type\": \"matrix\",\n  \"title\": \"痛点矩阵\",\n  \"subtitle\": \"分析假设 · 待验证\",\n  \"evidenceStatus\": \"测试数据\",\n  \"sources\": [{\"id\":\"demo\",\"title\":\"规范演示数据，不能进入项目结论\"}],\n  \"data\": [\n    {\"id\":\"P1\",\"pain\":\"缺少持续陪伴\",\"frequency\":\"高\",\"severity\":\"高\",\"sourceIds\":[\"demo\"]},\n    {\"id\":\"P2\",\"pain\":\"使用负担\",\"frequency\":\"低\",\"severity\":\"中\",\"sourceIds\":[\"demo\"]}\n  ],\n  \"encoding\": {\n    \"x\":{\"field\":\"frequency\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"高\"],\"label\":\"发生频率\",\"unit\":\"等级\"},\n    \"y\":{\"field\":\"severity\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"中高\",\"高\"],\"label\":\"严重程度\",\"unit\":\"等级\"},\n    \"label\":\"id\"\n  },\n  \"note\":\"点位表示定性等级，不能读成统计频率；悬停显示痛点、来源与证据状态。\"\n}\n```\n\n保留同一组数据的 Markdown 表格和 1–3 句读图结论。例子只解释格式，实际图表必须使用当前项目数据。先确定数据与 encoding，再由渲染器映射为图形；不让模型手写字符轴线或字符条形图。\n\n## 视觉与交互\n\n复用宿主品牌字体、主色和明暗模式。同一报告的图表配色和同类对象颜色保持一致；无品牌规范时采用白底、深色文字、低饱和主色与浅网格，风险色只用于风险。HTML 表格设置合理列宽、长文换行、数字对齐、表头和分组；宽表在局部滚动，交互文档可固定表头。\n\n每图有标题、轴名、单位、图例（有多系列时）、来源、证据状态及读图结论。定性矩阵使用分类坐标和浅色分区；同一格多点错开并保持等级归属，提供完整名称和明细表，避免 P1–P9 堆叠遮挡。标签不足时增大容器或提供缩放，不缩小到难以阅读。\n\n交互文档提供悬停详情、适配宽度、放大查看和导出 SVG/PNG；静态导出把悬停信息的重要部分写入图注或数据表。按实际工具能力实现，不能声称未实现的交互可用。\n\n## 交付检查与降级\n\n核对图、表、正文的分类、单位、值、分母、来源和证据性质一致；检查默认尺寸与放大后文字无重叠、裁切，主题和打印/导出背景清晰。完成实际渲染才称“图表已渲染”。\n\n环境缺渲染器时保留 chart 数据或 Mermaid 源码＋数据表＋结论，并明确“待宿主渲染”；Markdown 阅读器不支持时可附已生成 SVG/PNG。渲染失败显示明细表与原因，不丢弃正文，也不回退为 ASCII 字符矩阵。没有可用分析数据的章节用“缺失证据表”说明待补内容，不生成虚构分布、比例、留存曲线或点位。\n",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/report.prd"
+          },
+          "supplements": [],
+          "draft": false
+        }
+      },
+      "progress": "材料已覆盖已确认需求/范围、详细业务规则、埋点字典与品牌色，可支撑后续规则与埋点分析；但缺少现有方案说明，且材料为QA人造测试材料，不能作为真实市场证据，存在证据缺口。",
+      "currentNodeId": "analysis",
+      "completedAt": "2026-10-24T13:23:33.257Z"
+    },
+    {
+      "id": "9c504ec2-f86a-4f44-9786-4f1278d22cc0",
+      "version": 3,
+      "status": "succeeded",
+      "createdAt": "2026-10-24T13:23:33.476Z",
+      "graph": {
+        "nodes": [
+          {
+            "id": "text",
+            "type": "input.text",
+            "name": "文字输入",
+            "x": 80,
+            "y": 160,
+            "config": {
+              "researchMode": "materials",
+              "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n【本测试已确认的需求与规则】需求名：宠物免打扰设置。背景：测试用户在工作时会被主动问候打断；无实际访谈和基线。目标：用户可开启免打扰并设置每日时间段，观察主动消息投诉率，目标值待基线确认。页面只有设置页及时间选择弹层。默认关闭免打扰；开启后默认22:00到08:00，按设备当前时区，跨午夜合法；起止相同为全天免打扰并有明确提示。免打扰仅阻止主动问候，不阻止用户主动聊天；喂养成长不暂停。保存失败提示重试并保留上次成功状态；未登录先登录。两端状态同步，冲突以服务端最近成功保存为准；离线可改但显示待同步，恢复联网后提交。范围外：不做多时间段、不做按星期、不做推送系统重构。已有埋点字典：dnd_toggle参数enabled:boolean；dnd_save参数start_time:string,end_time:string,time_zone:string,result枚举success/fail；不得编成已经上线。品牌主色#315eb6；没有真实原型截图。人员未知待确认。只需这一需求PRD，不扩展社区、商业模式等。\n现有方案：当前测试版本没有免打扰，主动问候全部直接展示，用户只能退出应用。这里评估的是已确认功能规格，不是市场接受度；所有产品规则是本次测试的给定输入，无需补造真实访谈，文档须保留测试数据标记。",
+              "evidence": "test_data"
+            }
+          },
+          {
+            "id": "analysis",
+            "type": "analysis.prd",
+            "name": "PRD方案分析",
+            "x": 400,
+            "y": 160,
+            "config": {
+              "task": "形成可供PRD报告节点整理的逐页规则、状态、异常、共享规则、已确认/待确认和埋点方案。",
+              "modelId": "",
+              "outline": "# PRD方案分析\n## 核心结论\n## 证据与分析\n## 方案与规则\n## 待确认与下一步"
+            }
+          },
+          {
+            "id": "report",
+            "type": "report.prd",
+            "name": "PRD文档",
+            "x": 720,
+            "y": 160,
+            "config": {
+              "task": "",
+              "modelId": "",
+              "outline": "# PRD文档\n## 项目信息\n## 版本记录\n## 需求背景\n## 需求目标\n## 需求概述\n## 业务流程图\n## 交互流程图\n## 详细方案\n## 数据埋点\n## 待确认事项"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "text-analysis",
+            "from": "text",
+            "to": "analysis",
+            "output": "data",
+            "input": "materials"
+          },
+          {
+            "id": "analysis-report",
+            "from": "analysis",
+            "to": "report",
+            "output": "data",
+            "input": "materials"
+          }
+        ],
+        "groups": [],
+        "view": {
+          "x": 60,
+          "y": 100,
+          "k": 1
+        }
+      },
+      "graphHash": "a024515ae2b41731ca3858293a704728fee1352f90f83eead76aa1cf1fc5b662",
+      "order": [
+        "text",
+        "analysis",
+        "report"
+      ],
+      "force": false,
+      "nodes": {
+        "text": {
+          "status": "succeeded",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "input.text",
+            "name": "文字输入",
+            "version": "1.1.0",
+            "category": "input",
+            "description": "输入想法、产品、用户需求或 CSV/JSON 数据。",
+            "icon": "input",
+            "enabled": true,
+            "executor": "text",
+            "inputs": [],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "文字输入结果",
+                "types": [
+                  "materials"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "researchMode",
+                "label": "输入方式",
+                "type": "select",
+                "options": [
+                  {
+                    "value": "materials",
+                    "label": "文档 / 数据材料"
+                  },
+                  {
+                    "value": "idea",
+                    "label": "产品想法"
+                  },
+                  {
+                    "value": "product",
+                    "label": "指定产品 / 竞品"
+                  },
+                  {
+                    "value": "user_need",
+                    "label": "用户需求"
+                  }
+                ],
+                "default": "materials"
+              },
+              {
+                "key": "content",
+                "label": "材料正文 / CSV / JSON",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "evidence",
+                "label": "材料性质",
+                "type": "select",
+                "options": [
+                  {
+                    "value": "user_statement",
+                    "label": "用户陈述"
+                  },
+                  {
+                    "value": "material",
+                    "label": "已有材料"
+                  },
+                  {
+                    "value": "test_data",
+                    "label": "测试数据"
+                  },
+                  {
+                    "value": "ai_hypothesis",
+                    "label": "AI假设（待验证）"
+                  }
+                ],
+                "default": "user_statement"
+              }
+            ],
+            "instructions": null,
+            "requirements": [
+              "至少一份相关输入"
+            ],
+            "implementation": "text",
+            "origin": {
+              "skill": "产品经理工作流 / 现有本地工具",
+              "adaptedAt": "2026-10-18",
+              "scope": "输入想法、产品、用户需求或 CSV/JSON 数据。"
+            },
+            "workflow": [
+              {
+                "id": "collect",
+                "title": "采集或引用材料",
+                "prompt": "输入想法、产品、用户需求或 CSV/JSON 数据。"
+              },
+              {
+                "id": "confirm",
+                "title": "保留内容与来源",
+                "prompt": "原样交接材料、来源和证据性质，不承担下游分析或报告整理。"
+              }
+            ],
+            "capabilities": {
+              "search": false,
+              "generateDecisions": false
+            },
+            "hash": "ab910179df883d66c348de313ff1bdd39728bba0013a9fba13dc49793ddb7678",
+            "instruction": "",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/input.text"
+          },
+          "supplements": [],
+          "draft": false,
+          "startedAt": "2026-10-24T13:23:33.527Z",
+          "fingerprint": "21f214628baa9f127347c9b35c5e37e4bb7c2ae410b29ecb60f2bcff9561df6d",
+          "model": {
+            "id": "3b9de208-5b65-4b40-acbc-a7c3d618e5e4",
+            "api": "deepseek-messages",
+            "baseURL": "https://api.deepseek.com/anthropic",
+            "model": "deepseek-flash"
+          },
+          "output": {
+            "kind": "materials",
+            "materials": [
+              {
+                "id": "c9166cd7-86b4-4f14-817f-c57afdce5b58",
+                "title": "文字输入",
+                "content": "【软件QA人造测试材料，不能当作真实市场证据或用户访谈】\n【本测试已确认的需求与规则】需求名：宠物免打扰设置。背景：测试用户在工作时会被主动问候打断；无实际访谈和基线。目标：用户可开启免打扰并设置每日时间段，观察主动消息投诉率，目标值待基线确认。页面只有设置页及时间选择弹层。默认关闭免打扰；开启后默认22:00到08:00，按设备当前时区，跨午夜合法；起止相同为全天免打扰并有明确提示。免打扰仅阻止主动问候，不阻止用户主动聊天；喂养成长不暂停。保存失败提示重试并保留上次成功状态；未登录先登录。两端状态同步，冲突以服务端最近成功保存为准；离线可改但显示待同步，恢复联网后提交。范围外：不做多时间段、不做按星期、不做推送系统重构。已有埋点字典：dnd_toggle参数enabled:boolean；dnd_save参数start_time:string,end_time:string,time_zone:string,result枚举success/fail；不得编成已经上线。品牌主色#315eb6；没有真实原型截图。人员未知待确认。只需这一需求PRD，不扩展社区、商业模式等。\n现有方案：当前测试版本没有免打扰，主动问候全部直接展示，用户只能退出应用。这里评估的是已确认功能规格，不是市场接受度；所有产品规则是本次测试的给定输入，无需补造真实访谈，文档须保留测试数据标记。",
+                "evidence": "test_data",
+                "researchMode": "materials"
+              }
+            ],
+            "documents": [],
+            "sources": [],
+            "assumptions": [],
+            "summary": "已提供文字材料",
+            "warnings": [],
+            "fileReferences": []
+          },
+          "completedAt": "2026-10-24T13:23:33.547Z"
+        },
+        "analysis": {
+          "status": "succeeded",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "analysis.prd",
+            "name": "PRD方案分析",
+            "version": "1.1.0",
+            "category": "analysis",
+            "description": "盘点问题、目标、用户场景、现有方案、业务规则、埋点字典/品牌/已有原型。列出已确认/待确认项与章节取舍，不把假设写成确认。背景按场景问题—影",
+            "icon": "grid",
+            "enabled": true,
+            "executor": "ai",
+            "inputs": [
+              {
+                "id": "materials",
+                "name": "输入材料",
+                "types": [
+                  "materials",
+                  "sources",
+                  "analysis",
+                  "dataset",
+                  "documents"
+                ],
+                "multiple": true
+              }
+            ],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "PRD方案分析结果",
+                "types": [
+                  "analysis"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "task",
+                "label": "本次目标与补充要求",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "modelId",
+                "label": "执行模型",
+                "type": "model",
+                "default": ""
+              },
+              {
+                "key": "outline",
+                "label": "输出大纲",
+                "type": "textarea",
+                "default": "# PRD方案分析\n## 核心结论\n## 证据与分析\n## 方案与规则\n## 待确认与下一步"
+              }
+            ],
+            "instructions": "instructions.md",
+            "requirements": [
+              "已确认需求/范围、业务规则、现有方案、材料字典和参考。"
+            ],
+            "implementation": "ai",
+            "origin": {
+              "skill": "三个产品技能的对应专业SOP",
+              "adaptedAt": "2026-10-24",
+              "scope": "盘点问题、目标、用户场景、现有方案、业务规则、埋点字典/品牌/已有原型。列出已确认/待确认项与章节取舍，不把假设写成确认。背景按场景问题—影响—证据；目标有口径与基线。每个详细方案行对应一屏/状态，含页面元素、交互说明、所属边界；跨页规则集中，描述不写技术接口。项目与版本记录分开，业务与交互流程分开，时序为研发可复制源码。生成方案供报告整理，不宣称未经实际校验的PRD已验收。"
+            },
+            "capabilities": {
+              "search": false,
+              "generateDecisions": true
+            },
+            "workflow": [
+              {
+                "id": "inventory",
+                "title": "盘点材料与范围",
+                "prompt": "检查最低输入要求、来源性质与缺口。"
+              },
+              {
+                "id": "analysis",
+                "title": "执行专业分析",
+                "prompt": "盘点问题、目标、用户场景、现有方案、业务规则、埋点字典/品牌/已有原型。列出已确认/待确认项与章节取舍，不把假设写成确认。背景按场景问题—影响—证据；目标有口径与基线。每个详细方案行对应一屏/状态，含页面元素、交互说明、所属边界；跨页规则集中，描述不写技术接口。项目与版本记录分开，业务与交互流程分开，时序为研发可复制源码。生成方案供报告整理，不宣称未经实际校验的PRD已验收。"
+              },
+              {
+                "id": "verify",
+                "title": "检查证据与结论",
+                "prompt": "核对来源、事实/推断/假设、数字和图表口径，标记未确认事项。"
+              },
+              {
+                "id": "output",
+                "title": "交接分析成果",
+                "prompt": "输出供下游使用的结论、方案、规则、证据与待确认项。"
+              }
+            ],
+            "hash": "7ff533d054b2df9898cf2431d2abbd433b35fad3399882a8692e83869a282d7a",
+            "instruction": "# PRD方案分析\n\n盘点问题、目标、用户场景、现有方案、业务规则、埋点字典/品牌/已有原型。列出已确认/待确认项与章节取舍，不把假设写成确认。背景按场景问题—影响—证据；目标有口径与基线。每个详细方案行对应一屏/状态，含页面元素、交互说明、所属边界；跨页规则集中，描述不写技术接口。项目与版本记录分开，业务与交互流程分开，时序为研发可复制源码。生成方案供报告整理，不宣称未经实际校验的PRD已验收。\n\n只分析传入材料，不自行搜索或访问外部资料。无材料先请求补充；数据不足必须标明证据缺口，不得编造。\n\n# 文档图表输出与渲染规范\n\n## 技术选择\n\n- 数据比较、趋势、占比、漏斗、留存热力图、痛点与优先级矩阵：ECharts。文档小型图默认 SVG；数据密集图可用 Canvas。按使用的图种加载依赖，桌面/离线交付使用本地资源。\n- 业务流程、关系、状态、用户决策链路：Mermaid，保留可复制源码，使用 theme: base 与宿主品牌色。已有研发向源码专用章节和真实界面拼接流程图保留原来的用途与交互，不强制改成另一种图。\n- 对比、需求、画像明细：语义化 HTML table＋CSS；Markdown 交付保留数据表，宿主负责表格样式。\n- 统计图交付由程序渲染矢量图或清晰 PNG；AI 插画、照片和真实原型截图保留原始资产，不用统计图引擎代替。\n\n## AI 与宿主的职责\n\nAI 提供结论、原始数据、来源和声明式图表规范；宿主把规范映射为 ECharts option 或 Mermaid SVG。图表不要求额外生成整篇 HTML；全文 HTML 仍按原流程或用户请求生成。宿主输出协议优先，已有 chart 字段时按其协议；无协议的 Markdown 使用紧邻正文的 chart JSON 围栏与 mermaid 围栏。\n\n下面的 pm-chart-v1 是本 Skill 的交接规范，宿主接入后才能自动绘图；它不是 ECharts option，也不是已经实现的工作台接口。宿主只接收白名单图种、字段和数据，不执行 AI 提供的 JS、formatter 函数或任意 HTML。\n\n## 图表数据协议\n\nchart JSON 每张图独立，字段：schema、id、type、title、evidenceStatus、sources、data、encoding；subtitle、note 可选。\n\n- schema 固定 pm-chart-v1；id 在文档内唯一，用于引用和导出。\n- type：bar / line / pie / funnel / heatmap / matrix / scatter。柱线图的数据记录提供分类或时间、数值与可选分组；encoding 指出字段名。漏斗记录给出步骤顺序和原始人数，率由代码计算。矩阵可用类别坐标；heatmap 明确行列及指标。\n- encoding.x / y 指出 field、scale（category / ordinal / quantitative / time）、label、unit；类别轴给出有序 categories。series / label / value 指明相关字段（按图种提供）。\n- evidenceStatus：已验证事实 / 用户观点 / 估算 / 分析推断 / 待验证 / 测试数据。sources 为来源 id、标题、url 或材料定位、日期；每行数据使用 sourceIds 引用来源。不同证据性质混用时逐行标注 evidenceStatus。\n- 缺数值用 null，不能用 0 替代；缺失数据不绘制为已观测值。百分比保留分母、统计口径和周期说明；估算附依据及置信度。等级是类别，不转换为未经解释的精确分数。\n\n### 定性痛点矩阵示例（演示数据）\n\n```chart\n{\n  \"schema\": \"pm-chart-v1\",\n  \"id\": \"pain-matrix\",\n  \"type\": \"matrix\",\n  \"title\": \"痛点矩阵\",\n  \"subtitle\": \"分析假设 · 待验证\",\n  \"evidenceStatus\": \"测试数据\",\n  \"sources\": [{\"id\":\"demo\",\"title\":\"规范演示数据，不能进入项目结论\"}],\n  \"data\": [\n    {\"id\":\"P1\",\"pain\":\"缺少持续陪伴\",\"frequency\":\"高\",\"severity\":\"高\",\"sourceIds\":[\"demo\"]},\n    {\"id\":\"P2\",\"pain\":\"使用负担\",\"frequency\":\"低\",\"severity\":\"中\",\"sourceIds\":[\"demo\"]}\n  ],\n  \"encoding\": {\n    \"x\":{\"field\":\"frequency\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"高\"],\"label\":\"发生频率\",\"unit\":\"等级\"},\n    \"y\":{\"field\":\"severity\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"中高\",\"高\"],\"label\":\"严重程度\",\"unit\":\"等级\"},\n    \"label\":\"id\"\n  },\n  \"note\":\"点位表示定性等级，不能读成统计频率；悬停显示痛点、来源与证据状态。\"\n}\n```\n\n保留同一组数据的 Markdown 表格和 1–3 句读图结论。例子只解释格式，实际图表必须使用当前项目数据。先确定数据与 encoding，再由渲染器映射为图形；不让模型手写字符轴线或字符条形图。\n\n## 视觉与交互\n\n复用宿主品牌字体、主色和明暗模式。同一报告的图表配色和同类对象颜色保持一致；无品牌规范时采用白底、深色文字、低饱和主色与浅网格，风险色只用于风险。HTML 表格设置合理列宽、长文换行、数字对齐、表头和分组；宽表在局部滚动，交互文档可固定表头。\n\n每图有标题、轴名、单位、图例（有多系列时）、来源、证据状态及读图结论。定性矩阵使用分类坐标和浅色分区；同一格多点错开并保持等级归属，提供完整名称和明细表，避免 P1–P9 堆叠遮挡。标签不足时增大容器或提供缩放，不缩小到难以阅读。\n\n交互文档提供悬停详情、适配宽度、放大查看和导出 SVG/PNG；静态导出把悬停信息的重要部分写入图注或数据表。按实际工具能力实现，不能声称未实现的交互可用。\n\n## 交付检查与降级\n\n核对图、表、正文的分类、单位、值、分母、来源和证据性质一致；检查默认尺寸与放大后文字无重叠、裁切，主题和打印/导出背景清晰。完成实际渲染才称“图表已渲染”。\n\n环境缺渲染器时保留 chart 数据或 Mermaid 源码＋数据表＋结论，并明确“待宿主渲染”；Markdown 阅读器不支持时可附已生成 SVG/PNG。渲染失败显示明细表与原因，不丢弃正文，也不回退为 ASCII 字符矩阵。没有可用分析数据的章节用“缺失证据表”说明待补内容，不生成虚构分布、比例、留存曲线或点位。\n",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/analysis.prd"
+          },
+          "supplements": [],
+          "draft": false,
+          "startedAt": "2026-10-24T13:23:33.625Z",
+          "fingerprint": "03fb11a09141000df5bd9661aeb40152b265495d5535d63d30163239bd57e374",
+          "model": {
+            "id": "3b9de208-5b65-4b40-acbc-a7c3d618e5e4",
+            "api": "deepseek-messages",
+            "baseURL": "https://api.deepseek.com/anthropic",
+            "model": "deepseek-flash"
+          },
+          "output": {
+            "kind": "analysis",
+            "materials": [],
+            "documents": [
+              {
+                "id": "3e0585e5-03f2-43f4-b4a7-7d84904a9cb4",
+                "title": "PRD方案分析",
+                "format": "markdown",
+                "content": "# PRD方案分析\n\n> 材料性质：本次输入被标注为“软件QA人造测试材料”，不是真实市场证据或用户访谈。本文所涉产品规则均为该测试材料给定的输入，证据状态统一为**测试数据**；在此基础上做出的补充建议一律标注**分析推断**。本文供 PRD 报告节点整理使用，未经过任何实际校验，不构成已验收的 PRD，也不代表任何指标已达成。\n\n## 核心结论\n\n- **范围界定清晰，涵盖范围很小**：本需求只有两个界面单元，即免打扰设置页与时间选择弹层；明确排除多时间段、按星期设置、推送系统重构，不扩展社区与商业模式。\n- **规则链可直接转写为 PRD 规则条目**：默认关闭；开启默认 22:00–08:00（设备当前时区、跨午夜合法）；起止相同=全天并明确提示；仅阻止主动问候，不阻止用户主动聊天，喂养成长不暂停；保存失败提示重试并保留上次成功状态；未登录先登录；双端以服务端最近成功保存为准；离线可改、显示待同步、联网后提交。\n- **目标可以定义定义方式，但当前不可验收**：材料明确“无访谈、无基线，目标值待基线确认”；同时已有埋点字典内没有投诉类事件，因此“主动消息投诉率”无法从现有埋点算出，这是关键证据缺口。\n- **三个最主要的证据缺口**：①没有真实访谈、基线与投诉数据；②没有原型截图，页面元素只能描述到规格级，视觉与布局需要设计补充（品牌主色 #315eb6 已知）；③人员和责任方未知，埋点字段格式与是否上线未知，且材料明确不得表述为已上线。\n- **章节取舍**：本文只覆盖“宠物免打扰设置”单一需求的页面规格、状态、异常、共享规则、埋点与待确认项；不写社区、商业模式、推送架构与成长玩法改版；不写技术接口与时序实现细节之外的系统设计。\n\n## 证据与分析\n\n### 材料盘点与来源性质\n\n| 编号 | 材料 | 来源性质 | 可用于 | 局限 |\n| --- | --- | --- | --- | --- |\n| M1 | 文字输入（id c9166cd7-86b4-4f14-817f-c57afdce5b58）：需求名、背景、目标、页面范围、规则、范围外、埋点字典、品牌色、现有方案 | 测试数据（人造材料） | 规则条目、页面与状态规格、埋点字段清单 | 不可作为市场或用户证据；无数据、无原型、无人员 |\n| M2 | 品牌主色 #315eb6 | 测试数据内给定 | 视觉标注 | 无设计稿、无明暗模式与无障碍规范 |\n| M3 | 现有埋点字典（dnd_toggle、dnd_save） | 测试数据内给定 | 埋点方案草案 | 字段格式未定、是否上线未知、缺投诉类事件 |\n\n证据缺口说明：本文未做任何外部检索，也没有可用访谈、日志或投诉数据；凡涉及数量、比例、趋势的结论一律不生成，改以“缺失证据表”形式说明待补内容。\n\n### 已确认项（材料给定输入，证据状态：测试数据）\n\n| 编号 | 已确认内容 | 影响章节 |\n| --- | --- | --- |\n| C1 | 需求名：宠物免打扰设置；本 PRD 只做该需求 | 全文 |\n| C2 | 页面只有设置页与时间选择弹层 | 方案与规则·页面总览 |\n| C3 | 默认关闭免打扰 | 设置页状态、共享规则 |\n| C4 | 开启后默认 22:00–08:00 | 设置页、时间弹层、埋点 |\n| C5 | 时段按设备当前时区解释，跨午夜合法 | 共享规则、时间弹层 |\n| C6 | 起止时间相同视为全天免打扰，并有明确提示 | 时间弹层、异常与状态 |\n| C7 | 免打扰仅阻止主动问候，不阻止用户主动聊天 | 共享规则（业务边界） |\n| C8 | 喂养成长不暂停 | 共享规则（业务边界） |\n| C9 | 保存失败提示重试，并保留上次成功状态 | 设置页异常、共享规则 |\n| C10 | 未登录先登录 | 设置页状态、共享规则 |\n| C11 | 双端状态同步，冲突以服务端最近成功保存为准 | 共享规则、异常清单 |\n| C12 | 离线可修改，显示待同步，恢复联网后提交 | 设置页状态、异常清单 |\n| C13 | 范围外：多时间段、按星期、推送系统重构 | 章节取舍、共享规则 |\n| C14 | 埋点字典：dnd_toggle(enabled:boolean)；dnd_save(start_time,end_time,time_zone,result∈{success,fail})，且不得写成已上线 | 埋点方案 |\n| C15 | 品牌主色 #315eb6；无真实原型截图 | 视觉标注、证据缺口 |\n\n### 待确认项（不得当作已确认写入 PRD）\n\n| 编号 | 待确认事项 | 为何阻塞 | 影响章节 |\n| --- | --- | --- | --- |\n| Q1 | “主动消息投诉率”的统计方式：投诉入口、分子、分母（收到主动问候的用户数或消息条数）、统计周期、是否区分主动与被动 | 无统计方式与基线，目标不可验收 | 目标与统计方式 |\n| Q2 | 目标值与基线（材料明确待基线确认） | 无法判断是否达成 | 目标与统计方式 |\n| Q3 | 现有埋点字典无投诉类事件，指标无法由 dnd_toggle、dnd_save 计算 | 指标与埋点断裂 | 埋点方案、目标 |\n| Q4 | “两端”具体指哪两端（如 iOS、Android；移动端、桌面端） | 同步规则无法描述具体范围 | 共享规则 |\n| Q5 | start_time、end_time 的传参格式（HH:mm 还是带日期）与 time_zone 格式（IANA 或偏移） | 埋点与保存逻辑无法确定 | 埋点方案 |\n| Q6 | dnd_toggle 的触发时机：开关切换即上报，还是保存成功后上报 | 影响“切换次数”统计方式 | 埋点方案 |\n| Q7 | 未登录判定时机：进入设置页即拦截，还是点击开关时拦截 | 影响首个页面状态 | 设置页状态 |\n| Q8 | 离线期间另一端已成功保存、联网后本地提交被服务端覆盖时，是否需要显式提示用户 | 影响异常体验与文案 | 异常与状态 |\n| Q9 | 保存失败的“重试”是用户手动重试、自动重试还是两者都有；重试次数与超时 | 影响失败态规格 | 异常与状态 |\n| Q10 | 全天（起止相同）时段的展示形态：显示“全天”还是“22:00–22:00” | 影响时段行文案 | 设置页、时间弹层 |\n| Q11 | 设备时区变更后，已保存时段的解释与提示 | 影响跨时区一致性 | 共享规则 |\n| Q12 | 免打扰开启后是否需要在会话页提供可见状态标识 | 材料未提，不自行扩范围 | 章节取舍 |\n| Q13 | 人员、评审与验收责任方 | 无法指派待办 | 待确认与下一步 |\n| Q14 | 是否需要无障碍、多语言、暗色模式适配 | 影响视觉与文案规格 | 视觉标注 |\n\n### 背景：场景—问题—影响—证据\n\n| 场景 | 问题 | 影响 | 证据（性质） | 证据缺口 |\n| --- | --- | --- | --- | --- |\n| 用户在工作时使用应用 | 主动问候会在用户不希望被打断的时段直接出现 | 打断专注；用户唯一可用的规避方式是退出应用 | 测试材料陈述（测试数据） | 没有访谈、没有打断频次或投诉量数据、没有基线；影响程度不可量化 |\n| 用户希望“只在某些时段安静” | 当前测试版本没有免打扰能力，主动问候全部直接展示 | 用户无法在保留应用的同时避免主动消息 | 材料“现有方案”段（测试数据） | 没有竞品或替代方案对比材料 |\n| 用户跨午夜需要安静（如 22:00–08:00） | 时段跨天，若按单日区间处理会出现非法区间 | 时段规则若不明确将无法实现 | 材料规则（测试数据） | 无 |\n\n说明：以上“影响”仅为定性描述，本文不生成任何频次、比例或趋势数字；如需量化，须等 Q1、Q2 补齐后另行取证。\n\n### 目标与统计方式\n\n| 目标 | 统计方式定义 | 分母／周期 | 基线 | 目标值 | 状态 |\n| --- | --- | --- | --- | --- | --- |\n| 用户可开启免打扰并设置每日时间段 | 开关状态与起止时段可保存，并在双端回读一致（功能达成判定） | 不适用（功能项） | 当前测试版本无该能力（不可用） | 待确认 | 待实现，未验证 |\n| 观察主动消息投诉率 | 分子：投诉主动消息的次数或人数；分母：同期收到主动问候的用户数或消息条数；周期：待定 | 待确认 | **缺失**（材料明确无基线） | 待基线确认 | 待验证，不可验收 |\n| 降低工作时段被打断 | 未定义 | — | 缺失 | — | 不可入 PRD，列为证据缺口 |\n\n结论：本需求当前只能给出“功能达成”的判定方式；“投诉率”只能作为待验证观察指标，且缺少对应埋点（Q3），不得在任何文档中表述为已达成或已验证。\n\n## 方案与规则\n\n### 页面与边界总览\n\n| 编号 | 页面／层级 | 所属边界 | 说明 | 证据状态 |\n| --- | --- | --- | --- | --- |\n| P1 | 免打扰设置页 | 应用设置内，仅承载免打扰开关与时段行 | 唯一主页面 | 测试数据（材料给定） |\n| P2 | 时间选择弹层 | 覆盖在 P1 之上，仅承载起止时间选择与确认／取消 | 唯一弹层 | 测试数据（材料给定） |\n| — | 不涉及：会话页、推送服务、成长喂养逻辑 | 范围外 | 免打扰只影响主动问候的展示判定，不改变成长逻辑 | 测试数据（材料给定） |\n\n视觉标注：主色 #315eb6（品牌主色，材料给定）；无原型截图，以下元素清单为规格级，布局、字号、间距、明暗模式由设计补充（Q14）。\n\n### P1 免打扰设置页\n\n**页面元素（规格级）**\n\n| 编号 | 元素 | 说明 | 所属边界 | 证据状态 |\n| --- | --- | --- | --- | --- |\n| P1-E1 | 页面标题与返回 | 进入设置页的常规导航 | 本页 | 分析推断（导航形态待设计确认） |\n| P1-E2 | “免打扰”分组标题 | 分组入口，说明该设置的作用 | 本页 | 分析推断（文案待定） |\n| P1-E3 | 免打扰开关 | 二元开关，默认关闭（C3） | 本页 | 测试数据（C3） |\n| P1-E4 | 时段行 | 开启后显示当前生效时段，默认“22:00–08:00”（C4） | 本页 | 测试数据（C4） |\n| P1-E5 | 全天提示文案 | 起止相同时，明确提示当前为全天免打扰（C6） | 本页与 P2 共用 | 测试数据（C6），文案待定 |\n| P1-E6 | 时区说明 | 说明时段按设备当前时区生效（C5） | 本页 | 测试数据（C5），展示形态待定 |\n| P1-E7 | 状态提示区 | 展示“待同步”“保存失败”等状态 | 本页 | 测试数据（C9、C12），形态待定 |\n\n**页面状态（每个状态一屏）**\n\n| 状态 | 触发条件 | 页面表现 | 交互说明 | 异常与提示 | 证据状态 |\n| --- | --- | --- | --- | --- | --- |\n| S1 未登录 | 未登录用户进入 | 先完成登录再进入设置页 | 未登录先登录（C10） | 登录中断后回到原入口，不保留未提交修改 | 测试数据（C10），拦截时机见 Q7 |\n| S2 已登录·关闭态（默认） | 首次进入或用户关闭 | 开关为关；时段行隐藏或置灰 | 打开开关即启用默认时段 22:00–08:00 | 无 | 测试数据（C3、C4），隐藏或置灰待确认 |\n| S3 开启态·在线已保存 | 开关打开且保存成功 | 开关为开；时段行显示当前时段 | 点击时段行打开 P2 | 无 | 测试数据（C4） |\n| S4 开启态·离线待同步 | 离线时修改（开关或时段） | 开关与时段显示本地新值；状态提示区显示“待同步” | 可继续修改；恢复联网后自动提交（C12） | 待同步期间不宣称已生效于服务端 | 测试数据（C12） |\n| S5 保存中 | 提交保存请求 | 开关与时段显示目标值，状态提示区显示保存中 | 保存中重复操作的处理待确认 | 无 | 分析推断（材料未规定保存中态） |\n| S6 保存失败 | 保存返回失败 | 回退并保留上次成功状态；状态提示区提示重试 | 提供重试入口（C9） | 提示“保存失败，请重试”；重试方式见 Q9 | 测试数据（C9） |\n| S7 加载中 | 进入页面拉取服务端状态 | 展示骨架或占位 | 加载完成前不允许修改 | 无 | 分析推断（材料未规定） |\n| S8 拉取失败 | 拉取服务端状态失败 | 提示重试；不回退到本地臆测值 | 重试后重新拉取 | 与 S6 文案需区分 | 分析推断（材料未规定） |\n\n> 说明：S5、S7、S8 为分析推断的补齐建议，材料未给出，需确认后方可写入正式 PRD；S2 的“隐藏或置灰”同样待设计确认。\n\n### P2 时间选择弹层\n\n**页面元素（规格级）**\n\n| 编号 | 元素 | 说明 | 所属边界 | 证据状态 |\n| --- | --- | --- | --- | --- |\n| P2-E1 | 开始时间选择 | 小时与分钟选择，默认 22:00（C4） | 弹层 | 测试数据（C4） |\n| P2-E2 | 结束时间选择 | 小时与分钟选择，默认 08:00（C4） | 弹层 | 测试数据（C4） |\n| P2-E3 | 时区只读说明 | 显示按设备当前时区生效，不可在此修改时区（C5） | 弹层 | 测试数据（C5） |\n| P2-E4 | 全天提示 | 起止相同时实时提示“当前为全天免打扰”（C6） | 弹层 | 测试数据（C6），文案待定 |\n| P2-E5 | 确认与取消 | 确认提交并触发保存；取消放弃本次修改 | 弹层 | 测试数据（隐含于 C4、C9），按钮文案待定 |\n\n**弹层状态与交互**\n\n| 状态 | 触发 | 表现与交互 | 异常 | 证据状态 |\n| --- | --- | --- | --- | --- |\n| T1 默认打开 | 从 S3／S4 点击时段行 | 带入当前生效时段，光标或焦点落在开始时间 | 无 | 分析推断（带入值形态待确认） |\n| T2 跨午夜区间 | 起止落在不同日（如 22:00–08:00） | 视为合法区间，不做非法校验，展示为“22:00–08:00” | 无 | 测试数据（C5） |\n| T3 起止相同 | 起止小时分钟完全一致 | 提示当前为全天免打扰并保持可确认 | 提示文案与展示形态见 Q10 | 测试数据（C6） |\n| T4 取消 | 点击取消或关闭弹层 | 丢弃本次修改，页面保持上次成功状态 | 无 | 测试数据（隐含），行为待确认 |\n| T5 确认后保存失败 | 确认后提交失败 | 回到设置页并进入 S6 | 提示重试 | 测试数据（C9） |\n\n### 跨页共享规则（集中定义，各屏复用）\n\n| 编号 | 规则 | 说明 | 证据状态 |\n| --- | --- | --- | --- |\n| R1 | 默认关闭 | 无本地与服务端配置时，免打扰为关闭 | 测试数据（C3） |\n| R2 | 默认时段 | 首次开启时生效 22:00–08:00 | 测试数据（C4） |\n| R3 | 时区 | 时段一律按设备当前时区解释；存储需携带时区标识 | 测试数据（C5），格式见 Q5 |\n| R4 | 跨午夜 | 结束时间早于开始时间视为跨午夜，合法 | 测试数据（C5） |\n| R5 | 全天 | 起止相同视为全天免打扰，需明确提示 | 测试数据（C6） |\n| R6 | 作用范围 | 免打扰只阻止主动问候展示；用户主动发起聊天不受影响 | 测试数据（C7） |\n| R7 | 与成长的关系 | 免打扰期间喂养与成长逻辑不暂停、不改判 | 测试数据（C8） |\n| R8 | 保存成功 | 以服务端返回的成功结果作为唯一生效依据 | 测试数据（C9、C11） |\n| R9 | 保存失败 | 提示重试，并保留上次成功状态，不写入失败值 | 测试数据（C9） |\n| R10 | 登录门槛 | 未登录先登录，登录后回到设置入口 | 测试数据（C10），时机见 Q7 |\n| R11 | 双端同步 | 双端展示以服务端最近一次成功保存为准 | 测试数据（C11），具体两端见 Q4 |\n| R12 | 冲突处理 | 冲突时服务端最近成功保存覆盖本地未提交值；是否提示见 Q8 | 测试数据（C11） |\n| R13 | 离线 | 离线可修改并显示待同步；恢复联网后提交 | 测试数据（C12） |\n| R14 | 范围外 | 不做多时间段、不做按星期、不做推送系统重构 | 测试数据（C13） |\n\n### 业务流程与交互流程（分开表述）\n\n**业务流程（状态与数据为准，供研发复制源码）**\n\n```mermaid\n%%{init: {\"theme\":\"base\",\"themeVariables\":{\"primaryColor\":\"#315eb6\",\"primaryTextColor\":\"#ffffff\",\"lineColor\":\"#315eb6\"}}}%%\nflowchart TD\n  A[进入设置页] --> B{已登录?}\n  B -- 否 --> C[登录] --> B\n  B -- 是 --> D[拉取服务端免打扰状态]\n  D --> E[按服务端最近成功保存展示开关与时段]\n  E --> F{用户修改?}\n  F -- 否 --> E\n  F -- 是 --> G[本地暂存修改并标记待同步]\n  G --> H{当前在线?}\n  H -- 否 --> I[保持待同步] --> H\n  H -- 是 --> J[提交保存并携带 start_time/end_time/time_zone]\n  J --> K{保存成功?}\n  K -- 否 --> L[提示重试并回退到上次成功状态] --> J\n  K -- 是 --> M[以本次成功结果为最新, 双端同步展示]\n```\n\n**交互流程（用户操作路径，与业务规则分开）**\n\n```mermaid\n%%{init: {\"theme\":\"base\",\"themeVariables\":{\"primaryColor\":\"#315eb6\",\"primaryTextColor\":\"#ffffff\",\"lineColor\":\"#315eb6\"}}}%%\nflowchart LR\n  U1[设置页: 免打扰分组] -->|打开开关| U2[时段行出现, 默认 22:00-08:00]\n  U1 -->|点击时段行| U3[时间选择弹层]\n  U3 --> U4{起止相同?}\n  U4 -- 是 --> U5[提示: 当前为全天免打扰] --> U6[确认]\n  U4 -- 否 --> U6[确认]\n  U6 --> U7[回到设置页并触发保存]\n  U3 -->|取消| U8[丢弃修改, 保持原状态]\n```\n\n> 图注：两张图分别描述业务状态流转与用户操作路径，二者不互相替代。Mermaid 源码已给出，图形渲染由宿主完成；若当前环境无渲染器，请以上方规则表与状态表为准，本文不宣称图表已渲染。\n\n### 异常与状态清单\n\n| 编号 | 异常或状态 | 触发条件 | 页面表现 | 数据结果 | 待确认点 |\n| --- | --- | --- | --- | --- | --- |\n| E1 | 未登录 | 未登录访问设置页 | 转登录 | 不产生保存 | Q7 拦截时机 |\n| E2 | 保存失败 | 保存返回失败 | 提示重试，回退到上次成功状态 | 服务端状态不变 | Q9 重试方式 |\n| E3 | 离线修改 | 无网络时修改 | 显示待同步 | 本地暂存，未提交 | 待同步期间的修改合并方式 |\n| E4 | 联网后提交 | 恢复网络 | 待同步状态消失或转为失败 | 提交最新本地值 | 与 E5 的先后顺序 |\n| E5 | 双端冲突 | 另一端已成功保存 | 以服务端最近成功保存为准 | 本地值被覆盖 | Q8 是否提示 |\n| E6 | 起止相同 | 用户选成同一时间 | 全天提示 | 保存为全天语义 | Q10 展示形态 |\n| E7 | 跨午夜 | 结束早于开始 | 正常展示 | 合法区间 | 无 |\n| E8 | 设备时区变更 | 系统时区变化 | 待确认 | 待确认 | Q11 |\n| E9 | 加载或拉取失败 | 进入页面拉取失败 | 提示重试 | 不采用臆测值 | 分析推断，需确认 |\n\n### 埋点方案\n\n> 以下事件与参数来自材料给定的埋点字典（测试数据）；**均不得表述为已上线**。字段格式（Q5）与触发时机（Q6）未定，正式 PRD 需补齐后再交研发。\n\n| 事件 | 触发时机 | 参数 | 类型 | 取值 | 状态 |\n| --- | --- | --- | --- | --- | --- |\n| dnd_toggle | 用户切换免打扰开关时（具体为切换即上报还是保存成功后上报待确认） | enabled | boolean | true／false | 字典给定，未上线 |\n| dnd_save | 保存免打扰时段后 | start_time | string | 格式待确认 | 字典给定，未上线 |\n| dnd_save | 保存免打扰时段后 | end_time | string | 格式待确认 | 字典给定，未上线 |\n| dnd_save | 保存免打扰时段后 | time_zone | string | 格式待确认（IANA 或偏移） | 字典给定，未上线 |\n| dnd_save | 保存免打扰时段后 | result | 枚举 | success／fail | 字典给定，未上线 |\n\n**埋点缺口（缺失证据表）**\n\n| 缺口 | 影响 | 说明 |\n| --- | --- | --- |\n| 无投诉类事件 | 目标“主动消息投诉率”无法计算 | 需另行定义投诉上报事件与其统计方式（Q1、Q3） |\n| 无主动问候曝光或下发事件 | 无法确定投诉率分母 | 需确认是否复用既有推送或会话埋点，材料未提供 |\n| 无免打扰生效期内的拦截计数 | 无法验证“仅阻止主动问候”的实际效果 | 材料未提供，不自行扩字段 |\n| 无用户或设备标识字段 | 无法按端拆分同步问题 | 材料未提供，不自行扩字段 |\n\n## 待确认与下一步\n\n### 待确认事项与影响\n\n| 编号 | 事项 | 影响 | 阻塞程度 | 责任方 |\n| --- | --- | --- | --- | --- |\n| Q1 | 投诉率的分子、分母、周期与投诉入口 | 目标不可验收 | 高 | 待指派（人员未知） |\n| Q2 | 基线与目标值 | 目标不可验收 | 高 | 待指派 |\n| Q3 | 是否新增投诉类埋点 | 指标无法计算 | 高 | 待指派 |\n| Q4 | “两端”的具体定义 | 同步规则范围不清 | 中 | 待指派 |\n| Q5 | start_time、end_time、time_zone 格式 | 埋点与保存无法实现 | 高 | 待指派（研发） |\n| Q6 | dnd_toggle 触发时机 | 统计方式歧义 | 中 | 待指派 |\n| Q7 | 未登录拦截时机 | 首个页面状态不定 | 中 | 待指派 |\n| Q8 | 冲突覆盖是否提示用户 | 异常体验不定 | 中 | 待指派 |\n| Q9 | 重试方式与次数 | 失败态规格不定 | 中 | 待指派 |\n| Q10 | 全天的展示形态与文案 | 文案不一致 | 低 | 待指派（设计） |\n| Q11 | 设备时区变更后的处理 | 跨时区一致性 | 中 | 待指派 |\n| Q12 | 是否需要会话页可见的免打扰标识 | 范围可能扩张 | 低 | 待指派 |\n| Q13 | 人员与评审责任方 | 无法排期 | 高 | 待指派 |\n| Q14 | 无障碍、多语言、暗色模式 | 视觉规格不全 | 低 | 待指派（设计） |\n\n### 下一步（供报告节点整理，不含新的事实主张）\n\n1. 先关闭高阻塞项 Q1、Q2、Q3、Q5、Q13：投诉统计方式与基线、埋点字段格式、责任人；在此之前，报告中的“目标”只能写成“待验证观察指标 ＋ 功能达成判定”。\n2. 补齐设计输入：以 #315eb6 为主色输出 P1、P2 的界面稿与文案（全天提示、保存失败提示、待同步提示），替换本文的规格级元素描述。\n3. 确认本文标注为“分析推断”的状态 S5、S7、S8 与 E9 是否纳入正式 PRD，未确认则不进正文规则。\n4. 埋点部分在格式与触发时机确认后，再由研发对照实现；任何文档不得表述为已上线。\n5. 全部规则与结论的证据性质保持为“测试数据”，在报告节点合并时不得改写为真实用户结论或已验收 PRD。\n\n### 章节取舍说明\n\n| 内容 | 是否纳入 | 理由 |\n| --- | --- | --- |\n| 免打扰设置页与时间弹层的元素、状态、异常、规则、埋点 | 纳入 | 材料给定的需求范围 |\n| 多时间段、按星期 | 不纳入 | 材料明确范围外 |\n| 推送系统重构 | 不纳入 | 材料明确范围外 |\n| 社区、商业模式 | 不纳入 | 用户与材料均限定为单需求 |\n| 投诉率的具体数值与趋势图 | 不纳入 | 无数据、无基线、无埋点，属证据缺口 |\n| 竞品与市场接受度分析 | 不纳入 | 本次评估对象是已确认功能规格，不是市场接受度 |",
+                "summary": "### 核心结论\n- 本需求范围只有两处：免打扰设置页和时间选择弹层；材料已把规则作为给定条件，但目前这些条件都属于测试数据。\n- 规则链完整：默认关闭；开启后默认 22:00–08:00；跨午夜合法；起止相同为全天；只阻止主动问候；保存失败保留上次成功状态；未登录先登录；双端以服务端最近成功保存为准；离线待同步。\n- 目标可以定义，但暂时无法验收：没有基线，目标值待定；而且现有埋点字典里没有投诉类事件。\n\n### 证据局限\n- 没有真实访谈、基线或投诉数据；没有原型截图，页面只能写到规格级；品牌主色 #315eb6 已知。\n- 人员责任方、埋点字段格式和埋点上线状态都未知，因此不得写成已上线。\n\n### 下一步\n- 补齐投诉率口径与基线、埋点字段格式和双端（两端设备）的具体定义；补齐原型与责任人，再交给报告节点整理。"
+              }
+            ],
+            "sources": [],
+            "assumptions": [],
+            "summary": "### 核心结论\n- 本需求范围只有两处：免打扰设置页和时间选择弹层；材料已把规则作为给定条件，但目前这些条件都属于测试数据。\n- 规则链完整：默认关闭；开启后默认 22:00–08:00；跨午夜合法；起止相同为全天；只阻止主动问候；保存失败保留上次成功状态；未登录先登录；双端以服务端最近成功保存为准；离线待同步。\n- 目标可以定义，但暂时无法验收：没有基线，目标值待定；而且现有埋点字典里没有投诉类事件。\n\n### 证据局限\n- 没有真实访谈、基线或投诉数据；没有原型截图，页面只能写到规格级；品牌主色 #315eb6 已知。\n- 人员责任方、埋点字段格式和埋点上线状态都未知，因此不得写成已上线。\n\n### 下一步\n- 补齐投诉率口径与基线、埋点字段格式和双端（两端设备）的具体定义；补齐原型与责任人，再交给报告节点整理。",
+            "warnings": [
+              "主动消息投诉率的分子、分母、统计周期与投诉入口如何定义？基线是多少？",
+              "现有埋点字典没有投诉类事件，是否需要新增上报事件才能观察该指标？",
+              "dnd_save 的 start_time、end_time、time_zone 使用什么格式（HH:mm 还是带日期；IANA 还是偏移）？",
+              "dnd_toggle 在开关切换时上报，还是保存成功后上报？",
+              "“双端”具体指哪两端？离线期间被另一端覆盖时是否需要提示用户？",
+              "未登录是在进入设置页时拦截，还是点击开关时拦截？",
+              "起止相同时，时段行显示“全天”还是显示相同时间？",
+              "设备时区变更后已保存时段如何解释与提示？",
+              "保存失败的重试是手动、自动还是两者都有？重试次数与超时如何设定？",
+              "本项目的人员与评审、验收责任方是谁？",
+              "是否需要无障碍、多语言、暗色模式适配？"
+            ],
+            "fileReferences": [],
+            "inputSnapshot": [
+              {
+                "id": "c9166cd7-86b4-4f14-817f-c57afdce5b58",
+                "title": "文字输入",
+                "evidence": "test_data"
+              }
+            ],
+            "quality": {
+              "level": "complete",
+              "missing": [],
+              "note": ""
+            },
+            "analysis": {
+              "materialNature": "测试数据（软件QA人造测试材料），不是真实市场证据或用户访谈；全部规则为材料给定输入",
+              "requirement": "宠物免打扰设置",
+              "screens": [
+                {
+                  "id": "P1",
+                  "name": "免打扰设置页",
+                  "boundary": "应用设置内，仅本需求开关与时段行"
+                },
+                {
+                  "id": "P2",
+                  "name": "时间选择弹层",
+                  "boundary": "P1 之上，仅起止时间选择与确认/取消"
+                }
+              ],
+              "confirmedRules": [
+                "默认关闭免打扰",
+                "开启后默认 22:00–08:00，按设备当前时区，跨午夜合法",
+                "起止相同视为全天免打扰并有明确提示",
+                "免打扰仅阻止主动问候，不阻止用户主动聊天",
+                "喂养成长不暂停",
+                "保存失败提示重试并保留上次成功状态",
+                "未登录先登录",
+                "双端状态同步，冲突以服务端最近成功保存为准",
+                "离线可修改并显示待同步，恢复联网后提交"
+              ],
+              "outOfScope": [
+                "多时间段",
+                "按星期设置",
+                "推送系统重构",
+                "社区与商业模式扩展"
+              ],
+              "trackingEvents": [
+                {
+                  "name": "dnd_toggle",
+                  "params": [
+                    {
+                      "field": "enabled",
+                      "type": "boolean"
+                    }
+                  ],
+                  "status": "字典给定，未上线"
+                },
+                {
+                  "name": "dnd_save",
+                  "params": [
+                    {
+                      "field": "start_time",
+                      "type": "string"
+                    },
+                    {
+                      "field": "end_time",
+                      "type": "string"
+                    },
+                    {
+                      "field": "time_zone",
+                      "type": "string"
+                    },
+                    {
+                      "field": "result",
+                      "type": "枚举 success/fail"
+                    }
+                  ],
+                  "status": "字典给定，未上线"
+                }
+              ],
+              "evidenceGaps": [
+                "无真实访谈、无投诉数据、无基线、无目标值",
+                "无原型截图，视觉与布局未定",
+                "无投诉类埋点，投诉率指标无法从现有字典计算",
+                "人员与责任方未知",
+                "埋点字段格式与上线状态未知"
+              ],
+              "analysisInferences": [
+                "设置页加载中、拉取失败、全部时段显示形态等状态为分析推断，需确认后才可入 PRD",
+                "离线期间在另一端修改后被服务端覆盖时的用户提示为分析推断，材料未规定"
+              ]
+            },
+            "openQuestions": [
+              "主动消息投诉率的分子、分母、统计周期与投诉入口如何定义？基线是多少？",
+              "现有埋点字典没有投诉类事件，是否需要新增上报事件才能观察该指标？",
+              "dnd_save 的 start_time、end_time、time_zone 使用什么格式（HH:mm 还是带日期；IANA 还是偏移）？",
+              "dnd_toggle 在开关切换时上报，还是保存成功后上报？",
+              "“双端”具体指哪两端？离线期间被另一端覆盖时是否需要提示用户？",
+              "未登录是在进入设置页时拦截，还是点击开关时拦截？",
+              "起止相同时，时段行显示“全天”还是显示相同时间？",
+              "设备时区变更后已保存时段如何解释与提示？",
+              "保存失败的重试是手动、自动还是两者都有？重试次数与超时如何设定？",
+              "本项目的人员与评审、验收责任方是谁？",
+              "是否需要无障碍、多语言、暗色模式适配？"
+            ],
+            "computed": null
+          },
+          "completedAt": "2026-10-24T13:24:46.923Z"
+        },
+        "report": {
+          "status": "succeeded",
+          "definition": {
+            "schemaVersion": 1,
+            "id": "report.prd",
+            "name": "PRD文档",
+            "version": "1.1.0",
+            "category": "report",
+            "description": "仅根据传入的相关成果，按大纲整理PRD文档；不搜索、不另作产品决策。",
+            "icon": "file",
+            "enabled": true,
+            "executor": "ai",
+            "inputs": [
+              {
+                "id": "materials",
+                "name": "输入材料",
+                "types": [
+                  "materials",
+                  "sources",
+                  "analysis",
+                  "dataset",
+                  "documents"
+                ],
+                "multiple": true
+              }
+            ],
+            "outputs": [
+              {
+                "id": "data",
+                "name": "PRD文档结果",
+                "types": [
+                  "documents"
+                ]
+              }
+            ],
+            "fields": [
+              {
+                "key": "task",
+                "label": "本次目标与补充要求",
+                "type": "textarea",
+                "default": ""
+              },
+              {
+                "key": "modelId",
+                "label": "执行模型",
+                "type": "model",
+                "default": ""
+              },
+              {
+                "key": "outline",
+                "label": "输出大纲",
+                "type": "textarea",
+                "default": "# PRD文档\n## 项目信息\n## 版本记录\n## 需求背景\n## 需求目标\n## 需求概述\n## 业务流程图\n## 交互流程图\n## 详细方案\n## 数据埋点\n## 待确认事项"
+              }
+            ],
+            "instructions": "instructions.md",
+            "requirements": [
+              "已确认需求与范围",
+              "业务规则或待确认规则清单"
+            ],
+            "implementation": "ai",
+            "origin": {
+              "skill": "产品经理工作流 / 现有本地工具",
+              "adaptedAt": "2026-10-18",
+              "scope": "将已确认需求细化为可设计、开发和验收的方案。"
+            },
+            "capabilities": {
+              "search": false,
+              "calculate": false,
+              "generateDecisions": false
+            },
+            "workflow": [
+              {
+                "id": "relevance",
+                "title": "检查材料相关性",
+                "prompt": "完全不相关或没有可用内容时停止，不输出文档。"
+              },
+              {
+                "id": "coverage",
+                "title": "对照大纲检查覆盖",
+                "prompt": "逐章识别输入支持的内容和缺口；相关但不足可整理，必须显著提示。"
+              },
+              {
+                "id": "compose",
+                "title": "按大纲整理报告",
+                "prompt": "仅归类、去重、编排和总结材料，不搜索、不新建事实、统计或产品决策。"
+              },
+              {
+                "id": "verify",
+                "title": "核对来源与文档",
+                "prompt": "数字和结论须由输入支持，缺失章节写材料不足，保留上游假设/局限。"
+              }
+            ],
+            "hash": "4b71e17c334751a2c71761d86eef84b904af7669c68ad309db22a582e6c1fa0d",
+            "instruction": "# PRD文档\n\n本节点只编排输入，不进行联网检索、独立分析、产品决策或统计计算。相关材料不充分时仍整理已有部分，在文档顶部及缺失章节标明资料不足；完全不相关时拒绝生成。保留来源、假设、证据局限，不用常识补齐缺少的事实。\n项目信息/版本记录独立；详细方案一屏/状态一行，列为一级模块、二级功能、原型、描述。页面元素和交互说明必含，边界归所属页面，跨页规则集中。没有原型不伪造截图。时序章节保留源码，不冒充运行验证。\n\n# 文档图表输出与渲染规范\n\n## 技术选择\n\n- 数据比较、趋势、占比、漏斗、留存热力图、痛点与优先级矩阵：ECharts。文档小型图默认 SVG；数据密集图可用 Canvas。按使用的图种加载依赖，桌面/离线交付使用本地资源。\n- 业务流程、关系、状态、用户决策链路：Mermaid，保留可复制源码，使用 theme: base 与宿主品牌色。已有研发向源码专用章节和真实界面拼接流程图保留原来的用途与交互，不强制改成另一种图。\n- 对比、需求、画像明细：语义化 HTML table＋CSS；Markdown 交付保留数据表，宿主负责表格样式。\n- 统计图交付由程序渲染矢量图或清晰 PNG；AI 插画、照片和真实原型截图保留原始资产，不用统计图引擎代替。\n\n## AI 与宿主的职责\n\nAI 提供结论、原始数据、来源和声明式图表规范；宿主把规范映射为 ECharts option 或 Mermaid SVG。图表不要求额外生成整篇 HTML；全文 HTML 仍按原流程或用户请求生成。宿主输出协议优先，已有 chart 字段时按其协议；无协议的 Markdown 使用紧邻正文的 chart JSON 围栏与 mermaid 围栏。\n\n下面的 pm-chart-v1 是本 Skill 的交接规范，宿主接入后才能自动绘图；它不是 ECharts option，也不是已经实现的工作台接口。宿主只接收白名单图种、字段和数据，不执行 AI 提供的 JS、formatter 函数或任意 HTML。\n\n## 图表数据协议\n\nchart JSON 每张图独立，字段：schema、id、type、title、evidenceStatus、sources、data、encoding；subtitle、note 可选。\n\n- schema 固定 pm-chart-v1；id 在文档内唯一，用于引用和导出。\n- type：bar / line / pie / funnel / heatmap / matrix / scatter。柱线图的数据记录提供分类或时间、数值与可选分组；encoding 指出字段名。漏斗记录给出步骤顺序和原始人数，率由代码计算。矩阵可用类别坐标；heatmap 明确行列及指标。\n- encoding.x / y 指出 field、scale（category / ordinal / quantitative / time）、label、unit；类别轴给出有序 categories。series / label / value 指明相关字段（按图种提供）。\n- evidenceStatus：已验证事实 / 用户观点 / 估算 / 分析推断 / 待验证 / 测试数据。sources 为来源 id、标题、url 或材料定位、日期；每行数据使用 sourceIds 引用来源。不同证据性质混用时逐行标注 evidenceStatus。\n- 缺数值用 null，不能用 0 替代；缺失数据不绘制为已观测值。百分比保留分母、统计口径和周期说明；估算附依据及置信度。等级是类别，不转换为未经解释的精确分数。\n\n### 定性痛点矩阵示例（演示数据）\n\n```chart\n{\n  \"schema\": \"pm-chart-v1\",\n  \"id\": \"pain-matrix\",\n  \"type\": \"matrix\",\n  \"title\": \"痛点矩阵\",\n  \"subtitle\": \"分析假设 · 待验证\",\n  \"evidenceStatus\": \"测试数据\",\n  \"sources\": [{\"id\":\"demo\",\"title\":\"规范演示数据，不能进入项目结论\"}],\n  \"data\": [\n    {\"id\":\"P1\",\"pain\":\"缺少持续陪伴\",\"frequency\":\"高\",\"severity\":\"高\",\"sourceIds\":[\"demo\"]},\n    {\"id\":\"P2\",\"pain\":\"使用负担\",\"frequency\":\"低\",\"severity\":\"中\",\"sourceIds\":[\"demo\"]}\n  ],\n  \"encoding\": {\n    \"x\":{\"field\":\"frequency\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"高\"],\"label\":\"发生频率\",\"unit\":\"等级\"},\n    \"y\":{\"field\":\"severity\",\"scale\":\"ordinal\",\"categories\":[\"低\",\"中\",\"中高\",\"高\"],\"label\":\"严重程度\",\"unit\":\"等级\"},\n    \"label\":\"id\"\n  },\n  \"note\":\"点位表示定性等级，不能读成统计频率；悬停显示痛点、来源与证据状态。\"\n}\n```\n\n保留同一组数据的 Markdown 表格和 1–3 句读图结论。例子只解释格式，实际图表必须使用当前项目数据。先确定数据与 encoding，再由渲染器映射为图形；不让模型手写字符轴线或字符条形图。\n\n## 视觉与交互\n\n复用宿主品牌字体、主色和明暗模式。同一报告的图表配色和同类对象颜色保持一致；无品牌规范时采用白底、深色文字、低饱和主色与浅网格，风险色只用于风险。HTML 表格设置合理列宽、长文换行、数字对齐、表头和分组；宽表在局部滚动，交互文档可固定表头。\n\n每图有标题、轴名、单位、图例（有多系列时）、来源、证据状态及读图结论。定性矩阵使用分类坐标和浅色分区；同一格多点错开并保持等级归属，提供完整名称和明细表，避免 P1–P9 堆叠遮挡。标签不足时增大容器或提供缩放，不缩小到难以阅读。\n\n交互文档提供悬停详情、适配宽度、放大查看和导出 SVG/PNG；静态导出把悬停信息的重要部分写入图注或数据表。按实际工具能力实现，不能声称未实现的交互可用。\n\n## 交付检查与降级\n\n核对图、表、正文的分类、单位、值、分母、来源和证据性质一致；检查默认尺寸与放大后文字无重叠、裁切，主题和打印/导出背景清晰。完成实际渲染才称“图表已渲染”。\n\n环境缺渲染器时保留 chart 数据或 Mermaid 源码＋数据表＋结论，并明确“待宿主渲染”；Markdown 阅读器不支持时可附已生成 SVG/PNG。渲染失败显示明细表与原因，不丢弃正文，也不回退为 ASCII 字符矩阵。没有可用分析数据的章节用“缺失证据表”说明待补内容，不生成虚构分布、比例、留存曲线或点位。\n",
+            "directory": "/Users/penghao/Library/Application Support/AIPM Workbench/nodes/report.prd"
+          },
+          "supplements": [],
+          "draft": false,
+          "startedAt": "2026-10-24T13:24:46.957Z",
+          "fingerprint": "1fbff6c458eb8919b99a16856ff14996bd5fcd9cfc83f38b46e2b3ba35f17e2f",
+          "model": {
+            "id": "3b9de208-5b65-4b40-acbc-a7c3d618e5e4",
+            "api": "deepseek-messages",
+            "baseURL": "https://api.deepseek.com/anthropic",
+            "model": "deepseek-flash"
+          },
+          "output": {
+            "kind": "documents",
+            "materials": [],
+            "documents": [
+              {
+                "id": "aa4cd981-0147-4a43-a46c-cf2a0b11bff5",
+                "title": "PRD文档",
+                "format": "markdown",
+                "content": "> **资料完整性提示：信息不充分**\n> - 项目信息：项目名称、负责人、评审人、版本号、日期、所属端等均未提供\n> - 版本记录：无历史版本、修订人、修订日期、变更说明\n> - 原型：无原型截图或设计稿，仅有规格级页面元素描述，详细方案“原型”列无可用资产\n> - 需求目标：只有功能达成判定方式，“主动消息投诉率”缺分子分母、统计周期、入口与基线，目标值待确认，不可验收\n> - 需求背景：仅有测试材料中的定性陈述，无访谈、日志、投诉量或基线数据支撑影响程度\n> - 页面状态补齐：加载中、拉取失败、保存中等状态属分析推断，未经确认，不能直接作为正式 PRD 规则\n> - 待确认事项责任方：Q1–Q14 均未指派责任人与排期信息\n> - 数据埋点：dnd_toggle 触发时机、dnd_save 字段格式、time_zone 格式未定；缺投诉类、主动问候曝光、拦截计数、用户或设备标识等事件，且不得表述为已上线\n> - 术语范围：“两端”具体指哪两端未定义，双端同步规则范围不清\n> - 视觉规范：仅有品牌主色 #315eb6，缺字号、间距、明暗模式、无障碍与多语言规格\n> - 业务流程图与交互流程图：Mermaid 源码已给出，但未渲染，且部分节点（如未登录拦截时机、离线冲突合并）依赖待确认项\n\n# PRD文档\n\n> **资料不足提示（全文适用）**：本文输入为一份被标注为“软件QA人造测试材料”的方案分析（材料 id 0337035b-466d-4037-beeb-8dc579dc92f0），其中全部产品规则、页面范围、埋点字典的证据状态统一为**测试数据**，不是真实用户结论、不是已验收 PRD、不代表任何指标已达成。本文仅做归类、去重与编排，未做外部检索、未计算统计、未做产品决策。\n>\n> 缺失项：**项目信息、版本记录**完全缺失（材料未提供项目名称、负责人、评审人、版本号、日期、所属端与修订历史）；**无原型截图或设计稿**，详细方案“原型”列无可用资产；**无访谈、日志、投诉量与基线数据**，因此全文不含任何频次、比例、趋势数字；两张流程图为**仅源码、未渲染**状态；标注为“分析推断”的状态与元素为上游分析节点补充建议，**未经确认，不进入正式规则**。\n\n## 项目信息\n\n**材料不足。** 现有输入未提供以下任何字段，本文不自行拟定：\n\n| 字段 | 现状 | 所需输入 |\n| --- | --- | --- |\n| 项目／需求名称 | 材料仅给出需求名“宠物免打扰设置” | 正式立项名称与项目编号 |\n| 所属端 | 材料出现“双端同步”表述，但“两端”具体所指未定义（对应 Q4） | iOS／Android／桌面端等明确范围 |\n| 产品负责人 | 缺失 | 责任人姓名与职责 |\n| 设计负责人 | 缺失 | 界面稿与文案责任人 |\n| 研发负责人 | 缺失 | 保存逻辑与埋点实现责任人 |\n| 评审人与评审结论 | 缺失 | 评审记录 |\n| 版本号与发布日期 | 缺失（见版本记录） | 版本命名规则与计划日期 |\n| 关联系统 | 材料仅涉及设置页与时间弹层；推送系统重构明确为范围外 | 是否需要关联推送／会话系统文档 |\n\n唯一可引用的视觉输入：品牌主色 **#315eb6**（测试数据，材料给定）；无字号、间距、明暗模式、无障碍与多语言规格（Q14）。\n\n## 版本记录\n\n**材料不足。** 无历史版本、修订人、修订日期与变更说明，不虚构版本行。\n\n| 版本号 | 日期 | 修订人 | 变更说明 | 状态 |\n| --- | --- | --- | --- | --- |\n| 待补 | 待补 | 待补 | 待补 | 本文为基于测试数据的草案，未评审、未验收 |\n\n## 需求背景\n\n> 证据性质：以下均为测试材料内的定性陈述（**测试数据**），无访谈、日志、投诉量或基线数据；影响程度不可量化，本文不生成任何数字。\n\n| 场景 | 问题 | 影响（定性） | 证据（性质） | 证据缺口 |\n| --- | --- | --- | --- | --- |\n| 用户在工作时使用应用 | 主动问候会在用户不希望被打断的时段直接出现 | 打断专注；用户唯一可用的规避方式是退出应用 | 测试材料陈述（测试数据） | 无访谈、无打断频次或投诉量、无基线 |\n| 用户希望“只在某些时段安静” | 当前测试版本没有免打扰能力，主动问候全部直接展示 | 用户无法在保留应用的同时避免主动消息 | 材料“现有方案”段（测试数据） | 无竞品或替代方案对比材料 |\n| 用户跨午夜需要安静（如 22:00–08:00） | 时段跨天，若按单日区间处理会出现非法区间 | 时段规则若不明确将无法实现 | 材料规则（测试数据） | 无 |\n\n**缺失证据表（背景量化部分）**\n\n| 待补内容 | 用途 | 状态 |\n| --- | --- | --- |\n| 用户访谈或问卷记录 | 验证“工作时段被打断”是否真实高频 | 缺失 |\n| 主动问候下发日志与时段分布 | 判断免打扰默认时段是否合理 | 缺失 |\n| 投诉量或退出行为数据 | 量化问题影响程度 | 缺失 |\n| 竞品或替代方案对比 | 说明方案选择依据 | 缺失 |\n\n## 需求目标\n\n| 目标 | 判定方式／统计方式 | 分母／周期 | 基线 | 目标值 | 状态 |\n| --- | --- | --- | --- | --- | --- |\n| 用户可开启免打扰并设置每日时间段 | 开关状态与起止时段可保存，并在双端回读一致（功能达成判定） | 不适用（功能项） | 当前测试版本无该能力 | 待确认 | 待实现，未验证 |\n| 观察主动消息投诉率 | 分子：投诉主动消息的次数或人数；分母：同期收到主动问候的用户数或消息条数（**均未定义**） | 待确认 | **缺失**（材料明确无基线） | 待基线确认 | 待验证，不可验收 |\n| 降低工作时段被打断 | 未定义 | — | 缺失 | — | 证据不足，不入目标 |\n\n说明：\n- 当前只能给出“功能达成”的判定方式；“投诉率”仅作待验证观察指标，且现有埋点字典（dnd_toggle、dnd_save）无法计算该指标（Q1、Q3）。\n- 全文不得表述为已达成或已验证。\n\n## 需求概述\n\n**一句话范围**：在应用设置内新增“宠物免打扰设置”，允许用户开启免打扰并设置每日一个时间段，期间仅阻止主动问候，不阻止用户主动聊天，不改变成长逻辑；仅包含两个界面单元。\n\n| 编号 | 内容 | 证据状态 |\n| --- | --- | --- |\n| C1 | 需求名：宠物免打扰设置；本 PRD 只做该需求 | 测试数据（材料给定） |\n| C2 | 页面只有设置页 P1 与时间选择弹层 P2 | 测试数据（材料给定） |\n| C3 | 默认关闭免打扰 | 测试数据（材料给定） |\n| C4 | 开启后默认时段 22:00–08:00 | 测试数据（材料给定） |\n| C5 | 时段按设备当前时区解释，跨午夜合法 | 测试数据（材料给定） |\n| C6 | 起止时间相同视为全天免打扰，并有明确提示 | 测试数据（材料给定） |\n| C7 | 仅阻止主动问候，不阻止用户主动聊天 | 测试数据（材料给定） |\n| C8 | 喂养成长不暂停 | 测试数据（材料给定） |\n| C9 | 保存失败提示重试，并保留上次成功状态 | 测试数据（材料给定） |\n| C10 | 未登录先登录 | 测试数据（材料给定） |\n| C11 | 双端状态同步，冲突以服务端最近成功保存为准 | 测试数据（材料给定；两端定义见 Q4） |\n| C12 | 离线可修改，显示待同步，恢复联网后提交 | 测试数据（材料给定） |\n| C13 | 范围外：多时间段、按星期设置、推送系统重构 | 测试数据（材料给定） |\n| C14 | 此外不含社区、商业模式、成长玩法改版 | 分析推断（范围收拢说明） |\n\n## 业务流程图\n\n> 图注：描述状态与数据流转（非用户操作路径）；源码为主题 base、主色 #315eb6。**当前未渲染，待宿主渲染**；无渲染器时以下方共享规则表（R1–R14）与状态表为准。\n\n```mermaid\n%%{init: {\"theme\":\"base\",\"themeVariables\":{\"primaryColor\":\"#315eb6\",\"primaryTextColor\":\"#ffffff\",\"lineColor\":\"#315eb6\"}}}%%\nflowchart TD\n  A[进入设置页] --> B{已登录?}\n  B -- 否 --> C[登录] --> B\n  B -- 是 --> D[拉取服务端免打扰状态]\n  D --> E[按服务端最近成功保存展示开关与时段]\n  E --> F{用户修改?}\n  F -- 否 --> E\n  F -- 是 --> G[本地暂存修改并标记待同步]\n  G --> H{当前在线?}\n  H -- 否 --> I[保持待同步] --> H\n  H -- 是 --> J[提交保存并携带 start_time/end_time/time_zone]\n  J --> K{保存成功?}\n  K -- 否 --> L[提示重试并回退到上次成功状态] --> J\n  K -- 是 --> M[以本次成功结果为最新, 双端同步展示]\n```\n\n依赖待确认项的节点：未登录拦截时机（Q7）、离线与冲突的先后顺序与是否提示（Q8、E4/E5）、字段格式（Q5）。\n\n## 交互流程图\n\n> 图注：描述用户操作路径，与业务流程图不互相替代；**未渲染，待宿主渲染**。\n\n```mermaid\n%%{init: {\"theme\":\"base\",\"themeVariables\":{\"primaryColor\":\"#315eb6\",\"primaryTextColor\":\"#ffffff\",\"lineColor\":\"#315eb6\"}}}%%\nflowchart LR\n  U1[设置页: 免打扰分组] -->|打开开关| U2[时段行出现, 默认 22:00-08:00]\n  U1 -->|点击时段行| U3[时间选择弹层]\n  U3 --> U4{起止相同?}\n  U4 -- 是 --> U5[提示: 当前为全天免打扰] --> U6[确认]\n  U4 -- 否 --> U6[确认]\n  U6 --> U7[回到设置页并触发保存]\n  U3 -->|取消| U8[丢弃修改, 保持原状态]\n```\n\n依赖待确认项：时段行在关闭态是隐藏还是置灰（S2）、全天展示形态与文案（Q10）、取消行为（T4）、未登录拦截时机（Q7）。\n\n## 详细方案\n\n**原型状态声明**：本文无任何原型截图或设计稿，下方“原型”列一律为“无原型资产（材料不足）”，元素清单为规格级描述，布局、字号、间距、明暗模式待设计补充（Q14）。品牌主色 #315eb6（测试数据）。\n\n### 模块总览（一屏一行）\n\n| 一级模块 | 二级功能 | 原型 | 描述 |\n| --- | --- | --- | --- |\n| 免打扰设置（P1） | 免打扰开关控制 | 无原型资产（材料不足） | 二元开关，默认关闭；开启后启用默认时段 22:00–08:00；未登录先登录；保存失败保留上次成功状态并提示重试；离线可改并显示待同步 |\n| 免打扰设置（P1） | 当前时段展示与入口 | 无原型资产（材料不足） | 开启后显示当前生效时段；点击进入时间选择弹层；起止相同时展示全天提示；展示时区说明与状态提示区 |\n| 时间选择弹层（P2） | 起止时间选择 | 无原型资产（材料不足） | 小时与分钟选择，默认 22:00 与 08:00；跨午夜合法；时区只读；确认提交并触发保存，取消放弃修改 |\n| 时间选择弹层（P2） | 全天提示 | 无原型资产（材料不足） | 起止完全一致时实时提示“当前为全天免打扰”，并保持可确认；文案与展示形态待确认（Q10） |\n\n### P1 免打扰设置页 · 页面元素\n\n| 编号 | 元素 | 说明 | 所属边界 | 证据状态 |\n| --- | --- | --- | --- | --- |\n| P1-E1 | 页面标题与返回 | 进入设置页的常规导航 | 本页 | 分析推断（导航形态待设计确认） |\n| P1-E2 | “免打扰”分组标题 | 分组入口，说明该设置的作用 | 本页 | 分析推断（文案待定） |\n| P1-E3 | 免打扰开关 | 二元开关，默认关闭（C3） | 本页 | 测试数据（C3） |\n| P1-E4 | 时段行 | 开启后显示当前生效时段，默认 22:00–08:00（C4） | 本页 | 测试数据（C4） |\n| P1-E5 | 全天提示文案 | 起止相同时明确提示当前为全天免打扰（C6） | 本页与 P2 共用 | 测试数据（C6），文案待定 |\n| P1-E6 | 时区说明 | 说明时段按设备当前时区生效（C5） | 本页 | 测试数据（C5），展示形态待定 |\n| P1-E7 | 状态提示区 | 展示“待同步”“保存失败”等状态 | 本页 | 测试数据（C9、C12），形态待定 |\n| P1-E8 | 重试入口 | 保存失败时提供重试操作（C9） | 本页 | 测试数据（C9），重试方式见 Q9 |\n\n### P1 页面状态（每个状态一屏一行）\n\n| 状态 | 触发条件 | 页面表现 | 交互说明 | 异常与提示 | 证据状态 |\n| --- | --- | --- | --- | --- | --- |\n| S1 未登录 | 未登录用户进入 | 先完成登录再进入设置页 | 登录后回到设置入口 | 登录中断后回到原入口，不保留未提交修改；拦截时机见 Q7 | 测试数据（C10） |\n| S2 已登录·关闭态（默认） | 首次进入或用户关闭 | 开关为关；时段行隐藏或置灰 | 打开开关即启用默认时段 22:00–08:00 | 无 | 测试数据（C3、C4），隐藏或置灰待确认 |\n| S3 开启态·在线已保存 | 开关打开且保存成功 | 开关为开；时段行显示当前时段 | 点击时段行打开 P2 | 无 | 测试数据（C4） |\n| S4 开启态·离线待同步 | 离线时修改（开关或时段） | 开关与时段显示本地新值；状态提示区显示“待同步” | 可继续修改；恢复联网后自动提交（C12） | 待同步期间不宣称已生效于服务端 | 测试数据（C12） |\n| S5 保存中 | 提交保存请求 | 开关与时段显示目标值；状态提示区显示保存中 | 保存中重复操作的处理待确认 | 无 | **分析推断**（材料未规定） |\n| S6 保存失败 | 保存返回失败 | 回退并保留上次成功状态 | 提供重试入口（C9） | 提示“保存失败，请重试”；重试方式与次数见 Q9 | 测试数据（C9） |\n| S7 加载中 | 进入页面拉取服务端状态 | 展示骨架或占位 | 加载完成前不允许修改 | 无 | **分析推断**（材料未规定） |\n| S8 拉取失败 | 拉取服务端状态失败 | 提示重试；不回退到本地臆测值 | 重试后重新拉取 | 与 S6 文案需区分 | **分析推断**（材料未规定） |\n\n### P2 时间选择弹层 · 页面元素\n\n| 编号 | 元素 | 说明 | 所属边界 | 证据状态 |\n| --- | --- | --- | --- | --- |\n| P2-E1 | 开始时间选择 | 小时与分钟选择，默认 22:00（C4） | 弹层 | 测试数据（C4） |\n| P2-E2 | 结束时间选择 | 小时与分钟选择，默认 08:00（C4） | 弹层 | 测试数据（C4） |\n| P2-E3 | 时区只读说明 | 显示按设备当前时区生效，不可在此修改时区（C5） | 弹层 | 测试数据（C5） |\n| P2-E4 | 全天提示 | 起止相同时实时提示“当前为全天免打扰”（C6） | 弹层 | 测试数据（C6），文案待定 |\n| P2-E5 | 确认与取消 | 确认提交并触发保存；取消放弃本次修改 | 弹层 | 测试数据（隐含于 C4、C9），按钮文案待定 |\n\n### P2 状态与交互\n\n| 状态 | 触发 | 表现与交互 | 异常 | 证据状态 |\n| --- | --- | --- | --- | --- |\n| T1 默认打开 | 从 S3／S4 点击时段行 | 带入当前生效时段，焦点落在开始时间 | 无 | 分析推断（带入值形态待确认） |\n| T2 跨午夜区间 | 起止落在不同日（如 22:00–08:00） | 视为合法区间，不做非法校验，展示为“22:00–08:00” | 无 | 测试数据（C5） |\n| T3 起止相同 | 起止小时分钟完全一致 | 提示当前为全天免打扰并保持可确认 | 提示文案与展示形态见 Q10 | 测试数据（C6） |\n| T4 取消 | 点击取消或关闭弹层 | 丢弃本次修改，页面保持上次成功状态 | 无 | 测试数据（隐含），行为待确认 |\n| T5 确认后保存失败 | 确认后提交失败 | 回到设置页并进入 S6 | 提示重试 | 测试数据（C9） |\n\n### 跨页共享规则（集中定义，各屏复用）\n\n| 编号 | 规则 | 说明 | 证据状态 |\n| --- | --- | --- | --- |\n| R1 | 默认关闭 | 无本地与服务端配置时，免打扰为关闭 | 测试数据（C3） |\n| R2 | 默认时段 | 首次开启时生效 22:00–08:00 | 测试数据（C4） |\n| R3 | 时区 | 时段一律按设备当前时区解释；存储需携带时区标识 | 测试数据（C5），格式见 Q5 |\n| R4 | 跨午夜 | 结束时间早于开始时间视为跨午夜，合法 | 测试数据（C5） |\n| R5 | 全天 | 起止相同视为全天免打扰，需明确提示 | 测试数据（C6） |\n| R6 | 作用范围 | 免打扰只阻止主动问候展示；用户主动发起聊天不受影响 | 测试数据（C7） |\n| R7 | 与成长的关系 | 免打扰期间喂养与成长逻辑不暂停、不改判 | 测试数据（C8） |\n| R8 | 保存成功 | 以服务端返回的成功结果作为唯一生效依据 | 测试数据（C9、C11） |\n| R9 | 保存失败 | 提示重试，并保留上次成功状态，不写入失败值 | 测试数据（C9） |\n| R10 | 登录门槛 | 未登录先登录，登录后回到设置入口 | 测试数据（C10），时机见 Q7 |\n| R11 | 双端同步 | 双端展示以服务端最近一次成功保存为准 | 测试数据（C11），两端定义见 Q4 |\n| R12 | 冲突处理 | 冲突时服务端最近成功保存覆盖本地未提交值；是否提示见 Q8 | 测试数据（C11） |\n| R13 | 离线 | 离线可修改并显示待同步；恢复联网后提交 | 测试数据（C12） |\n| R14 | 范围外 | 不做多时间段、不做按星期、不做推送系统重构 | 测试数据（C13） |\n\n### 异常清单（表现已见状态表，此处仅列触发与数据结果）\n\n| 编号 | 异常或状态 | 触发条件 | 对应状态 | 数据结果 | 待确认点 |\n| --- | --- | --- | --- | --- | --- |\n| E1 | 未登录 | 未登录访问设置页 | S1 | 不产生保存 | Q7 拦截时机 |\n| E2 | 保存失败 | 保存返回失败 | S6／T5 | 服务端状态不变 | Q9 重试方式 |\n| E3 | 离线修改 | 无网络时修改 | S4 | 本地暂存，未提交 | 待同步期间多次修改的合并方式 |\n| E4 | 联网后提交 | 恢复网络 | S4→S3／S6 | 提交最新本地值 | 与 E5 的先后顺序 |\n| E5 | 双端冲突 | 另一端已成功保存 | S3／S4 | 本地值被覆盖 | Q8 是否提示 |\n| E6 | 起止相同 | 用户选成同一时间 | T3 | 保存为全天语义 | Q10 展示形态 |\n| E7 | 跨午夜 | 结束早于开始 | T2 | 合法区间 | 无 |\n| E8 | 设备时区变更 | 系统时区变化 | 未定义 | 待确认 | Q11 |\n| E9 | 加载或拉取失败 | 进入页面拉取失败 | S7／S8 | 不采用臆测值 | **分析推断**，需确认 |\n\n## 数据埋点\n\n> 以下事件与参数全部来自材料给定的埋点字典（**测试数据**）；**尚未上线，不得表述为已上线**。字段格式（Q5）与触发时机（Q6）未定，需补齐后再交研发。\n\n| 事件 | 触发时机 | 参数 | 类型 | 取值 | 状态 |\n| --- | --- | --- | --- | --- | --- |\n| dnd_toggle | 用户切换免打扰开关时（切换即上报或保存成功后上报待确认，Q6） | enabled | boolean | true／false | 字典给定，未上线 |\n| dnd_save | 保存免打扰时段后 | start_time | string | 格式待确认（Q5） | 字典给定，未上线 |\n| dnd_save | 保存免打扰时段后 | end_time | string | 格式待确认（Q5） | 字典给定，未上线 |\n| dnd_save | 保存免打扰时段后 | time_zone | string | 格式待确认，IANA 或偏移（Q5） | 字典给定，未上线 |\n| dnd_save | 保存免打扰时段后 | result | 枚举 | success／fail | 字典给定，未上线 |\n\n**埋点缺口（缺失证据表）**\n\n| 缺口 | 影响 | 说明 |\n| --- | --- | --- |\n| 无投诉类事件 | 目标“主动消息投诉率”无法计算 | 需另行定义投诉上报事件与统计方式（Q1、Q3） |\n| 无主动问候曝光或下发事件 | 无法确定投诉率分母 | 需确认是否复用既有推送或会话埋点，材料未提供 |\n| 无免打扰生效期内的拦截计数 | 无法验证“仅阻止主动问候”的实际效果 | 材料未提供，不自行扩字段 |\n| 无用户或设备标识字段 | 无法按端拆分同步问题 | 材料未提供，不自行扩字段 |\n\n因缺上述事件与数据，本文不生成任何统计图、趋势或留存曲线。\n\n## 待确认事项\n\n| 编号 | 事项 | 影响 | 阻塞程度 | 责任方 |\n| --- | --- | --- | --- | --- |\n| Q1 | “主动消息投诉率”的统计方式：投诉入口、分子、分母（收到主动问候的用户数或消息条数）、统计周期、是否区分主动与被动 | 目标不可验收 | 高 | 待指派（人员未知） |\n| Q2 | 目标值与基线（材料明确待基线确认） | 目标不可验收 | 高 | 待指派 |\n| Q3 | 现有埋点字典无投诉类事件，指标无法由 dnd_toggle、dnd_save 计算；是否新增 | 指标无法计算 | 高 | 待指派 |\n| Q4 | “两端”具体指哪两端（如 iOS／Android；移动端／桌面端） | 双端同步规则范围不清 | 中 | 待指派 |\n| Q5 | start_time、end_time 传参格式（HH:mm 或带日期）与 time_zone 格式（IANA 或偏移） | 保存逻辑与埋点无法实现 | 高 | 待指派（研发） |\n| Q6 | dnd_toggle 触发时机：切换即上报还是保存成功后上报 | “切换次数”统计口径歧义 | 中 | 待指派 |\n| Q7 | 未登录判定时机：进入设置页即拦截，还是点击开关时拦截 | 首个页面状态不定 | 中 | 待指派 |\n| Q8 | 离线期间另一端已成功保存、联网后本地提交被覆盖时，是否需显式提示用户 | 异常体验与文案不定 | 中 | 待指派 |\n| Q9 | 保存失败的重试方式：手动、自动或两者；重试次数与超时 | 失败态规格不定 | 中 | 待指派 |\n| Q10 | 全天（起止相同）的展示形态：显示“全天”还是“22:00–22:00”，并确定提示文案 | 文案不一致 | 低 | 待指派（设计） |\n| Q11 | 设备时区变更后，已保存时段的解释与提示 | 跨时区一致性 | 中 | 待指派 |\n| Q12 | 免打扰开启后是否需要在会话页提供可见状态标识 | 范围可能扩张 | 低 | 待指派 |\n| Q13 | 人员、评审与验收责任方 | 无法排期与指派待办 | 高 | 待指派 |\n| Q14 | 是否需要无障碍、多语言、暗色模式适配；字号、间距等视觉规格 | 视觉与文案规格不全 | 低 | 待指派（设计） |\n\n**纳入建议（不构成产品决策，仅为编排说明）**：S5、S7、S8、E9、P1-E1、P1-E2、T1 均标注为“分析推断”，需确认后方可写入正式规则；Q1、Q2、Q3、Q5、Q13 关闭前，本 PRD 的目标章节只能保持“功能达成判定 ＋ 待验证观察指标”的表述。",
+                "outline": "# PRD文档\n## 项目信息\n## 版本记录\n## 需求背景\n## 需求目标\n## 需求概述\n## 业务流程图\n## 交互流程图\n## 详细方案\n## 数据埋点\n## 待确认事项",
+                "summary": "## 资料完整性\n- 信息不充分：项目信息：项目名称、负责人、评审人、版本号、日期、所属端等均未提供；版本记录：无历史版本、修订人、修订日期、变更说明；原型：无原型截图或设计稿，仅有规格级页面元素描述，详细方案“原型”列无可用资产；需求目标：只有功能达成判定方式，“主动消息投诉率”缺分子分母、统计周期、入口与基线，目标值待确认，不可验收；需求背景：仅有测试材料中的定性陈述，无访谈、日志、投诉量或基线数据支撑影响程度；页面状态补齐：加载中、拉取失败、保存中等状态属分析推断，未经确认，不能直接作为正式 PRD 规则；待确认事项责任方：Q1–Q14 均未指派责任人与排期信息；数据埋点：dnd_toggle 触发时机、dnd_save 字段格式、time_zone 格式未定；缺投诉类、主动问候曝光、拦截计数、用户或设备标识等事件，且不得表述为已上线；术语范围：“两端”具体指哪两端未定义，双端同步规则范围不清；视觉规范：仅有品牌主色 #315eb6，缺字号、间距、明暗模式、无障碍与多语言规格；业务流程图与交互流程图：Mermaid 源码已给出，但未渲染，且部分节点（如未登录拦截时机、离线冲突合并）依赖待确认项\n\n### 核心结论\n- 本 PRD 仅覆盖“宠物免打扰设置”单一需求：两个界面单元（免打扰设置页 P1、时间选择弹层 P2），已整理出 14 条跨页共享规则（R1–R14）、8 个设置页状态、5 个弹层状态与 2 个埋点事件（dnd_toggle、dnd_save）。\n- 需求目标只能给出“功能达成判定方式”；“主动消息投诉率”缺分子、分母、周期、投诉入口与基线，且现有埋点字典无投诉类事件，故仅作待验证观察指标，不可验收。\n- 全文证据性质统一为“测试数据”（人造测试材料），分析节点补充的状态（S5、S7、S8、E9）与文案、导航等待定项均标为“分析推断”，未当作已确认规则。\n\n### 证据局限\n- 项目信息、版本记录、责任人与评审方完全缺失，无法填写；无原型截图或设计稿，详细方案“原型”列无可用资产，页面元素仅为规格级。\n- 无真实访谈、日志、投诉量与基线，不生成任何频次、比例、趋势数字，相关章节以缺失证据表说明待补内容。\n- 两张 Mermaid 流程图仅保留源码，未渲染，不宣称图表已渲染；埋点字段格式与触发时机未定，且不得表述为已上线。\n\n### 下一步\n- 先关闭高阻塞项：Q1（投诉统计方式）、Q2（基线与目标值）、Q3（投诉类埋点）、Q5（字段格式）、Q13（责任方）。\n- 由设计以 #315eb6 输出 P1、P2 界面稿与提示文案，替换规格级元素描述；确认 S5、S7、S8、E9 是否纳入正式规则。\n- 埋点格式与触发时机确认后交研发对照实现，全文证据性质在合并时不得改写为已验收结论。",
+                "quality": {
+                  "level": "partial",
+                  "missing": [
+                    "项目信息：项目名称、负责人、评审人、版本号、日期、所属端等均未提供",
+                    "版本记录：无历史版本、修订人、修订日期、变更说明",
+                    "原型：无原型截图或设计稿，仅有规格级页面元素描述，详细方案“原型”列无可用资产",
+                    "需求目标：只有功能达成判定方式，“主动消息投诉率”缺分子分母、统计周期、入口与基线，目标值待确认，不可验收",
+                    "需求背景：仅有测试材料中的定性陈述，无访谈、日志、投诉量或基线数据支撑影响程度",
+                    "页面状态补齐：加载中、拉取失败、保存中等状态属分析推断，未经确认，不能直接作为正式 PRD 规则",
+                    "待确认事项责任方：Q1–Q14 均未指派责任人与排期信息",
+                    "数据埋点：dnd_toggle 触发时机、dnd_save 字段格式、time_zone 格式未定；缺投诉类、主动问候曝光、拦截计数、用户或设备标识等事件，且不得表述为已上线",
+                    "术语范围：“两端”具体指哪两端未定义，双端同步规则范围不清",
+                    "视觉规范：仅有品牌主色 #315eb6，缺字号、间距、明暗模式、无障碍与多语言规格",
+                    "业务流程图与交互流程图：Mermaid 源码已给出，但未渲染，且部分节点（如未登录拦截时机、离线冲突合并）依赖待确认项"
+                  ],
+                  "note": "材料是关于“宠物免打扰设置”的 PRD 方案分析，与大纲主题高度相关，可作为 PRD 报告的唯一输入。但材料性质为人造测试数据，无真实访谈、基线、原型和责任人信息，项目信息与版本记录完全缺失，目标不可验收，埋点字段格式与投诉类事件缺失。因此相关但不足，可按现有材料整理为带“资料不足”标识的 PRD 草案，缺失章节须标注，分析推断须保留其性质。"
+                }
+              }
+            ],
+            "sources": [],
+            "assumptions": [],
+            "summary": "### 核心结论\n- 本 PRD 仅覆盖“宠物免打扰设置”单一需求：两个界面单元（免打扰设置页 P1、时间选择弹层 P2），已整理出 14 条跨页共享规则（R1–R14）、8 个设置页状态、5 个弹层状态与 2 个埋点事件（dnd_toggle、dnd_save）。\n- 需求目标只能给出“功能达成判定方式”；“主动消息投诉率”缺分子、分母、周期、投诉入口与基线，且现有埋点字典无投诉类事件，故仅作待验证观察指标，不可验收。\n- 全文证据性质统一为“测试数据”（人造测试材料），分析节点补充的状态（S5、S7、S8、E9）与文案、导航等待定项均标为“分析推断”，未当作已确认规则。\n\n### 证据局限\n- 项目信息、版本记录、责任人与评审方完全缺失，无法填写；无原型截图或设计稿，详细方案“原型”列无可用资产，页面元素仅为规格级。\n- 无真实访谈、日志、投诉量与基线，不生成任何频次、比例、趋势数字，相关章节以缺失证据表说明待补内容。\n- 两张 Mermaid 流程图仅保留源码，未渲染，不宣称图表已渲染；埋点字段格式与触发时机未定，且不得表述为已上线。\n\n### 下一步\n- 先关闭高阻塞项：Q1（投诉统计方式）、Q2（基线与目标值）、Q3（投诉类埋点）、Q5（字段格式）、Q13（责任方）。\n- 由设计以 #315eb6 输出 P1、P2 界面稿与提示文案，替换规格级元素描述；确认 S5、S7、S8、E9 是否纳入正式规则。\n- 埋点格式与触发时机确认后交研发对照实现，全文证据性质在合并时不得改写为已验收结论。",
+            "warnings": [
+              "主动消息投诉率的分子、分母、统计周期与投诉入口如何定义？基线是多少？",
+              "现有埋点字典没有投诉类事件，是否需要新增上报事件才能观察该指标？",
+              "dnd_save 的 start_time、end_time、time_zone 使用什么格式（HH:mm 还是带日期；IANA 还是偏移）？",
+              "dnd_toggle 在开关切换时上报，还是保存成功后上报？",
+              "“双端”具体指哪两端？离线期间被另一端覆盖时是否需要提示用户？",
+              "未登录是在进入设置页时拦截，还是点击开关时拦截？",
+              "起止相同时，时段行显示“全天”还是显示相同时间？",
+              "设备时区变更后已保存时段如何解释与提示？",
+              "保存失败的重试是手动、自动还是两者都有？重试次数与超时如何设定？",
+              "本项目的人员与评审、验收责任方是谁？",
+              "是否需要无障碍、多语言、暗色模式适配？",
+              "信息不充分：项目信息：项目名称、负责人、评审人、版本号、日期、所属端等均未提供；版本记录：无历史版本、修订人、修订日期、变更说明；原型：无原型截图或设计稿，仅有规格级页面元素描述，详细方案“原型”列无可用资产；需求目标：只有功能达成判定方式，“主动消息投诉率”缺分子分母、统计周期、入口与基线，目标值待确认，不可验收；需求背景：仅有测试材料中的定性陈述，无访谈、日志、投诉量或基线数据支撑影响程度；页面状态补齐：加载中、拉取失败、保存中等状态属分析推断，未经确认，不能直接作为正式 PRD 规则；待确认事项责任方：Q1–Q14 均未指派责任人与排期信息；数据埋点：dnd_toggle 触发时机、dnd_save 字段格式、time_zone 格式未定；缺投诉类、主动问候曝光、拦截计数、用户或设备标识等事件，且不得表述为已上线；术语范围：“两端”具体指哪两端未定义，双端同步规则范围不清；视觉规范：仅有品牌主色 #315eb6，缺字号、间距、明暗模式、无障碍与多语言规格；业务流程图与交互流程图：Mermaid 源码已给出，但未渲染，且部分节点（如未登录拦截时机、离线冲突合并）依赖待确认项",
+              "主动消息投诉率的投诉入口、分子、分母、统计周期与是否区分主动／被动（Q1）",
+              "目标值与基线（Q2）",
+              "是否新增投诉类埋点及相关事件定义（Q3）",
+              "“两端”具体所指端类型（Q4）",
+              "start_time、end_time、time_zone 的传参格式（Q5）",
+              "dnd_toggle 触发时机（Q6）",
+              "未登录拦截时机（Q7）",
+              "双端冲突覆盖是否提示用户（Q8）",
+              "保存失败的重试方式、次数与超时（Q9）",
+              "全天的展示形态与提示文案（Q10）",
+              "设备时区变更后的处理（Q11）",
+              "是否需要在会话页提供免打扰可见标识（Q12）",
+              "人员、评审与验收责任方（Q13）",
+              "无障碍、多语言、暗色模式及视觉规格（Q14）",
+              "项目信息与版本记录所需的项目名称、负责人、版本号、日期、所属端"
+            ],
+            "fileReferences": [],
+            "inputSnapshot": [
+              {
+                "id": "0337035b-466d-4037-beeb-8dc579dc92f0",
+                "title": "PRD方案分析",
+                "evidence": "material"
+              }
+            ],
+            "quality": {
+              "level": "partial",
+              "missing": [
+                "项目信息：项目名称、负责人、评审人、版本号、日期、所属端等均未提供",
+                "版本记录：无历史版本、修订人、修订日期、变更说明",
+                "原型：无原型截图或设计稿，仅有规格级页面元素描述，详细方案“原型”列无可用资产",
+                "需求目标：只有功能达成判定方式，“主动消息投诉率”缺分子分母、统计周期、入口与基线，目标值待确认，不可验收",
+                "需求背景：仅有测试材料中的定性陈述，无访谈、日志、投诉量或基线数据支撑影响程度",
+                "页面状态补齐：加载中、拉取失败、保存中等状态属分析推断，未经确认，不能直接作为正式 PRD 规则",
+                "待确认事项责任方：Q1–Q14 均未指派责任人与排期信息",
+                "数据埋点：dnd_toggle 触发时机、dnd_save 字段格式、time_zone 格式未定；缺投诉类、主动问候曝光、拦截计数、用户或设备标识等事件，且不得表述为已上线",
+                "术语范围：“两端”具体指哪两端未定义，双端同步规则范围不清",
+                "视觉规范：仅有品牌主色 #315eb6，缺字号、间距、明暗模式、无障碍与多语言规格",
+                "业务流程图与交互流程图：Mermaid 源码已给出，但未渲染，且部分节点（如未登录拦截时机、离线冲突合并）依赖待确认项"
+              ],
+              "note": "材料是关于“宠物免打扰设置”的 PRD 方案分析，与大纲主题高度相关，可作为 PRD 报告的唯一输入。但材料性质为人造测试数据，无真实访谈、基线、原型和责任人信息，项目信息与版本记录完全缺失，目标不可验收，埋点字段格式与投诉类事件缺失。因此相关但不足，可按现有材料整理为带“资料不足”标识的 PRD 草案，缺失章节须标注，分析推断须保留其性质。"
+            },
+            "analysis": {
+              "documentId": "report.prd",
+              "documentTitle": "PRD文档",
+              "evidenceLevel": "partial",
+              "materialNature": "测试数据（人造测试材料），非真实市场或用户证据",
+              "materialSourceId": "0337035b-466d-4037-beeb-8dc579dc92f0",
+              "sections": [
+                "项目信息",
+                "版本记录",
+                "需求背景",
+                "需求目标",
+                "需求概述",
+                "业务流程图",
+                "交互流程图",
+                "详细方案",
+                "数据埋点",
+                "待确认事项"
+              ],
+              "missingSections": [
+                "项目信息",
+                "版本记录"
+              ],
+              "pageUnits": [
+                {
+                  "id": "P1",
+                  "name": "免打扰设置页"
+                },
+                {
+                  "id": "P2",
+                  "name": "时间选择弹层"
+                }
+              ],
+              "rules": [
+                "R1",
+                "R2",
+                "R3",
+                "R4",
+                "R5",
+                "R6",
+                "R7",
+                "R8",
+                "R9",
+                "R10",
+                "R11",
+                "R12",
+                "R13",
+                "R14"
+              ],
+              "trackingEvents": [
+                "dnd_toggle",
+                "dnd_save"
+              ],
+              "openQuestionIds": [
+                "Q1",
+                "Q2",
+                "Q3",
+                "Q4",
+                "Q5",
+                "Q6",
+                "Q7",
+                "Q8",
+                "Q9",
+                "Q10",
+                "Q11",
+                "Q12",
+                "Q13",
+                "Q14"
+              ],
+              "renderingStatus": {
+                "mermaid": "未渲染，保留源码待宿主渲染",
+                "charts": "无可用分析数据，未生成统计图",
+                "prototype": "无原型资产"
+              }
+            },
+            "openQuestions": [
+              "主动消息投诉率的投诉入口、分子、分母、统计周期与是否区分主动／被动（Q1）",
+              "目标值与基线（Q2）",
+              "是否新增投诉类埋点及相关事件定义（Q3）",
+              "“两端”具体所指端类型（Q4）",
+              "start_time、end_time、time_zone 的传参格式（Q5）",
+              "dnd_toggle 触发时机（Q6）",
+              "未登录拦截时机（Q7）",
+              "双端冲突覆盖是否提示用户（Q8）",
+              "保存失败的重试方式、次数与超时（Q9）",
+              "全天的展示形态与提示文案（Q10）",
+              "设备时区变更后的处理（Q11）",
+              "是否需要在会话页提供免打扰可见标识（Q12）",
+              "人员、评审与验收责任方（Q13）",
+              "无障碍、多语言、暗色模式及视觉规格（Q14）",
+              "项目信息与版本记录所需的项目名称、负责人、版本号、日期、所属端"
+            ],
+            "computed": null
+          },
+          "completedAt": "2026-10-24T13:25:30.810Z"
+        }
+      },
+      "progress": "工作流已完成 · 信息不充分",
+      "currentNodeId": "report",
+      "completedAt": "2026-10-24T13:25:30.820Z"
+    }
+  ]
+}

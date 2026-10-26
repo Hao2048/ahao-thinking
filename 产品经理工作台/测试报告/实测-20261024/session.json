@@ -1,0 +1,48 @@
+{
+  "projectId": "d3e842ed-e235-4905-8fad-c798dc750a36",
+  "appVersion": "2.4.0",
+  "origin": "http://127.0.0.1:57307",
+  "model": "deepseek-flash",
+  "method": "当前已打包桌面App的真实本地API；真实配置模型与网络；图由API准备，运行/结果同时以桌面UI观察；材料全部为人造测试数据",
+  "flows": [
+    {
+      "name": "A-内置用户研究模板",
+      "id": "4b0d31c4-d3dc-40da-b7ad-9738004ca78d",
+      "base": "/api/projects/d3e842ed-e235-4905-8fad-c798dc750a36/flows/4b0d31c4-d3dc-40da-b7ad-9738004ca78d",
+      "uiCreated": true
+    },
+    {
+      "name": "B-MVP方案到报告",
+      "id": "2c0bcc0e-c073-4088-8c9c-0ffde9640744",
+      "base": "/api/projects/d3e842ed-e235-4905-8fad-c798dc750a36/flows/2c0bcc0e-c073-4088-8c9c-0ffde9640744"
+    },
+    {
+      "name": "C-漏斗诊断到数据报告",
+      "id": "ce9f743f-9d40-491f-aae1-57096fb5c53f",
+      "base": "/api/projects/d3e842ed-e235-4905-8fad-c798dc750a36/flows/ce9f743f-9d40-491f-aae1-57096fb5c53f"
+    },
+    {
+      "name": "D-已确认需求到PRD",
+      "id": "c75fd5f9-b1e4-4488-a203-dfb9e56d2e34",
+      "base": "/api/projects/d3e842ed-e235-4905-8fad-c798dc750a36/flows/c75fd5f9-b1e4-4488-a203-dfb9e56d2e34"
+    },
+    {
+      "name": "E-不完整材料的立项报告",
+      "id": "6ecba803-34e2-4b60-a578-368d732d4afe",
+      "base": "/api/projects/d3e842ed-e235-4905-8fad-c798dc750a36/flows/6ecba803-34e2-4b60-a578-368d732d4afe"
+    },
+    {
+      "name": "F-无关输入应拒绝MVP",
+      "id": "fc269ca0-56a9-4bee-afad-33b3ac0fe32e",
+      "base": "/api/projects/d3e842ed-e235-4905-8fad-c798dc750a36/flows/fc269ca0-56a9-4bee-afad-33b3ac0fe32e"
+    },
+    {
+      "name": "G-错误统计数据不可忽略",
+      "id": "d44b5db2-ede0-4c0b-bb49-5e8255b2a227",
+      "base": "/api/projects/d3e842ed-e235-4905-8fad-c798dc750a36/flows/d44b5db2-ede0-4c0b-bb49-5e8255b2a227"
+    }
+  ],
+  "modelAfterUpdate": "deepseek-v4-pro",
+  "requestedModel": "deepseek-flash",
+  "interruptedForModelSwitch": []
+}

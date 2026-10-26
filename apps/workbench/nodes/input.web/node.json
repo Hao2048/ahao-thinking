@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "id": "input.web",
+  "name": "联网取材",
+  "version": "1.1.0",
+  "category": "input",
+  "description": "按明确公开检索词搜索，或读取指定网页。可连接研究问题作为背景，保留来源与失败信息。",
+  "icon": "search",
+  "enabled": true,
+  "executor": "web",
+  "inputs": [
+    {
+      "id": "materials",
+      "name": "研究问题（可选）",
+      "types": [
+        "materials",
+        "analysis",
+        "documents"
+      ],
+      "multiple": true
+    }
+  ],
+  "outputs": [
+    {
+      "id": "data",
+      "name": "联网取材结果",
+      "types": [
+        "sources"
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "key": "queries",
+      "label": "公开检索词（每行一条，最多3条）",
+      "type": "textarea",
+      "default": ""
+    },
+    {
+      "key": "urls",
+      "label": "指定公开网址（每行一条，最多4条）",
+      "type": "textarea",
+      "default": ""
+    },
+    {
+      "key": "dynamic",
+      "label": "读取动态网页（Mac桌面版）",
+      "type": "boolean",
+      "default": false
+    }
+  ],
+  "instructions": null,
+  "requirements": [
+    "至少一份相关输入"
+  ],
+  "implementation": "web",
+  "origin": {
+    "skill": "产品经理工作流 / 现有本地工具",
+    "adaptedAt": "2026-10-18",
+    "scope": "搜索并读取公开网页，保留来源和失败说明。"
+  },
+  "workflow": [
+    {
+      "id": "collect",
+      "title": "采集或引用材料",
+      "prompt": "按明确公开检索词搜索，或读取指定网页。可连接研究问题作为背景，保留来源与失败信息。"
+    },
+    {
+      "id": "confirm",
+      "title": "保留内容与来源",
+      "prompt": "原样交接材料、来源和证据性质，不承担下游分析或报告整理。"
+    }
+  ],
+  "capabilities": {
+    "search": true,
+    "generateDecisions": false
+  }
+}

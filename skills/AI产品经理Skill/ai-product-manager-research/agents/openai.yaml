@@ -1,7 +1,0 @@
-interface:
-  display_name: "AI 产品经理研究助手"
-  short_description: "研究市场、用户与机会点；PRD 和 MVP 交给产品经理工作流"
-  default_prompt: "使用 $ai-product-manager-research，输入“AI产品经理工作开始”启动市场、用户画像与产品机会研究流程。"
-
-policy:
-  allow_implicit_invocation: true
