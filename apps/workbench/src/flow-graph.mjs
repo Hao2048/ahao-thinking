@@ -68,6 +68,6 @@ export function topological(graph, target) {
   if (result.length !== selected.size) throw new Error("工作流含循环连接，无法确定执行顺序");
   return result;
 }
-export function nodeFingerprint(node, definition, upstream, model, resetEpoch = 0) {
-  return digest({ generationProtocol: "bound-facts-and-routed-data-v2.5.0", config: node.config, definition: definition.hash, upstream, model, resetEpoch });
+export function nodeFingerprint(node, definition, upstream, model, resetEpoch = 0, downstream = [], taskContext = null) {
+  return digest({ generationProtocol: "start-context-v2.7.0", config: node.config, definition: definition.hash, upstream, model, resetEpoch, downstream, taskContext });
 }

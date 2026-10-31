@@ -16,3 +16,51 @@ body{background:var(--nav);color:var(--ink)}button{background:var(--paper);borde
 
 .frame.panning,.frame.panning *{cursor:grabbing!important}
 .node-internals{font-size:14px;line-height:1.8}.node-internals pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:16px;background:var(--canvas);max-height:480px;overflow:auto}.node-internals li{margin-bottom:16px}.node-internals details{margin:16px 0;border-top:1px solid var(--line);padding-top:12px}.node-internals summary{cursor:pointer;font-weight:600}.quality-warning{padding:14px 18px;border:1px solid var(--line);border-left:3px solid var(--danger);background:var(--warning-bg);color:var(--warning-ink);line-height:1.8}.chart-editor{font-size:14px;line-height:1.8}.chart-editor .row{flex-wrap:wrap;align-items:end}.chart-editor textarea{font-family:ui-monospace,monospace}.chart-editor input,.chart-editor select{min-height:38px}.chart-meta{display:grid;grid-template-columns:2fr 1fr;gap:16px}.chart-grid{overflow:auto;max-height:340px;margin:16px 0}.chart-grid table{border-collapse:collapse;width:100%}.chart-grid th,.chart-grid td{padding:8px;border:1px solid var(--line);text-align:left}.chart-grid input{min-width:120px;width:100%;max-width:320px}.chart-editor details{margin:20px 0}.chart-editor #charts-error{min-height:25px}.chart-editor #charts-preview-area{margin-top:24px}.doc-tabs{flex-wrap:wrap}
+
+/* Task direction uses the same geometry and semantic colors in both themes. */
+.direction-heading{display:flex;justify-content:space-between;align-items:baseline;gap:8px}.direction-heading h3{margin-bottom:8px}.direction-heading small{white-space:nowrap}.direction-helper,.direction-empty{display:block;font-size:12px;line-height:1.65;color:var(--muted);margin:8px 0 12px}.direction-targets{display:grid;gap:10px;margin:12px 0 16px}.direction-target{border:1px solid var(--line);border-radius:7px;background:var(--paper);padding:12px}.direction-target>button{display:flex;width:100%;justify-content:space-between;align-items:center;gap:8px;min-height:36px;padding:0;border:0;background:transparent;text-align:left;color:var(--ink);font-weight:600}.direction-target>button:hover{color:var(--accent);background:transparent}.direction-target>button small{font-weight:400;font-size:11px;white-space:nowrap}.direction-target p{font-size:12px;line-height:1.65;margin:6px 0 8px;overflow-wrap:anywhere}.direction-target details{font-size:12px;color:var(--muted)}.direction-target summary{cursor:pointer;padding:5px 0}.direction-target ul{padding-left:18px;line-height:1.7}.direction-target pre{font:11px/1.7 inherit;white-space:pre-wrap;overflow-wrap:anywhere;padding:8px;max-height:180px;overflow:auto;background:var(--canvas);border-radius:4px}.direction-status{font-size:12px;line-height:1.65;color:var(--accent);padding:8px 10px;background:var(--wash);border-radius:5px;margin:12px 0}.direction-status.is-stale{background:var(--warning-bg);color:var(--warning-ink)}.downstream-section #plan-search{width:100%;min-height:38px}.direction-manual{width:100%;margin-top:8px;background:transparent;border:0}.downstream-section label{margin-top:12px}
+
+/* The fixed entry is identified by a red header in both themes. */
+.start-node .node-head{color:var(--node-header-ink)}
+.start-node .node-head .node-icon{color:#fff;background:var(--node-icon-bg)}
+.start-node .node-kind{color:#fff;border-color:#ffffff66;background:#ffffff10}
+.inspector-head.is-start{background:var(--node-header);color:var(--node-header-ink)}
+.inspector-head.is-start b,.inspector-head.is-start small,.inspector-head.is-start .node-icon{color:#fff}
+
+/* Running headers: a clipped sheen leaves labels and ports unobstructed. */
+.node-head{position:relative;overflow:hidden;isolation:isolate}
+.node-head>*{position:relative;z-index:1}
+.node.running .node-head::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(105deg,transparent 15%,#ffffff55 48%,transparent 80%);transform:translateX(-115%);animation:node-header-sheen 1.9s ease-in-out infinite}
+@keyframes node-header-sheen{0%{transform:translateX(-115%)}70%,100%{transform:translateX(115%)}}
+@media(prefers-reduced-motion:reduce){.node.running .node-head::after{animation:none;transform:none;opacity:.22}}
+/* The dialog is a fixed reading workspace; only each pane's contents scroll. */
+#modal.document-modal[open]{display:flex;flex-direction:column;height:min(86vh,920px);overflow:hidden}
+#modal.document-modal>.modal-head{flex:none;position:relative}
+#modal.document-modal>.modal-body{flex:1;min-height:0;overflow:hidden;padding:0}
+.document-modal #docs{height:100%;min-height:0}
+.document-modal .docs{height:100%;min-height:0;max-height:none;grid-template-columns:var(--doc-list-width,210px) 8px minmax(0,1fr);overflow:hidden}
+.document-modal .doc-list{min-width:0;min-height:0;overflow:auto;overscroll-behavior:contain;border-right:0;padding:14px 12px;scrollbar-gutter:stable}
+.document-modal .doc-list button{overflow-wrap:anywhere}
+.doc-divider{position:relative;cursor:col-resize;touch-action:none;background:var(--panel);outline:none}
+.doc-divider::after{content:'';position:absolute;top:0;bottom:0;left:3px;width:1px;background:var(--line);transition:background .15s,width .15s}
+.doc-divider:hover::after,.doc-divider:focus-visible::after,.resizing .doc-divider::after{background:var(--accent);width:3px;left:2px}
+.document-modal .docs.resizing,.document-modal .docs.resizing *{user-select:none;cursor:col-resize!important}
+.document-modal .doc-reader{display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden;padding:0}
+.document-modal .doc-tabs{flex:none;padding:16px 22px;margin:0;border-bottom:1px solid #dce3e8;z-index:1}
+.document-modal #doc-content{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:20px 28px;scrollbar-gutter:stable}
+
+/* Standalone SVG previews need a real viewport, not the renderer's absolute layout. */
+.chart-dialog[open]{display:flex;flex-direction:column;height:min(84vh,900px);overflow:hidden}
+.chart-dialog>button{align-self:flex-end;flex:none}
+.chart-dialog>div{flex:1;min-height:0;overflow:auto}
+.chart-dialog svg{display:block;position:static;max-width:100%;height:auto}
+
+/* Report index stays in the independently scrolling sidebar. */
+.document-modal .doc-toc{margin-top:20px;padding-top:16px;border-top:1px solid var(--border,#dce3e8)}
+.document-modal .doc-toc h3{font-size:12px;font-weight:600;color:var(--muted);margin:0 8px 10px;letter-spacing:.05em}
+.document-modal .doc-toc button{display:block;width:100%;text-align:left;white-space:normal;line-height:1.5;margin:2px 0;padding:7px 8px 7px calc(8px + var(--toc-depth,0)*10px);border:0;border-left:2px solid transparent;border-radius:4px;background:transparent;color:var(--muted);font-size:12px;overflow-wrap:anywhere}
+.document-modal .doc-toc button:hover{background:var(--panel);color:var(--text)}
+.document-modal .doc-toc button.current{border-left-color:var(--accent,#4167b0);color:var(--accent,#4167b0);background:var(--active-bg,rgba(100,142,210,.12));font-weight:600}
+.document-modal .doc-toc button:focus-visible{outline:2px solid var(--accent,#4167b0);outline-offset:-2px}
+.document-modal .doc-toc-empty{font-size:12px;line-height:1.6;color:var(--muted);padding:0 8px}
+.gap-review{display:grid;gap:12px;margin:18px 0}.gap-card{border:1px solid var(--line);border-radius:8px;padding:16px;background:var(--panel)}.gap-card .row{justify-content:space-between;align-items:flex-start}.gap-card small{color:var(--muted);white-space:nowrap}.gap-card textarea{min-height:72px;margin-top:8px}.gap-search{border:1px solid var(--line);padding:16px;border-radius:8px;margin-bottom:18px}.gap-search summary{cursor:pointer;font-weight:600}.gap-search label{margin-top:12px}.gap-choice{display:flex;align-items:center;gap:8px}.gap-choice input{width:auto}

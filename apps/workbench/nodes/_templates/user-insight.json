@@ -5,8 +5,8 @@
     "nodes": [
       {
         "id": "idea",
-        "type": "input.text",
-        "name": "产品想法",
+        "type": "input.start",
+        "name": "开始节点",
         "x": 100,
         "y": 140,
         "config": {
@@ -97,6 +97,8 @@
         "input": "materials"
       }
     ],
-    "groups": []
+    "groups": [],
+    "startNodeId": "idea",
+    "contextPolicy": "start-required-v1"
   }
 }

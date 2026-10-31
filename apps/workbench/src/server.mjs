@@ -40,6 +40,7 @@ export async function startServer({ port = 4318, dataDir = process.env.AIPM_DATA
   const research = researchBridge || new WebResearch({dynamicPage});
   const registry=new NodeRegistry(nodeRoot); await registry.scan();
   const flows=new FlowService({store,registry,runtime,research,cleanError});
+  await flows.migrateStarts();
   const token = randomBytes(32).toString('hex');
   let closing = false;
   const server = createServer(async (req, res) => {
@@ -137,7 +138,7 @@ export async function startServer({ port = 4318, dataDir = process.env.AIPM_DATA
         return send(404, { error: '接口不存在' });
       }
       if (req.method !== 'GET') return send(405, { error: '方法不允许' });
-      const allowed = new Set(['/diagram-source.mjs','/node-app.mjs','/node-outline.mjs','/node-palette.mjs','/node-style.css','/node-themes.css', '/', '/index.html', '/models.mjs', '/document-view.mjs', '/document-summary.mjs', '/document-charts.mjs', '/brand-logo.svg', '/chart-model.mjs', '/legacy-diagram.mjs', '/visuals.mjs']);
+      const allowed = new Set(['/document-toc.mjs','/document-split.mjs','/workflow-context.mjs','/node-intent.mjs','/diagram-source.mjs','/node-app.mjs','/node-outline.mjs','/node-palette.mjs','/node-style.css','/node-themes.css', '/', '/index.html', '/models.mjs', '/document-view.mjs', '/document-summary.mjs', '/document-charts.mjs', '/brand-logo.svg', '/chart-model.mjs', '/legacy-diagram.mjs', '/visuals.mjs']);
       if (!allowed.has(path) && !/^\/vendor\/[A-Za-z0-9._-]+\.(?:mjs|txt)$/.test(path)) return send(404, { error: '页面不存在' });
       const file = path === '/' ? 'index.html' : path.slice(1);
       let contents = await readFile(join(appRoot, 'public', file));

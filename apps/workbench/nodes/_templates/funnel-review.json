@@ -4,6 +4,16 @@
   "graph": {
     "nodes": [
       {
+        "id": "start",
+        "type": "input.start",
+        "name": "开始节点",
+        "x": 100,
+        "y": 40,
+        "config": {
+          "content": ""
+        }
+      },
+      {
         "id": "files",
         "type": "input.file",
         "name": "文档输入",
@@ -54,8 +64,17 @@
         "to": "report",
         "output": "data",
         "input": "materials"
+      },
+      {
+        "id": "start-funnel",
+        "from": "start",
+        "to": "funnel",
+        "output": "data",
+        "input": "materials"
       }
     ],
-    "groups": []
+    "groups": [],
+    "startNodeId": "start",
+    "contextPolicy": "start-required-v1"
   }
 }

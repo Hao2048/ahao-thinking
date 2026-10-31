@@ -1,4 +1,4 @@
-# 阿浩Thinking v2.5.0
+# 阿浩Thinking v2.9.0
 
 基于 DeepSeek Harness 的 macOS 节点工作台。仅保留新版节点画布、节点库、项目文档与节点助手。
 

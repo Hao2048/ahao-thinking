@@ -46,6 +46,7 @@ export class NodeRegistry {
           if (f.type === "select" && (!Array.isArray(f.options) || !f.options.length || f.options.some((o) => typeof o !== "string" && (!o || typeof o.value !== "string" || typeof o.label !== "string")))) throw new Error("选择字段需定义options");
           keys.add(f.key);
         }
+        if(d.contextPolicy!==undefined&&(!d.contextPolicy||typeof d.contextPolicy!=="object"||typeof d.contextPolicy.downstream!=="boolean"))throw new Error("contextPolicy.downstream应为开关");
         let instruction = "";
         if (d.instructions) instruction = await readFile(await this.local(directory, d.instructions), "utf8");
         let plugin = "";
@@ -116,8 +117,8 @@ export class NodeRegistry {
   }
   async plugin(definition) {
     const path = await this.local(definition.directory, definition.entry);
-    return ({ config, inputs, upstream, signal, emitProgress }) => new Promise((resolve2, reject) => {
-      const worker = new Worker(new URL("./node-plugin-worker.mjs", import.meta.url), { workerData: { path, config, inputs, upstream }, resourceLimits: { maxOldGenerationSizeMb: 256 } });
+    return ({ config, inputs, upstream, signal, emitProgress, downstream=[] }) => new Promise((resolve2, reject) => {
+      const worker = new Worker(new URL("./node-plugin-worker.mjs", import.meta.url), { workerData: { path, config, inputs, upstream, downstream }, resourceLimits: { maxOldGenerationSizeMb: 256 } });
       let settled = false;
       const finish = (error, value) => {
         if (settled) return;

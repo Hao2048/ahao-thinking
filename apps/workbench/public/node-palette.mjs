@@ -27,6 +27,7 @@ export function contrastRatio(a, b) {
 }
 export function nodePalette(definition, color, theme) {
   const base = getNodePalettes(theme)[definition?.category] || { label: "未识别", accent: "#546578", surface: "#eef1f5", header: "#e1e7ee", border: "#a8b4c2", ink: "#2d3c4d", muted: "#536476", iconBg: "#ffffff" };
+  if(definition?.id==='input.start')return {...base,label:'开始',header:'#ad414b',headerInk:'#ffffff',accent:'#b44751',border:'#c9868d',iconBg:'#8f303a'};
   if (!rgb(color)) return base;
   let ink = contrastRatio("#1f2933", color) >= contrastRatio("#ffffff", color) ? "#1f2933" : "#ffffff";
   if(contrastRatio(ink,color)<4.5)ink="#000000";

@@ -1,4 +1,11 @@
+import {bindDocumentToc} from "./document-toc.mjs";
+let docTocDispose=null;
+import {bindDocumentSplit} from "./document-split.mjs";
+let docSplitDispose=null;
+import {workflowStart,taskContext,templateWithStart} from "./workflow-context.mjs";
+import {usesDownstream,downstreamTargets,intentSignature,searchPlanState,validateSearchPlan,researchTopic} from "./node-intent.mjs";
 let lastNodePointer=null;
+let editVersion=0, activeDrag=null;
 let statusSignature=null,lastPollAt=0;
 import {chartBlocks,validateDocumentCharts} from "./document-charts.mjs";
 import { nodePalette, nodePaletteStyle, getNodePalettes, customNodeColors } from "./node-palette.mjs";
@@ -6,7 +13,7 @@ import { parseDocumentOutline } from "./node-outline.mjs";
 import { escapeHtml as e, documentMarkup, renderMarkdown, frameMarkup } from "./document-view.mjs";
 import { documentSummary } from "./document-summary.mjs";
 import { validateChartEdits } from './document-charts.mjs';
-import { hydrateVisuals } from "./visuals.mjs";
+import { hydrateVisuals,disposeVisuals } from "./visuals.mjs";
 import { modelFormMarkup, bindModelForm } from "./models.mjs";
 const $ = (s) => document.querySelector(s), token = $('meta[name="aipm-token"]').content;
 let state, catalog, projectId, flow, selected = /* @__PURE__ */ new Set(), page = "canvas", tab = "config", tool = "select", view = { x: 80, y: 100, k: 1 }, dirty = false, saveTimer, saveChain = Promise.resolve(), undo = [], redo = [], link = null, space = false, polling = false, docIndex = 0, docTab = "document", docContext = null, artifactOptions = [], questionSeen = /* @__PURE__ */ new Set();
@@ -56,9 +63,11 @@ function guard(fn) {
 }
 function modal(title, html) {
   const m = $("#modal");
+  disposeVisuals(m);docSplitDispose?.();docSplitDispose=null;docTocDispose?.();docTocDispose=null;m.onclose=null;m.classList.remove("document-modal");
   if (m.open) m.close();
   m.innerHTML = `<div class="modal-head"><h2>${e(title)}</h2><button id="close-modal" aria-label="关闭">×</button></div><div class="modal-body">${html}</div>`;
   $("#close-modal").onclick = () => m.close();
+  m.onclose=()=>{if(!m.open)disposeVisuals(m);};
   m.showModal();
   return m;
 }
@@ -102,6 +111,7 @@ function checkpoint() {
   return true;
 }
 function changed() {
+  editVersion++;
   dirty = true;
   $("#saved") && ($("#saved").textContent = "正在保存…");
   clearTimeout(saveTimer);
@@ -126,11 +136,13 @@ async function refreshState() {
   if (!projectId || !state.projects.some((p) => p.id === projectId)) projectId = state.projects[0]?.id;
 }
 async function openFlow(id) {
+  activeDrag?.();
   await flush();
   flow = await api(`/api/projects/${projectId}/flows/${id}`);
   statusSignature=null;
   view = flow.graph.view || { x: 80, y: 100, k: 1 };
   selected.clear();
+  if(flow.graph.nodes.length===1&&flow.graph.nodes[0].type==="input.start")selected.add(flow.graph.nodes[0].id);
   undo = [];
   redo = [];
   page = "canvas";
@@ -188,7 +200,7 @@ function workspaceMenu() {
 }
 function render() {
   const project = state.projects.find((p) => p.id === projectId), flows = project?.workflows || [];
-  $("#app").innerHTML = `<div class="app"><aside class="sidebar"><div class="brand"><img src="/brand-logo.svg" alt="阿浩Thinking" title="阿浩Thinking"><div><small>阿浩</small><b>Thinking</b></div></div><div class="project"><small>当前项目</small><select id="projects" aria-label="当前项目" title="${e(project?.name || "当前项目")}">${state.projects.map((p) => `<option value="${p.id}" ${p.id === projectId ? "selected" : ""}>${e(p.name||p.id)}</option>`).join("")}</select><button id="new-project">＋ 新建项目</button></div><nav class="nav"><button data-page="canvas" class="${page === "canvas" ? "active" : ""}">${icon("flow")}<span>工作流</span></button><button data-page="library" class="${page === "library" ? "active" : ""}">${icon("grid")}<span>节点库</span></button><button data-page="documents">${icon("file")}<span>项目文档</span></button></nav><div class="side-label">项目工作流</div><div class="flows">${flows.map((f) => `<button data-flow="${f.id}" class="${f.id === flow?.id ? "current" : ""}" title="${e(f.name)}"><span>${e(f.name)}</span></button>`).join("")}<button id="new-flow">＋ 新建工作流</button></div><div class="sidebar-bottom"><button id="manage">${icon("grid")}<span>管理节点</span></button><button id="models">${icon("group")}<span>模型连接</span></button><small>基于 DeepSeek Harness<br>本地个人工作空间 · 2.5.0</small></div></aside><main class="center"><header class="pagehead"><div class="page-title"><button id="workspace-switch" class="workspace-switch" aria-label="切换项目或工作流">${e(project?.name || "个人工作空间")} <span> / 工作流</span></button><h1 id="flow-name" title="点击修改名称">${e(flow?.name || "创建你的工作流")}</h1></div><div class="row"><button id="theme-toggle" class="theme-toggle" aria-label="切换主题"></button><span class="saved" id="saved">${dirty ? "尚有修改" : "✓ 已保存"}</span><button id="template">保存模板</button><button class="primary" id="run">${icon("running")}${busy() ? "停止运行" : "运行工作流"}</button></div></header><div class="tabsbar"><div class="tabs">${[["canvas", "编辑流程"], ["history", "运行记录"], ["outputs", "输出文档"]].map(([id, label]) => `<button data-page="${id}" class="${page === id ? "active" : ""}">${label}</button>`).join("")}</div><small id="run-state">${e(latest()?.progress || "尚未运行")}</small></div><div id="surface" style="display:contents"></div></main><aside class="inspector"><div id="inspector-head"></div><div class="tabs">${[["config", "配置"], ["chat", "AI 助手"], ["output", "输出"]].map(([id, label]) => `<button data-tab="${id}" class="${tab === id ? "active" : ""}">${label}</button>`).join("")}</div><div class="inspector-body" id="details"></div><div id="chat-entry"></div><div class="inspector-bottom"><button id="run-node">${icon("running")}运行至此节点</button></div></aside></div>`;
+  $("#app").innerHTML = `<div class="app"><aside class="sidebar"><div class="brand"><img src="/brand-logo.svg" alt="阿浩Thinking" title="阿浩Thinking"><div><small>阿浩</small><b>Thinking</b></div></div><div class="project"><small>当前项目</small><select id="projects" aria-label="当前项目" title="${e(project?.name || "当前项目")}">${state.projects.map((p) => `<option value="${p.id}" ${p.id === projectId ? "selected" : ""}>${e(p.name||p.id)}</option>`).join("")}</select><button id="new-project">＋ 新建项目</button></div><nav class="nav"><button data-page="canvas" class="${page === "canvas" ? "active" : ""}">${icon("flow")}<span>工作流</span></button><button data-page="library" class="${page === "library" ? "active" : ""}">${icon("grid")}<span>节点库</span></button><button data-page="documents">${icon("file")}<span>项目文档</span></button></nav><div class="side-label">项目工作流</div><div class="flows">${flows.map((f) => `<button data-flow="${f.id}" class="${f.id === flow?.id ? "current" : ""}" title="${e(f.name)}"><span>${e(f.name)}</span></button>`).join("")}<button id="new-flow">＋ 新建工作流</button></div><div class="sidebar-bottom"><button id="manage">${icon("grid")}<span>管理节点</span></button><button id="models">${icon("group")}<span>模型连接</span></button><small>基于 DeepSeek Harness<br>本地个人工作空间 · 2.8.3</small></div></aside><main class="center"><header class="pagehead"><div class="page-title"><button id="workspace-switch" class="workspace-switch" aria-label="切换项目或工作流">${e(project?.name || "个人工作空间")} <span> / 工作流</span></button><h1 id="flow-name" title="点击修改名称">${e(flow?.name || "创建你的工作流")}</h1></div><div class="row"><button id="theme-toggle" class="theme-toggle" aria-label="切换主题"></button><span class="saved" id="saved">${dirty ? "尚有修改" : "✓ 已保存"}</span><button id="template">保存模板</button><button class="primary" id="run">${icon("running")}${busy() ? "停止运行" : "运行工作流"}</button></div></header><div class="tabsbar"><div class="tabs">${[["canvas", "编辑流程"], ["history", "运行记录"], ["outputs", "输出文档"]].map(([id, label]) => `<button data-page="${id}" class="${page === id ? "active" : ""}">${label}</button>`).join("")}</div><small id="run-state">${e(latest()?.progress || "尚未运行")}</small></div><div id="surface" style="display:contents"></div></main><aside class="inspector"><div id="inspector-head"></div><div class="tabs">${[["config", "配置"], ["chat", "AI 助手"], ["output", "输出"]].map(([id, label]) => `<button data-tab="${id}" class="${tab === id ? "active" : ""}">${label}</button>`).join("")}</div><div class="inspector-body" id="details"></div><div id="chat-entry"></div><div class="inspector-bottom"><button id="run-node">${icon("running")}运行至此节点</button></div></aside></div>`;
   updateThemeButton();
   $("#theme-toggle").onclick = guard(toggleTheme);
   $("#workspace-switch").onclick = workspaceMenu;
@@ -247,11 +259,11 @@ function renderSurface() {
   if (page === "canvas") {
     target.innerHTML = `<div class="frame" id="canvas"><div class="canvas-info"></div><div class="graph" id="graph"></div><div id="starter"></div><div class="tools">${[["select", "选择 V"], ["pan", "拖动画布 H / Space"], ["zoom", "缩放 Z"], ["color", "节点底色 C"], ["group", "打组 ⌘G"], ["add", "添加节点 N"], ["undo", "撤销 ⌘Z"], ["keys", "快捷键 ?"]].map(([id, label]) => `<button data-tool="${id}" title="${label}" aria-label="${label}" class="${tool === id ? "active" : ""}">${icon(id)}</button>`).join("")}</div><div class="zoom"><button id="zoom-out" aria-label="缩小">−</button><small id="zoom-value"></small><button id="zoom-in" aria-label="放大">＋</button><button id="fit" title="适应画布" aria-label="适应画布">${icon("group")}</button></div><svg class="minimap" id="minimap" aria-label="画布缩略图"></svg></div><div class="footer"><span id="footer-status">已就绪，运行后可逐节点查看结果</span><span>Shift 多选 · Space 拖动画布 · 快捷键 ?</span></div>`;
     paint();
-    if (!flow.graph.nodes.length) {
-      $("#starter").innerHTML = `<div class="starter"><small>连接能力，构建你的产品工作流</small><h2>从一个任务开始</h2><p>选择模板，或按 N 添加第一个节点</p>${(catalog.templates || []).map((t) => `<button data-starter="${e(t.id)}">${e(t.name)} →</button>`).join("")}</div>`;
+    if (!flow.graph.nodes.length || (flow.graph.nodes.length===1 && flow.graph.nodes[0].type==="input.start" && !flow.graph.nodes[0].config.content)) {
+      $("#starter").innerHTML = `<div class="starter"><small>连接能力，构建你的产品工作流</small><h2>从一个任务开始</h2><p>填写开始节点，或选择模板继续搭建</p>${(catalog.templates || []).map((t) => `<button data-starter="${e(t.id)}">${e(t.name)} →</button>`).join("")}</div>`;
       document.querySelectorAll("[data-starter]").forEach((b) => b.onclick = guard(async () => {
         if (!checkpoint()) return;
-        flow.graph = structuredClone(catalog.templates.find((t) => t.id === b.dataset.starter).graph);
+        flow.graph = templateWithStart(catalog.templates.find((t) => t.id === b.dataset.starter).graph,flow.graph);
         selected.clear();
         changed();
         render();
@@ -295,17 +307,18 @@ function renderSurface() {
 }
 function libraryList() {
   const q = $("#node-search").value.toLowerCase();
-  $("#library-list").innerHTML = Object.entries(cats).map(([cat, label]) => `<h2>${label}</h2><div class="library-grid">${catalog.nodes.filter((d) => d.category === cat && (d.name + d.description).toLowerCase().includes(q)).map((d) => `<button class="library-card ${d.category}" style="${nodePaletteStyle(d)}" data-inspect="${d.id}"><span class="library-node-title"><span class="node-icon">${icon(d.icon || "grid")}</span><b>${e(d.name)}</b></span><small>${e(d.description)}</small><small>v${d.version} · ${d.executor}</small></button>`).join("")}</div>`).join("");
+  $("#library-list").innerHTML = Object.entries(cats).map(([cat, label]) => `<h2>${label}</h2><div class="library-grid">${catalog.nodes.filter((d) => d.id!=="input.start" && d.category === cat && (d.name + d.description).toLowerCase().includes(q)).map((d) => `<button class="library-card ${d.category}" style="${nodePaletteStyle(d)}" data-inspect="${d.id}"><span class="library-node-title"><span class="node-icon">${icon(d.icon || "grid")}</span><b>${e(d.name)}</b></span><small>${e(d.description)}</small><small>v${d.version} · ${d.executor}</small></button>`).join("")}</div>`).join("");
   document.querySelectorAll("[data-inspect]").forEach(b=>b.onclick=guard(()=>inspectNode(b.dataset.inspect)));
 }
 async function inspectNode(id) {
   const d=await api("/api/nodes/"+encodeURIComponent(id));
-  modal(d.name+" · 节点内部",`<div class="node-internals"><p>${e(d.description)}</p><p class="muted">${e(d.id)} · v${e(d.version)} · ${e(d.executor)}</p><h3>职责与工具权限</h3><pre>${e(JSON.stringify(d.capabilities || {},null,2))}</pre><h3>输入要求</h3><ul>${(d.requirements||[]).map(x=>`<li>${e(x)}</li>`).join("")}</ul><h3>内部工作流程</h3><ol>${(d.workflow||[]).map(x=>`<li><b>${e(x.title)}</b><p>${e(x.prompt)}</p></li>`).join("")}</ol><details><summary>完整节点提示词 / SOP</summary><pre>${e(d.instruction || "该节点由代码采集/计算，未设置AI提示词。")}</pre></details><details><summary>运行提示词模板（实际运行会填入当前材料）</summary><pre>${e(d.promptTemplate)}</pre></details><details><summary>节点定义与端口</summary><pre>${e(JSON.stringify({...d,instruction:undefined,promptTemplate:undefined,directory:undefined},null,2))}</pre></details><button id="inspect-add" class="primary" ${!flow ? "disabled" : ""}>添加到当前工作流</button></div>`);
+  modal(d.name+" · 节点内部",`<div class="node-internals"><p>${e(d.description)}</p><p class="muted">${e(d.id)} · v${e(d.version)} · ${e(d.executor)}</p><h3>职责与工具权限</h3><pre>${e(JSON.stringify(d.capabilities || {},null,2))}</pre><h3>输入要求</h3><ul>${(d.requirements||[]).map(x=>`<li>${e(x)}</li>`).join("")}</ul><h3>内部工作流程</h3><ol>${(d.workflow||[]).map(x=>`<li><b>${e(x.title)}</b><p>${e(x.prompt)}</p></li>`).join("")}</ol><details><summary>完整节点提示词 / SOP</summary><pre>${e(d.instruction || "该节点由代码采集/计算，未设置AI提示词。")}</pre></details><details><summary>运行提示词模板（实际运行会填入当前材料）</summary><pre>${e(d.promptTemplate)}</pre></details><details><summary>节点定义与端口</summary><pre>${e(JSON.stringify({...d,instruction:undefined,promptTemplate:undefined,directory:undefined},null,2))}</pre></details><button id="inspect-add" class="primary" ${!flow || id==="input.start" ? "disabled" : ""}>添加到当前工作流</button></div>`);
   $("#inspect-add").onclick=()=>{addNode(id);$("#modal").close();page="canvas";render();};
 }
 
 function addNode(type) {
   tab = "config";
+  if(type==="input.start"){toast("开始节点由系统固定创建，无需手动添加");return;}
   if (!flow || !checkpoint()) return;
   const d = def(type), n = { id: crypto.randomUUID(), type, name: d.name, x: (250 - view.x) / view.k + Math.random() * 60, y: (170 - view.y) / view.k + Math.random() * 80, config: Object.fromEntries(d.fields.filter((f) => f.default !== void 0).map((f) => [f.key, structuredClone(f.default)])) };
   for (let i = 0; i < 30 && flow.graph.nodes.some((old) => Math.abs(old.x - n.x) < 245 && Math.abs(old.y - n.y) < 180); i++) {
@@ -315,7 +328,9 @@ function addNode(type) {
       n.y -= 760;
     }
   }
+  if(type==="input.start"&&workflowStart(flow.graph)?.type==="input.start"){toast("每个工作流只保留一个开始节点");return;}
   flow.graph.nodes.push(n);
+  if(type==="input.start"){flow.graph.startNodeId=n.id;flow.graph.contextPolicy="start-required-v1";}
   $("#starter")?.replaceChildren();
   selected = /* @__PURE__ */ new Set([n.id]);
   changed();
@@ -343,7 +358,7 @@ function nodeDescription(n, d) {
 function qualityNotice(quality){
  if(quality?.level!=='partial')return '';
  const missing=quality.missing||[];
- return `<div class="quality-warning" role="status"><b>资料不充分 · ${missing.length}项待补</b><ul>${missing.slice(0,3).map(x=>`<li>${e(x)}</li>`).join('')}</ul>${missing.length>3?`<details><summary>查看其余${missing.length-3}项</summary><ul>${missing.slice(3).map(x=>`<li>${e(x)}</li>`).join('')}</ul></details>`:''}</div>`;
+ return `<div class="quality-warning" role="status"><b>${quality.awaitingValidation?"待验证事项":"资料不充分"} · ${missing.length}项${quality.awaitingValidation?"待验证":"待补"}</b><ul>${missing.slice(0,3).map(x=>`<li>${e(x)}</li>`).join('')}</ul>${missing.length>3?`<details><summary>查看其余${missing.length-3}项</summary><ul>${missing.slice(3).map(x=>`<li>${e(x)}</li>`).join('')}</ul></details>`:''}</div>`;
 }
 function syncRunStatus(){
  const r=latest(),live=flow?.live?.find(x=>x.id===r?.id);
@@ -371,8 +386,8 @@ function paint() {
     const p = portXY(a, "output", edge.output), q = portXY(b, "input", edge.input), tone = nodePalette(def(a.type), a.color);
     return `<path class="edge ${selected.has(a.id) || selected.has(b.id) ? "related" : ""}" style="stroke:${tone.accent}" data-edge="${e(edge.id)}" d="M${p.x} ${p.y} C${p.x + 90} ${p.y},${q.x - 90} ${q.y},${q.x} ${q.y}"/>`;
   }).join("")}</svg>` + nodes.map((n) => {
-    const d = def(n.type), step = r?.nodes[n.id], changedGraph = r && JSON.stringify(r.graph.nodes.find((x) => x.id === n.id)?.config) !== JSON.stringify(n.config), status = changedGraph ? "待重新运行" : (step?.output?.quality?.level === "partial" ? "信息不充分" : statuses[step?.status]) || "待运行", statusClass = changedGraph ? "stale" : step?.status || "queued", palette = nodePalette(d, n.color);
-    return `<div class="node ${d?.category || ""} ${selected.has(n.id) ? "selected" : ""} ${statusClass}" data-node="${n.id}" style="left:${n.x}px;top:${n.y}px;${nodePaletteStyle(d, n.color)}"><div class="node-head"><span class="node-icon">${icon(d?.icon || "grid")}</span><div class="node-heading"><b>${e(n.name || d?.name || n.type)}</b></div><span class="node-kind">${e(palette.label)}节点</span></div><div class="node-desc" title="${e(nodeDescription(n, d))}"><p>${e(nodeDescription(n, d))}</p></div><div class="node-foot"><span class="node-status state-${statusClass}">${icon({ succeeded: "check", failed: "failed", waiting_input: "waiting", running: "running" }[statusClass] || "queued")}${status}</span><span class="node-context" title="${e(d ? d.name + " · v" + d.version : "节点缺失")}">${e(step?.cached ? "已复用结果" : nodeContext(n, d, step))}</span></div>${["input", "output"].map((side) => (d?.[side === "input" ? "inputs" : "outputs"] || []).map((p, i) => `<button class="port ${side}" data-port="${p.id}" data-side="${side}" style="top:${60 + i * 22}px" title="${e(p.name||p.id)} · ${e(p.types.join("/"))}" aria-label="${e((n.name || d.name) + " " + side + " " + (p.name||p.id))}"></button>`).join("")).join("")}</div>`;
+    const d = def(n.type), step = r?.nodes[n.id], changedGraph = r && JSON.stringify(r.graph.nodes.find((x) => x.id === n.id)?.config) !== JSON.stringify(n.config), status = changedGraph ? "待重新运行" : (step?.output?.quality?.level === "partial" ? (step.output.quality.awaitingValidation?"待验证":"信息不充分") : statuses[step?.status]) || "待运行", statusClass = changedGraph ? "stale" : step?.status || "queued", palette = nodePalette(d, n.color);
+    return `<div class="node ${n.type==='input.start'?'start-node':''} ${d?.category || ""} ${selected.has(n.id) ? "selected" : ""} ${statusClass}" data-node="${n.id}" style="left:${n.x}px;top:${n.y}px;${nodePaletteStyle(d, n.color)}"><div class="node-head"><span class="node-icon">${icon(d?.icon || "grid")}</span><div class="node-heading"><b>${e(n.name || d?.name || n.type)}</b></div><span class="node-kind">${e(palette.label)}节点</span></div><div class="node-desc" title="${e(nodeDescription(n, d))}"><p>${e(nodeDescription(n, d))}</p></div><div class="node-foot"><span class="node-status state-${statusClass}">${icon({ succeeded: "check", failed: "failed", waiting_input: "waiting", running: "running" }[statusClass] || "queued")}${status}</span><span class="node-context" title="${e(d ? d.name + " · v" + d.version : "节点缺失")}">${e(step?.cached ? "已复用结果" : nodeContext(n, d, step))}</span></div>${["input", "output"].map((side) => (d?.[side === "input" ? "inputs" : "outputs"] || []).map((p, i) => `<button class="port ${side}" data-port="${p.id}" data-side="${side}" style="top:${60 + i * 22}px" title="${e(p.name||p.id)} · ${e(p.types.join("/"))}" aria-label="${e((n.name || d.name) + " " + side + " " + (p.name||p.id))}"></button>`).join("")).join("")}</div>`;
   }).join("");
   $(".canvas-info").innerHTML = `<span class="node-legend">${Object.entries(getNodePalettes()).map(([id, p]) => `<span><i style="background:${p.accent}"></i>${e(p.label)}</span>`).join("")}</span><span>${nodes.length} 个节点 · ${flow.graph.edges.length} 条连接</span>`;
   $("#zoom-value").textContent = Math.round(view.k * 100) + "%";
@@ -469,10 +484,44 @@ function editOutline(nid) {
   $("#outline-generate").onclick = () => save(true);
   update();
 }
+function downstreamMarkup(n,d){
+  if(!usesDownstream(d))return "";
+  const targets=downstreamTargets(flow.graph,n.id,catalog.nodes),mode=searchPlanState(n.config,targets,taskContext(flow.graph,n.id)),web=d.executor==="web";
+  const stateText=mode==="stale"?"方向已变化 · 请更新计划":mode==="current"?"已确认 · 按此方向检索":n.config.queries?.trim()?"使用手动检索词":"待制定检索计划";
+  return `<section class="config-section downstream-section" aria-label="下游工作方向"><div class="direction-heading"><h3>工作方向</h3><small>${targets.length} 个下游节点</small></div><p class="direction-helper">${web?"根据以下任务准备公开资料。":"为以下节点准备所需成果。"}</p><div class="direction-targets">${targets.map(t=>`<article class="direction-target"><button data-downstream-select="${e(t.id)}" aria-label="查看${e(t.name)}配置"><span>${e(t.name)}</span><small>${e(cats[t.category]||"节点")} →</small></button><p>${e(t.task)}</p>${!t.available?'<p class="danger">节点未安装</p>':""}${t.requirements.length||t.outline?`<details><summary>材料要求与输出结构</summary>${t.requirements.length?`<ul>${t.requirements.map(x=>`<li>${e(x)}</li>`).join("")}</ul>`:""}${t.outline?`<pre>${e(t.outline)}</pre>`:""}</details>`:""}</article>`).join("")||'<p class="direction-empty">尚未连接下游节点。连接分析节点后可据其目标制定计划，也可手动指定任务。</p>'}</div>${web?`${fieldMarkup(d.fields.find(f=>f.key==="topic")||{key:"topic",type:"text",label:"公开研究主题（用于生成检索计划）"},n)}<p class="direction-status ${mode==="stale"?"is-stale":""}" role="status">${e(stateText)}</p><button id="plan-search" ${busy()?"disabled":""}>${mode==="current"||mode==="stale"?"更新检索计划":"按工作方向生成检索计划"}</button>${n.config.searchPlan?'<button id="manual-search" class="direction-manual">改为手动检索</button>':""}<small class="direction-helper">研究主题留空时依据开始节点背景规划。生成后可编辑和确认检索词，运行节点时才联网取材。${targets.length>1?"多个方向共用本次资料包。":""}</small>`:""}</section>`;
+}
+async function planSearch(n){
+  const ownerFlow=flow.id,ownerProject=projectId;
+  await flush();
+  if(flow?.id!==ownerFlow||projectId!==ownerProject)return;
+  if(!researchTopic(n.config,taskContext(flow.graph,n.id))){toast("请先填写开始节点背景或公开研究主题");document.querySelector('[data-field="topic"]')?.focus();return;}
+  const path=apiPath()+`/nodes/${n.id}/search-plan`,b=$("#plan-search"),oldLabel=b.textContent;b.disabled=true;b.textContent="正在制定检索计划…";
+  const cancel=document.createElement("button");cancel.textContent="停止制定计划";b.after(cancel);
+  cancel.onclick=guard(async()=>{await api(path,{action:"stop"});cancel.disabled=true;});
+  try{
+    const plan=await api(path,{});
+    if(flow?.id!==ownerFlow||projectId!==ownerProject)throw new Error("工作流已切换，本次计划未应用");
+    modal((n.name||def(n.type).name)+" · 检索计划",`<p class="direction-helper">检索词将用于「${e(plan.topic)}」。确认采用后，再运行联网取材节点。</p>${plan.queries.map((q,i)=>`<label><span>检索词 ${i+1}</span><textarea data-plan-query="${i}" rows="2">${e(q.query)}</textarea><small>用于：${e(q.targetIds.map(id=>plan.targets.find(t=>t.id===id)?.name||id).join("、")||"当前研究主题")}</small></label>`).join("")}<p id="search-plan-error" class="danger" role="alert"></p><div class="row"><button id="adopt-search-plan" class="primary">采用计划并保存</button><button id="cancel-search-plan">返回修改</button></div>`);
+    $("#cancel-search-plan").onclick=()=>$("#modal").close();
+    $("#adopt-search-plan").onclick=async()=>{
+      const apply=$("#adopt-search-plan");apply.disabled=true;
+      try{
+        const current=flow.graph.nodes.find(x=>x.id===n.id);
+        if(flow.id!==ownerFlow||projectId!==ownerProject||!current||intentSignature(researchTopic(current.config,taskContext(flow.graph,n.id)),downstreamTargets(flow.graph,n.id,catalog.nodes),taskContext(flow.graph,n.id))!==plan.contextSignature)throw new Error("下游任务或主题已经变化，请重新制定计划");
+        const queries=plan.queries.map((q,i)=>({...q,query:document.querySelector(`[data-plan-query="${i}"]`).value.trim()}));
+        const checked=validateSearchPlan({queries},plan.targets);
+        if(!checkpoint())return;
+        current.config.queries=checked.queries.map(q=>q.query).join("\n");current.config.searchPlan={...plan,queries:checked.queries};
+        changed();await flush();$("#modal").close();paint();renderInspector();$("#details").scrollTop=0;toast("检索计划已保存，运行节点后开始取材");
+      }catch(error){$("#search-plan-error").textContent=error.message;}finally{apply.disabled=false;}
+    };
+  }finally{b.disabled=false;b.textContent=oldLabel;cancel.remove();}
+}
+
 function renderInspector() {
   document.querySelectorAll("[data-tab]").forEach((b) => b.classList.toggle("active", b.dataset.tab === tab));
   const n = node(), d = n && def(n.type), step = n && latest()?.nodes[n.id];
-  $("#inspector-head").innerHTML = `<div class="inspector-head" style="${nodePaletteStyle(d, n?.color)}"><span class="node-icon">${icon(d?.icon || "grid")}</span><div><b>${e(n?.name || d?.name || "选择一个节点")}</b><small>${e(d ? cats[d.category] : "在画布中选择或添加节点")}</small></div></div>`;
+  $("#inspector-head").innerHTML = `<div class="inspector-head ${n?.type==='input.start'?'is-start':''}" style="${nodePaletteStyle(d, n?.color)}"><span class="node-icon">${icon(d?.icon || "grid")}</span><div><b>${e(n?.name || d?.name || "选择一个节点")}</b><small>${e(d ? cats[d.category] : "在画布中选择或添加节点")}</small></div></div>`;
   $("#chat-entry").innerHTML = "";
   $("#run-node").disabled = !n;
   const body = $("#details");
@@ -483,15 +532,21 @@ function renderInspector() {
   if (tab === "config") {
     const hasOutline = documentNode(n) || d?.fields.some(f => f.key === "outline");
     const fields = (d?.fields || []).filter(f => !hasOutline || f.key !== "outline");
-    const inputs = fields.filter(f => (d?.category === "input" && f.type !== "model") || ["file", "artifact"].includes(f.type) || ["content", "queries", "urls", "dataset"].includes(f.key));
+    const inputs = fields.filter(f => !(d?.executor==="web"&&f.key==="topic") && ((d?.category === "input" && f.type !== "model") || ["file", "artifact"].includes(f.type) || ["content", "queries", "urls", "dataset"].includes(f.key)));
     const outputs = fields.filter(f => f.key === "outline");
     const settings = fields.filter(f => f.type === "model");
-    const tasks = fields.filter(f => !inputs.includes(f) && !outputs.includes(f) && !settings.includes(f));
+    const tasks = fields.filter(f => !(d?.executor==="web"&&f.key==="topic") && !inputs.includes(f) && !outputs.includes(f) && !settings.includes(f));
     const section = (title, content, cls = "") => content ? `<section class="config-section ${cls}"><h3>${title}</h3>${content}</section>` : "";
     const upstream = flow.graph.edges.filter(x => x.to === n.id).map(x => flow.graph.nodes.find(n2 => n2.id === x.from)?.name).filter(Boolean);
     const materialEntry = d && ["ai", "statistics", "plugin"].includes(d.executor) ? `<details class="optional-material" ${n.config.materials ? "open" : ""}><summary>补充材料 <small>可选</small></summary><label><span>说明或摘录</span><textarea data-field="materials" placeholder="补充当前节点需要的材料或背景" ${busy() ? "disabled" : ""}>${e(n.config.materials || "")}</textarea></label></details>` : "";
-    body.innerHTML = `${section("任务目标", tasks.map(f => fieldMarkup(f, n)).join(""))}${section("输入材料", `${upstream.length ? `<div class="source-list">${upstream.map(name => `<div>${icon("folder")}<span>${e(name)}</span><small>已连接</small></div>`).join("")}</div>` : d?.inputs?.length ? '<p class="upstream-line">连接上游节点，或直接补充材料。</p>' : ""}${inputs.map(f => fieldMarkup(f, n)).join("")}${materialEntry}`)}${section("输出要求", (hasOutline ? outlineCard(n) : "") + outputs.map(f => fieldMarkup(f, n)).join(""))}<details class="config-section node-settings"><summary><h3>节点设置</h3><span>${settings.length ? "名称与模型" : "节点名称"}</span></summary><label><span>节点名称</span><input id="node-name" value="${e(n.name)}" ${busy() ? "disabled" : ""}></label>${settings.map(f => fieldMarkup(f, n)).join("")}</details>${flow.runs.some(r=>r.nodes[n.id]?.output?.documents?.length) ? '<button id="open-node-docs">查看已生成文档</button>' : ""}<button id="inspect-current">查看内部流程与提示词</button><div class="node-maintenance"><button id="clear-context" class="danger">清空节点上下文</button><button id="delete-node" class="danger" ${busy() ? "disabled" : ""}>删除节点</button></div>`;
+    const background=taskContext(flow.graph,n.id),start=workflowStart(flow.graph);
+    const backgroundView=n.id===start?.id?'<p class="direction-helper">在这里写清项目做什么、服务谁、本次要完成什么。后续节点沿连线继承此背景。</p>':background?`<details class="config-section" open><summary><b>${n.id===start?.id?'工作流起点':'继承的任务背景'}</b></summary><p style="white-space:pre-wrap;overflow-wrap:anywhere">${e(background.content||'请填写项目方向、目标用户与本次任务。')}</p><small>用户陈述 · 沿连线传递，不作为已验证证据</small></details>`:d.category!=='input'?'<p class="quality-warning">尚未继承开始节点背景，请将此节点连接到开始节点的后续链路。</p>':'';
+    body.innerHTML = `${backgroundView}${n.type==='input.text'&&!flow.graph.fixedStart?'<button id="make-start">设为工作流开始节点</button>':''}${section("任务目标", tasks.map(f => fieldMarkup(f, n)).join(""))}${downstreamMarkup(n,d)}${section("输入材料", `${upstream.length ? `<div class="source-list">${upstream.map(name => `<div>${icon("folder")}<span>${e(name)}</span><small>已连接</small></div>`).join("")}</div>` : d?.inputs?.length ? '<p class="upstream-line">连接上游节点，或直接补充材料。</p>' : ""}${inputs.map(f => fieldMarkup(f, n)).join("")}${materialEntry}`)}${section("输出要求", (hasOutline ? outlineCard(n) : "") + outputs.map(f => fieldMarkup(f, n)).join(""))}<details class="config-section node-settings"><summary><h3>节点设置</h3><span>${settings.length ? "名称与模型" : "节点名称"}</span></summary><label><span>节点名称</span><input id="node-name" value="${e(n.name)}" ${busy() || n.type==="input.start" ? "disabled" : ""}></label>${settings.map(f => fieldMarkup(f, n)).join("")}</details>${flow.runs.some(r=>r.nodes[n.id]?.output?.documents?.length) ? '<button id="open-node-docs">查看已生成文档</button>' : ""}<button id="inspect-current">查看内部流程与提示词</button><div class="node-maintenance"><button id="clear-context" class="danger">清空节点上下文</button><button id="delete-node" class="danger" ${busy() || n.type==="input.start" || n.id===flow.graph.startNodeId ? "disabled" : ""}>删除节点</button></div>`;
+    if($("#make-start"))$("#make-start").onclick=()=>{if(!checkpoint())return;if(flow.graph.nodes.some(x=>x.type==='input.start'&&x.id!==n.id)){toast('请先移除另一个开始节点');return;}flow.graph.startNodeId=n.id;flow.graph.contextPolicy='start-required-v1';n.name='开始节点';changed();renderInspector();paint();};
     bindOutlineButtons(body);
+    body.querySelectorAll('[data-downstream-select]').forEach(b=>b.onclick=()=>{selected=new Set([b.dataset.downstreamSelect]);paint();renderInspector();});
+    if($("#plan-search"))$("#plan-search").onclick=guard(()=>planSearch(n));
+    if($("#manual-search"))$("#manual-search").onclick=()=>{if(!checkpoint())return;delete n.config.searchPlan;changed();renderInspector();};
     if ($("#open-node-docs")) $("#open-node-docs").onclick=()=>openNodeDocuments(n.id);
     if ($("#inspect-current")) $("#inspect-current").onclick=guard(()=>inspectNode(n.type));
     $("#node-name").onchange = (ev) => {
@@ -521,8 +576,11 @@ function renderInspector() {
       const currentNode = flow.graph.nodes.find(current => current.id === n.id);
       if (!currentNode) return;
       currentNode.config[el.dataset.field] = value;
+      if(el.dataset.field==="queries")delete currentNode.config.searchPlan;
+      if(currentNode.id===workflowStart(flow.graph)?.id&&String(value||"").trim())$("#starter")?.replaceChildren();
       changed();
       paint();
+      if(usesDownstream(d))renderInspector();
     }));
     $("#clear-context").onclick = guard(async () => {
       await flush();
@@ -546,7 +604,7 @@ function renderInspector() {
   if (tab === "output") {
     const live = flow.live?.find((x) => x.nodeId === n.id && x.id === latest()?.id);
     const successful = flow.runs.findLast((r) => r.nodes[n.id]?.output), output = successful?.nodes[n.id]?.output;
-    body.innerHTML = `${documentNode(n) ? outlineCard(n) : ""}<div class="state-line ${step?.status || ""}">${e(step ? statuses[step.status] : "尚未运行")}${step?.output?.quality?.level === "partial" ? " · 信息不充分" : ""}${step?.cached ? " · 复用结果" : ""}</div>${live ? `<p class="state-line running">${e(live.label || "正在生成")}</p>${live.text ? `<details open><summary>实时生成内容</summary><pre>${e(streamContent(live.text))}</pre></details>` : ""}` : ""}${step?.error ? `<p class="danger">${e(step.error)}</p>` : ""}${step?.stages?.length?`<details><summary>实际执行阶段 · ${step.stages.length}步</summary><ol>${step.stages.map(s=>`<li>${e(s.label)} · ${e(({completed:"完成",failed:"失败",waiting_input:"等待补充",cancelled:"已停止",running:"运行中"})[s.status]||s.status)}</li>`).join("")}</ol></details>`:""}${step?.status === "waiting_input" ? '<button id="supplement">补充数据并继续</button>' : ""}${output ? `${qualityNotice(output.quality)}${renderMarkdown(output.summary || "")}<p><small>${output.assumptions.map(e).join("；")}</small></p>${output.documents.map((doc, i) => `<button data-doc="${i}">${e(doc.title)}</button>`).join("")}<details><summary>结构数据、计算与来源</summary><pre>${e(JSON.stringify(output, null, 2))}</pre></details>` : step?.checkpoint?.computed ? '<p class="state-line">代码计算已完成并保存，正在等待AI解读。</p>'+renderMarkdown('```json\n'+JSON.stringify(step.checkpoint.computed,null,2)+'\n```') : '<div class="empty">运行后在这里查看当前节点产物。</div>'}`;
+    body.innerHTML = `${documentNode(n) ? outlineCard(n) : ""}<div class="state-line ${step?.status || ""}">${e(step ? statuses[step.status] : "尚未运行")}${step?.output?.quality?.level === "partial" ? (step.output.quality.awaitingValidation?" · 含待验证事项":" · 信息不充分") : ""}${step?.cached ? " · 复用结果" : ""}</div>${live ? `<p class="state-line running">${e(live.label || "正在生成")}</p>${live.text ? `<details open><summary>实时生成内容</summary><pre>${e(streamContent(live.text))}</pre></details>` : ""}` : ""}${step?.error ? `<p class="danger">${e(step.error)}</p>` : ""}${step?.stages?.length?`<details><summary>实际执行阶段 · ${step.stages.length}步</summary><ol>${step.stages.map(s=>`<li>${e(s.label)} · ${e(({completed:"完成",failed:"失败",waiting_input:"等待补充",cancelled:"已停止",running:"运行中"})[s.status]||s.status)}</li>`).join("")}</ol></details>`:""}${step?.status === "waiting_input" ? '<button id="supplement">补充数据并继续</button>' : ""}${output ? `${qualityNotice(output.quality)}${renderMarkdown(output.summary || "")}<p><small>${output.assumptions.map(e).join("；")}</small></p>${output.documents.map((doc, i) => `<button data-doc="${i}">${e(doc.title)}</button>`).join("")}<details><summary>结构数据、计算与来源</summary><pre>${e(JSON.stringify(output, null, 2))}</pre></details>` : step?.checkpoint?.computed ? '<p class="state-line">代码计算已完成并保存，正在等待AI解读。</p>'+renderMarkdown('```json\n'+JSON.stringify(step.checkpoint.computed,null,2)+'\n```') : '<div class="empty">运行后在这里查看当前节点产物。</div>'}`;
     bindOutlineButtons(body);
     if ($("#open-node-docs")) $("#open-node-docs").onclick=()=>openNodeDocuments(n.id);
     if ($("#inspect-current")) $("#inspect-current").onclick=guard(()=>inspectNode(n.type));
@@ -644,9 +702,33 @@ async function run(target) {
   await poll(true);
   render();
 }
+function searchQuestion(r,step){
+ const q=step.clarification,ownerFlow=flow.id,ownerProject=projectId;
+ modal(q.phase==='before'?'明确本次研究范围':'检索中发现需要确认的方向',`<p><b>${e(q.prompt)}</b></p><p>${e(q.reason)}</p>${q.phase==='after'?`<p class="muted">已保存 ${step.searchState?.web?.sources?.length||0} 个来源，确认后从这里继续。</p><details><summary>触发问题的来源</summary><ul>${(q.sourceUrls||[]).map(url=>`<li>${e(url)}</li>`).join('')}</ul></details>`:''}<label><span>请选择研究范围</span><select id="scope-option"><option value="">请选择</option>${q.options.map(o=>`<option value="${e(o.id)}">${e(o.label)}</option>`).join('')}</select></label><div id="scope-queries"></div><label><span>其他补充（可选）</span><textarea id="scope-extra" maxlength="2000"></textarea></label><p id="scope-error" class="danger"></p><div class="row"><button id="scope-later">稍后回答</button><button id="scope-confirm" class="primary">确认并继续</button></div>`);
+ $('#scope-option').onchange=()=>{const o=q.options.find(o=>o.id===$('#scope-option').value);$('#scope-queries').innerHTML=o?o.queries.length?`<p>确认后将公开提交以下检索词：</p><ul>${o.queries.map(v=>`<li>${e(v)}</li>`).join('')}</ul>`:'<p class="muted">保留已确认的检索范围。</p>':'';};
+ $('#scope-later').onclick=()=>$('#modal').close();
+ $('#scope-confirm').onclick=async()=>{const b=$('#scope-confirm');b.disabled=true;try{if(flow.id!==ownerFlow||projectId!==ownerProject)throw Error('工作流已切换，请重新打开问题');if(!$('#scope-option').value)throw Error('请选择一个研究范围');await api(apiPath()+`/runs/${r.id}/resume`,{nodeId:r.currentNodeId,clarification:{questionId:q.id,optionId:$('#scope-option').value,extra:$('#scope-extra').value}});$('#modal').close();await poll(true);render();}catch(error){$('#scope-error').textContent=error.message;}finally{b.disabled=false;}};
+}
+function gapQuestion(r,step){
+ const review=step.gapReview,ownerFlow=flow.id,ownerProject=projectId;
+ const labels={public:'公开资料 · 可联网补齐',decision:'产品决策 · 需要你确认',evidence:'真实证据 · 需材料或验证',not_applicable:'本阶段不适用'};
+ const publicGaps=review.gaps.filter(g=>g.type==='public'),targets=review.searchTargets||[],canSearch=publicGaps.length&&targets.length&&review.repairCount<2;
+ const m=modal('运行前资料检查',`<p>${e(review.summary)}</p><p class="muted">只处理当前任务的关键缺口。已确认记录沿连接传给下游；待验证内容不会成为事实。分析与报告节点不会自行联网。</p><div class="gap-review">${review.gaps.map(g=>`<section class="gap-card"><div class="row"><b>${e(g.title)}</b><small>${e(labels[g.type])} · ${g.required?'关键':'建议'}</small></div><p class="muted">${e(g.impact)}</p><label><span>处理方式</span><select data-gap-status="${e(g.id)}" aria-label="${e(g.title)}处理方式"><option value="">暂不处理</option><option value="confirmed">补充材料 / 确认决策（用户陈述）</option><option value="pending">暂待验证，保留为假设</option><option value="not_applicable">本阶段不适用</option></select></label><textarea data-gap-text="${e(g.id)}" aria-label="${e(g.title)}补充内容或理由" placeholder="填写补充内容、已确认的决定，或暂待验证 / 不适用的理由" maxlength="4000"></textarea></section>`).join('')}</div>${publicGaps.length?`<details class="gap-search"><summary>交给上游联网节点补齐公开资料</summary>${canSearch?`<p class="muted">仅下方确认的检索词会提交给检索服务。不会自动发送你的材料全文；最多补充两轮。</p>${publicGaps.map(g=>`<label class="gap-choice"><input type="checkbox" data-gap-search="${e(g.id)}" checked>${e(g.title)}</label>`).join('')}<label><span>执行搜索的上游节点</span><select id="gap-search-target">${targets.map(t=>`<option value="${e(t.id)}">${e(t.name)}</option>`).join('')}</select></label><label><span>确认公开检索词（每行一条，最多3条；可修改）</span><textarea id="gap-search-queries">${e(publicGaps.map(g=>g.query).filter(Boolean).slice(0,3).join('\n'))}</textarea></label><button id="gap-search-run">确认检索词并交给上游搜索</button>`:`<p class="muted">${targets.length?'本轮已达到两次补充检索上限，请上传材料或选择草稿。':'没有已连接的上游联网节点。请停止后连接联网节点，或手动补充材料。'}</p>`}</details>`:''}<p id="gap-error" class="danger" role="alert"></p><div class="row"><button id="gap-back">停止并返回补充 / 上传材料</button><button id="gap-answer" class="primary">保存处理意见并继续</button><button id="gap-draft">保留缺口生成草稿</button></div><p class="muted">“本阶段不适用”需要说明理由；真实用户数据不能用竞品定价或用户决策替代。完全不相关的材料不能通过草稿跳过检查。</p>`);
+ const submit=async(action,extra={})=>{
+  const buttons=[...m.querySelectorAll('button')];buttons.forEach(b=>b.disabled=true);
+  try{if(flow.id!==ownerFlow||projectId!==ownerProject)throw Error('工作流已切换，请重新打开');await api(apiPath()+`/runs/${r.id}/resume`,{nodeId:r.currentNodeId,gapAction:action,reviewId:review.id,...extra});m.close();await poll(true);render();}catch(error){$('#gap-error').textContent=error.message;}finally{buttons.forEach(b=>b.disabled=false);}
+ };
+ $('#gap-answer').onclick=()=>submit('answer',{answers:review.gaps.map(g=>({id:g.id,status:m.querySelector(`[data-gap-status="${g.id}"]`).value,text:m.querySelector(`[data-gap-text="${g.id}"]`).value})).filter(a=>a.status)});
+ $('#gap-draft').onclick=()=>submit('draft');
+ if($('#gap-search-run'))$('#gap-search-run').onclick=()=>submit('search',{targetNodeId:$('#gap-search-target').value,queries:$('#gap-search-queries').value,gapIds:[...m.querySelectorAll('[data-gap-search]:checked')].map(x=>x.dataset.gapSearch)});
+ $('#gap-back').onclick=guard(async()=>{await api(apiPath()+`/runs/${r.id}/stop`,{});m.close();await poll(true);tab='config';render();});
+}
+
 function waiting() {
   const r = latest(), step = r?.nodes[r.currentNodeId];
   if (r?.status !== "waiting_input" || !step) return;
+  if(step.clarification){searchQuestion(r,step);return;}
+  if(step.gapReview){gapQuestion(r,step);return;}
   const web=step.definition.executor==='web',stat=step.definition.executor==='statistics',allowAssumptions=['ai','plugin'].includes(step.definition.executor);
   const placeholder=web?'每行填写一个公开检索词，例如：AI电子宠物 用户评价。网址请停止后在节点配置中填写。':stat?'填写完整CSV或JSON数据（含表头），用空行与说明分隔。不能用假设跳过数值校验。':'补充目标、约束或其他缺失材料';
   const m = modal(web?'联网取材需要检索词':stat?'统计节点需要有效数据':'当前节点需要补充材料', `<p>${e(step.error)}</p><ul>${(step.suggestions || []).map((x) => `<li>${e(x)}</li>`).join("")}</ul><textarea id="supplement-text" placeholder="${e(placeholder)}"></textarea><div class="row"><button id="back-supplement">停止并返回修改</button><button id="resume" class="primary">补充后继续</button>${["ai", "plugin"].includes(step.definition.executor) ? '<button id="draft">带假设生成草稿</button>' : ""}</div>${allowAssumptions?'<p class="muted">草稿会保留证据缺口并传给下游，不能作为已验证结论。</p>':'<p class="muted">此节点需要有效输入，不能忽视输入要求继续。</p>'}`);
@@ -672,15 +754,22 @@ function showDocs(docs, index = 0) {
   docIndex = index;
   docTab = "document";
   docContext = docs;
-  modal("文档与分析", '<div id="docs"></div>');
+  const m=modal("文档与分析", '<div id="docs"></div>');
+  m.classList.add("document-modal");
+  m.onclose=()=>{if(!m.open){disposeVisuals(m);docSplitDispose?.();docSplitDispose=null;docTocDispose?.();docTocDispose=null;}};
   drawDocs();
 }
 function drawDocs() {
   const docs = docContext, item = docs[docIndex];
   if (!item) return;
   const doc = item.doc;
-  $("#docs").innerHTML = `<div class="docs"><aside class="doc-list">${docs.map((x, i) => `<button data-doc-index="${i}" class="${i === docIndex ? "active" : ""}">${e(x.doc.title)}</button>`).join("")}</aside><article class="doc-reader"><div class="doc-tabs">${[["document", "文档"], ["summary", "总结分析"], ["html", "HTML展示"], ["data", "结构数据"], ["outline", "文档大纲"]].map(([id, label]) => `<button data-doc-tab="${id}" class="${docTab === id ? "active" : ""}">${label}</button>`).join("")}<button id="edit-charts" ${doc.format !== "markdown" ? "disabled" : ""}>完善图表数据</button><button id="export-doc">导出</button></div><div id="doc-content">${qualityNotice(doc.quality)}${doc.visualWarnings?.length?`<p class="danger">部分图表待完善：${doc.visualWarnings.map(e).join("；")}</p>`:""}${doc.editNote ? `<p class="quality-warning">${e(doc.editNote)}</p>` : ""}${docTab === "outline" ? `<p class="muted">本版本生成时使用的大纲</p><pre>${e(doc.outline || item.run.graph.nodes.find((n) => n.id === item.nid)?.config.outline || "本历史版本未记录大纲快照")}</pre>${flow.graph.nodes.some((n) => n.id === item.nid) && documentNode(flow.graph.nodes.find((n) => n.id === item.nid)) ? `<button data-edit-outline="${item.nid}">修改大纲并重新生成</button>` : ""}` : docTab === "document" ? documentMarkup(doc) : docTab === "summary" ? renderMarkdown(documentSummary(doc)) : docTab === "html" ? doc.htmlPresentation ? frameMarkup(doc.htmlPresentation) : '<p class="muted">按需生成当前文档的HTML展示。</p><button id="generate-html" class="primary">生成 HTML</button>' : `<pre>${e(JSON.stringify(item.run.nodes[item.nid].output.analysis || item.run.nodes[item.nid].output.computed || {}, null, 2))}</pre>`}</div></article></div>`;
+  const listScroll=$("#docs .doc-list")?.scrollTop||0;
+  disposeVisuals($("#docs"));docSplitDispose?.();docSplitDispose=null;docTocDispose?.();docTocDispose=null;
+  $("#docs").innerHTML = `<div class="docs"><aside class="doc-list">${docs.map((x, i) => `<button data-doc-index="${i}" class="${i === docIndex ? "active" : ""}">${e(x.doc.title)}</button>`).join("")}<nav class="doc-toc" aria-label="当前报告章节目录"></nav></aside><div class="doc-divider" role="separator" aria-label="调整报告列表宽度" aria-orientation="vertical" tabindex="0" title="拖动调整宽度，双击恢复默认"></div><article class="doc-reader"><div class="doc-tabs">${[["document", "文档"], ["summary", "总结分析"], ["html", "HTML展示"], ["data", "结构数据"], ["outline", "文档大纲"]].map(([id, label]) => `<button data-doc-tab="${id}" class="${docTab === id ? "active" : ""}">${label}</button>`).join("")}<button id="edit-charts" ${doc.format !== "markdown" ? "disabled" : ""}>完善图表数据</button><button id="export-doc">导出</button></div><div id="doc-content">${qualityNotice(doc.quality)}${doc.visualWarnings?.length?`<p class="danger">部分图表待完善：${doc.visualWarnings.map(e).join("；")}</p>`:""}${doc.editNote ? `<p class="quality-warning">${e(doc.editNote)}</p>` : ""}${docTab === "outline" ? `<p class="muted">本版本生成时使用的大纲</p><pre>${e(doc.outline || item.run.graph.nodes.find((n) => n.id === item.nid)?.config.outline || "本历史版本未记录大纲快照")}</pre>${flow.graph.nodes.some((n) => n.id === item.nid) && documentNode(flow.graph.nodes.find((n) => n.id === item.nid)) ? `<button data-edit-outline="${item.nid}">修改大纲并重新生成</button>` : ""}` : docTab === "document" ? documentMarkup(doc) : docTab === "summary" ? renderMarkdown(documentSummary(doc)) : docTab === "html" ? doc.htmlPresentation ? frameMarkup(doc.htmlPresentation) : '<p class="muted">按需生成当前文档的HTML展示。</p><button id="generate-html" class="primary">生成 HTML</button>' : `<pre>${e(JSON.stringify(item.run.nodes[item.nid].output.analysis || item.run.nodes[item.nid].output.computed || {}, null, 2))}</pre>`}</div></article></div>`;
   $("#modal .modal-body").style.padding = "0";
+  $("#docs .doc-list").scrollTop=listScroll;
+  docSplitDispose=bindDocumentSplit($("#docs .docs"));
+  docTocDispose=bindDocumentToc($("#docs .docs"));
   document.querySelectorAll("[data-doc-index]").forEach((b) => b.onclick = () => {
     docIndex = Number(b.dataset.docIndex);
     drawDocs();
@@ -732,7 +821,7 @@ async function useTool(id) {
     if (!flow) return;
     modal("添加节点", `<input id="pick-search" placeholder="搜索能力"><div id="pick-list"></div>`);
     const draw = () => {
-      $("#pick-list").innerHTML = Object.entries(cats).map(([cat, label]) => `<h3>${label}</h3><div class="library-grid">${catalog.nodes.filter((d) => d.category === cat && (d.name + d.description).includes($("#pick-search").value)).map((d) => `<button data-pick="${d.id}" class="library-card ${d.category}" style="${nodePaletteStyle(d)}"><span class="library-node-title"><span class="node-icon">${icon(d.icon || "grid")}</span><b>${e(d.name)}</b></span><small>${e(d.description)}</small></button>`).join("")}</div>`).join("");
+      $("#pick-list").innerHTML = Object.entries(cats).map(([cat, label]) => `<h3>${label}</h3><div class="library-grid">${catalog.nodes.filter((d) => d.id!=="input.start" && d.category === cat && (d.name + d.description).includes($("#pick-search").value)).map((d) => `<button data-pick="${d.id}" class="library-card ${d.category}" style="${nodePaletteStyle(d)}"><span class="library-node-title"><span class="node-icon">${icon(d.icon || "grid")}</span><b>${e(d.name)}</b></span><small>${e(d.description)}</small></button>`).join("")}</div>`).join("");
       document.querySelectorAll("[data-pick]").forEach((b) => b.onclick = () => {
         addNode(b.dataset.pick);
         $("#modal").close();
@@ -757,7 +846,7 @@ async function useTool(id) {
     modal("节点配色", `<p>默认按节点类型区分，也可以为选中的节点设置独立底色。</p><div class="color-choices"><button data-color="auto" class="automatic-color"><span class="auto-swatches">${Object.values(getNodePalettes()).map((p) => `<i style="background:${p.header}"></i>`).join("")}</span><span>按节点类型</span></button>${customNodeColors.map((c) => `<button data-color="${c.value}"><i style="background:${c.value}"></i><span>${e(c.label)}</span></button>`).join("")}</div>`);
     document.querySelectorAll("[data-color]").forEach((b) => b.onclick = () => {
       if (!checkpoint()) return;
-      flow.graph.nodes.filter((n) => selected.has(n.id)).forEach((n) => {
+      flow.graph.nodes.filter((n) => selected.has(n.id)&&n.type!=="input.start").forEach((n) => {
         if (b.dataset.color === "auto") delete n.color;
         else n.color = b.dataset.color;
       });
@@ -806,15 +895,18 @@ function historyEdit(forward) {
   renderInspector();
 }
 function removeSelected() {
-  if (!flow || !selected.size || !checkpoint()) return;
-  flow.graph.nodes = flow.graph.nodes.filter((n) => !selected.has(n.id));
-  flow.graph.edges = flow.graph.edges.filter((x) => !selected.has(x.from) && !selected.has(x.to));
-  flow.graph.groups = (flow.graph.groups || []).map((g) => ({ ...g, members: g.members.filter((id) => !selected.has(id)) })).filter((g) => g.members.length > 1);
-  selected.clear();
-  changed();
-  paint();
-  renderInspector();
+  if (!flow || !selected.size) return;
+  const protectedId=workflowStart(flow.graph)?.id;
+  const deletable=new Set([...selected].filter(id=>id!==protectedId&&flow.graph.nodes.find(n=>n.id===id)?.type!=='input.start'));
+  if(!deletable.size){toast('开始节点为固定起点，不能删除');return;}
+  if(!checkpoint())return;
+  flow.graph.nodes=flow.graph.nodes.filter(n=>!deletable.has(n.id));
+  flow.graph.edges=flow.graph.edges.filter(e=>!deletable.has(e.from)&&!deletable.has(e.to));
+  flow.graph.groups=(flow.graph.groups||[]).map(g=>({...g,members:g.members.filter(id=>!deletable.has(id))})).filter(g=>g.members.length>1);
+  selected=new Set([...selected].filter(id=>!deletable.has(id)));
+  changed();paint();renderInspector();
 }
+
 function persistView() {
   flow.graph.view = { ...view };
   if (!busy()) changed();
@@ -916,6 +1008,7 @@ function bindCanvas() {
         flow.graph.edges = flow.graph.edges.filter((x) => x.id !== edge.dataset.edge);
         changed();
         paint();
+        renderInspector();
       }
       return;
     }
@@ -951,8 +1044,11 @@ function bindCanvas() {
   };
 }
 function drag(ev, kind, group) {
+  activeDrag?.();
+  editVersion++;
+  const owner=flow;
   const canvas = $("#canvas"), start = { x: ev.clientX, y: ev.clientY, vx: view.x, vy: view.y }, positions = flow.graph.nodes.filter((n) => selected.has(n.id)).map((n) => ({ id: n.id, x: n.x, y: n.y })), origin = group ? { x: group.x, y: group.y } : null;
-  let moved = false, marquee;
+  let moved = false, marquee, ended=false;
   if (kind === "pan") canvas.classList.add("panning");
   if (kind === "marquee") {
     marquee = document.createElement("div");
@@ -961,6 +1057,7 @@ function drag(ev, kind, group) {
   }
   const b = canvas.getBoundingClientRect();
   const move = (ev2) => {
+    if(flow!==owner){up();return;}
     const dx = ev2.clientX - start.x, dy = ev2.clientY - start.y;
     moved ||= Math.abs(dx) + Math.abs(dy) > 3;
     if(moved)lastNodePointer=null;
@@ -990,15 +1087,23 @@ function drag(ev, kind, group) {
     }
   };
   const up = () => {
+    if(ended)return;
+    ended=true;
+    if(activeDrag===up)activeDrag=null;
+    window.removeEventListener("pointercancel", up);
+    window.removeEventListener("blur", up);
     window.removeEventListener("pointermove", move);
     window.removeEventListener("pointerup", up);
     marquee?.remove();
     canvas.classList.remove("panning");
-    if (moved && kind === "pan") persistView();
-    if (moved && ["nodes", "group"].includes(kind)) changed();
+    if (flow===owner && moved && kind === "pan") persistView();
+    if (flow===owner && moved && ["nodes", "group"].includes(kind)) changed();
     renderInspector();
   };
+  activeDrag=up;
   window.addEventListener("pointermove", move);
+  window.addEventListener("pointercancel", up, {once:true});
+  window.addEventListener("blur", up, {once:true});
   window.addEventListener("pointerup", up, { once: true });
 }
 async function upload(n, fieldKey = "files") {
@@ -1072,35 +1177,37 @@ async function template() {
   const name = await askText("模板名称", flow.name + " · 副本");
   if (!name?.trim()) return;
   const graph = structuredClone(flow.graph), created = await api(`/api/projects/${projectId}/flows`, { name });
-  await api(`/api/projects/${projectId}/flows/${created.id}`, { name, revision: created.revision, graph });
+  await api(`/api/projects/${projectId}/flows/${created.id}`, { name, revision: created.revision, graph:templateWithStart(graph,created.graph) });
   await refreshState();
   toast("已复制为可复用工作流，包含配置和材料，不包含运行历史");
   render();
 }
 async function poll(force = false) {
-  if (!flow || polling || dirty) return;
+  if (!flow || polling || dirty || activeDrag) return;
   const isBusy=busy()||flow.messages.some(m=>m.status==="streaming");
   if(!force&&!isBusy&&Date.now()-lastPollAt<5000)return;
   lastPollAt=Date.now();
   polling = true;
   try {
-    const current = flow.id,status=await api(apiPath()+"/status");
-    if(flow?.id!==current||dirty)return;
+    const current = flow.id, requestEdit=editVersion, status=await api(apiPath()+"/status");
+    if(flow?.id!==current||dirty||activeDrag||editVersion!==requestEdit)return;
     if(!force&&statusSignature===status.signature){
       const changed=JSON.stringify(flow.live)!==JSON.stringify(status.live);flow.live=status.live;
       if(tab==="chat")paintMessages();
       if(tab==="output"&&changed){const body=$("#details"),scroll=body.scrollTop,near=body.scrollHeight-body.scrollTop-body.clientHeight<80;renderInspector();body.scrollTop=near?body.scrollHeight:scroll;}
       syncRunStatus();return;
     }
-    const remote=await api(apiPath());statusSignature=status.signature;
-    if (flow?.id !== current || dirty) return;
+    const remote=await api(apiPath());
+    if (flow?.id !== current || dirty || activeDrag || editVersion!==requestEdit) return;
+    statusSignature=status.signature;
+    const graphChanged=flow.revision!==remote.revision;
     const liveChanged = JSON.stringify(flow.live) !== JSON.stringify(remote.live);
     const before = JSON.stringify(flow.runs.map((r2) => [r2.status, r2.progress, Object.values(r2.nodes).map((n) => [n.status, n.error, n.cached])])), after = JSON.stringify(remote.runs.map((r2) => [r2.status, r2.progress, Object.values(r2.nodes).map((n) => [n.status, n.error, n.cached])])), changedStatus = before !== after;
     flow = remote;
-    if (force || changedStatus) {
+    if (force || changedStatus || graphChanged) {
       paint();
       if (["history", "outputs"].includes(page)) renderSurface();
-      if (tab === "output") renderInspector();
+      if (tab === "output" || graphChanged) renderInspector();
       $("#run").innerHTML = icon("running") + (busy() ? "停止运行" : "运行工作流");
       $("#run-state").textContent = latest()?.progress || statuses[latest()?.status] || "尚未运行";
     }
@@ -1112,8 +1219,9 @@ async function poll(force = false) {
     if (tab === "chat") paintMessages();
     syncRunStatus();
     const r = latest();
-    if (r?.status === "waiting_input" && !questionSeen.has(r.id + ":" + r.currentNodeId) && !$("#modal").open) {
-      questionSeen.add(r.id + ":" + r.currentNodeId);
+    const waitingKey=r&&r.id+":"+r.currentNodeId+":"+(r.nodes[r.currentNodeId]?.clarification?.id||r.nodes[r.currentNodeId]?.gapReview?.id||"input");
+    if (r?.status === "waiting_input" && !questionSeen.has(waitingKey) && !$("#modal").open) {
+      questionSeen.add(waitingKey);
       waiting();
     }
   } finally {
@@ -1200,7 +1308,7 @@ setInterval(guard(async () => {
   if (JSON.stringify(next) !== JSON.stringify(catalog)) {
     catalog = next;
     if (page === "library") renderSurface();
-    else paint();
+    else {paint();if(tab==="config"&&usesDownstream(def(node()?.type)))renderInspector();}
     toast("节点目录已更新");
   }
 }), 5e3);

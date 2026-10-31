@@ -1,8 +1,11 @@
+import {taskContext} from "../public/workflow-context.mjs";
+import {usesDownstream,downstreamTargets} from "../public/node-intent.mjs";
 import {createHash, randomUUID} from 'node:crypto';
 const hash=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
 export function collectMaterials(upstream) {
   const list=[];
   for(const packet of upstream){
+    if(packet.confirmations?.length)list.push({id:"confirmations:"+hash(packet.confirmations),title:"上游已确认及待验证记录",content:JSON.stringify(packet.confirmations),evidence:"user_statement"});
     const source={quality:packet.quality,handoff:packet.handoff,references:packet.sources||[],fileReferences:packet.fileReferences||[],assumptions:packet.assumptions||[]};
     list.push(...packet.materials||[]);
     for(const doc of packet.documents||[])list.push({id:doc.id||randomUUID(),title:doc.title,content:doc.content,evidence:'material',source:{...source,documentId:doc.id,quality:doc.quality||packet.quality}});
@@ -27,7 +30,7 @@ export function contextKey(graph,id,epochs={}){
   function visit(id){
     if(memo.has(id))return memo.get(id);
     const n=graph.nodes.find(n=>n.id===id);if(!n)return null;
-    const key=hash({type:n.type,config:n.config,epoch:epochs[id]||0,inputs:graph.edges.filter(e=>e.to===id).map(e=>({from:e.from,input:e.input,output:e.output,key:visit(e.from)}))});
+    const key=hash({taskContext:taskContext(graph,id),type:n.type,config:n.config,epoch:epochs[id]||0,inputs:graph.edges.filter(e=>e.to===id).map(e=>({from:e.from,input:e.input,output:e.output,key:visit(e.from)}))});
     memo.set(id,key);return key;
   }return visit(id);
 }
@@ -40,6 +43,7 @@ export function currentOutput(flow,id,registry){
     const relevant=run.graph.nodes;
     const installed=registry.get(flow.graph.nodes.find(n=>n.id===id).type);
     if(step.definition?.hash!==installed.hash)continue;
+    if(usesDownstream(installed)&&JSON.stringify(step.downstream||[])!==JSON.stringify(downstreamTargets(flow.graph,id,registry.catalog().nodes)))continue;
     // Ancestor keys capture configuration/epoch changes; rule changes also invalidate context.
     const ancestors=new Set();function visit(nid){for(const e of run.graph.edges.filter(e=>e.to===nid)){ancestors.add(e.from);visit(e.from);}}visit(id);
     if(relevant.some(n=>ancestors.has(n.id)&&run.nodes[n.id]?.definition?.hash!==registry.get(n.type).hash))continue;

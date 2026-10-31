@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "input.start",
+  "name": "开始节点",
+  "version": "1.0.0",
+  "category": "input",
+  "description": "填写项目方向、目标用户与本次任务，作为工作流的文字输入起点。",
+  "icon": "input",
+  "enabled": true,
+  "executor": "text",
+  "inputs": [],
+  "outputs": [
+    {
+      "id": "data",
+      "name": "项目背景与任务",
+      "types": [
+        "materials"
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "key": "content",
+      "label": "项目方向与本次任务",
+      "type": "textarea",
+      "default": ""
+    }
+  ],
+  "instructions": null,
+  "requirements": [
+    "填写项目方向与本次任务"
+  ],
+  "implementation": "text",
+  "origin": {
+    "skill": "产品经理工作流 / 现有本地工具",
+    "adaptedAt": "2026-10-18",
+    "scope": "输入想法、产品、用户需求或 CSV/JSON 数据。"
+  },
+  "workflow": [
+    {
+      "id": "brief",
+      "title": "明确任务背景",
+      "prompt": "填写项目做什么、服务谁、本次要完成什么。背景是用户陈述，不是已验证的研究证据。"
+    },
+    {
+      "id": "handoff",
+      "title": "沿连线交接背景",
+      "prompt": "保持原始任务背景，交给后续节点；不分析、不搜索、不生成结论。"
+    }
+  ],
+  "capabilities": {
+    "search": false,
+    "generateDecisions": false
+  }
+}

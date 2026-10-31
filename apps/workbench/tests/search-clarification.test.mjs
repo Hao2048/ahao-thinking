@@ -1,0 +1,37 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {mkdtemp,rm} from 'node:fs/promises';import {tmpdir} from 'node:os';import {join} from 'node:path';
+import {executeNode,NodeNeedsInput} from '../src/node-executors.mjs';
+import {validateSearchReview,applySearchAnswer} from '../src/search-clarification.mjs';
+import {startServer} from '../src/server.mjs';
+const question=(phase)=>({question:{dimension:phase==='before'?'product_form':'audience',prompt:phase==='before'?'研究软件还是硬件？':'是否扩展到儿童家庭？',reason:'此选择会改变研究对象',sourceUrls:phase==='after'?['https://example.org/one']:[],options:[{label:'按当前范围继续',queries:[]},{label:phase==='before'?'仅研究软件':'补充研究儿童家庭',queries:[phase==='before'?'AI宠物 软件 用户反馈':'AI宠物 儿童家庭 需求']}]}});
+const context={startNodeId:'start',content:'AI宠物陪伴市场调研',evidence:'user_statement'};
+function fixture(){let state,calls=[],reviews=0;const ctx={definition:{id:'input.web',executor:'web',fields:[],outputs:[{types:['sources']}]},node:{config:{queries:'AI宠物 用户需求'}},upstream:[],taskContext:context,connection:{id:'test'},signal:new AbortController().signal,workspace:tmpdir(),onSearchState:async s=>state=s,research:{collect:async(_s,p)=>{calls.push(p);return {sources:[{url:calls.length===1?'https://example.org/one':'https://example.org/two',title:'公开资料',content:'儿童家庭也是候选群体，是否纳入需要明确范围'}],failures:[]};}},runtime:{invoke:async()=>({finalResponse:JSON.stringify(question(++reviews===1?'before':'after'))})}};return {ctx,get state(){return state},calls,get reviews(){return reviews}};}
+test('before/after questions pause search, show exact public queries and resume without refetching saved sources',async()=>{
+ const f=fixture();await assert.rejects(executeNode(f.ctx),e=>e instanceof NodeNeedsInput&&e.clarification.phase==='before');assert.equal(f.calls.length,0);const first=f.state.question;
+ f.ctx.searchState=applySearchAnswer(f.state,first,{questionId:first.id,optionId:'1',extra:'私人补充不要当成检索词'});
+ await assert.rejects(executeNode(f.ctx),e=>e.clarification.phase==='after');assert.equal(f.calls.length,1);assert.deepEqual(f.calls[0].queries,['AI宠物 软件 用户反馈']);assert.equal(f.state.web.sources.length,1);const second=f.state.question;
+ f.ctx.searchState=applySearchAnswer(f.state,second,{questionId:second.id,optionId:'1'});const out=await executeNode(f.ctx);assert.equal(f.calls.length,2);assert.deepEqual(f.calls[1].queries,['AI宠物 儿童家庭 需求']);assert.deepEqual(f.calls[1].urls,[]);assert.equal(f.reviews,2);assert.equal(out.sources.length,2);assert.equal(out.searchIntent.decisions.length,2);assert.ok(out.materials.some(m=>m.title==='用户确认的研究范围'));assert.ok(!JSON.stringify(f.calls).includes('私人补充'));
+});
+test('keeping existing scope does not expand or repeat the same scope dimension',async()=>{
+ const f=fixture();await assert.rejects(executeNode(f.ctx));const q=f.state.question;f.ctx.searchState=applySearchAnswer(f.state,q,{questionId:q.id,optionId:'0'});f.ctx.runtime.invoke=async()=>({finalResponse:JSON.stringify({...question('after'),question:{...question('after').question,dimension:'product_form'}})});const out=await executeNode(f.ctx);assert.equal(f.calls.length,1);assert.equal(out.searchIntent.decisions.length,1);
+});
+test('review requires a real source for new discoveries and validated, bounded options',()=>{
+ const q=question('after');assert.equal(validateSearchReview(q,'after',[]),false);assert.equal(validateSearchReview(q,'after',[{url:'https://example.org/one'}]),true);q.question.options[1].queries=['bad\nquery'];assert.equal(validateSearchReview(q,'after',[{url:'https://example.org/one'}]),false);assert.equal(validateSearchReview({question:null},'before'),true);assert.throws(()=>applySearchAnswer({}, {id:'id',options:[]},{questionId:'other'}),/已变化/);
+});
+test('cancellation interrupts review without search or a late question',async()=>{
+ const f=fixture(),controller=new AbortController();f.ctx.signal=controller.signal;let started;const ready=new Promise(r=>started=r);f.ctx.runtime.invoke=(_c,_p,_w,{signal})=>new Promise((_r,reject)=>{started();signal.addEventListener('abort',()=>reject(new Error('cancelled')),{once:true});});const p=executeNode(f.ctx);const done=assert.rejects(p,/cancelled/);await ready;controller.abort();await done;assert.equal(f.calls.length,0);assert.equal(f.state,undefined);
+});
+test('flow API persists clarification decisions, rejects stale/forged answers and continues the same run',async t=>{
+ const dir=await mkdtemp(join(tmpdir(),'clarification-flow-'));let calls=0,reviews=0;
+ const app=await startServer({port:0,dataDir:dir,bridge:{invoke:async()=>({finalResponse:JSON.stringify(++reviews===1?question('before'):question('after'))}),close:async()=>{}},researchBridge:{collect:async()=>{calls++;return {sources:[{url:'https://example.org/one',title:'合成来源',content:'测试'}],failures:[]};}}});t.after(async()=>{await app.close();await rm(dir,{recursive:true,force:true});});await app.store.update(s=>{s.projects=[{id:'p',workflows:[]}];s.models=[{id:'test'}];s.settings.activeModelId='test';});
+ const f=await app.flows.create('p','澄清测试');f.graph.nodes[0].config.content='AI宠物调研';f.graph.nodes.push({id:'web',type:'input.web',x:300,y:0,config:{queries:'AI宠物 用户反馈'}});f.graph.edges=[{id:'s-w',from:'start',to:'web',input:'materials',output:'data'}];await app.flows.save('p',f.id,{revision:1,graph:f.graph});const run=await app.flows.start('p',f.id,{});await app.flows.jobs.get(run.id).promise;
+ let r=app.flows.flow('p',f.id).runs.at(-1),q=r.nodes.web.clarification;assert.equal(r.status,'waiting_input');assert.equal(calls,0);await assert.rejects(app.flows.resume('p',f.id,r.id,{nodeId:'web',supplement:'跳过'}),/问题已变化/);await assert.rejects(app.flows.resume('p',f.id,r.id,{nodeId:'web',clarification:{questionId:q.id,optionId:'forged'}}),/请选择/);
+ await app.flows.resume('p',f.id,r.id,{nodeId:'web',clarification:{questionId:q.id,optionId:'1'}});await app.flows.jobs.get(run.id).promise;r=app.flows.flow('p',f.id).runs.at(-1);q=r.nodes.web.clarification;assert.equal(q.phase,'after');assert.equal(r.nodes.web.searchState.web.sources.length,1);assert.equal(calls,1);
+ await app.flows.resume('p',f.id,r.id,{nodeId:'web',clarification:{questionId:q.id,optionId:'0'}});await app.flows.jobs.get(run.id).promise;r=app.flows.flow('p',f.id).runs.at(-1);assert.equal(r.status,'succeeded');assert.equal(calls,1);assert.equal(r.nodes.web.scopeDecisions.length,2);assert.equal(app.flows.flow('p',f.id).runs.length,1);
+});
+test('failed supplemental search retains already collected sources and marks incomplete scope for downstream reports',async()=>{
+ const f=fixture();await assert.rejects(executeNode(f.ctx));let q=f.state.question;f.ctx.searchState=applySearchAnswer(f.state,q,{questionId:q.id,optionId:'0'});await assert.rejects(executeNode(f.ctx));q=f.state.question;f.ctx.searchState=applySearchAnswer(f.state,q,{questionId:q.id,optionId:'1'});f.ctx.research.collect=async()=>{throw Error('network down')};const out=await executeNode(f.ctx);assert.equal(out.sources.length,1);assert.equal(out.quality.level,'partial');assert.match(out.warnings.join(' '),/补充检索失败/);assert.match(out.summary,/已确认研究范围/);
+});
+test('aborted reviews cannot publish a late clarification even when the model ignores cancellation',async()=>{
+ const f=fixture(),controller=new AbortController();f.ctx.signal=controller.signal;f.ctx.runtime.invoke=async()=>{controller.abort();return {finalResponse:JSON.stringify(question('before'))};};await assert.rejects(executeNode(f.ctx),e=>e.name==='AbortError');assert.equal(f.state,undefined);assert.equal(f.calls.length,0);
+});

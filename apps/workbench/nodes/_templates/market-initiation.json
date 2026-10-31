@@ -5,8 +5,8 @@
     "nodes": [
       {
         "id": "idea",
-        "type": "input.text",
-        "name": "文字输入",
+        "type": "input.start",
+        "name": "开始节点",
         "x": 100,
         "y": 160,
         "config": {
@@ -92,8 +92,17 @@
         "to": "initiation",
         "output": "data",
         "input": "materials"
+      },
+      {
+        "id": "idea-web",
+        "from": "idea",
+        "to": "web",
+        "output": "data",
+        "input": "materials"
       }
     ],
-    "groups": []
+    "groups": [],
+    "startNodeId": "idea",
+    "contextPolicy": "start-required-v1"
   }
 }
