@@ -4,7 +4,7 @@
 
 ## 下载与安装
 
-1. 打开 [v2.9.0 发布页](https://github.com/Hao2048/haohao-product-workbench/releases/tag/v2.9.0)，下载 `ahao-thinking-2.9.0-mac-arm64.dmg`。
+1. 打开 [v2.9.0 发布页](https://github.com/Hao2048/ahao-thinking/releases/tag/v2.9.0)，下载 `ahao-thinking-2.9.0-mac-arm64.dmg`。
 2. 打开 DMG，将“阿浩Thinking”拖到“应用程序”。
 3. 从“应用程序”启动“阿浩Thinking”，在“模型连接”填写自己的服务配置并测试连接。
 

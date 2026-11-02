@@ -5,7 +5,7 @@
 <p align="center"><strong>把想法、资料和分析，连接成可交付的产品文档。</strong></p>
 <p align="center">产品经理桌面工作台 · 节点工作流 · 专业分析与报告 · 本地保存</p>
 <p align="center">
-  <a href="https://github.com/Hao2048/haohao-product-workbench/releases/latest">下载 macOS 版</a> ·
+  <a href="https://github.com/Hao2048/ahao-thinking/releases/latest">下载 macOS 版</a> ·
   <a href="#快速开始">快速开始</a> ·
   <a href="#节点工作流">节点工作流</a> ·
   <a href="#资料缺口与补齐">资料缺口与补齐</a> ·
@@ -19,7 +19,7 @@
 
 它把工作分成三个明确的职责：**输入节点提供材料，分析节点形成判断，文档节点组织交付。** 各节点沿连线接收上游数据，保留来源、假设和待确认事项；报告生成结束，不代表产品假设已经被验证。
 
-当前版本为 **v2.9.0**，主要开发和验证环境为 **macOS Apple Silicon**，要求 macOS 13 或更高版本。可从 [最新发布](https://github.com/Hao2048/haohao-product-workbench/releases/latest) 下载桌面安装包，也可以从源码构建。当前安装包使用本地开发签名，尚未进行 Apple Developer ID 公证。
+当前版本为 **v2.9.0**，主要开发和验证环境为 **macOS Apple Silicon**，要求 macOS 13 或更高版本。可从 [最新发布](https://github.com/Hao2048/ahao-thinking/releases/latest) 下载桌面安装包，也可以从源码构建。当前安装包使用本地开发签名，尚未进行 Apple Developer ID 公证。
 
 > 两张截图由维护者提供，来自实际桌面界面，用于展示节点编排、文档阅读和图表。截图中的研究结论属于示例项目内容，不代表已经验证的市场事实；“信息不充分”表示该次输出保留了证据缺口。
 
@@ -45,7 +45,7 @@
 
 **直接使用桌面版：**
 
-1. 从 [v2.9.0 发布页](https://github.com/Hao2048/haohao-product-workbench/releases/tag/v2.9.0) 下载 `ahao-thinking-2.9.0-mac-arm64.dmg`。
+1. 从 [v2.9.0 发布页](https://github.com/Hao2048/ahao-thinking/releases/tag/v2.9.0) 下载 `ahao-thinking-2.9.0-mac-arm64.dmg`。
 2. 打开 DMG，将“阿浩Thinking”拖入“应用程序”。升级前先退出旧版应用，保留原有资料目录。
 3. 启动应用；如出现钥匙串授权窗口，在系统窗口完成授权。安装包内置运行环境，无需另装 Node.js 或使用浏览器。
 
@@ -56,8 +56,8 @@
 需要 Node.js **24+**、Git、npm，以及可用的模型账号或 API Key。macOS 构建还需安装 **Xcode Command Line Tools**；首次安装依赖需要联网。
 
 ```bash
-git clone --recurse-submodules https://github.com/Hao2048/haohao-product-workbench.git
-cd haohao-product-workbench
+git clone --recurse-submodules https://github.com/Hao2048/ahao-thinking.git
+cd ahao-thinking
 node scripts/setup-workbench.mjs
 cd apps/workbench
 npm run desktop:dev
@@ -229,7 +229,7 @@ v2.9.0 通过 **172 项自动测试**，覆盖节点与数据交接、缺口处�
 
 本项目面向个人产品工作和小型研究流程。AI 生成的分析、建议、原型和文档需要结合真实资料审阅；没有访谈、实验或业务数据时，结论应保留其假设性质。
 
-欢迎通过 [Issues](https://github.com/Hao2048/haohao-product-workbench/issues) 提供软件版本、系统、复现步骤、预期与实际结果，以及脱敏日志。请勿提交 API Key、Cookie、完整私人材料或整个应用资料目录。
+欢迎通过 [Issues](https://github.com/Hao2048/ahao-thinking/issues) 提供软件版本、系统、复现步骤、预期与实际结果，以及脱敏日志。请勿提交 API Key、Cookie、完整私人材料或整个应用资料目录。
 
 仓库不收录模型密钥、用户数据、依赖目录与安装包。本文使用的两张截图为维护者明确提供的展示素材，保存于 `docs/assets/`。
 
